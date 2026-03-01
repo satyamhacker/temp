@@ -1,0 +1,73 @@
+### Video---1 --- Topic--- Introduction to Building Chatbots with Streamlit
+
+* **[Course Section Overview]:** This section focuses on how to start building chatbots with local large language models and Ollama. The speaker explains that they will use the "same knowledge that we have acquired in our last section," specifically the historical chat message history that stores chat information and passes it to the large language model using Langchain.
+* **[Introducing Streamlit]:** The chatbot will be implemented using a tool or library called Streamlit, which makes building the UI happen.
+* **[Final Application Demonstration]:** The speaker shows the final source code up and running. The super simple application features an input field for the user's name, which serves as the "session ID" concept from the previous section. It also includes dropdown options to choose an expert level, which dictates how the query is answered.
+* **[Chat Interface and Interaction]:** The Streamlit app contains a chat input at the bottom. The speaker asks, "how to write a simple protein genetic or whatever." The bot answers immediately, "pretty much like how it is doing with the actual ChatGPT." The UI features a user logo and a bot logo for responses. It neatly formats the genetic sequence and details.
+* **[Contextual Follow-Up Examples]:** The speaker demonstrates another query: writing a simple Selenium with Java code for google.com. It successfully writes dependencies and Java code using the local large language model. Then, a follow-up question is asked: "how to tweak the code with playwright as well." Because the chatbot has the historical context, it knows to write code for google.com using Playwright instead of Selenium. The speaker notes this happens because of the "chat message history that we have got with the runnable message history."
+
+### Video---2 --- Topic--- Understanding Streamlit and Setting up the Project
+
+* **[What is Streamlit?]:** The speaker navigates to streamlit.io to show the library used for the application. Streamlit is described as very straightforward: with just a straight line of code and the application name, it opens a browser and shows the application. It allows for creating graphs, sliders, and more.
+* **[Purpose of Streamlit]:** The real purpose of Streamlit is to streamline writing code and make things happen in a faster fashion. The speaker explains that developers "don't just have to worry about like how the web browser application really has to be written," allowing them to "only focus on writing the logic for your large language model based application." UI is not a worry; it is all about tweaking the large language model.
+* **[Target UI Elements]:** The final version of the Streamlit app features a sidebar that can be minimized and maximized "pretty much like the ChatGPT," along with specific icons.
+* **[Setting Up the Python File]:** In Visual Studio, the speaker creates a new folder named "section for building chat bots" and a new file named "chatbot dot p y". They note they are directly using Python code this time, not a notebook.
+* **[Installing and Importing Streamlit]:** The speaker opens the terminal and runs the command "pip install Streamlit" within their virtual environment. In the Python file, they write the import statement: "import Streamlit as st".
+* **[Copying Previous Langchain Code]:** To set up the backend, the speaker copies relevant code from the previous section's "chat with history message" discussions. They specifically mention needing the SQL chat message history, the LM initialization, dotenv loading, chat olama, runnable with message history, and chat prompt template.
+* **[Adding Basic UI Elements]:** The speaker adds a title using "st dot title" with the text "how can I help you today" and another line using "st dot write" saying "enter your query below".
+* **[Running the Streamlit App]:** To run the application, the speaker navigates to the directory in the terminal and uses the command "Streamlit run chatbot dot pi". This opens the app in a browser window showing the title and text.
+* **[Adding Chat Input and Fixing Invocations]:** The speaker replaces the write text with a chat input field by assigning "prompt is equal to st dot chat input" with the text "enter your query". After saving and running, the speaker encounters a problem where old results (distance between moon and sun) from the copied code are printing behind the scenes. They fix this by stopping the print and removing the old background invocations. Once removed, the app cleanly shows the simple chatbot UI prompt.
+
+### Video---3 --- Topic--- Integrating Chat History and Session State
+
+* **[Defining the Interaction Flow]:** The speaker outlines the necessary series of operations: if a user asks "hi chatbot, how are you doing?", the app needs to show a user message, get a response from the AI chatbot, show that AI message, and store all this in a historical session so the user and chatbot can keep chatting.
+* **[Invoking the History]:** When a prompt message comes in, the code calls "history dot invoke", passing the prompt and setting the config to "configurable of session id as session id". The speaker notes they are temporarily hardcoding the session ID but will eventually get it from the user during runtime.
+* **[Introduction to Streamlit Session State]:** To store information in the UI, the speaker uses Streamlit's session state. They create an array called "chat history". Before appending to it, they initialize it by stating "st dot session state dot chat underscore history is equal to an empty array".
+* **[Appending User and Assistant Messages]:** The speaker appends two keys to the session state array. First, they append the user's input: the role is set to "user", and the content is set to the prompt message. Second, they append the AI's output: the role is set to "assistant", and the content is set to the response retrieved from the large language model.
+* **[Initial Printing Attempt (Ugly UI)]:** The speaker initially considers printing the prompt and response using "st dot write", but notes it will look "very ugly". Upon testing, the input and response just print as plain text, which the speaker likens to looking "like a text summary". There is no visual difference between the user asking and the AI responding.
+* **[Beautifying with Streamlit Chat Messages]:** To beautify the UI, the speaker uses Streamlit markdowns. They wrap the printing logic in a block: "with st dot chat message" passing the role (user or assistant), followed by "st dot markdown" passing the prompt or response. Running this creates an intuitive UI with a bit of a shade and icons/logos for the user and assistant.
+* **[Identifying Current Glitches]:** The speaker asks a test question: "how is the weather today in California?". They notice a glitch: the new response just overrides the existing chat messages instead of stacking like a real chat. Additionally, there is no way to start an all-new query because the session ID is currently hardcoded and cannot be entered from the UI.
+
+### Video---4 --- Topic--- Fixing Message Overrides and Dynamic Session IDs
+
+* **[Addressing the Override Glitch]:** The speaker explains that the overriding happens because they have not written the logic to keep existing messages, and they should not be clearing up the chat history every single time if messages already exist in the session state array.
+* **[Preserving Existing Session State]:** The speaker moves the session state initialization code. They add an "if" condition stating that only if there is no message in the "st dot session state", then it should be initialized to an empty array. If there is already a message, it shouldn't be cleaned up.
+* **[Rendering the Chat History]:** To ensure old messages print below one another, the speaker writes a for loop: "for message in st dot session state dot chat history". Inside the loop, they use "with st dot chat message" passing the message's role, and then use markdown to print the content extracted from that particular message.
+* **[Testing the History Loop]:** The speaker tests the code by asking "hi, how are you doing?", followed by "how's weather in NZ?". The weather answer is printed directly below the first question without overriding it. A follow-up question, "how about India", successfully returns contextual details about India, proving the history loop works.
+* **[Implementing Dynamic Session IDs]:** To fix the hardcoded session ID, the speaker cuts the session ID variable and moves it to the top of the code. They dynamically capture it from the user using "st dot text input", adding the text "Enter your name". The default session ID remains "Karthik" for now, but the user can override it from the UI.
+
+### Video---5 --- Topic--- Starting a New Conversation
+
+* **[Adding a Start Button]:** To allow users to start fresh, the speaker adds a button logic: if the "start all new conversation" button is hit, the code sets "st dot session state dot chat history" as empty.
+* **[Clearing the Langchain Session History]:** Just clearing the UI state isn't enough; the backend Langchain history must be cleared too. The speaker gets the session history and calls "dot clear" to wipe the session history for that specific session ID.
+* **[Code Organization]:** The speaker realizes the code layout needs fixing. They cut and move all the Streamlit ("st") specific code into one single place at the top of the file so that it can be easily maintained, separating it from the Langchain logic, prompt, and final quest configurations.
+* **[Testing the Clear Functionality]:** The app now displays the "start all new conversation" button. The speaker asks for directions to GPU stores, then asks a follow-up ("is there any other reason?"). After hitting the start button, everything clears.
+* **[Identifying the Chunking Problem]:** The speaker starts a new chat, asking "what is the power of local LM?". They note it is "taking a bit of a time over there" because it waits to print all the value in one shot. They then ask "can you just print the headings in bullet points as a summary", which works contextually, but again highlights that the information prints in "one full chunk" rather than instantly streaming.
+
+### Video---6 --- Topic--- Streaming Responses
+
+* **[The Need for Streaming]:** The speaker states the current problem: information is not streamed; it prints in one full chunk, meaning you have to wait for the entire response to be ready from the LM. To fix this, they need to stream the response.
+* **[Creating the Invoke History Method]:** Instead of doing the invoke operation for every single time, the speaker decides to write a cleaner method. They define "invoke history" which takes the chain, session ID, and prompt as parameters.
+* **[Implementing the Stream Method and Yield]:** Inside the new method, the speaker replaces the "invoke" call with the "stream" method (noting they've used "LM dot stream" in basic sections before). They write a for loop: "for response in history dot stream", passing the prompt and config. Inside the loop, they use the "yield response" command to output the streaming chunks every single time.
+* **[Updating Streamlit to Write Stream]:** To call this method in the UI, the speaker goes to the block where the assistant's message is printed. Instead of "st dot markdown", they change it to "st dot write stream", passing in the "invoke history" method along with the required parameters.
+* **[Appending Streamed Content to History]:** Finally, when appending the assistant's message to the session state chat history, the content value is updated to capture the stream response so it is saved for future conversation rendering.
+* **[Testing the Streaming Output]:** The speaker starts a new conversation and asks "how big is sun compared to moon?". Instead of waiting for a chunk, the UI provides a real-time streaming response. They follow up with "how about Earth?" and "how can you print them in tabular format", demonstrating that historical context is maintained perfectly while streaming.
+
+### Video---7 --- Topic--- Applying Cosmetic UI Changes
+
+* **[Creating the Cosmetic File]:** The speaker duplicates the current code into a new file called "chatbot with cosmetic". They explain they will paste pre-written code to show the cosmetic changes, noting that the underlying logic and session history remain exactly the same.
+* **[Adding a Sidebar and Logo]:** The first major change is utilizing a sidebar ("st dot sidebar"). Inside this sidebar, the speaker adds an image logo for "Execute Automation" using "st dot image".
+* **[Moving Inputs to Sidebar]:** The user input for the name (session ID) is moved into the sidebar. Additionally, a dropdown is added to the sidebar to select the expert level ("beginner", "expert", and "PhD"), defaulting to an index of zero (beginner). The "start new chat" button is also placed in the sidebar.
+* **[Main Window Markdown]:** In the middle of the main window, the speaker adds a markdown message: "what can I help you today" to give it a more "ChatGPT experience".
+* **[Updating the Prompt Template]:** To make the expert level functional, the speaker modifies the system query in the prompt template. They add a system message stating "you are an [role] level user to answer this query", injecting the selected expert level into the prompt. The string placeholder is replaced with "message placeholder of history" followed by the human prompt.
+* **[Testing the Final Cosmetic UI]:** Running the new file reveals the sidebar pane and UI layout. The speaker asks "how big is sun compared to moon?" and then asks it to compare with Earth in a tabular format, which successfully prints below. The speaker changes the dropdown to "PhD" level and asks "how about with Mars?" and "how about its gases in each planets? Explain me." The bot provides deeper, C-level responses tailored for every single planet along with a summary. The speaker concludes that they have successfully built a local, Streamlit-based chatbot using a local large language model.
+
+**Double‑check steps performed:**
+
+* [x] Read entire transcript thoroughly.
+* [x] Extracted rich, contextual details for every subtopic (definitions, examples, exact phrasing).
+* [x] Confirmed no external knowledge or invented topics added.
+* [x] Preserved exact chronological order.
+* [x] Followed output format (Markdown, correct headers/bullets).
+
+I have deeply rechecked and confirm this skeleton matches the provided transcript exactly.
