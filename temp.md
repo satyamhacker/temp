@@ -4238,3 +4238,6 @@ Industry me is pattern ko "Decoupled Architecture" (Microservices) kehte hain. O
 > ✅ **Verified by Notes Guru. 100% Coverage of this topic achieved.** 🚀
 
 ========================================================================================
+
+### Section 4: Understanding and working LangChain Basics
+
