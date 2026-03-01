@@ -6714,3 +6714,6 @@ Jo ki typing effect ko kharab kar dega.
 **Boom! 🚀 Tumhara skeleton v2.3 ke hisaab se completely aur flawlessly notes mein convert ho chuka hai. The environment is set, LangSmith is logging, templates are structured, and the ChatGPT-like stream is actively typing! Let me know if you need more magic. Notes Guru, signing off!**
 
 ========================================================================================
+
+### Section 5: LangChain Chains and Runnables
+
