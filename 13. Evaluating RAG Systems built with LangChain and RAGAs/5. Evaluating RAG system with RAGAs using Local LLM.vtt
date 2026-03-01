@@ -1,0 +1,664 @@
+WEBVTT
+
+00:00.170 --> 00:00.830
+All right.
+
+00:00.830 --> 00:06.830
+So now we are going to start doing the evaluation of these, uh, record that we have got in the data
+
+00:06.860 --> 00:08.270
+set using ragas.
+
+00:08.270 --> 00:11.000
+So I'm going to add a markdown over here.
+
+00:11.000 --> 00:12.800
+I'm going to say ragas.
+
+00:13.040 --> 00:17.780
+Uh evaluation of Rag data that we have got.
+
+00:17.930 --> 00:19.700
+Uh so there we go.
+
+00:19.700 --> 00:21.440
+And now I'm going to add the code.
+
+00:21.440 --> 00:26.990
+So for evaluation of the data set we are going to call the ragas.
+
+00:26.990 --> 00:32.930
+And over here they have got a class called as uh evaluation data set.
+
+00:33.680 --> 00:33.950
+Right.
+
+00:33.980 --> 00:38.600
+And this class you can actually create an evaluation data set.
+
+00:38.630 --> 00:49.970
+Let's say uh evaluation data set which is going to be evaluation data set dot from uh lists over here.
+
+00:49.970 --> 00:56.150
+So you can pass either from list and if you have data uh from hugging face data set, you can also import
+
+00:56.150 --> 00:57.800
+the data set from the hugging face.
+
+00:57.920 --> 00:59.470
+I mean I have created a hugging face here.
+
+00:59.470 --> 01:03.580
+I said to have all these datas earlier, which I can show you as well.
+
+01:03.580 --> 01:05.560
+You can also read from a JSON file.
+
+01:05.560 --> 01:08.020
+You can also do it from the pandas or dict.
+
+01:08.020 --> 01:09.430
+And there is something like list.
+
+01:09.430 --> 01:13.120
+And because you remember in our last lecture, we are creating a list of the data set.
+
+01:13.120 --> 01:16.600
+So we can just use this list for reading the data from.
+
+01:16.600 --> 01:18.130
+That is the data set over here.
+
+01:18.130 --> 01:22.120
+So now this code will just work fine without any problem.
+
+01:22.120 --> 01:26.200
+While I do a while, I do an import of the data set evaluation over here.
+
+01:26.230 --> 01:30.910
+The final operation we need to do is we need to call our ragas.
+
+01:30.910 --> 01:38.140
+And I'm going to import the evaluate over here and over here I'm going to be evaluating, as I told
+
+01:38.140 --> 01:40.810
+you with the LMS.
+
+01:40.810 --> 01:48.310
+So I need to import a class called as Lang chain LM wrapper, which is going to help us do the evaluation.
+
+01:48.340 --> 01:55.810
+I mean, this wrapper will now help me to create the evaluation operation itself.
+
+01:55.810 --> 01:59.340
+So what I say that, I'm going to say evaluation.
+
+01:59.340 --> 02:06.630
+LM so here is where I'm going to add an evaluation LM and I'm going to call the long chain LM wrapper.
+
+02:06.630 --> 02:09.000
+And here I need to pass the LM.
+
+02:09.000 --> 02:16.740
+So guess what this time because this is going to be an LM which is going to be acting as an evaluator.
+
+02:16.740 --> 02:20.490
+I'm going to be using a different evaluator LM this time.
+
+02:20.490 --> 02:26.100
+So I'm going to probably guess what I'm going to use the most beefy, uh, LM that I have got in my
+
+02:26.100 --> 02:33.510
+machine, which is the, uh, more sophisticated, uh, LM, for instance, which is going to be this
+
+02:33.510 --> 02:33.810
+one.
+
+02:33.810 --> 02:39.870
+As you can see, the llama 3.1 70 billion parameter is like 42 gig in my machine.
+
+02:39.900 --> 02:45.210
+And I wanted to try out this one this time just to show you, like, how you can use this big, uh,
+
+02:45.210 --> 02:48.180
+this big model as well.
+
+02:48.540 --> 02:50.970
+Uh, with your execution.
+
+02:50.970 --> 02:56.520
+I know my machine has got a bit of an inferencing power like it is 64 gig, and it's as Apple M1 Macs.
+
+02:56.520 --> 02:59.640
+So probably this thing is going to be supported.
+
+02:59.940 --> 03:03.120
+So I'm just going to relay on that at this time.
+
+03:03.120 --> 03:06.840
+So let me run this block because we need this lm2, which is great.
+
+03:07.260 --> 03:09.960
+And I'm going to add this lm2 over here.
+
+03:10.650 --> 03:11.100
+Right.
+
+03:11.100 --> 03:12.990
+So Lm2 is that Lm2.
+
+03:13.110 --> 03:13.920
+Oh no sorry.
+
+03:13.920 --> 03:16.650
+This is a Lm2 again.
+
+03:16.770 --> 03:19.500
+And we have this lm2 right now.
+
+03:19.500 --> 03:23.970
+So long chain LM wrapper is going to have this lm2 over here.
+
+03:23.970 --> 03:30.150
+And now we are going to uh, we are going to do one more importing over here.
+
+03:30.150 --> 03:33.930
+So we are going to use the metrics from ragas this time.
+
+03:33.930 --> 03:43.110
+So the metrics which I am going to be using from ragas is going to be, uh lm uh lm context recall.
+
+03:43.110 --> 03:48.690
+So which is going to be this one, and I'm going to check the faithfulness.
+
+03:48.720 --> 03:52.530
+And maybe I can also check the, uh, factual correctness.
+
+03:52.530 --> 03:58.880
+But you can see that they have got so many different, um, so many different way to verify things over
+
+03:58.880 --> 03:59.420
+here.
+
+03:59.510 --> 04:04.520
+Uh, context recall, context perception, context entity recall, things of that nature.
+
+04:04.550 --> 04:11.090
+Let's say we have got the context recall over here and we have context procession.
+
+04:11.210 --> 04:13.370
+So we can check if we have got context procession.
+
+04:13.400 --> 04:15.290
+These are the things which I just showed you on the slide.
+
+04:15.320 --> 04:18.560
+Remember in our last section you can do you can use that.
+
+04:18.590 --> 04:23.780
+And there's also aspect critics answer similarity and answer relevance like that.
+
+04:23.780 --> 04:25.490
+So answer correctness.
+
+04:25.490 --> 04:28.880
+So you have got these kind of metrics as well.
+
+04:28.910 --> 04:32.090
+I will try to just add these over here just in case.
+
+04:32.090 --> 04:35.840
+And I have not tried these things before, but I'm just going to try it.
+
+04:35.840 --> 04:38.420
+And let's try to run this and see how the evaluation really works.
+
+04:38.450 --> 04:42.470
+I'm going to say result is equal to evaluate.
+
+04:43.130 --> 04:45.050
+And I need to pass the data set over here.
+
+04:45.080 --> 04:49.250
+Data set is going to be the evaluation data set that we created over here.
+
+04:49.430 --> 04:52.170
+And we also need to pass the matrix.
+
+04:52.170 --> 04:57.420
+The matrix is going to be all the metrics that we just have imported, which is going to be, uh, the
+
+04:57.420 --> 05:05.100
+LM context recall, uh, and the faithfulness and context precision.
+
+05:05.100 --> 05:08.340
+And finally, the answer relevance.
+
+05:08.340 --> 05:10.920
+So I'm going to add all of these over here.
+
+05:11.310 --> 05:16.500
+And we are going to print that result, uh, which is going to be over here.
+
+05:16.530 --> 05:17.190
+Right.
+
+05:17.220 --> 05:18.720
+This is going to take more time, guys.
+
+05:18.720 --> 05:24.270
+This is going to take at least, uh, quite a lot of time in my machine, uh, because we are using
+
+05:24.300 --> 05:27.870
+a bigger, uh, bigger LM model.
+
+05:27.870 --> 05:29.730
+So probably it's going to take more time.
+
+05:29.730 --> 05:31.080
+I'm getting an exception here.
+
+05:31.080 --> 05:33.390
+It says the the OpenAI.
+
+05:33.390 --> 05:33.960
+Uh, sorry.
+
+05:33.990 --> 05:41.880
+The API key must be set by passing the, uh, API key client for the OpenAI, uh, API key.
+
+05:41.910 --> 05:48.960
+Looks like what's happening at the moment is that, uh, this particular, uh, this particular evaluator
+
+05:48.960 --> 05:52.610
+is now expecting me to pass an open API key.
+
+05:52.610 --> 05:53.600
+But guess what?
+
+05:53.630 --> 05:58.640
+Because we are not going to be using the open APIs API, and we're going to use a local large language
+
+05:58.640 --> 05:59.150
+model.
+
+05:59.150 --> 06:08.540
+We also need to pass one more parameter here, which is going to be LM is equal to evaluator LM which
+
+06:08.540 --> 06:13.730
+is this one, the large language model two that we have got just for the readability purpose.
+
+06:13.730 --> 06:17.090
+I'm going to make this a bit more clear for you to see.
+
+06:17.120 --> 06:22.220
+Like what's exactly that we are passing in so that you can have it clearly visualized.
+
+06:22.220 --> 06:24.650
+So these are the evaluation metrics that I'm passing in.
+
+06:24.650 --> 06:26.990
+And this is the result over here right.
+
+06:27.020 --> 06:31.580
+So this is something that you need to pass to the evaluator so that it's going to use this evaluation
+
+06:31.580 --> 06:38.510
+with this large language model two which is going to be our, our uh, our llama two.
+
+06:38.540 --> 06:44.690
+And you can see that even if I try to add the exact evaluation LM over here, it is going to fail with
+
+06:44.690 --> 06:46.700
+the, uh, with the API key.
+
+06:46.850 --> 06:53.650
+Uh, looking for the OpenAI API key while I'm trying to use the local large language model.
+
+06:53.650 --> 06:57.940
+The reason why this is happening is that this answer relevance class that we have added over here.
+
+06:57.970 --> 07:01.930
+As I told you before, during the adding of this particular answer, I have never tried it before.
+
+07:01.960 --> 07:06.820
+This answer relevance actually looks for the OpenAI.
+
+07:06.850 --> 07:14.560
+So basically this answer relevance unfortunately works with the OpenAI alone, but not with, uh, with
+
+07:14.560 --> 07:16.510
+any other models.
+
+07:16.510 --> 07:23.170
+So if we're just going to search for, uh, answer relevance over here, uh, they have given the details
+
+07:23.170 --> 07:25.480
+over here like what is this answer relevance metrics.
+
+07:25.480 --> 07:30.370
+So you can see that they are unfortunately, the documentation really doesn't tell me that it should
+
+07:30.370 --> 07:37.150
+be the LLM provider should only be OpenAI, but it is not really working with the local large language
+
+07:37.150 --> 07:38.800
+model, which is a bummer.
+
+07:38.800 --> 07:42.970
+So we can probably remove this answer relevance over here.
+
+07:42.970 --> 07:44.440
+Maybe they will add it in future?
+
+07:44.440 --> 07:48.490
+I'm not sure, but for now, we don't have that bad luck on us.
+
+07:48.490 --> 07:51.130
+And let's try to run this code and see what's going to happen.
+
+07:51.820 --> 07:53.920
+Now notice that the evaluation has started.
+
+07:53.950 --> 07:56.350
+I'm telling you guys, this is going to take a long time for me.
+
+07:56.380 --> 08:02.200
+And because we're using the, uh, bigger, uh, large language model like larger, larger language
+
+08:02.200 --> 08:07.270
+model, like 42 gig, uh, it is going to take a long time and it's going to crank my fan as well.
+
+08:07.270 --> 08:10.000
+So once this entire execution is done, I'll be back.
+
+08:10.030 --> 08:10.600
+All right.
+
+08:10.600 --> 08:15.490
+So now you can see that we have got this execution done in four minutes and five seconds.
+
+08:15.550 --> 08:24.820
+And what I come down over here, I noticed that the context recall has got a .59, uh, in total of
+
+08:24.820 --> 08:25.390
+the score.
+
+08:25.390 --> 08:30.790
+And the faithfulness has got Nan and the context precision has got Nan, which means it's not applicable,
+
+08:30.820 --> 08:31.330
+something like that.
+
+08:31.330 --> 08:33.790
+So it's not able to find the faithfulness over here.
+
+08:33.790 --> 08:39.220
+I could see that this could be an issue with my large language models, like I'm using the bigger LM
+
+08:39.220 --> 08:39.700
+as well.
+
+08:39.700 --> 08:44.460
+And maybe the machine's performance is not up to the mark and it is not returning me the correct answer.
+
+08:44.490 --> 08:50.370
+Maybe if we use the OpenAI's, uh, API, and if you try to do the exact same thing, it could be different
+
+08:50.370 --> 08:53.730
+altogether because the data is quite lesser comparatively.
+
+08:53.730 --> 08:55.890
+And also the question is very straightforward.
+
+08:55.890 --> 09:02.220
+So I would expected this whole faithfulness to be one, because I tried the exact same thing in my other
+
+09:02.220 --> 09:03.120
+tests as well.
+
+09:03.120 --> 09:07.050
+And I saw the faithfulness was actually coming up as one before.
+
+09:07.050 --> 09:11.760
+And this test, for some reason in this language model, because it's the first time I'm using this,
+
+09:11.760 --> 09:17.160
+uh, LLM model, like the bigger model, and it is taking a toll on the faithfulness over here.
+
+09:17.160 --> 09:18.660
+So this is not quite right.
+
+09:18.660 --> 09:22.740
+So if I try to run this one more time with a different model, probably the answer will be different.
+
+09:22.770 --> 09:25.560
+But at least for now, I could see that the execution is happening.
+
+09:25.560 --> 09:32.130
+And this is how we can see that we could do the evaluation of our large language model.
+
+09:32.130 --> 09:38.670
+Just wanted to see if we could able to spend one more change on this particular test execution instead
+
+09:38.670 --> 09:42.170
+of the context precision and answer relevance that we have got.
+
+09:42.200 --> 09:48.590
+Maybe I'm going to say factual correctness over here and I'm going to say factual correctness.
+
+09:48.620 --> 09:52.220
+I'm going to save this, and I'm going to try to run this one more time over here.
+
+09:52.220 --> 09:57.860
+And while this is happening, I'm also going to show you the, uh, Lang Smith over here.
+
+09:57.890 --> 10:00.770
+Like what has really gone in this particular execution.
+
+10:00.770 --> 10:05.330
+You see that we have got this ragas evaluation, which is the earlier ragas evaluation that we just
+
+10:05.330 --> 10:05.960
+tried.
+
+10:05.990 --> 10:12.980
+And over here you will notice that we can see every single operation in the, in the Lang chain over
+
+10:12.980 --> 10:13.280
+here.
+
+10:13.280 --> 10:13.970
+Look at that.
+
+10:13.970 --> 10:20.090
+So it is going to show me uh it is, it has spent around 53,702 tokens this time, which is, which
+
+10:20.090 --> 10:23.930
+is really, really higher than ever we have seen before.
+
+10:23.930 --> 10:28.970
+And you can see that we have got this context recall happening there, and it is getting the retrieved
+
+10:28.970 --> 10:30.560
+context for these.
+
+10:30.560 --> 10:31.700
+And there is this user input.
+
+10:31.730 --> 10:34.760
+What playwright, what is playwright and what browser does it supports.
+
+10:34.790 --> 10:36.860
+These are the retrieved contexts for that.
+
+10:36.950 --> 10:44.380
+And then it is doing the context recall Classification in the ragas there and it is running in forests
+
+10:44.410 --> 10:44.920
+and seas.
+
+10:44.950 --> 10:51.160
+We also have got the faithfulness over here, uh, which is which says that the invalid JSON output.
+
+10:51.160 --> 10:53.440
+And that's the reason why it has got failed for some reason.
+
+10:53.440 --> 10:54.280
+Look at that.
+
+10:54.370 --> 11:00.280
+So there is this failure happened over here saying that it couldn't able to parse that particular statement.
+
+11:00.280 --> 11:06.790
+And that is the reason why we have got the faithfulness as, uh, nan or for that matter, uh, and
+
+11:06.790 --> 11:15.700
+we also have got the context precision prompt over here, uh, which has also took a toll if I was not
+
+11:15.700 --> 11:16.450
+wrong.
+
+11:16.660 --> 11:20.440
+Uh, but you can see that the entire operation for every single row is coming.
+
+11:20.440 --> 11:25.750
+So this is row zero, this is row one, this is row two, and this is row three.
+
+11:25.750 --> 11:29.740
+And this is row four five, six.
+
+11:29.740 --> 11:32.260
+So totally all the rows are being executed.
+
+11:32.260 --> 11:36.790
+And I think the number six has has executed quite a long way over here.
+
+11:36.820 --> 11:37.540
+Look at that.
+
+11:37.570 --> 11:42.900
+Like how deep it went all the way down to actually get the particular response for us.
+
+11:42.900 --> 11:48.150
+And this this proves that the execution is taking so much of time.
+
+11:48.150 --> 11:53.670
+And all of these are recorded in our, uh, in our Lang Smith, which is amazing.
+
+11:53.700 --> 12:00.810
+So this this only proves the point that using, uh, our Lang Smith itself, we can verify every single
+
+12:00.840 --> 12:07.200
+operation which is happening, uh, within the, uh, within the ragas, and we can see that.
+
+12:07.200 --> 12:08.070
+But guess what?
+
+12:08.100 --> 12:13.920
+This is not the actual way that ragas team always say to, uh, to verify things.
+
+12:13.920 --> 12:21.120
+They also tell us that you can verify using their own API keys like ragas has got something called as
+
+12:21.180 --> 12:23.640
+API dot ragas.
+
+12:24.300 --> 12:32.310
+Um, something like that I think uh, or maybe ragas, dot API app, something like that.
+
+12:32.340 --> 12:44.600
+I was just looking at that, uh, over here, uh, and okay, let's say ragas API key.
+
+12:44.630 --> 12:52.040
+If I go and search that, uh, and they have got this evaluation metrics, uh, and.
+
+12:55.640 --> 12:55.940
+Yeah.
+
+12:55.940 --> 12:58.730
+This one the app.ragas.io as you can see over here.
+
+12:58.730 --> 13:00.560
+So this this is the one thing that you can use.
+
+13:00.560 --> 13:02.120
+This is still in beta version.
+
+13:02.120 --> 13:07.700
+Uh, but you can go to their dashboard and you can see how the results are going to come up.
+
+13:07.850 --> 13:13.520
+Uh, but I have not even configured the, uh, tokens and connectivity with this particular ragas yet.
+
+13:13.550 --> 13:18.920
+We'll be doing that later, but at least for now, you can see that we can see all the evaluation happening,
+
+13:19.040 --> 13:20.000
+uh, over here.
+
+13:20.000 --> 13:24.590
+And there is this current evaluation which is currently executing, uh, in our, my, uh, in this
+
+13:24.590 --> 13:27.980
+particular change that we have did like context recall.
+
+13:27.980 --> 13:29.600
+And there is this faithfulness.
+
+13:29.630 --> 13:30.980
+Is it passing this time or.
+
+13:30.980 --> 13:31.310
+No.
+
+13:31.340 --> 13:34.070
+The the faithfulness still is failing this time as well.
+
+13:34.090 --> 13:38.650
+And there is this factual correctness, and this one is also failing for some reason.
+
+13:39.010 --> 13:42.040
+And that's the reason why it couldn't able to evaluate.
+
+13:42.040 --> 13:45.070
+So probably even these two are going to be Nan this time as well.
+
+13:45.070 --> 13:46.630
+So it's that red color there.
+
+13:47.140 --> 13:54.220
+Uh context recall is correct, but faithfulness is still throwing a timeout error uh, for some reason.
+
+13:54.220 --> 13:59.560
+And this is happening for all the rows like six rows that we have got.
+
+14:00.430 --> 14:01.270
+Uh, yeah.
+
+14:01.300 --> 14:01.720
+There we go.
+
+14:01.750 --> 14:03.670
+It does execute the entire thing.
+
+14:03.670 --> 14:07.330
+And we can see that there is an exception raised of timeout there.
+
+14:07.330 --> 14:12.940
+So maybe it's all because of our local large language model and because I'm doing a recording at the
+
+14:12.940 --> 14:13.870
+same time.
+
+14:13.990 --> 14:18.790
+Uh, and this particular stuff doesn't meet the expectation.
+
+14:18.790 --> 14:21.070
+And it just throwing us an exception immediately.
+
+14:21.070 --> 14:27.940
+So probably, uh, if we run this in the open AI key, the things will be far better comparatively.
+
+14:27.940 --> 14:33.400
+So we'll try to run the same thing in the open AI key and see how that actually works in our next lecture.

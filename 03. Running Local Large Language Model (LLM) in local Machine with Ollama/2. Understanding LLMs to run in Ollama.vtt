@@ -1,0 +1,205 @@
+WEBVTT
+
+00:00.050 --> 00:00.440
+All right.
+
+00:00.440 --> 00:04.310
+So hopefully you have already downloaded the ulama within your local machine and you have installed
+
+00:04.310 --> 00:04.580
+it.
+
+00:04.580 --> 00:05.750
+So which is great.
+
+00:05.750 --> 00:09.980
+And if you have not please go ahead and do it again, because that is something required for our next
+
+00:09.980 --> 00:12.350
+discussion that we are going to be doing in this particular lecture.
+
+00:12.350 --> 00:18.710
+So as you can see over here, I can choose the model that I wanted to run within my local machine.
+
+00:18.710 --> 00:24.620
+So I can choose 7 billion parameter or 8 billion parameters, 14 billion parameter, 32 billion parameter,
+
+00:24.620 --> 00:27.800
+all the way up to seven 671 billion parameter.
+
+00:27.800 --> 00:30.800
+Within my machine, you see that there is a drop down over here.
+
+00:30.830 --> 00:35.240
+It's going to show you the size of this particular parameter and the model.
+
+00:35.240 --> 00:38.150
+So 7 billion parameter has got 4.7 gig.
+
+00:38.150 --> 00:45.170
+And if you see 671 billion parameter it is 404 GB that you have to have within your machine.
+
+00:45.170 --> 00:51.260
+I'm telling you based on the parameter, the complexity of the transformer model increases and based
+
+00:51.260 --> 00:56.420
+on the complexity, it also increases the the processing power.
+
+00:56.420 --> 01:00.620
+And also you need to have quite a lot of quantization execution support.
+
+01:00.620 --> 01:04.580
+So you can see that for a 7 billion parameter I have the model over here.
+
+01:04.580 --> 01:09.440
+And you see that the model has got a quantization version of two.
+
+01:09.460 --> 01:15.280
+And it also has got the the total headcount over here which is 28.
+
+01:15.280 --> 01:19.630
+So totally it's going to have 28 different types of headcounts like classifications that it's going
+
+01:19.660 --> 01:21.250
+to support in this particular model.
+
+01:21.250 --> 01:25.960
+And it also has got a label of 7 billion because it's a 7 billion parameter.
+
+01:25.960 --> 01:31.420
+And the same thing is going to keep changing based on the type of parameter they're going to choose.
+
+01:31.420 --> 01:34.720
+For instance, if you're going to choose like 671 billion parameter.
+
+01:34.720 --> 01:40.030
+And if you choose this one over here, you see the number of headcounts might have increased quite a
+
+01:40.030 --> 01:41.260
+lot this time.
+
+01:41.260 --> 01:45.850
+So the headcount right now is 128 as opposed to 14 it was before.
+
+01:45.850 --> 01:49.090
+And the headcount kV is also 128.
+
+01:49.240 --> 01:52.870
+So it is going to support quite a lot of different classifications.
+
+01:52.900 --> 01:56.560
+While you're going to be using this particular model within your machine.
+
+01:56.560 --> 02:01.810
+And also the size is also increases based on that the quantization increases.
+
+02:01.810 --> 02:08.080
+And if the quantization increases, obviously you need to have a lot of GPU power, CPU power, Ram
+
+02:08.080 --> 02:09.340
+power within your machine.
+
+02:09.370 --> 02:15.460
+I will say most of our machines are not really built to run this 671 billion parameter or 70 billion
+
+02:15.460 --> 02:21.680
+parameter and even 32 billion parameter we can probably limit until 14 billion or 8 billion at the max.
+
+02:21.680 --> 02:25.250
+And I'm using Apple M1 Max machine over here.
+
+02:25.250 --> 02:30.350
+And I have got 64 GB of memory and it is quite good in the inferencing.
+
+02:30.350 --> 02:32.270
+So I'm just going to use this particular machine.
+
+02:32.270 --> 02:38.150
+But if you have uh, a windows machine or same kind of machine.
+
+02:38.150 --> 02:41.060
+So probably we can just limit with the eight GB.
+
+02:41.060 --> 02:47.690
+And if you don't really have a powerful machine, I will recommend you to use a lower version of the
+
+02:47.690 --> 02:48.380
+parameter.
+
+02:48.380 --> 02:54.410
+But the more lower parameter that you use in the model, the less predictable output that you can actually
+
+02:54.410 --> 02:59.360
+get out from the particular model, because the model really doesn't perform quite well if you use smaller
+
+02:59.360 --> 03:01.400
+model within your local machine.
+
+03:01.400 --> 03:09.590
+So either try to get a GPU for that matter, like 2080 or 30 80 or 40, 90, 40, 90 is going to be
+
+03:09.590 --> 03:10.880
+very costly for you for sure.
+
+03:10.910 --> 03:16.970
+3080 at least max, or maybe 2080 if you just get any of these Nvidia graphics card within the machine,
+
+03:16.970 --> 03:18.230
+you can probably use that.
+
+03:18.230 --> 03:22.850
+And then you can try to run whatever that we're going to be discussing in this particular course.
+
+03:22.850 --> 03:24.980
+But as I said, that's about it.
+
+03:24.980 --> 03:30.190
+That's the thing that we are going to be using within our machine, and we'll see how we can.
+
+03:30.400 --> 03:33.700
+Download this particular model and then how we can work with it.
+
+03:33.700 --> 03:38.770
+So that is how you can understand how these models are really working behind the scene.
+
+03:39.100 --> 03:45.250
+So if I choose any other model, not just the deep sea, let's say a llama 3.3, they also have got
+
+03:45.280 --> 03:47.950
+like 70 billion parameter, as you can see over here.
+
+03:47.950 --> 03:55.030
+And if I'm going to choose some other models like you see that llama 3.1, there is a 405 billion parameter,
+
+03:55.030 --> 03:58.510
+which is 243 GB of storage itself.
+
+03:58.510 --> 04:02.530
+And it is going to, uh, it's going to have quite a lot of different operations that you are going
+
+04:02.560 --> 04:03.790
+to be doing over there.
+
+04:03.790 --> 04:10.420
+And let's see what is the total headcount that I have got like 128 headcount, as you can see over here.
+
+04:10.420 --> 04:15.370
+And the headcount cave is just eight, whereas in deep sea it was 128 as you know.
+
+04:15.370 --> 04:17.950
+So yeah, it depends upon the model.
+
+04:18.010 --> 04:21.040
+The things are going to keep changing and also the complexity changes.
+
+04:21.040 --> 04:26.890
+And so is your machine's performance reduces based on the type of parameter and the model that you really
+
+04:26.890 --> 04:27.670
+use.
+
+04:27.820 --> 04:32.440
+Well, as I said in our next lecture, we are going to see how we can start using any one of the models
+
+04:32.440 --> 04:36.040
+in our local machine and also try to play around with that.

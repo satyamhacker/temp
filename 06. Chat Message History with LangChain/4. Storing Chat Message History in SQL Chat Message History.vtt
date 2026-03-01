@@ -1,0 +1,400 @@
+WEBVTT
+
+00:00.050 --> 00:00.410
+All right.
+
+00:00.440 --> 00:06.380
+The next operation that we are going to do for the message history is with the SQL chat message history.
+
+00:06.380 --> 00:13.010
+So we are going to be using the same chat message histories library that we are going to have over here,
+
+00:13.010 --> 00:17.570
+but just that we are going to use what is called a SQL chat message history instead of the chat message
+
+00:17.570 --> 00:18.500
+history that we have got.
+
+00:18.500 --> 00:26.270
+So basically in the SQL chat message history, the chat histories are going to be saved on an database
+
+00:26.270 --> 00:32.450
+instead of you storing it, uh, like on the, on the memory, uh, during the runtime.
+
+00:32.450 --> 00:34.460
+That is what we are going to be doing over here.
+
+00:34.460 --> 00:36.890
+So how do we actually do that?
+
+00:36.950 --> 00:39.920
+We are going to call the new library that I was talking about.
+
+00:39.920 --> 00:42.140
+So these things are going to remain exactly the same.
+
+00:42.140 --> 00:43.910
+So I'm just going to leave that guy as it is.
+
+00:44.090 --> 00:45.830
+And you put a markdown over here.
+
+00:45.830 --> 00:58.490
+I'm going to say a chat message history with SQL, uh, chat message history, something like that.
+
+00:58.490 --> 01:01.070
+That is what we are going to be talking about over here.
+
+01:01.070 --> 01:03.260
+So let's see how we can able to achieve this.
+
+01:03.260 --> 01:06.740
+So I'm going to do from chain community chat message history.
+
+01:06.740 --> 01:10.070
+And over here you see that we have got the SQL chat message history.
+
+01:10.070 --> 01:15.080
+But actually if you just do control space you can see there are so many different chat histories available
+
+01:15.080 --> 01:22.280
+either MongoDB chat, message history, Postgres, um, zip chat history, SQL chat, message history,
+
+01:22.370 --> 01:24.650
+uh, Kafka chat message history.
+
+01:24.770 --> 01:28.520
+Um, and then you see that zip cloud message history.
+
+01:28.520 --> 01:32.690
+There are so many of the chat message histories available, so you can use any one of them.
+
+01:32.720 --> 01:38.600
+And everything is written by the community, so you can actually use one of them based on your need
+
+01:38.600 --> 01:41.270
+while you develop the LM application.
+
+01:41.270 --> 01:45.800
+So yeah, this is one of the library which you should be using it for the chat message history.
+
+01:46.280 --> 01:51.320
+And now I'm going to import this particular library for my operation over here.
+
+01:51.620 --> 01:54.380
+And I'm going to start implementing the code.
+
+01:54.380 --> 02:00.770
+So again for the code implementation the code remains pretty much exactly the same, like how we have,
+
+02:01.010 --> 02:06.110
+uh, written over here like this is going to be the template.
+
+02:06.140 --> 02:12.170
+Maybe I'm going to just use the same template and the same chain that we are going to use.
+
+02:12.200 --> 02:17.480
+Let me just copy them and I'm going to paste that over here.
+
+02:17.930 --> 02:24.710
+And I'm also going to be doing the invocation, which is going to be pretty much exactly the same as
+
+02:24.710 --> 02:24.860
+well.
+
+02:24.860 --> 02:26.660
+So there is no change on that as well.
+
+02:26.660 --> 02:30.530
+So I'm going to copy this entire code that we discussed earlier.
+
+02:30.530 --> 02:34.010
+And I'm going to put it over here.
+
+02:35.210 --> 02:41.930
+And I'm also going to use the same exact thing which is the session and the get session history.
+
+02:41.930 --> 02:43.220
+So I'm going to copy this.
+
+02:43.220 --> 02:46.580
+And in fact I'm going to paste that over here.
+
+02:46.580 --> 02:51.590
+So you may be thinking that Karthik what is the difference between the existing code versus the new
+
+02:51.590 --> 02:52.460
+code that we are writing?
+
+02:52.460 --> 02:57.590
+Well, the only difference comes in the get session history method that we are going to be writing over
+
+02:57.590 --> 02:58.070
+here.
+
+02:58.070 --> 03:03.470
+So I'm going to say def of get session History.
+
+03:03.710 --> 03:11.510
+And over here I'm going to get the session ID over here and the session ID over here.
+
+03:11.510 --> 03:14.720
+I'm going to return the SQL chat message history.
+
+03:14.750 --> 03:17.360
+So this is the only difference which I was talking about.
+
+03:17.390 --> 03:25.610
+And over here I'm just going to store the session ID as the session ID that I'm passing in directly
+
+03:25.640 --> 03:26.660
+regardless.
+
+03:26.660 --> 03:31.220
+And I'm going to pass a connection string over here.
+
+03:31.220 --> 03:40.130
+So the connection string I'm going to be using is the SQL Lite database, which is going to be SQLite
+
+03:40.160 --> 03:41.120
+of triple slash.
+
+03:41.120 --> 03:45.800
+And probably I'm going to say chat history dot DB over here.
+
+03:45.800 --> 03:50.900
+So that is the only thing that I need to give over here in this particular method.
+
+03:51.170 --> 03:57.170
+Other than that this entire operation is going to look pretty much exactly the same like how we did
+
+03:57.170 --> 03:57.740
+before.
+
+03:57.770 --> 04:04.810
+It's going to store all the information, like all the, uh, all the chat messages in the SQL chat
+
+04:04.840 --> 04:06.220
+message history for us.
+
+04:06.610 --> 04:07.210
+That's it.
+
+04:07.210 --> 04:08.080
+That's the only thing.
+
+04:08.080 --> 04:11.500
+And the remaining thing remains exactly the same.
+
+04:11.500 --> 04:17.740
+There is no big difference between the earlier and the new one that we have got right.
+
+04:18.280 --> 04:20.890
+And now let's try to run this code and see what is going to happen.
+
+04:20.890 --> 04:27.370
+So if I try to run this code, you'll notice that there is a deprecation deprecation warning coming
+
+04:27.370 --> 04:29.080
+up over here for the connection string.
+
+04:29.080 --> 04:31.390
+Probably this is going to be deprecated pretty soon.
+
+04:31.510 --> 04:33.400
+Uh but yeah look at that.
+
+04:33.400 --> 04:38.890
+The average distance between the Earth and sun is approximately 9.3 million miles over here, and the
+
+04:38.890 --> 04:44.200
+distance between Earth and Moon varies slightly due to the elliptical shape of the Moon's orbit around
+
+04:44.200 --> 04:46.780
+the Earth, and an average distance is about this one.
+
+04:46.810 --> 04:47.650
+Amazing.
+
+04:47.650 --> 04:49.240
+This is already working, guys.
+
+04:49.240 --> 04:51.130
+We can see that it is working.
+
+04:51.160 --> 04:57.220
+And you will also notice that we will have a chat Historydb file created this time.
+
+04:57.220 --> 05:02.590
+So you should see the chat history sitting in over here in the SQLite database.
+
+05:02.590 --> 05:08.560
+So if you have an explorer for the chat for the SQLite database, you could actually able to explore
+
+05:08.590 --> 05:10.480
+that and see how that actually works.
+
+05:10.480 --> 05:13.750
+I guess I had a SQLite tool.
+
+05:14.050 --> 05:17.530
+Um, so I'm going to go search for SQLite.
+
+05:17.920 --> 05:19.150
+Uh, over here.
+
+05:20.020 --> 05:20.980
+Just this one.
+
+05:20.980 --> 05:21.460
+Yeah.
+
+05:21.490 --> 05:22.090
+Let's look at that.
+
+05:22.090 --> 05:24.400
+I already have it for some reason it's not bringing up.
+
+05:24.400 --> 05:30.190
+So I'm going to, uh, trust and okay, install it.
+
+05:30.190 --> 05:35.320
+So all I have to do is just open the SQLite database explorer.
+
+05:35.350 --> 05:36.010
+Okay, cool.
+
+05:36.040 --> 05:37.510
+Let's let's try to do that.
+
+05:37.840 --> 05:43.420
+Uh, over here, control shift p SQLite open database.
+
+05:43.420 --> 05:44.500
+And yeah, there we go.
+
+05:44.530 --> 05:47.230
+It just brings up Testdb file.
+
+05:47.650 --> 05:48.250
+Um.
+
+05:50.950 --> 05:52.510
+Which is done.
+
+05:52.540 --> 05:54.130
+And where does it open really.
+
+05:54.160 --> 05:54.970
+Look at that.
+
+05:54.970 --> 05:55.510
+Here.
+
+05:55.540 --> 05:56.260
+Here we go.
+
+05:56.260 --> 05:58.360
+So we have got this chat method history.
+
+05:58.360 --> 06:00.730
+And we have got the message store over here.
+
+06:00.730 --> 06:03.370
+If I try to run this one look at that.
+
+06:03.370 --> 06:09.310
+So there is this data being stored over here, for as a human is going to ask the data, what is the
+
+06:09.310 --> 06:11.680
+distance between the earth and sun?
+
+06:11.680 --> 06:16.660
+And there is going to be a response coming up from the eye saying this is the content.
+
+06:16.660 --> 06:19.750
+And then again the human is asking the same session ID look at that.
+
+06:19.750 --> 06:21.490
+The session ID is pretty much exactly the same.
+
+06:21.490 --> 06:27.580
+Karthik and we're going to have the human message asking how about from moon?
+
+06:27.580 --> 06:30.700
+And then this answer is going to come from the AI.
+
+06:31.450 --> 06:32.620
+This is amazing.
+
+06:32.620 --> 06:36.640
+So we can see the data is being stored in the SQLite database for us.
+
+06:36.910 --> 06:43.150
+And we will also see the exact same thing from our Langschmidt as well.
+
+06:43.150 --> 06:49.540
+So if I go to the Lange Smith over here and look at that, if I try to load the latest message, you'll
+
+06:49.540 --> 06:53.110
+notice that we're going to have the message coming up over here.
+
+06:53.110 --> 06:54.700
+So runnable with message history.
+
+06:55.120 --> 06:56.380
+Uh, look at that.
+
+06:56.380 --> 06:59.560
+So we have got all the informations over here.
+
+06:59.560 --> 07:06.520
+So uh over here it's going to insert into the history and then it's going to load the history, and
+
+07:06.520 --> 07:11.050
+then it is going to load the history information from this particular message.
+
+07:11.470 --> 07:14.110
+So the same thing is going to happen for every single operation.
+
+07:14.140 --> 07:18.310
+So how about from moon and the distance between the Earth and sun.
+
+07:18.670 --> 07:21.580
+It is going to insert into the history.
+
+07:22.150 --> 07:25.210
+And look at that over here.
+
+07:25.210 --> 07:27.310
+So it is inserting so that it takes some time.
+
+07:27.310 --> 07:29.320
+But for loading it is taking no time.
+
+07:29.320 --> 07:30.580
+And it's just bringing up the message.
+
+07:30.580 --> 07:32.920
+And then it's bringing up information over there.
+
+07:32.920 --> 07:38.830
+So we can essentially see all the, uh, trace information from behind the scene as well, like how
+
+07:38.830 --> 07:39.760
+things are happening.
+
+07:39.760 --> 07:47.800
+So this is how we can see that we can make use of the chat message history to store the information
+
+07:47.950 --> 07:58.720
+in the external database or even in the memory using the chat message history or using the SQL chat
+
+07:58.750 --> 07:59.560
+message history.
+
+07:59.560 --> 08:06.160
+With that, we can see that we can use the same functionality while we are building our chatbot in our
+
+08:06.160 --> 08:07.150
+next section.

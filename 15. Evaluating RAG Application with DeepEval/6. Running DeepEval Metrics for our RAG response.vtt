@@ -1,0 +1,445 @@
+WEBVTT
+
+00:00.080 --> 00:06.470
+So now let's try to evaluate what this LLM test case data is currently holding for us.
+
+00:06.500 --> 00:13.610
+So if you just go and see the data of zero dot probably retrieved context, you will notice that we
+
+00:13.610 --> 00:15.770
+have got the retrieved context for the question.
+
+00:15.770 --> 00:23.630
+So for example the question data of zero dot input is the actual question.
+
+00:23.810 --> 00:33.980
+And if I am going to ask what is the let's say print this one and print a slash n of slash n.
+
+00:34.430 --> 00:42.530
+And then I also wanted to print the data of zero dot the retrieved context.
+
+00:42.530 --> 00:45.470
+So what is the retrieved context from our vector store?
+
+00:45.500 --> 00:50.240
+If I try to print them both together, you should see that this is the.
+
+00:50.270 --> 00:52.460
+So for what is the playwright and what browser does it support?
+
+00:52.490 --> 00:57.410
+It says playwright is a modern automation testing library and it supports multiple browsers like chromium,
+
+00:57.560 --> 00:58.520
+blah blah blah.
+
+00:58.550 --> 01:01.730
+So this is the context which I'm getting over here.
+
+01:01.730 --> 01:07.440
+And I can also see what is the response which came through from our large language model.
+
+01:07.440 --> 01:13.770
+And that is actually sitting as a response, which is the the context that you are seeing over here.
+
+01:13.800 --> 01:13.950
+Right?
+
+01:13.980 --> 01:16.740
+Like the actual output, as you can see that the rag output over here.
+
+01:16.740 --> 01:25.890
+So I'm going to say actual sorry print of the uh, data of zero dot actual output.
+
+01:26.250 --> 01:31.710
+Uh, and if I try to print that, you should see that this is coming from the large language model is
+
+01:31.710 --> 01:32.460
+in the QA chain.
+
+01:32.460 --> 01:35.370
+Playwright is a modern automation library tool designed for the end to end testing.
+
+01:35.370 --> 01:38.580
+It supports multiple browsers, including chromium, Firefox, and WebKit.
+
+01:38.700 --> 01:39.390
+There we go.
+
+01:39.390 --> 01:41.700
+So pretty close to all of these are aligned.
+
+01:41.700 --> 01:47.910
+So I think this should be fine for our, uh, evaluation that we are going to be doing right now with
+
+01:47.910 --> 01:48.990
+a deep valve.
+
+01:48.990 --> 01:54.030
+So let's see how we can trigger the evaluation right now.
+
+01:54.030 --> 01:56.280
+So in order for us to do the evaluation.
+
+01:56.310 --> 02:04.860
+So I'm going to say uh evaluation and with deep eval.
+
+02:04.890 --> 02:06.970
+So this is the place we're going to do the evaluation.
+
+02:06.970 --> 02:08.920
+So I'm going to add the code over here.
+
+02:08.920 --> 02:11.470
+And I'm going to say deep eval dot.
+
+02:11.500 --> 02:13.600
+There is a method called as evaluate.
+
+02:13.600 --> 02:18.400
+And over here I'm going to pass the data that we have got.
+
+02:18.430 --> 02:20.680
+And I need to pass all the metrics.
+
+02:20.680 --> 02:25.630
+This is the same kind of code that we use with our ragas as well.
+
+02:25.630 --> 02:32.500
+While we are trying to do the evaluation, we used to pass the data set and we pass all the metrics.
+
+02:32.500 --> 02:40.060
+Same idea, but only thing is we need to pass the large language model over here, um, which is the
+
+02:40.060 --> 02:41.380
+OpenAI model.
+
+02:41.380 --> 02:42.940
+That is the only major difference.
+
+02:42.940 --> 02:47.410
+So we need to pass the OpenAI key over here to make this happen.
+
+02:47.410 --> 02:48.730
+If not, the code is not going to work.
+
+02:48.760 --> 02:50.560
+I will show you what I really mean about that.
+
+02:50.560 --> 02:56.020
+So the metrics over here, I'm going to say, uh, deep eval dot metrics.
+
+02:56.020 --> 02:59.320
+So you can either import this like how I'm doing over here.
+
+02:59.500 --> 03:03.820
+Uh, and then you can just say, uh, answer relevance metrics for that matter.
+
+03:04.330 --> 03:04.870
+Right.
+
+03:05.080 --> 03:11.460
+And similarly if I'm going to ask other questions, or other matrices like faithful matrix.
+
+03:11.460 --> 03:17.340
+So I want to say about dot matrix, dot uh faithful matrix.
+
+03:18.000 --> 03:24.990
+And similarly if I want to ask the contextual uh, precision matrix, I can do that as well.
+
+03:25.530 --> 03:30.150
+Uh, and if I want to do the contextual recall matrix, I can get that.
+
+03:30.150 --> 03:35.550
+And if I want to get the relevance matrix, I'm going to ask all of these because I'm going to be using
+
+03:35.550 --> 03:36.900
+the open AI model this time.
+
+03:36.900 --> 03:43.950
+That's why I mean there is nothing called as uh, like, uh, lm as such, like how you can pass in
+
+03:43.950 --> 03:51.780
+our, uh, ragas over here is a bit tied with the, uh, with the open AI model.
+
+03:51.780 --> 03:59.760
+So even if I try to pass, like, LM, uh, over here, uh, is equal to LM or whatever, and if you
+
+03:59.790 --> 04:04.440
+try to run this, this is not going to work because there is nothing called as LMS the property.
+
+04:04.440 --> 04:06.570
+So you can't just do that over here.
+
+04:07.110 --> 04:12.120
+Now, if I try to run this particular code, you will notice that it is going to not ask you for the
+
+04:12.120 --> 04:14.670
+GPT four model.
+
+04:14.670 --> 04:20.940
+Uh, it's trying to use the GPT four model, but there is no API key, and it is just going to abruptly
+
+04:20.940 --> 04:23.310
+fail because the the API key is wrong.
+
+04:23.340 --> 04:26.580
+And as you can see, this is the API key which it's currently showing.
+
+04:26.580 --> 04:30.660
+So I need to add the API key for this particular execution.
+
+04:30.900 --> 04:34.290
+Uh, and then I should run all of these from the scratch.
+
+04:34.290 --> 04:35.640
+And I will do that immediately.
+
+04:35.640 --> 04:44.820
+Right now, uh, and I'm going to rerun all of these from the scratch because, um, it will not I mean,
+
+04:44.850 --> 04:48.360
+unless until I restart the notebook, these things is not just going to work for me.
+
+04:48.360 --> 04:52.980
+So I'm going to run everything from the scratch right now.
+
+04:53.610 --> 04:56.280
+And it says that the datasets are test testing.
+
+04:56.310 --> 04:59.310
+Two datasets already exist because it's trying to push from the scratch.
+
+04:59.340 --> 05:00.630
+Do you want to overwrite?
+
+05:00.630 --> 05:07.110
+So I'm going to just say no because I don't want to overwrite the existing data set in the, uh, deep
+
+05:07.140 --> 05:08.130
+evolve cloud.
+
+05:08.130 --> 05:10.110
+So I'm just going to put that guy as it is.
+
+05:10.140 --> 05:10.620
+Look at that.
+
+05:10.620 --> 05:12.880
+The notebook is just running for me.
+
+05:12.970 --> 05:14.500
+All of them, one by one.
+
+05:14.500 --> 05:15.670
+Which is great.
+
+05:16.240 --> 05:18.880
+Um, the rag operation is running.
+
+05:18.880 --> 05:21.130
+It took like 14 seconds last time.
+
+05:21.670 --> 05:23.590
+Now 12 seconds, which is great.
+
+05:23.590 --> 05:25.900
+And now the evaluation is running.
+
+05:26.080 --> 05:27.700
+Hopefully this time it is going to work.
+
+05:27.730 --> 05:28.360
+Oh, look at that.
+
+05:28.360 --> 05:30.010
+It is working fine this time.
+
+05:30.430 --> 05:31.690
+Uh, which is great.
+
+05:31.780 --> 05:33.070
+Yeah, there is this.
+
+05:33.070 --> 05:34.600
+This happened to me last time as well.
+
+05:34.600 --> 05:37.570
+It says OpenAI rate limit exceeded and retrying.
+
+05:37.600 --> 05:39.250
+12345.
+
+05:39.490 --> 05:44.500
+Uh, it happens sometimes if your test is not matching to the actual versus expected.
+
+05:44.770 --> 05:48.310
+Um, then yeah, this this kind of issue happens.
+
+05:48.310 --> 05:50.020
+But but that's fine.
+
+05:50.170 --> 05:54.550
+Uh, we will see the end of the result is just going to be, uh, okay.
+
+05:56.080 --> 05:57.970
+So yeah, there we go.
+
+05:57.970 --> 05:59.260
+14% is completed.
+
+05:59.290 --> 06:03.490
+There is one more test running like the evaluating seven test cases in parallel.
+
+06:03.550 --> 06:06.970
+So it's keep working.
+
+06:06.970 --> 06:11.320
+So make sure while you run this test guys you need to have the OpenAI API key.
+
+06:11.350 --> 06:16.390
+If you don't really have it you can't really use this particular, matrices.
+
+06:16.420 --> 06:17.860
+Anyways, there we go.
+
+06:17.890 --> 06:19.660
+Its execution is successful over here.
+
+06:19.660 --> 06:25.330
+As you can see, there is a summary of all those details coming up for all the test cases, which you
+
+06:25.330 --> 06:30.640
+can see from the text editor over here.
+
+06:30.670 --> 06:35.560
+It's just going to show for all the test cases, but you can actually see in a more visual way over
+
+06:35.560 --> 06:36.850
+here as you can see.
+
+06:37.510 --> 06:39.070
+So this is the test.
+
+06:39.070 --> 06:46.270
+Or over here like the test case of zero is passed, one is passed, but two is failing because I'm asking
+
+06:46.270 --> 06:48.160
+what is network interception playwright.
+
+06:48.160 --> 06:50.470
+But the actual output is like network interception.
+
+06:50.470 --> 06:56.140
+Player allows you to monitor, modify or block network request made by the web page during the testing.
+
+06:56.350 --> 07:00.250
+This feature is useful for debugging and ensuring that your application behaves correctly, but the
+
+07:00.250 --> 07:04.150
+expected output that I have proposed is the network interception.
+
+07:04.150 --> 07:08.350
+Playwright allows the user to modify, block or inspect network request and response, enabling better
+
+07:08.350 --> 07:11.530
+control over API calls and testing.
+
+07:11.530 --> 07:19.580
+So what's happening over here is the contextual relevance is pretty low compared to what that has been
+
+07:19.580 --> 07:21.200
+outputted by the large language model.
+
+07:21.200 --> 07:24.110
+And that that's why it looks like this is failing.
+
+07:24.680 --> 07:30.470
+But you see that this is the relevance context, which is, uh, which is coming out from the, uh,
+
+07:30.500 --> 07:35.600
+from the actual, uh, retrieval context from our rag over there.
+
+07:36.020 --> 07:37.700
+Uh, and similarly, there is one more failure.
+
+07:37.700 --> 07:39.230
+And this is like abruptly failing.
+
+07:39.230 --> 07:42.380
+It's like, does playwright have any native test runner unlike selenium?
+
+07:42.410 --> 07:46.610
+It says playwright primarily designed for automation, library end to end, blah blah blah.
+
+07:46.610 --> 07:47.960
+And it has a built in.
+
+07:48.020 --> 07:50.900
+It does not comes with a native test runner or something.
+
+07:50.930 --> 07:55.970
+Other tools have like like cypress, which is completely wrong.
+
+07:56.000 --> 07:59.120
+Playwright does have the native test runner and it is not there.
+
+07:59.120 --> 08:04.880
+So what it does mean to us over here is that at the moment, our large language model does not have
+
+08:04.880 --> 08:08.780
+any such information, uh, to, to give us this particular response over here.
+
+08:08.780 --> 08:17.600
+So we need to have our actual output, uh, which is either correctly trained by our Rag system or maybe,
+
+08:17.690 --> 08:20.400
+uh, our data that we have supplied is not sufficient.
+
+08:20.400 --> 08:27.030
+So we have to now train our large language model with sufficient information so that it can give us
+
+08:27.030 --> 08:27.510
+the output.
+
+08:27.510 --> 08:28.020
+Like this.
+
+08:28.020 --> 08:32.280
+Like, yes, playwright has a native test runner called Playwright Test, which handles the test creation
+
+08:32.280 --> 08:32.820
+and execution.
+
+08:32.820 --> 08:36.570
+Unlike selenium, which relies on JUnit and unit X unit for test execution.
+
+08:36.570 --> 08:38.460
+So this is the expected output.
+
+08:38.460 --> 08:41.550
+But for some reason the actual output is not coming up over here.
+
+08:41.550 --> 08:49.080
+And that's because our actual data that we have given while we were training our large language model,
+
+08:49.260 --> 08:55.830
+uh, with a rag that we have given the input, which is this one over here is not sufficient because
+
+08:55.830 --> 08:58.650
+it doesn't really tell us anywhere about the test runner.
+
+08:58.680 --> 09:04.140
+Uh, in this particular detail, as you can see over here, I have not really given that I have made
+
+09:04.140 --> 09:09.480
+this explicitly because I wanted to see the failure over here, and we can fix this particular problem.
+
+09:09.540 --> 09:12.270
+And the same thing happens for the test case five as well.
+
+09:12.270 --> 09:18.810
+So now in our next lecture, we will see how we can fix these kinds of problems that we get uh, and
+
+09:18.810 --> 09:23.220
+how we can make sure that these codes work fine as expected.

@@ -1,0 +1,280 @@
+WEBVTT
+
+00:00.110 --> 00:00.650
+All right.
+
+00:00.650 --> 00:06.170
+So now we're going to see how we can see all this information in a graphical user interface.
+
+00:06.170 --> 00:12.200
+And also the evaluation metrics and telemetric informations from this particular execution that we are
+
+00:12.200 --> 00:14.780
+doing from the Lange chain.
+
+00:14.930 --> 00:20.390
+We can use this ecosystem tool which is called as the Lange Smith as I was talking about before.
+
+00:20.390 --> 00:28.790
+So in order for me to use this Lange Smith, I'm going to go to the Lange Smith over here.
+
+00:28.790 --> 00:33.260
+So I'm going to go Lange chain Lange Smith and sign up.
+
+00:33.290 --> 00:37.340
+As I told you, I already got an account so I can just start using it from there.
+
+00:37.340 --> 00:42.950
+I already have got a project over here for the observability, but I'm going to create a new project
+
+00:42.950 --> 00:45.200
+in order to work with it.
+
+00:45.200 --> 00:48.320
+So in order to do that, I'm going to hit this setup tracing over here.
+
+00:48.320 --> 00:53.150
+And now you see that once I hit that, it is going to give me an option here that gets out of the Lange
+
+00:53.150 --> 00:55.400
+Smith setup observability.
+
+00:55.430 --> 00:57.680
+And with Lange chain without Lange chain.
+
+00:57.680 --> 01:02.330
+So you can use this observability either with the Lange chain which we are doing at the moment.
+
+01:02.330 --> 01:05.000
+Or you can also do without Lange chain as well.
+
+01:05.000 --> 01:09.670
+So if you're going to be using some other tools but you still want to do observability.
+
+01:09.700 --> 01:11.620
+You can also do that as well with Lamb-smith.
+
+01:11.650 --> 01:12.490
+As you can see.
+
+01:12.490 --> 01:16.930
+But because you're going to be using a long chain, and the long chain has got all the dependencies
+
+01:16.960 --> 01:21.430
+and support package, with the long chain, you don't have to really install any of these right now.
+
+01:22.060 --> 01:25.540
+But the first important thing that we have to do are the most important thing.
+
+01:25.540 --> 01:31.840
+The important thing that we have to do at this time is we need to copy these things into our dot env
+
+01:31.870 --> 01:33.580
+file that I created earlier.
+
+01:33.880 --> 01:38.920
+This is something which is required for us to tell me that we need to do the lamb-smith tracing, and
+
+01:38.920 --> 01:40.450
+the end point is this one.
+
+01:40.450 --> 01:43.600
+And the API key is the one that I'm going to be generating right now.
+
+01:43.600 --> 01:49.420
+And then there is the project name and then there is this open API key if you have any.
+
+01:49.420 --> 01:56.770
+But because we are just using our local LM, we don't even have to have the open AI, uh, API key there,
+
+01:56.800 --> 01:57.370
+right?
+
+01:57.370 --> 01:59.440
+So I'm just going to leave that guy as it is.
+
+01:59.440 --> 02:04.300
+And now let's go and hit generate API key is that it's going to generate an API key.
+
+02:04.300 --> 02:06.070
+It's going to append it for me over there.
+
+02:06.070 --> 02:09.550
+And I can give a name to this particular project if I wanted to.
+
+02:09.580 --> 02:14.710
+So I can give the name of the project, uh, whichever that I'm going to be using.
+
+02:14.740 --> 02:18.550
+So I'm going to say, uh, maybe I'm just going to do it later on.
+
+02:18.550 --> 02:19.180
+I'm going to copy.
+
+02:19.210 --> 02:20.830
+Or maybe you can give the project name here.
+
+02:20.860 --> 02:21.610
+Look at that.
+
+02:21.610 --> 02:31.390
+So I'm going to say, uh, execute automation, um, uh, lang chain uh, training.
+
+02:31.690 --> 02:39.700
+And that's going to be my, uh, project name, which I'm going to be, uh, setting up, I guess it's
+
+02:39.700 --> 02:42.220
+already created, but just that it is not coming up over there.
+
+02:42.220 --> 02:47.590
+But let's go to the env file and paste this command that I just copied.
+
+02:47.590 --> 02:55.600
+So this is the env file which is required for me to communicate with our Lang Smith using this API key
+
+02:55.630 --> 02:58.540
+that I have got, and also the project name that I have got.
+
+02:58.570 --> 03:01.150
+I'm going to use this particular details over there.
+
+03:01.150 --> 03:06.310
+And now I need to load this env file, uh, from within my code.
+
+03:06.310 --> 03:07.720
+So how do I actually do that.
+
+03:07.720 --> 03:10.780
+Well I'm going to load the env file.
+
+03:10.810 --> 03:17.050
+Maybe I'm going to put a markdown here so that you can read it through uh load uh env file.
+
+03:17.440 --> 03:27.470
+Uh and I'm going to say Dick, and I'm gonna add the code there so that you can see how we can do it.
+
+03:27.500 --> 03:39.050
+So I'm going to say from dot env uh, import a load dot env and I'm going to say load um is equal to
+
+03:39.080 --> 03:42.170
+load underscore dot env.
+
+03:42.320 --> 03:46.340
+And the env file is going to be the dot env file.
+
+03:46.610 --> 03:47.900
+Uh over here.
+
+03:48.110 --> 03:49.520
+Maybe this is the dot env file.
+
+03:49.520 --> 03:53.300
+But I think because this env file is outside of this particular directory.
+
+03:53.300 --> 04:01.670
+So we need to just do uh dot dot dot slash dot dot slash dot env something like that.
+
+04:01.700 --> 04:06.230
+Maybe that is the uh that is the path that the env file is sitting.
+
+04:06.380 --> 04:10.730
+We can actually check that from using the uh, the code something like this.
+
+04:10.730 --> 04:23.180
+So we can just say uh, import OS and then we can just say print um, and os dot get env and the env
+
+04:23.210 --> 04:24.980
+file that I wanted to.
+
+04:25.010 --> 04:28.010
+The variable that I want to verify is the Lang Smith API for that matter.
+
+04:28.010 --> 04:30.660
+So I'm just going to say this, I'm going to save this.
+
+04:30.660 --> 04:36.090
+And if I execute it, you should see that the Lamb-smith API key is coming up for me over here.
+
+04:36.090 --> 04:37.230
+The same thing, right?
+
+04:37.260 --> 04:39.570
+Which means it is currently working for me.
+
+04:39.570 --> 04:40.710
+So that is loaded.
+
+04:40.710 --> 04:41.850
+Which is which is great.
+
+04:41.850 --> 04:48.420
+So now the env file is loaded and once it is loaded then we can pretty much good to go.
+
+04:48.450 --> 04:53.460
+I mean we can now try to see our response is going to come in up into the lamb-smith.
+
+04:53.460 --> 05:00.660
+And now if you try to run this particular large language model code that we were running before, and
+
+05:00.660 --> 05:08.520
+if I go back to our, um, our lamb-smith over here, and if I try to refresh it, you should see our
+
+05:08.550 --> 05:11.640
+exclamation lang chain training coming up.
+
+05:11.640 --> 05:15.060
+And you will notice that we have got some trays here.
+
+05:15.090 --> 05:15.810
+Look at that.
+
+05:15.810 --> 05:19.560
+The chat olama it says, hello, how are you doing today?
+
+05:19.590 --> 05:23.220
+You have asked this question as a human and the output is coming.
+
+05:23.430 --> 05:28.410
+Coming up as an AI over here that hello, I'm a digital assistant so I don't have feeling or physical
+
+05:28.410 --> 05:30.270
+sensation, blah blah blah.
+
+05:30.270 --> 05:38.480
+So this is coming from this 2.5 large language model that we have got and it has got 82 token been spent
+
+05:38.510 --> 05:41.090
+a number of time it has took to give the response.
+
+05:41.090 --> 05:45.590
+And all those metadata are going to are going to be coming up for you over here.
+
+05:45.590 --> 05:52.190
+So this is proving the point that now you have got a user interface with all these details that you
+
+05:52.220 --> 06:01.490
+were seeing in the, uh, over here as a response, like these things, these, uh, details are now
+
+06:01.490 --> 06:07.100
+visible to you pretty much like an entire information over here in the GUI interface.
+
+06:07.100 --> 06:12.200
+These things are going to be even more helpful while you're going to go and write complex large language
+
+06:12.200 --> 06:13.010
+model applications.
+
+06:13.010 --> 06:14.660
+So observability becomes a key.
+
+06:14.660 --> 06:20.150
+And this lamb-smith is going to be very, very helpful during that particular point of time.
+
+06:20.150 --> 06:28.070
+So that proves the point that we have now written quite a lot of things to wire up the code with our
+
+06:28.340 --> 06:35.600
+actual Lamb-smith with that in place now, you are pretty good to go to have all the foundation ready
+
+06:35.600 --> 06:43.940
+for writing the first chat operation with the large language model using Lang chain.

@@ -1,0 +1,322 @@
+WEBVTT
+
+00:00.050 --> 00:04.280
+Now is the time to do our actual AI agents calling.
+
+00:04.280 --> 00:10.520
+So this is the place where we are going to be calling our AI agent by while creating the test case itself,
+
+00:10.550 --> 00:12.140
+the LM test case.
+
+00:12.140 --> 00:26.000
+So in order to do that, I'm going to say creating LM test case and invoking the AI agent.
+
+00:26.000 --> 00:27.770
+So this is the place that we are going to be doing it.
+
+00:27.770 --> 00:29.990
+So I'm going to add the code over here.
+
+00:29.990 --> 00:36.170
+So the code is going to look pretty much exactly the same, like how we were doing even in our last
+
+00:36.170 --> 00:37.370
+section of the course.
+
+00:37.970 --> 00:39.650
+Like this one as you can see.
+
+00:39.650 --> 00:42.230
+So over here I'm saying query with the context.
+
+00:42.260 --> 00:49.040
+I was calling our Rag documentation, if you remember, and then we were creating the retrieve documents,
+
+00:49.070 --> 00:50.510
+the retrieve the context.
+
+00:50.510 --> 00:54.590
+And then we were calling the QA chain, which was actually getting us the response.
+
+00:54.590 --> 00:59.300
+And then we were returning both the retrieved context as well as the response.
+
+00:59.300 --> 01:04.350
+So the retrieval context was the vector data store and the response was from the large language model.
+
+01:04.380 --> 01:12.060
+And over here, because we are going to be calling our AI agent and we wanted to return the tool calling,
+
+01:12.090 --> 01:18.840
+there is a bit of a change that I have to do this time on the AI agent itself and tell you what I really
+
+01:18.840 --> 01:19.680
+mean about that.
+
+01:19.710 --> 01:26.700
+So let's say I'm going to create the method like what we have did in our last, uh, section.
+
+01:26.940 --> 01:30.270
+I'll go copy this, paste it over here.
+
+01:30.300 --> 01:32.310
+Guess what the query the content is going to remain.
+
+01:32.310 --> 01:35.970
+Uh, maybe this is going to query the AI agent.
+
+01:35.970 --> 01:42.060
+Uh, so instead of me doing the retrieval, retrieval of the document over here, we are essentially
+
+01:42.060 --> 01:44.730
+going to be basically, essentially required over here.
+
+01:44.730 --> 01:48.120
+Looks like basically we require a response from our AI agent.
+
+01:48.150 --> 01:48.510
+Right.
+
+01:48.540 --> 01:54.750
+So the agent that we have created before and I'm going to call the invoke method, and I'm going to
+
+01:54.750 --> 01:58.500
+pass the question to the AI agent like what I have did.
+
+01:58.590 --> 02:04.080
+Um, over here, as you can see, I'm going to call the agent instead of run.
+
+02:04.080 --> 02:06.050
+You can also call the invoke method doesn't matter.
+
+02:06.050 --> 02:08.570
+And then you can pass the query or the question.
+
+02:08.600 --> 02:09.140
+Right.
+
+02:09.140 --> 02:11.030
+That is what I am doing over here.
+
+02:11.030 --> 02:17.900
+So while I call the agent, uh, with a question, it is going to give me the response over here.
+
+02:18.170 --> 02:20.930
+But I don't want the response.
+
+02:20.930 --> 02:25.940
+As I told you, we need to verify whether the tool is correctly being called or not because while I
+
+02:25.970 --> 02:33.500
+call the I the agent dot invoke method, as you can see, the response actually has got the result for
+
+02:33.500 --> 02:37.940
+us over here, like for or whatever.
+
+02:38.000 --> 02:38.690
+Right.
+
+02:38.690 --> 02:42.260
+So let's say I'm going to call the invoke method here.
+
+02:42.470 --> 02:44.900
+Doesn't matter what I try to run this code.
+
+02:44.900 --> 02:46.580
+What is the double of two.
+
+02:46.610 --> 02:52.550
+Then you see that it is giving me uh, the input, which is what is the double of two and the output
+
+02:52.550 --> 02:53.360
+is four.
+
+02:53.390 --> 02:56.480
+See, while I call invoke, the response is a bit different this time.
+
+02:56.480 --> 02:59.360
+So it's going to give me the input and the output.
+
+02:59.360 --> 03:06.960
+But what I need this time from the agent is not just the response, but I also wanted to get me the
+
+03:06.960 --> 03:12.240
+tools which has been called from that particular agent.
+
+03:12.570 --> 03:13.560
+Can I return that?
+
+03:13.590 --> 03:18.270
+Remember in our last sections, in earlier sections of this course, while we're talking about the tool
+
+03:18.270 --> 03:26.520
+calling feature, we talked about what tool is being invoked by the large language model, by doing
+
+03:26.520 --> 03:28.980
+the LM tool LM with the tools and invoke.
+
+03:28.980 --> 03:33.180
+And it gives us the tool name and the arguments, something like that.
+
+03:33.180 --> 03:34.110
+And what is the type?
+
+03:34.140 --> 03:35.460
+It's a tool called types.
+
+03:35.460 --> 03:41.220
+So if we call the tool calls parameter it gives us what tool that we are being used.
+
+03:41.280 --> 03:45.030
+Same idea that we're going to do over here as well.
+
+03:45.090 --> 03:49.140
+And there is an additional parameter that we need to add over here.
+
+03:49.140 --> 03:52.680
+And they call it as like return intermediate.
+
+03:54.960 --> 03:57.150
+Steps is equal to true.
+
+03:57.150 --> 04:01.380
+And that for this the reason why we need to have a good understanding of the long chain library and
+
+04:01.380 --> 04:07.200
+see we have the potential to even customize our agent the way the test really needs.
+
+04:07.320 --> 04:09.350
+So this is pretty awesome.
+
+04:09.350 --> 04:13.250
+So we have got all the ability because we have learned everything in our earlier section.
+
+04:13.250 --> 04:19.220
+So it is so easy for us to go and change things over here, and we can customize our test as well during
+
+04:19.220 --> 04:20.180
+that point of time.
+
+04:20.900 --> 04:26.570
+So this written intermediate steps is equal to true will actually now return not only the results,
+
+04:26.570 --> 04:30.200
+but it will also give you an intermediate steps over here.
+
+04:30.200 --> 04:35.120
+And this intermediate steps will have an agent action with the tools being called.
+
+04:35.150 --> 04:35.810
+Look at that.
+
+04:35.810 --> 04:36.860
+This is amazing.
+
+04:36.860 --> 04:40.040
+You can just get the tools like multiply numbers.
+
+04:40.040 --> 04:45.620
+And you can also get the tool inputs which is the input parameters, which is like a is equal to two
+
+04:45.620 --> 04:47.480
+and b as two as well.
+
+04:47.480 --> 04:50.240
+And there is a log like that and I know blah blah blah.
+
+04:50.270 --> 04:52.310
+So I don't really require the log there.
+
+04:52.310 --> 04:57.410
+But the last parameter you see there is going to be an answer of four, which is the response coming
+
+04:57.410 --> 04:57.950
+out.
+
+04:58.100 --> 05:05.990
+So this is something we really are looking for in order for us to create that the structure, like the
+
+05:05.990 --> 05:11.760
+tool calls, which is going to have the name and the input parameter as these, so we can create this
+
+05:11.760 --> 05:17.550
+kind of structure while we have the intermediate steps coming out over here.
+
+05:17.550 --> 05:18.810
+So hope you got the idea.
+
+05:18.810 --> 05:25.200
+This intermediate steps from the from the actual agent that we are running during the invoke method
+
+05:25.200 --> 05:32.130
+will actually help us formulate the data that we need for our tool calls.
+
+05:32.130 --> 05:39.120
+Because if you go to the documentation of the tool correctness, we need to pass the tool called and
+
+05:39.120 --> 05:45.270
+the expected tools, the expected tools we can get it from our golden data set doesn't matter, because
+
+05:45.270 --> 05:49.050
+we have already created the golden data set with the tools being called.
+
+05:49.050 --> 05:55.560
+This is the expected tools, but the tool calls is the tool which is going to come actually from your
+
+05:55.590 --> 05:56.790
+LM agent.
+
+05:57.000 --> 06:00.390
+And we need to get the name and the parameters.
+
+06:00.390 --> 06:08.310
+So that's the reason why we need this intermediate steps to get the details, which we can now pass
+
+06:08.310 --> 06:10.710
+it to our LM test case.
+
+06:11.220 --> 06:12.540
+Hope you are with me.
+
+06:12.560 --> 06:18.770
+If not, just try to watch this video one more time, but we are going to write the code to use the
+
+06:18.770 --> 06:22.400
+intermediate steps to create the agent response over here.
+
+06:22.400 --> 06:24.080
+And guess what?
+
+06:24.110 --> 06:29.450
+Now we have got all the details for the intermediate steps I can now use.
+
+06:29.480 --> 06:35.690
+Maybe I can just store this, uh, this response that we have got, which is the, uh, sorry, sorry
+
+06:35.690 --> 06:36.860
+for juggling around a lot.
+
+06:36.890 --> 06:39.380
+So we have we have got the results over here.
+
+06:39.380 --> 06:43.970
+So if I just go and print just the result, something like this.
+
+06:43.970 --> 06:49.010
+And if I hit run, you see that we get an array of input output and intermediate steps.
+
+06:49.010 --> 06:54.980
+So if I just want to say what is the intermediate steps alone I get this particular value.
+
+06:55.250 --> 07:04.940
+So my idea is I wanted to get the tools and the tool input these two things so that I can actually guess
+
+07:04.940 --> 07:07.310
+what I can actually verify.
+
+07:07.700 --> 07:12.470
+I can actually pass those information to the tools called and the input parameter to the LM test case.
+
+07:12.800 --> 07:15.650
+So that is something we are going to be doing in our next lecture.

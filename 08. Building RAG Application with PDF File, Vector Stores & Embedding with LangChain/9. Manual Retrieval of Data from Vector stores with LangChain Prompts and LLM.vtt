@@ -1,0 +1,424 @@
+WEBVTT
+
+00:00.230 --> 00:01.100
+All right.
+
+00:01.100 --> 00:08.270
+So now that we are going to see how we can query our actual large language model, I mean, ask our
+
+00:08.270 --> 00:14.090
+large language model to query the, uh, the data from the vector stores and get the response based
+
+00:14.090 --> 00:15.230
+on the correct context.
+
+00:15.230 --> 00:17.960
+So we'll see how that is going to happen this time.
+
+00:17.960 --> 00:29.750
+So in order for doing that I am going to say, um, this is going to be using uh, uh, document retrieval
+
+00:31.670 --> 00:32.720
+um, manually.
+
+00:32.720 --> 00:37.760
+So I'm saying manually this time and you'll understand what I really mean about that retrieval manually.
+
+00:38.030 --> 00:40.190
+Um, and I'm going to hit okay.
+
+00:40.190 --> 00:43.430
+And you'll understand why I'm saying this in a in some time.
+
+00:43.430 --> 00:45.350
+But for now, just don't worry about it.
+
+00:45.410 --> 00:54.350
+I'm just going to say, uh, link chain dot prompts, uh, maybe like chain core, uh, dot output parser.
+
+00:54.380 --> 01:00.290
+I'm going to import our string output parser, if you remember that we were using before, uh, and
+
+01:00.290 --> 01:06.630
+now over here I'm going to ask a query over here.
+
+01:06.630 --> 01:21.570
+So I'm going to say um, maybe explain how the position wise, uh, feed forward network works.
+
+01:22.740 --> 01:26.430
+Network uh, calculation works something like that.
+
+01:26.430 --> 01:29.910
+So this is the detail which is already there in the document.
+
+01:29.910 --> 01:38.580
+I'm just thinking maybe we can ask that and I'm going to say the retrieved um, docs.
+
+01:38.610 --> 01:47.820
+So retrieved uh, docs is equal to I'm going to ask call our retriever that we created in our last lecture
+
+01:47.820 --> 01:50.100
+which is this guy retriever.
+
+01:50.100 --> 01:56.070
+And I'm going to say dot get relevant documents.
+
+01:56.100 --> 01:56.790
+Look at that.
+
+01:56.820 --> 01:57.960
+This is so easy.
+
+01:57.960 --> 02:04.270
+So if I'm just going to ask like get the relevant document, it is going to give me all the documents.
+
+02:04.270 --> 02:12.640
+But once we get all the documents, we also need to make sure that we merge all these documents, uh,
+
+02:12.640 --> 02:17.740
+so that we can create the context text for our large language model.
+
+02:17.770 --> 02:19.840
+Right now we have to do that one as well.
+
+02:19.840 --> 02:27.070
+So I'm going to say slash n slash n uh dot join.
+
+02:27.070 --> 02:29.050
+So I'm going to join one by one.
+
+02:29.080 --> 02:42.880
+And I'm going to say uh doc dot page content right for doc in the retrieved documents.
+
+02:42.880 --> 02:50.560
+So this is going to join all the documents that we have got into one single document with some of course
+
+02:50.560 --> 02:53.050
+there is some delimiter there.
+
+02:53.050 --> 02:57.820
+And now that becomes our context text that we are going to be passing in.
+
+02:57.820 --> 03:02.290
+And now I need to create our chat prompt.
+
+03:02.320 --> 03:03.040
+There we go.
+
+03:03.070 --> 03:06.350
+So that is when our chat prompt is going to coming in.
+
+03:06.500 --> 03:07.640
+Remember our chat prompt?
+
+03:07.640 --> 03:10.550
+The olden days that we were talking about in our earlier lectures of the course?
+
+03:10.550 --> 03:12.380
+We're going to bring in that guy over here.
+
+03:12.380 --> 03:17.660
+So I'm going to say prompts import a chat message prompt.
+
+03:17.660 --> 03:26.810
+And over here on the chat message prompt I'm just going to say prompt template is equal to chat prompt
+
+03:26.840 --> 03:29.300
+template dot from template.
+
+03:29.300 --> 03:35.420
+And over here I'm going to be creating our chat prompt template.
+
+03:35.420 --> 03:39.560
+So I'm just going to say this oops.
+
+03:41.930 --> 03:42.830
+Over here.
+
+03:42.830 --> 03:45.110
+And now I'm going to create my prompt.
+
+03:45.110 --> 03:48.920
+So basically I'm going to give you some questions over here.
+
+03:48.920 --> 03:52.040
+So I can use system and then human message and all those things.
+
+03:52.040 --> 03:54.140
+But I just want to keep things simple this time.
+
+03:54.140 --> 03:58.160
+So I'm going to say you are an AI assistant.
+
+03:58.940 --> 04:00.530
+Uh, right.
+
+04:00.530 --> 04:11.550
+And you're going to use the following context to answer the question correctly, and the context is
+
+04:11.550 --> 04:13.920
+going to be the context I'm going to give.
+
+04:13.920 --> 04:22.680
+And if you don't know the answer, just tell.
+
+04:22.740 --> 04:24.870
+I don't know.
+
+04:25.950 --> 04:26.400
+All right.
+
+04:26.430 --> 04:30.990
+This is something that I'm going to say to the large language model over here.
+
+04:30.990 --> 04:34.260
+And now I'm going to give the context over here.
+
+04:34.260 --> 04:38.640
+I'm going to say the context, which I'm going to be passing in for this particular query.
+
+04:39.150 --> 04:46.680
+And I'm also going to supply the question which I'm going to be asking.
+
+04:47.400 --> 04:50.700
+Uh, so this is something I need to pass as well.
+
+04:50.790 --> 04:54.690
+And that is going to be slash slash n.
+
+04:55.770 --> 05:02.070
+And finally, I'm expecting the AI to answer, which is going to be sitting over here.
+
+05:02.070 --> 05:05.580
+So this is how my prompt template is going to be over here.
+
+05:05.610 --> 05:05.970
+Look at that.
+
+05:05.970 --> 05:06.570
+That's beautiful.
+
+05:06.600 --> 05:06.990
+Right.
+
+05:07.000 --> 05:09.340
+So that's my prompt template.
+
+05:09.340 --> 05:14.770
+And now I can use this prompt template within our pipeline to perform this operation.
+
+05:14.770 --> 05:17.500
+So I'm going to create a chain function over here.
+
+05:17.500 --> 05:22.600
+And I'm going to say prompt template which is going to be acting as an input for the large language
+
+05:22.600 --> 05:23.080
+model.
+
+05:23.080 --> 05:26.080
+And get me the output in the string parser.
+
+05:26.110 --> 05:30.010
+These are things that we did before in our earlier lectures of this course.
+
+05:30.220 --> 05:32.560
+Um, so I'm going to do that over here.
+
+05:32.560 --> 05:34.390
+And of course, you know what we need to do.
+
+05:34.390 --> 05:41.440
+So I'm going to say, uh, response is equal to chain dot.
+
+05:41.470 --> 05:43.390
+You know what it is because it's a runnable.
+
+05:43.390 --> 05:45.940
+So we need to call this invoke method.
+
+05:45.940 --> 05:48.460
+And over here we need to pass two things right.
+
+05:48.490 --> 05:50.350
+The first one is the context.
+
+05:50.350 --> 05:52.600
+And the next one is going to be the question.
+
+05:52.600 --> 05:54.040
+So these are two things that we need to pass.
+
+05:54.040 --> 06:04.150
+So I'm going to say context uh which is going to be the context text that we have got which is this
+
+06:04.150 --> 06:04.720
+one.
+
+06:04.870 --> 06:13.240
+And we also need to pass the Question, which is going to be the query that we have got, which is the
+
+06:13.240 --> 06:13.600
+question.
+
+06:13.630 --> 06:13.900
+Right.
+
+06:13.930 --> 06:16.060
+So that is the question.
+
+06:16.630 --> 06:20.200
+And now we will see what is going to be the response.
+
+06:20.230 --> 06:23.950
+So I'm going to say print response over here.
+
+06:24.280 --> 06:25.060
+Look at that.
+
+06:25.060 --> 06:31.660
+That is our actual code which is going to be retrieving the relevant documents.
+
+06:31.660 --> 06:37.270
+And then it's going to stitch all of them together, which is going to be acting as a context text.
+
+06:37.270 --> 06:41.320
+And then we are going to pass it to our prompt template for the given context.
+
+06:41.320 --> 06:43.930
+And then we're going to ask the question and we're going to get the answer.
+
+06:43.930 --> 06:46.360
+So let's see what is going to basically happen.
+
+06:47.500 --> 06:48.610
+Oh look at that.
+
+06:48.640 --> 06:49.600
+What is this.
+
+06:49.630 --> 06:51.520
+I'm getting an error there.
+
+06:51.550 --> 06:54.010
+What is this chat message prompt.
+
+06:54.010 --> 06:57.820
+Missing input value prompt.
+
+06:58.480 --> 07:00.190
+Oh sorry about that.
+
+07:00.190 --> 07:04.270
+I'm actually using this chat message prompt template instead of the chat prompt template.
+
+07:04.270 --> 07:05.920
+That is the problem over here.
+
+07:06.400 --> 07:07.570
+Ah look at that.
+
+07:07.600 --> 07:08.710
+Sorry about it.
+
+07:08.950 --> 07:14.900
+If you are using the chat message prompt template, then we need to pass the the message placeholder
+
+07:14.900 --> 07:15.260
+here.
+
+07:15.260 --> 07:19.670
+And because we're not passing the message placeholder, we should be fine just with the chat prompt
+
+07:19.700 --> 07:20.240
+template.
+
+07:20.240 --> 07:23.120
+That is the problem that we have got over here.
+
+07:23.120 --> 07:25.160
+And let me try to run this code again.
+
+07:25.160 --> 07:27.590
+So let's see what is going to happen over here.
+
+07:27.620 --> 07:28.580
+There we go.
+
+07:28.610 --> 07:29.480
+Look at that.
+
+07:29.480 --> 07:37.820
+So for this question the the actual LLM is giving us the response saying the provided contract does
+
+07:37.820 --> 07:39.920
+not have the information about this one.
+
+07:39.920 --> 07:46.670
+It seems to be discussing the method for detecting bias on social data set and conversational AI system.
+
+07:46.670 --> 07:51.830
+If you have different context or need explanation related to this topic, please provide that information.
+
+07:51.830 --> 07:52.520
+Look at that.
+
+07:52.520 --> 07:57.140
+So for this question, the LLM don't have the answer, which is amazing.
+
+07:57.140 --> 08:00.050
+That's the reason why I just gave like a very complex question over here.
+
+08:00.050 --> 08:09.830
+So maybe we can probably ask over here that how to test a translation in LLM.
+
+08:09.830 --> 08:10.940
+Something like that.
+
+08:10.940 --> 08:16.440
+So maybe this question can be answered because we have seen, uh, there are different types of testing
+
+08:16.470 --> 08:18.270
+available for the translation.
+
+08:18.270 --> 08:21.960
+Maybe this LLM knows about it and look at that.
+
+08:21.960 --> 08:28.140
+Now we can see that to test the LLM like GPT, GPT four you can find the structured approach.
+
+08:28.140 --> 08:31.440
+And they have got this information over here coming up.
+
+08:31.440 --> 08:38.520
+So these are the ways that you can do the testing to test the uh to test the translation.
+
+08:38.520 --> 08:41.820
+So these are all coming up from uh over here.
+
+08:41.820 --> 08:48.900
+So this shows that we could able to actually retrieve the information out from our documentation, which
+
+08:48.900 --> 08:49.740
+is amazing.
+
+08:49.740 --> 08:55.920
+So this proves the point that we could able to query from our large language model using this query
+
+08:55.920 --> 08:56.640
+over here.
+
+08:56.640 --> 09:02.310
+In our next lecture, I'm going to show you another way for you to write the prompt, like how you have
+
+09:02.310 --> 09:02.970
+written over here.
+
+09:02.970 --> 09:09.720
+Instead of you writing this whole prompt, we can use the, uh, the chain hub to retrieve some of the
+
+09:09.720 --> 09:11.400
+prompt from the third parties.
+
+09:11.430 --> 09:13.230
+I'll show you how we can actually use that.

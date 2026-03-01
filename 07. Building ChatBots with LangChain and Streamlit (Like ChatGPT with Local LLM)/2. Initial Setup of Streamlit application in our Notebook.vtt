@@ -1,0 +1,538 @@
+WEBVTT
+
+00:00.050 --> 00:04.580
+So now we are going to build this particular chatbot, as you are seeing over here in this particular
+
+00:04.580 --> 00:05.000
+section.
+
+00:05.030 --> 00:10.850
+So in order to achieve this operation, we first of all need to have a basic understanding of the Streamlit
+
+00:10.880 --> 00:11.210
+app.
+
+00:11.210 --> 00:18.620
+So if I just going to go to the Streamlit uh, over here, streamlit.io.
+
+00:18.650 --> 00:24.530
+As you can see, this is the this is the library that we are going to be using for building our application
+
+00:24.530 --> 00:25.610
+that I just showed you.
+
+00:25.640 --> 00:27.080
+You see that it's very, very straightforward.
+
+00:27.080 --> 00:33.770
+So if you just say like a straight line and the application name, then it's just going to open a browser
+
+00:33.770 --> 00:36.410
+and then it is going to show this particular thing over there.
+
+00:36.410 --> 00:40.340
+And you can also create the graphs and sliders and whatnot.
+
+00:40.520 --> 00:41.450
+With this particular application.
+
+00:41.450 --> 00:43.370
+It is so easy and straightforward.
+
+00:43.370 --> 00:49.790
+So the the real purpose of this particular Streamlit Streamlit is that they wanted to streamline the
+
+00:49.790 --> 00:50.960
+way that you write the code.
+
+00:50.960 --> 00:56.390
+At the same time, they also wanted to make things happen in a much faster fashion so that you don't
+
+00:56.390 --> 01:01.100
+just have to worry about like how the web browser application really has to be written, but you only
+
+01:01.100 --> 01:05.310
+focus on writing the logic for your large language model based application.
+
+01:05.310 --> 01:08.160
+So UI is not something that you have to worry about.
+
+01:08.160 --> 01:12.300
+It's all about how you tweak your large language model to make that happen.
+
+01:12.300 --> 01:15.480
+That is what this particular, uh, streamlet does.
+
+01:15.540 --> 01:18.630
+And again, this course has something to do with the streamlet itself.
+
+01:18.930 --> 01:22.830
+So I'm not going to be covering the basics of streamlet like how you need to install, how you need
+
+01:22.830 --> 01:24.240
+to get started on all those things.
+
+01:24.240 --> 01:29.550
+But since we have to do the installation and since we have to build an UI, something like this, I
+
+01:29.550 --> 01:34.290
+will be covering the details in this particular area that you need to be understanding.
+
+01:34.320 --> 01:34.800
+Right.
+
+01:34.800 --> 01:36.210
+So let's start building it.
+
+01:36.210 --> 01:40.860
+I mean, this is the final version of our Streamlet app because you have got the, uh, the sidebar,
+
+01:40.890 --> 01:42.240
+as you can see over here.
+
+01:42.270 --> 01:48.360
+And you can also like that, minimize it and maximize maximize it pretty much like the ChatGPT.
+
+01:48.870 --> 01:52.830
+And also you will notice that there is this icons coming up over here.
+
+01:52.830 --> 01:54.750
+So we need to do quite a lot of things over there.
+
+01:54.750 --> 01:56.850
+So we'll go step by step in this particular section.
+
+01:56.850 --> 02:00.150
+And I will show you how you can achieve all these operations.
+
+02:00.270 --> 02:02.910
+All right so let's start writing the code over here.
+
+02:02.910 --> 02:05.130
+So let me get back to my Visual Studio.
+
+02:05.160 --> 02:10.820
+And over here I'm going to are just to minimize all these discussions that we were doing in our last
+
+02:10.820 --> 02:11.300
+section.
+
+02:11.330 --> 02:14.240
+Remember this chat with history message?
+
+02:14.240 --> 02:17.420
+This is something very important for this particular section as well.
+
+02:17.420 --> 02:21.140
+So I'm going to be copying most of the code from here.
+
+02:21.290 --> 02:24.410
+While we're going to be building the, uh, the chat bot.
+
+02:24.410 --> 02:30.500
+So these details that you are seeing over here are going to be quite relevant for our discussion as
+
+02:30.500 --> 02:30.740
+well.
+
+02:30.740 --> 02:35.150
+So we are not going to rule out any of these, uh, that we are seeing over here.
+
+02:35.180 --> 02:40.430
+We are going to use the SQL chat message history this time instead of using the, uh, chat message
+
+02:40.430 --> 02:41.960
+history, as you can see over here.
+
+02:41.960 --> 02:44.870
+So this code is something very important for our discussion.
+
+02:44.870 --> 02:49.280
+So what I'm going to do probably I'm going to copy this code right now.
+
+02:49.280 --> 02:55.520
+And I'm going to create a new oh sorry not here but I'm going to create a new folder here.
+
+02:55.520 --> 03:02.060
+And I'm going to say section for uh building chat bots.
+
+03:02.390 --> 03:06.110
+Uh, and I'm going to create a new file.
+
+03:06.110 --> 03:09.650
+But this time I'm going to say chatbot dot p y.
+
+03:09.680 --> 03:15.780
+So basically we're not going to use the notebook this time, but we are going to be using directly the
+
+03:15.900 --> 03:17.820
+Python code itself over here.
+
+03:17.850 --> 03:18.360
+Right.
+
+03:18.360 --> 03:21.000
+So I'm just going to save this entire thing.
+
+03:21.000 --> 03:26.940
+And we also need to have what is called a Streamlit library within our the virtual environment.
+
+03:26.940 --> 03:28.590
+So let me go ahead and install that.
+
+03:28.590 --> 03:31.320
+So I'm going to open the terminal over here.
+
+03:31.590 --> 03:36.480
+Um remember this is something that we did a long time before starting off the course.
+
+03:36.600 --> 03:39.480
+So this is the same window which is coming up over here.
+
+03:39.720 --> 03:47.940
+Um, and I'm going to say a pip install Streamlit, which is important for our, uh, building of the
+
+03:47.940 --> 03:48.720
+application.
+
+03:48.750 --> 03:49.320
+There we go.
+
+03:49.320 --> 03:51.060
+So I have installed that over here.
+
+03:51.060 --> 03:52.380
+So make sure that you install it.
+
+03:52.380 --> 03:56.160
+If not, the things that we are going to be building right now is not going to work for you.
+
+03:56.220 --> 03:56.880
+All right.
+
+03:56.880 --> 04:03.630
+So now that I have installed it, we can just close this guy for now just to make some room and we can
+
+04:03.630 --> 04:06.120
+start building the, uh, Streamlit app.
+
+04:06.120 --> 04:11.910
+So to do that I'm going to say import Streamlit as st.
+
+04:11.940 --> 04:16.430
+So this is the Streamlit importing that we have to do right?
+
+04:16.430 --> 04:21.500
+And once we have done that, we are then going to start building the code.
+
+04:21.500 --> 04:23.210
+So let's start with this.
+
+04:23.240 --> 04:24.050
+The simple thing.
+
+04:24.080 --> 04:24.650
+Probably.
+
+04:24.650 --> 04:30.560
+So in order for us to start building the Streamlit app, the first thing which I wanted to have a look
+
+04:30.590 --> 04:35.480
+at that I think we are missing some libraries here like runnable with message history, chat, prompt,
+
+04:35.510 --> 04:36.320
+template and things.
+
+04:36.320 --> 04:39.620
+So probably I need to go and copy some of these.
+
+04:39.650 --> 04:41.540
+Uh, from here.
+
+04:42.890 --> 04:46.700
+We don't need this, uh, base chat, okay?
+
+04:46.730 --> 04:48.230
+These things are not required.
+
+04:48.560 --> 04:49.910
+And hopefully.
+
+04:49.910 --> 04:51.230
+Oh, yeah, I also need the LM.
+
+04:51.230 --> 04:51.770
+You remember?
+
+04:51.770 --> 04:56.270
+Because LM is something which is needed as well for our execution.
+
+04:56.300 --> 04:58.490
+And we also need this dot env.
+
+04:58.730 --> 05:00.200
+How do I forget all these things?
+
+05:00.200 --> 05:01.340
+So let me go.
+
+05:01.340 --> 05:02.240
+Copy that.
+
+05:02.390 --> 05:05.810
+Uh, and let me go paste it over here.
+
+05:06.110 --> 05:16.040
+Uh, and we also need to load the dot env file, uh, which is going to be uh and we also need this
+
+05:16.040 --> 05:19.260
+chat olama which is required.
+
+05:22.590 --> 05:27.420
+And we are going to be invoking this guy.
+
+05:30.510 --> 05:31.440
+Awesome.
+
+05:32.160 --> 05:35.220
+So hopefully we have got all the libraries that is required.
+
+05:35.250 --> 05:35.550
+Yeah.
+
+05:35.580 --> 05:39.420
+There is no error whatsoever like missing libraries, something like that.
+
+05:39.570 --> 05:40.140
+Which is cool.
+
+05:40.140 --> 05:43.590
+So yeah that's the library that we need.
+
+05:43.590 --> 05:54.360
+So the first thing is what we did is load the env file and then initialize lm.
+
+05:55.260 --> 05:58.230
+And we have the history and all those things.
+
+05:58.230 --> 05:59.610
+So I'm not going to worry about it.
+
+05:59.610 --> 06:02.400
+This is the exactly the same thing that we discussed in our last section.
+
+06:02.400 --> 06:06.420
+So please go and watch the last section if you're directly jumping to this particular section, because
+
+06:06.420 --> 06:13.620
+it won't make any sense if you have not really listened to the discussion that we had in our last section.
+
+06:14.010 --> 06:15.000
+Pretty cool.
+
+06:15.150 --> 06:20.280
+Uh, and now let's see what is the first thing that we are going to be building in this particular window
+
+06:20.280 --> 06:21.090
+over here?
+
+06:21.450 --> 06:28.400
+So the first thing is, for instance, I'm going to be I'm going to be probably writing something like
+
+06:28.430 --> 06:32.060
+a title like Welcome to Chatbot or whatever.
+
+06:32.180 --> 06:36.080
+And then I'm going to say enter your query for that matter.
+
+06:36.110 --> 06:36.470
+Right.
+
+06:36.470 --> 06:38.780
+So if I wanted to do that, what should I do.
+
+06:38.780 --> 06:41.210
+So basically I'm going to add here some code.
+
+06:41.210 --> 06:46.340
+So I'm going to say st dot and I'm going to write a title here.
+
+06:46.340 --> 06:53.240
+And I'm going to say uh how can I help help you today.
+
+06:54.260 --> 07:02.090
+So the title that I'm going to be asking, and then I'm going to write another thing over here, like
+
+07:02.330 --> 07:08.360
+enter your query below or whatever, enter your query below, something like this.
+
+07:08.360 --> 07:11.060
+And I'm going to just save this code, just two lines of code.
+
+07:11.060 --> 07:18.920
+And if I open my terminal and in order for me to run this Streamlit app, we actually need to use this
+
+07:18.920 --> 07:23.480
+command called as Streamlit and then run.
+
+07:24.410 --> 07:28.000
+And we need to specify what exactly they're going to that we're going to be running.
+
+07:28.000 --> 07:33.130
+So before I do that, let me navigate to the directory which is the building chatbot directory.
+
+07:33.130 --> 07:39.130
+And over here I'm going to say Streamlit run of the chatbot dot pi.
+
+07:39.160 --> 07:42.790
+So if I do that you'll notice that it is going to open an app.
+
+07:42.790 --> 07:49.330
+And it is going to show me this particular window, see how can I help you today and enter your query
+
+07:49.330 --> 07:49.810
+below.
+
+07:49.840 --> 07:54.100
+So this is coming because we have added the details of the chatbots over here.
+
+07:54.100 --> 07:56.440
+So that is that is what is coming over here.
+
+07:56.440 --> 07:58.480
+So this is the Streamlit thing that we have just added.
+
+07:58.480 --> 08:06.760
+And if I wanted to add probably let's say a chat input like what you just saw in my other window.
+
+08:06.940 --> 08:09.490
+Uh, so I can actually do that as well.
+
+08:09.520 --> 08:10.390
+So let me guess what.
+
+08:10.390 --> 08:11.830
+These things are open for a long time.
+
+08:11.830 --> 08:15.670
+Let me go and close these, these windows that we don't even need.
+
+08:16.060 --> 08:18.940
+Um yeah I think this one is required.
+
+08:18.940 --> 08:24.610
+This is Lang Smith and the session is somehow expired.
+
+08:24.640 --> 08:25.000
+Yeah.
+
+08:25.030 --> 08:25.240
+Cool.
+
+08:25.240 --> 08:27.940
+So this can be opened there, and we don't even need this window.
+
+08:27.940 --> 08:30.980
+So let just, just these two window can be in here.
+
+08:31.160 --> 08:32.090
+Okay.
+
+08:32.300 --> 08:35.420
+So if I want to add a chat over here.
+
+08:35.420 --> 08:36.470
+So how do I actually do.
+
+08:36.470 --> 08:44.240
+It is basically I'm just going to say um, maybe in the end over here because that's going to be the
+
+08:44.240 --> 08:45.230
+last thing.
+
+08:45.440 --> 08:53.090
+So I'm just going to say prompt um, is equal to uh s t dot chat input.
+
+08:53.090 --> 08:58.130
+And I'm going to say enter your query, I'm going to save this.
+
+08:58.250 --> 09:08.090
+And if I try to probably stop it and rerun this over here, looks like it's not working.
+
+09:08.090 --> 09:10.910
+Maybe what's really happening there.
+
+09:11.780 --> 09:15.440
+Um, yeah I think I know what is the problem.
+
+09:15.440 --> 09:18.830
+So let me go stop this print, which is not even required.
+
+09:19.280 --> 09:27.830
+Uh, and, and, and we also don't need to have this invocation, which is happening, uh, behind the
+
+09:27.830 --> 09:29.390
+scene for me, like, every single time.
+
+09:29.390 --> 09:32.990
+Because that's the reason why this code is actually running, uh, for me there.
+
+09:33.300 --> 09:34.920
+Uh, which is cool.
+
+09:34.920 --> 09:39.120
+So I'm going to save this and let me run this again.
+
+09:39.150 --> 09:39.780
+Look at that.
+
+09:39.780 --> 09:44.970
+So now you can see that immediately you are getting this, uh, chat, uh, message there.
+
+09:45.000 --> 09:47.100
+I mean, the chat input there.
+
+09:47.100 --> 09:51.750
+The reason why is because last time our code was actually working behind the scene, and it was giving
+
+09:51.750 --> 09:57.150
+us the output result, like the distance between the moon and sun and the earth and sun like that.
+
+09:57.180 --> 09:59.040
+Like that is not something that we are looking for.
+
+09:59.070 --> 09:59.700
+Really?
+
+09:59.700 --> 10:02.790
+Uh, that was from our previous section that we just copy pasted it.
+
+10:02.790 --> 10:04.680
+So those invocation is not required.
+
+10:04.680 --> 10:08.580
+So now you see that immediately we get the prompt over here.
+
+10:08.580 --> 10:16.890
+And from the prompt is what we are going to be asking the query to our uh, large language model, uh,
+
+10:16.890 --> 10:18.240
+as a invocation.
+
+10:18.270 --> 10:18.630
+Right.
+
+10:18.630 --> 10:22.290
+So, so we don't even require the two lines of code.
+
+10:22.320 --> 10:22.920
+Look at that.
+
+10:22.920 --> 10:29.640
+Now we have got a simple, uh, chatbot UI, like very super simple chatbot UI, uh, which we can start
+
+10:29.640 --> 10:31.800
+building up from our next lecture.
+
+10:31.800 --> 10:37.380
+But at least you have got the groundwork ready to start building a larger things.

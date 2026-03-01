@@ -1,0 +1,334 @@
+WEBVTT
+
+00:00.020 --> 00:00.410
+All right.
+
+00:00.440 --> 00:07.010
+So now that we have created the LM test case with the input, the actual output and the tool calls,
+
+00:07.010 --> 00:09.980
+if I'm not wrong, which is going to be the tools called over here.
+
+00:09.980 --> 00:12.710
+And then we also need to have our expected tools.
+
+00:12.710 --> 00:16.670
+But you notice that the expected tools is kind of none over here without this.
+
+00:16.670 --> 00:18.950
+This validation is just going to fail.
+
+00:18.950 --> 00:21.470
+And I actually missed that part over there.
+
+00:21.530 --> 00:28.070
+If you remember over here while we were doing a copy pasting like a raw copy pasting from our last section
+
+00:28.070 --> 00:34.220
+over here, we only had the golden with the input and the expected output, but we did not pass the
+
+00:34.220 --> 00:41.390
+tool called, which is required from our golden data set, which is this one, the tool called that
+
+00:41.390 --> 00:42.050
+we created.
+
+00:42.050 --> 00:46.700
+So we actually need to do that as well I think I have missed that part.
+
+00:46.700 --> 00:52.850
+So let me quickly fix that particular part over there, which is going to be a tool called uh, over
+
+00:52.850 --> 00:53.390
+here.
+
+00:53.390 --> 00:57.170
+And then we need to create this particular data set.
+
+00:57.410 --> 01:05.930
+And we also need to upload this data set to uh, the cloud, which is the, which is the cloud which
+
+01:05.930 --> 01:06.800
+we have got.
+
+01:06.830 --> 01:07.220
+There we go.
+
+01:07.250 --> 01:10.260
+Now we have got the tools called over here, hopefully.
+
+01:10.320 --> 01:19.620
+And if I try to pull that back and if I try to run the data set, we should have something called as
+
+01:19.620 --> 01:25.350
+test case actual outputs, which is going to be this one expected outputs retrieved context.
+
+01:25.350 --> 01:28.350
+And we also have got the tools called over here.
+
+01:28.380 --> 01:32.640
+This is required while we have all these information data set.
+
+01:32.670 --> 01:40.740
+We can now pass this to our golden dot tools called so that it will create the tools called for the
+
+01:40.740 --> 01:41.970
+LM test case.
+
+01:42.450 --> 01:50.460
+And then finally we should have the expected tools to have the tools called as well, which is going
+
+01:50.460 --> 01:52.650
+to be if I just go and see that, look at that.
+
+01:52.650 --> 01:54.630
+The expected tools is not none.
+
+01:54.630 --> 01:57.540
+This time it is going to have the tools called as well.
+
+01:57.540 --> 02:03.420
+And this tool is called is nothing but the tools called that we actually created in the Golden Data
+
+02:03.450 --> 02:03.900
+set.
+
+02:03.900 --> 02:07.410
+So now we have got all the information there which is pretty cool.
+
+02:07.410 --> 02:14.430
+So with that data in place, the final operation that we are going to do is to do the the LM evaluation,
+
+02:14.430 --> 02:21.610
+which is going to be using the tool, uh, correction, uh, metrics evaluation.
+
+02:21.700 --> 02:22.990
+Ah, let's do that.
+
+02:22.990 --> 02:23.950
+The final step.
+
+02:23.950 --> 02:26.710
+So I'm going to go copy paste the code from here.
+
+02:26.710 --> 02:28.960
+And I will just write it down over here.
+
+02:28.960 --> 02:33.760
+I will actually change the code a bit as well, because the documentation is still not enough for us
+
+02:33.760 --> 02:34.750
+to do the testing.
+
+02:35.260 --> 02:38.740
+Uh, so you can see that the input, they have got something like this and this.
+
+02:38.770 --> 02:41.650
+So we don't even need this kind of part over here.
+
+02:41.650 --> 02:47.740
+The reason why we don't need this is because we have already created our test case structure, uh,
+
+02:47.740 --> 02:48.820
+in this format.
+
+02:48.850 --> 02:49.450
+Right.
+
+02:49.450 --> 02:57.040
+So we can just directly pass the entire test case structure for the, uh, for the evaluation purpose.
+
+02:57.160 --> 03:01.270
+And the way we can do it is because we have got multiple test cases in place.
+
+03:01.270 --> 03:05.830
+I'm going to write a for loop here because they don't support the bulk operation at the moment.
+
+03:05.830 --> 03:12.400
+So I'm going to say for test case in data I'm just going to have multiple uh, test cases there.
+
+03:12.520 --> 03:16.270
+And I'm just going to intend this one something like this.
+
+03:16.270 --> 03:23.020
+So this is going to be the test case which I'm passing in to measure, and I'm going to see the score
+
+03:23.020 --> 03:23.820
+and stuff.
+
+03:23.820 --> 03:25.020
+So hope you got the idea right.
+
+03:25.050 --> 03:30.750
+So in the in this particular test case correctness metrics, there is a measure method which requires
+
+03:30.750 --> 03:31.500
+a test case.
+
+03:31.500 --> 03:34.140
+And we have got multiple test case in this data.
+
+03:34.170 --> 03:36.480
+As you can see LM test case one.
+
+03:37.080 --> 03:40.080
+LM test case two and LM test case of three.
+
+03:40.080 --> 03:43.650
+So we have got three test cases including the multiplication.
+
+03:44.370 --> 03:47.460
+So all these test cases needs to be executed one by one.
+
+03:47.610 --> 03:49.680
+So this is what I'm doing over here.
+
+03:49.680 --> 03:55.710
+So while I try to run this immediately you will notice that it is going to give us the response one.
+
+03:55.710 --> 04:01.050
+So all the expected tools uh, which is this one were called uh, over here.
+
+04:01.080 --> 04:03.840
+Order is not considered, which is fine.
+
+04:04.140 --> 04:09.840
+And then there is a incomplete missing over here for some reason.
+
+04:10.020 --> 04:13.530
+Um, looks like the spelling mistake over here.
+
+04:13.560 --> 04:14.100
+Look at that.
+
+04:14.130 --> 04:15.810
+It says multiply.
+
+04:15.840 --> 04:17.970
+And what we have is not correct.
+
+04:17.970 --> 04:23.520
+So that I think they have wrongly typed somewhere while doing, while I was doing the data creation
+
+04:23.520 --> 04:25.470
+in the golden somewhere.
+
+04:26.190 --> 04:28.110
+Let me just go all the way on the top.
+
+04:28.170 --> 04:29.010
+Oh, look at that.
+
+04:29.010 --> 04:30.680
+Multiply spelling is wrong.
+
+04:30.680 --> 04:34.880
+So the multiply spelling is this one.
+
+04:35.840 --> 04:37.700
+Just my mistake.
+
+04:37.730 --> 04:39.320
+I should have read that correctly.
+
+04:39.320 --> 04:41.900
+But yeah, we have got a negative test case there.
+
+04:41.900 --> 04:51.800
+So which is also a good thing uh, to, to have in place because that way we can test like everything
+
+04:51.800 --> 04:53.840
+is working as expected as well.
+
+04:55.130 --> 04:56.240
+Uh, there we go.
+
+04:56.660 --> 04:57.740
+Let me upload it.
+
+04:57.950 --> 04:59.960
+Let me create the data set.
+
+05:00.110 --> 05:01.790
+Let me pull it back.
+
+05:01.820 --> 05:05.900
+The data set will have the correct, um, correct spelling this time.
+
+05:05.900 --> 05:11.450
+And I'm going to run, uh, this guy.
+
+05:11.480 --> 05:15.470
+But before I run this, I will also show you the metrics that I was just showing you over here.
+
+05:15.470 --> 05:15.860
+Look at that.
+
+05:15.860 --> 05:22.460
+So if there is a wrong usage of the tools, you are going to immediately get a response here saying
+
+05:22.490 --> 05:24.710
+expected this one, but card this one.
+
+05:24.710 --> 05:27.410
+So you see that that is a failure there.
+
+05:27.920 --> 05:28.430
+Right.
+
+05:28.430 --> 05:31.970
+And if the subtract number is correct then it is going to be fine.
+
+05:31.970 --> 05:33.140
+So there is a 1.0.
+
+05:33.140 --> 05:37.280
+So there is one tool failing and happening is because of the data that we have passed.
+
+05:37.280 --> 05:41.690
+But you will see that the matrix is actually measuring it correctly, and it's giving us that this is
+
+05:41.690 --> 05:44.810
+the wrong tool being called, or if this is the right tool being called.
+
+05:44.810 --> 05:48.650
+So that is how you can see the entire matrix coming up for us over here.
+
+05:48.650 --> 05:55.130
+But the moment I correct this entire thing, like let's say I'm going to run the with the correct golden
+
+05:55.130 --> 06:03.560
+data set and with the correct information that we are supposed to pass and which is going to be the
+
+06:03.560 --> 06:04.730
+correct tooling, hopefully.
+
+06:04.730 --> 06:09.530
+And if I run the tool correction this time, you see that all of them are one, one one.
+
+06:09.530 --> 06:16.070
+So because I have fixed the multiply numbers spelling there and you see that it's all correctly been
+
+06:16.070 --> 06:17.210
+called over here.
+
+06:17.450 --> 06:25.430
+So which means our agent is correctly calling the right tooling required for the right question, which
+
+06:25.430 --> 06:27.950
+means our test has got passed, which is amazing.
+
+06:27.950 --> 06:34.580
+So this is how we can do the testing of our tool correctness in the tool correctness metrics.
+
+06:34.580 --> 06:39.860
+In the deep eval tool, there are a few more changes that we can make in this particular thing for the
+
+06:39.860 --> 06:40.070
+tool.
+
+06:40.070 --> 06:44.300
+Correctness metrics based on the different kind of parameter that you can pass, which I'll be talking
+
+06:44.300 --> 06:46.250
+about quickly in our next lecture.

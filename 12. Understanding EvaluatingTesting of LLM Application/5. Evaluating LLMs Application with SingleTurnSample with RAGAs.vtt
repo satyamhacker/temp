@@ -1,0 +1,298 @@
+WEBVTT
+
+00:00.080 --> 00:05.750
+Now getting back to our Visual Studio Code, we are going to start writing the actual code itself.
+
+00:05.750 --> 00:11.960
+So we have been discussing quite a lot of different details in terms of how we can work with link chain,
+
+00:11.960 --> 00:22.370
+how we can build them, and how we can use the link chain to to build a chat bots, agents and drags.
+
+00:22.370 --> 00:24.920
+But now it's time for us to do the testing.
+
+00:24.950 --> 00:29.510
+I don't know why I have got two of these, so let me get rid of one of these folder.
+
+00:29.780 --> 00:32.570
+And we also have a testing with rags and agent over here.
+
+00:32.600 --> 00:33.350
+Okay cool.
+
+00:33.350 --> 00:34.940
+So now we're going to start doing the testing.
+
+00:34.940 --> 00:39.260
+So before we start doing the testing the first thing is we need to start the installation process of
+
+00:39.260 --> 00:40.310
+the rack.
+
+00:40.310 --> 00:44.630
+So um I'm going to write a markdown over here.
+
+00:44.630 --> 00:50.420
+And I'm going to say uh, installing uh rack uh the ragas.
+
+00:51.020 --> 00:51.800
+All right.
+
+00:52.010 --> 00:56.720
+Uh, and I'm going to say this is Python.
+
+00:56.750 --> 00:59.630
+Sorry, I don't know why this could be markdown.
+
+01:00.920 --> 01:01.730
+There we go.
+
+01:02.030 --> 01:07.520
+Uh, and over here I'm going to say pip install ragas.
+
+01:07.550 --> 01:08.150
+That's all.
+
+01:08.150 --> 01:11.420
+So this is going to install the ragas for us.
+
+01:11.840 --> 01:16.160
+And let me try to run this particular thing over here.
+
+01:16.160 --> 01:19.790
+And you can see that we have got our ragas installed which is great.
+
+01:19.940 --> 01:24.290
+And I'm going to go to their documentation a bit over here.
+
+01:24.290 --> 01:31.160
+And you can see that they have got some details over here, like how you can evaluate, uh, things
+
+01:31.160 --> 01:33.470
+using the matrices that they have given.
+
+01:33.470 --> 01:38.720
+So let me just copy paste this five lines of code that they have put in their GitHub page over here.
+
+01:38.720 --> 01:41.000
+And I'm going to paste that.
+
+01:41.360 --> 01:47.720
+And you will notice that it is now telling me that we need to have a lang chain LM wrapper with chat
+
+01:47.750 --> 01:49.040
+OpenAI model.
+
+01:49.070 --> 01:53.780
+Well, because we are not using chat OpenAI model in any of these, because we are using the local large
+
+01:53.780 --> 01:57.920
+language models and we are also using local olama here.
+
+01:57.920 --> 02:01.550
+We can't really use the chat OpenAI over here.
+
+02:01.550 --> 02:09.400
+So what we should do is let's go back to the discussions that we had did before, which is the agent
+
+02:09.400 --> 02:10.840
+building, as you can see over here.
+
+02:10.840 --> 02:19.420
+So I'm going to copy some of the code from here, uh, which was to, uh, get the env file and the,
+
+02:19.570 --> 02:24.520
+uh, declaration of the chat olama, which is the LM.
+
+02:24.520 --> 02:32.800
+So I'm going to copy that and I'm going to add them over here, which is going to mark down, uh, I'm
+
+02:32.800 --> 02:44.230
+going to say create LMS, uh, uh, instance uh with local LMS.
+
+02:44.230 --> 02:48.820
+And because we have configured with our Lang Smith over here, now we can see what is really going on
+
+02:48.850 --> 02:49.930
+with the Lang Smith as well.
+
+02:49.930 --> 02:55.480
+So if I just go to the Lang Smith, uh, at the moment, there is nothing really, uh, doing over here.
+
+02:55.480 --> 03:02.080
+But the moment I start running the evaluation, hopefully we can see some traces there as well.
+
+03:02.080 --> 03:04.960
+So we are not going to use the chat.
+
+03:04.960 --> 03:06.550
+Uh, open AI over here.
+
+03:06.550 --> 03:14.140
+As you know, we are going to be using the, uh, chat or lama, so I'm going to copy this line of code.
+
+03:14.680 --> 03:16.330
+Uh, maybe you don't even need that.
+
+03:16.360 --> 03:22.810
+So I'm going to say chat or llama or maybe guess what in this, uh, lang chain elements wrapper.
+
+03:22.840 --> 03:28.930
+All you have to do is just pass the LM, which is going to be the local large language model.
+
+03:28.930 --> 03:34.630
+We also need this wrapper over here because this is not something that I have added so far.
+
+03:34.630 --> 03:40.930
+So this wrapper I think it's, uh, sitting from uh ragas.
+
+03:40.960 --> 03:41.680
+Yeah.
+
+03:41.710 --> 03:43.570
+Dot wrapper of import.
+
+03:43.600 --> 03:44.650
+Uh, the.
+
+03:46.300 --> 03:50.500
+Now this is wrong ragas dot lm s yeah.
+
+03:50.530 --> 03:52.840
+LM is import lang chain wrapper.
+
+03:53.080 --> 03:54.010
+Uh, this is what you need to.
+
+03:54.040 --> 03:58.240
+I think the documentation is quite wrong in that case, because they're not really covered everything
+
+03:58.240 --> 04:03.220
+that they have to, uh, because, see, you are using this class over here, but you have not mentioned
+
+04:03.250 --> 04:07.420
+that similarly chat OpenAI, they have mentioned but they have not really written over here, this file
+
+04:07.420 --> 04:07.720
+line.
+
+04:07.720 --> 04:09.100
+I don't think this is correct.
+
+04:09.100 --> 04:13.630
+Maybe they just have to change their it's just for the advertisement purpose that they have made it.
+
+04:13.630 --> 04:16.780
+But to be honest, it's not just file line, but it's more than that.
+
+04:17.350 --> 04:17.890
+Cool.
+
+04:17.920 --> 04:20.350
+Now we have got all these things over here.
+
+04:20.350 --> 04:26.710
+So we have got the Lang chain wrapper, uh, for lm, where I'm parsing our local LM over here.
+
+04:26.890 --> 04:29.980
+And now we're going to run this code and see what's really going to happen.
+
+04:30.820 --> 04:31.720
+And look at that.
+
+04:31.720 --> 04:33.460
+The score this time is one.
+
+04:33.460 --> 04:42.790
+So while we say score is one, which means we are really saying that the LM is really matching the,
+
+04:42.790 --> 04:44.530
+uh, the actual response.
+
+04:44.530 --> 04:50.380
+So the user input and the response is actually matching based on the large language models that we are
+
+04:50.380 --> 04:50.980
+passing in.
+
+04:51.010 --> 04:54.580
+So let's go and see if the Lang Smith has got any detail over there.
+
+04:54.580 --> 04:56.200
+And you can see that we have got it.
+
+04:56.200 --> 04:59.980
+So there is an um summary accuracy.
+
+04:59.980 --> 05:02.770
+So this is a singleton aspect critic prompt.
+
+05:02.770 --> 05:03.910
+You can see over here.
+
+05:03.910 --> 05:08.590
+And it gives us a um a response for us over there.
+
+05:09.190 --> 05:12.550
+So the human is asking this question, uh, over here.
+
+05:12.550 --> 05:15.190
+And now the output is this particular value.
+
+05:15.190 --> 05:21.520
+So the human asks for this question and the response is pretty close to what they are expecting.
+
+05:21.520 --> 05:24.070
+That's the reason why the verdict is one, which means it's correct.
+
+05:24.070 --> 05:31.240
+So this is how we can see that we could able to evaluate this particular answer and this kind of testing
+
+05:31.240 --> 05:31.930
+in ragas.
+
+05:31.930 --> 05:33.730
+They call it a singleton sample.
+
+05:33.730 --> 05:40.330
+The reason why this is called a singleton sample is because the evaluation has got only single turn
+
+05:40.330 --> 05:41.590
+interaction, which is this one.
+
+05:41.890 --> 05:43.450
+There is only one interaction here.
+
+05:43.450 --> 05:45.790
+So there is one user input and one response.
+
+05:45.790 --> 05:48.790
+And that's why it is called a singleton sample.
+
+05:48.790 --> 05:53.890
+If you have multiple user input and multiple responses, and you're going to be verifying how the interactions
+
+05:53.890 --> 05:58.390
+is really happening with your local large language model, then they are called as multi-turn samples.
+
+05:58.390 --> 06:00.880
+So you can just see that there is something called as multi-turn samples.
+
+06:00.880 --> 06:02.830
+So you can pass that.
+
+06:02.830 --> 06:08.170
+And then you can verify if the Multi-turn sample is also working in that particular fashion.
+
+06:08.170 --> 06:14.620
+So this is how you can actually verify the different different things within your large language models
+
+06:14.620 --> 06:15.910
+with ragas.
+
+06:16.180 --> 06:23.200
+And I hope you got the idea of the first test with the ragas over here with your local large language
+
+06:23.200 --> 06:23.740
+model.

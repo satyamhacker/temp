@@ -1,0 +1,205 @@
+WEBVTT
+
+00:00.120 --> 00:01.160
+All right.
+
+00:01.160 --> 00:07.840
+It's now time for us to run this whole magical tool that we have written, the playwright MCP server,
+
+00:07.840 --> 00:11.640
+and we'll see how we can able to access it from the cloud desktop.
+
+00:11.760 --> 00:16.680
+So in order to do that, I'm going to go to the configurations that we have been making over here.
+
+00:18.280 --> 00:21.320
+And we're going to write the playwright MCP server.
+
+00:21.360 --> 00:24.200
+So playwright MCP server, which is great.
+
+00:24.600 --> 00:29.360
+Uh and then I'm going to add the command as Python.
+
+00:29.360 --> 00:31.880
+And the argument is going to be MCP agent.
+
+00:32.440 --> 00:37.160
+Ah, it's very intelligent to say that it automatically pastes the paths and everything, which is pretty
+
+00:37.160 --> 00:37.520
+good.
+
+00:37.920 --> 00:41.440
+Uh, we don't have any MCP URL at the moment, just.
+
+00:41.840 --> 00:42.240
+Okay.
+
+00:42.800 --> 00:44.280
+Uh, and you know what?
+
+00:44.280 --> 00:50.200
+I'm going to get rid of our existing playwright MCP server over here because this is from the MCP server,
+
+00:50.200 --> 00:52.320
+so I don't want to clash both of them.
+
+00:52.520 --> 00:54.200
+So I'm going to get rid of one of them.
+
+00:54.360 --> 00:57.960
+So I'm going to use our playwright MCP server this time.
+
+00:58.360 --> 00:58.960
+Right.
+
+00:59.030 --> 01:01.150
+So we need to see how that works.
+
+01:01.150 --> 01:03.110
+So I'm going to open the cloud desktop.
+
+01:03.510 --> 01:10.590
+And if I go to the knob over here you should see the playwright MCP server which is great.
+
+01:10.590 --> 01:12.150
+And it only has two tools.
+
+01:12.190 --> 01:14.510
+Look at that the navigate tool and the click tool.
+
+01:14.510 --> 01:16.270
+So it only performs two operation.
+
+01:16.430 --> 01:19.710
+So if you say anything beyond that I don't think this will work.
+
+01:19.750 --> 01:20.110
+Right.
+
+01:20.110 --> 01:21.470
+So we'll see how that works really.
+
+01:21.510 --> 01:26.310
+So I'm going to say I want it to uh login.
+
+01:28.470 --> 01:39.710
+Navigate to E maybe http colon double slash e.sammy.com and click the login link.
+
+01:40.070 --> 01:45.150
+And uh enter username and password.
+
+01:45.190 --> 01:51.350
+See the entry of the username and password is not going to work because we have not performed a send
+
+01:51.430 --> 01:53.310
+or maybe like a fill operation.
+
+01:53.310 --> 01:55.390
+So we have got the fill operation over here.
+
+01:55.390 --> 01:55.630
+Right.
+
+01:55.630 --> 02:01.180
+We have not even written that uh, that tool yet, but I'm just asking, like over asking it.
+
+02:01.340 --> 02:05.860
+And I wanted to see, like, how this really works the moment I do this, magically.
+
+02:05.900 --> 02:06.580
+Look at that.
+
+02:06.620 --> 02:08.660
+Our playwright MCP server has been triggered.
+
+02:08.660 --> 02:13.020
+The navigate method or the tool that we wrote is is triggering.
+
+02:13.020 --> 02:15.660
+So I'm going to say allow once it should open the browser.
+
+02:15.700 --> 02:18.220
+Look at that while it is working.
+
+02:18.260 --> 02:26.580
+I see this is the power that we have written this MCP server tool so easily with the power of the MCP.
+
+02:26.620 --> 02:27.900
+That's what I was talking about.
+
+02:28.660 --> 02:29.540
+This is amazing.
+
+02:29.780 --> 02:31.940
+And it's going to perform a click operation.
+
+02:31.940 --> 02:34.420
+So it should perform a click operation on the login.
+
+02:34.420 --> 02:35.660
+Let's see what is really going on.
+
+02:35.660 --> 02:41.220
+I think it's just looking for the href for the login, but I think this problem can be resolved if we
+
+02:41.220 --> 02:43.900
+have a JavaScript tool being enabled.
+
+02:44.260 --> 02:44.980
+Oh look at that.
+
+02:44.980 --> 02:47.540
+Now it's again uh, calling that.
+
+02:47.540 --> 02:48.940
+Let's see what's really happening.
+
+02:48.940 --> 02:51.820
+So let me try to look at the common login uh selector.
+
+02:51.820 --> 02:56.460
+So it's trying to do all the different types of selectors over here one by one.
+
+02:56.460 --> 02:58.340
+And it is going to do that right now.
+
+03:00.860 --> 03:01.460
+There we go.
+
+03:01.460 --> 03:05.340
+And you can see that it has finally clicked the login link over here.
+
+03:05.420 --> 03:08.620
+It took a lot of time, to be honest, to perform a click operation.
+
+03:08.740 --> 03:16.620
+Uh, for sure, but that can be resolved if we have a feature called as the evaluate, uh, JavaScript,
+
+03:16.620 --> 03:23.300
+which is basically to evaluate the, uh, the page uh, locators using the JavaScript functions.
+
+03:23.300 --> 03:26.020
+So that will actually resolve this very, very easily.
+
+03:26.020 --> 03:29.020
+Actually, I have built the same thing, even my server.
+
+03:29.020 --> 03:32.140
+So we can actually use that to perform these operation.
+
+03:32.780 --> 03:34.740
+Well now this is already working.
+
+03:34.740 --> 03:38.540
+And I think this is already an amazing start for us to build this tool.
+
+03:38.580 --> 03:43.460
+I will add more tools in our next lecture, but at least you have got the first taste.
+
+03:43.460 --> 03:48.860
+I will highly recommend you to try out all by yourself and see how that works.
+
+03:48.860 --> 03:54.220
+But until then, catch you in our next lecture where we are going to start implementing more tools.

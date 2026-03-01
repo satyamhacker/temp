@@ -1,0 +1,304 @@
+WEBVTT
+
+00:00.050 --> 00:00.680
+All right.
+
+00:00.680 --> 00:03.680
+So now we're going to add the chroma DB over here.
+
+00:03.680 --> 00:06.920
+So I'm going to go add the code for the chroma.
+
+00:06.920 --> 00:09.650
+So let's go here and see how we did that.
+
+00:09.920 --> 00:10.190
+Okay.
+
+00:10.190 --> 00:15.140
+So we need to definitely import the chroma uh which is this guy.
+
+00:15.170 --> 00:16.400
+So I'm going to do that.
+
+00:16.580 --> 00:22.310
+And we are not going to really run the uh run the all split and then the embedding.
+
+00:22.310 --> 00:27.260
+So because this is the one which is going to create the vector store, uh, with all the different uh,
+
+00:27.260 --> 00:32.000
+data for us, rather you can see that we can retrieve from the persistent vector data store.
+
+00:32.030 --> 00:37.760
+This is what I really need because I wanted to use the existing persistent database, which is the chroma
+
+00:37.790 --> 00:39.320
+lang chain DB.
+
+00:39.380 --> 00:43.010
+So I'm going to use this code as you are seeing over here.
+
+00:43.010 --> 00:47.000
+So let's go copy this and paste it over here.
+
+00:47.000 --> 00:52.460
+But guess what this particular chroma lang chain db is not in this directory.
+
+00:52.490 --> 00:52.700
+Right.
+
+00:52.730 --> 00:58.310
+Because we can either copy paste from there to here in this particular section folder as well.
+
+00:58.550 --> 01:00.650
+Instead we can just reuse it.
+
+01:00.740 --> 01:04.460
+I'm just going to say dot slash dot dot slash.
+
+01:04.520 --> 01:09.350
+and I'm going to go to the section five of the RAC document and slash.
+
+01:09.350 --> 01:11.060
+We have this chroma DB.
+
+01:11.210 --> 01:11.870
+Look at that.
+
+01:11.870 --> 01:12.980
+That's straightforward right.
+
+01:13.010 --> 01:17.720
+We can just get there directly to get the persistent storage.
+
+01:17.720 --> 01:25.160
+And we can probably check if we could able to uh, work with this particular vector store just to test
+
+01:25.160 --> 01:27.830
+if you're really having the connectivity there.
+
+01:27.830 --> 01:31.040
+So if I run this, you will notice that what is bias testing.
+
+01:31.040 --> 01:34.940
+It could able to answer me like how it's supposed to.
+
+01:34.970 --> 01:37.100
+So which means the connectivity is working fine.
+
+01:37.100 --> 01:43.190
+So which means the vector store has got the data from this particular directory which is great.
+
+01:43.670 --> 01:48.620
+So our Chrome DB, the Chrome DB is also working for us without any problem.
+
+01:48.800 --> 01:55.640
+And the final operation probably in this particular retriever operation is going to be, uh, the retriever
+
+01:55.640 --> 01:57.590
+itself, the retriever in the Lang chain.
+
+01:57.590 --> 01:59.060
+So this is very important.
+
+01:59.060 --> 02:00.470
+So we have to do that.
+
+02:00.500 --> 02:02.720
+I think there is a typo there for the retriever.
+
+02:02.840 --> 02:05.870
+Uh, let me just fix that over here.
+
+02:05.870 --> 02:08.800
+So, Three.
+
+02:08.830 --> 02:14.110
+Where are from vector stores.
+
+02:14.110 --> 02:17.830
+So that is what we are going to be doing over here.
+
+02:17.830 --> 02:20.110
+And the retriever is going to be this guy.
+
+02:20.140 --> 02:23.890
+So let's go copy paste it over here.
+
+02:23.890 --> 02:29.950
+And if I run this this is the retriever which is going to have the similarity search from the vector
+
+02:29.950 --> 02:30.880
+database.
+
+02:30.910 --> 02:31.780
+Amazing.
+
+02:31.960 --> 02:36.340
+And now we can perform the rest of the operation.
+
+02:36.340 --> 02:39.400
+We don't really need this document retrieval manually or things of that nature.
+
+02:39.400 --> 02:41.020
+We are not going to do that.
+
+02:41.020 --> 02:51.190
+But now we are going to build a tool which is going to call the retriever that we have got over here
+
+02:51.490 --> 02:54.370
+to give us the answer that we are looking for.
+
+02:54.370 --> 02:58.210
+So this is the most important part that we are going to be talking about.
+
+02:58.210 --> 03:01.270
+So this is where the tool is going to be created for us.
+
+03:01.270 --> 03:03.460
+So how do we actually do that?
+
+03:03.460 --> 03:13.240
+Well, in order for me to create the tools, I'm going to just say creating a tool to, uh, to retrieve
+
+03:13.240 --> 03:17.680
+the data from vector stores.
+
+03:18.040 --> 03:19.390
+Uh, vector stores.
+
+03:19.420 --> 03:19.810
+Right.
+
+03:19.840 --> 03:21.580
+So how do we create the tool?
+
+03:21.580 --> 03:24.610
+We already discussed about that in our earlier sections as well.
+
+03:24.610 --> 03:31.960
+So the way that you can create the tool is are we going to call the from Lang Chain uh over here.
+
+03:31.960 --> 03:37.360
+And I'm going to call the tools and I'm going to import tool.
+
+03:37.390 --> 03:38.080
+Right.
+
+03:38.110 --> 03:40.420
+That's going to be importing the tool.
+
+03:40.420 --> 03:43.540
+And I'm going to create a tool over here.
+
+03:43.540 --> 03:44.950
+So I'm going to decorate it.
+
+03:45.040 --> 03:46.930
+Bias detection.
+
+03:47.530 --> 03:52.210
+Uh and I'm going to pass the query which is going to be of a string type.
+
+03:52.330 --> 03:56.770
+Uh and it returns me a string as well.
+
+03:56.890 --> 03:57.100
+Right.
+
+03:57.130 --> 03:58.960
+That's what it's going to be doing over here.
+
+03:58.960 --> 04:07.870
+So over here in this particular um, in this particular bias detection, I'm going to return, uh,
+
+04:07.870 --> 04:08.980
+something like this.
+
+04:08.980 --> 04:16.260
+So basically I'm going to be, uh, writing a prompt over here, uh, something like this.
+
+04:16.260 --> 04:25.890
+And I'm going to say what kind of bias is mentioned in this article.
+
+04:25.890 --> 04:28.350
+So I'm going to do something like that.
+
+04:28.590 --> 04:43.980
+And over here I'm going to say you must use this tool for bias related testing in LM, which is the
+
+04:43.980 --> 04:47.580
+large language model.
+
+04:48.120 --> 04:48.570
+Right.
+
+04:48.570 --> 04:52.980
+So that is what I'm going to be telling in this particular tool.
+
+04:52.980 --> 04:56.310
+While the agent actually chooses this particular tool, it needs to know the context.
+
+04:56.310 --> 04:59.550
+And that's the reason why we need to add this particular details over here.
+
+04:59.550 --> 05:03.270
+And these are the prompt that we are going to be passing to the large language model.
+
+05:03.300 --> 05:06.600
+I'm going to add an arguments here.
+
+05:06.750 --> 05:18.960
+And I'm going to say query uh is going to be the search query for bias detection whatever.
+
+05:18.990 --> 05:19.440
+Right.
+
+05:19.440 --> 05:20.700
+write, maybe just query.
+
+05:20.730 --> 05:21.810
+That should be fine.
+
+05:22.080 --> 05:24.360
+You don't have to give so many details over here.
+
+05:24.600 --> 05:25.920
+Uh, that should be good.
+
+05:26.010 --> 05:32.730
+And now, what is the way this buyer detection bias detection is really going to work?
+
+05:32.730 --> 05:39.450
+Or basically now this guy is going to return me the retriever dot.
+
+05:39.450 --> 05:41.310
+And we're going to call this invoke method.
+
+05:41.310 --> 05:50.850
+If you remember this guy, which is going to get me all the different queries that we have got over
+
+05:50.850 --> 05:56.790
+here, and we can give the page content, which is going to have the page contents as well.
+
+05:56.790 --> 05:58.890
+So I'm going to just leave this guy as it is.
+
+05:58.890 --> 06:05.190
+So maybe, uh, maybe page content should be good enough, uh, if we call that.
+
+06:05.190 --> 06:07.860
+So I'm going to save this everything over here.
+
+06:07.860 --> 06:14.430
+And now the final thing that we have to do is after this particular tool, we need to create the tool
+
+06:14.430 --> 06:14.970
+array.
+
+06:14.970 --> 06:20.010
+And then we need to pass that to the agent, uh, so that we can pass the query to the agent and we'll
+
+06:20.010 --> 06:24.180
+see how the response is going to come up, which we'll be doing in our next lecture.

@@ -1,0 +1,229 @@
+WEBVTT
+
+00:00.050 --> 00:05.150
+And the next example that we are going to talk about is the multi-turn sample in the ragas.
+
+00:05.180 --> 00:09.620
+After we discussed this singleton sample in our last lecture of this course.
+
+00:09.620 --> 00:15.020
+So you see that in the multi-turn sample, the only difference from the singleton and the multi-turn
+
+00:15.020 --> 00:19.850
+is that in the singleton you will have only one user input and one reference context.
+
+00:19.850 --> 00:22.790
+And then you just do a communication with the LM.
+
+00:22.790 --> 00:28.880
+And then you see if the response has got the accuracy, relevance and fairness based on the input that
+
+00:28.880 --> 00:30.980
+you have given from the large language model.
+
+00:30.980 --> 00:34.670
+That is what you are going to do in this particular singleton sample.
+
+00:34.670 --> 00:41.870
+But in Multi-turn sample you are going to be interacting between humans eyes or optionally even tools.
+
+00:41.900 --> 00:46.130
+You remember the one that we built in our last section of the course, even that one as well.
+
+00:46.130 --> 00:51.800
+You can interact and then you will see if the response is correct or not based on that.
+
+00:51.830 --> 00:58.130
+I mean, eventually you will see that we have got this human message, AI message, tool message and
+
+00:58.130 --> 01:05.090
+tool calls, all these things that we were discussing, even in our, uh, long chain code that we were
+
+01:05.090 --> 01:06.440
+doing over here.
+
+01:06.440 --> 01:11.270
+Those things are all now coming in action over here with this, uh, ragas.
+
+01:11.300 --> 01:16.640
+Which makes sense, because now we can create a human message, AI message and all these different sort
+
+01:16.670 --> 01:19.580
+of messages while we do the communication with raga.
+
+01:19.580 --> 01:25.550
+So it's that's the reason why this ragas tool is bit more closer to what we do with Lang chain, because
+
+01:25.550 --> 01:30.890
+it's the syntax is and the way that it works are pretty close to what we have already did.
+
+01:30.890 --> 01:37.880
+So all they are doing in here with the multi uh term sample is that you're going to have a user message
+
+01:37.880 --> 01:39.110
+which is the human message.
+
+01:39.140 --> 01:42.200
+And then they pass an AI message which is going to say content.
+
+01:42.200 --> 01:44.900
+Let me check whether the current weather in New York is this.
+
+01:44.900 --> 01:46.280
+And then you see the tool call.
+
+01:46.310 --> 01:49.850
+See that the tool call here that they just say it's a weather API call.
+
+01:49.880 --> 01:54.710
+Same kind of tool calls that we were making before, uh, in our earlier sections of the course where
+
+01:54.710 --> 02:00.560
+we call the Wikipedia to see if the tool call is really happening.
+
+02:00.560 --> 02:05.330
+So same kind of things that that is happening over here, like instead of the Wikipedia tool here,
+
+02:05.330 --> 02:07.610
+they call it as the weather API tool.
+
+02:07.610 --> 02:09.950
+And this is the argument that they are passing in.
+
+02:10.580 --> 02:12.560
+So that is the AI's initial response.
+
+02:12.560 --> 02:19.580
+And then you again create a tool response where the content is sunny weather the temperature is this,
+
+02:19.580 --> 02:20.270
+this this.
+
+02:20.270 --> 02:21.650
+And that's what they are creating.
+
+02:21.650 --> 02:24.950
+And then the AI's final response is going to be the AI message.
+
+02:24.950 --> 02:26.390
+And this is the content.
+
+02:26.480 --> 02:30.800
+And now we are going to pass all these as a conversation over here.
+
+02:30.800 --> 02:36.710
+And once you have this conversation ready, you can then send this conversation to the Multi-turn sample
+
+02:36.710 --> 02:37.430
+over here.
+
+02:37.430 --> 02:43.580
+And you can pass the reference response as well as an input to see the the one that you're looking for
+
+02:43.610 --> 02:44.810
+is coming up or not.
+
+02:44.810 --> 02:50.210
+So that is what is their actual intention of how you do with the Multi-turn sample over here?
+
+02:50.210 --> 02:54.800
+Because we have already developed and built all these things in the long chain, these things are quite
+
+02:54.800 --> 02:57.290
+relevant for our actual testing as well.
+
+02:57.290 --> 02:59.640
+So let's see how we can actually achieve that over here.
+
+02:59.670 --> 03:00.000
+Guess what?
+
+03:00.030 --> 03:02.220
+Again, I'm really not going to write any code.
+
+03:02.220 --> 03:04.200
+I'm just going to copy paste it over here.
+
+03:04.260 --> 03:07.440
+But we will be changing based on our need a bit.
+
+03:07.440 --> 03:15.960
+So I'm going to say a multi-turn samples, uh, with the uh with ragas.
+
+03:16.140 --> 03:22.470
+And over here I'm just going to add the code pretty much the same code as you can see over here.
+
+03:22.470 --> 03:27.090
+And I need to also run this multi-turn, uh, sample.
+
+03:27.090 --> 03:31.950
+So I'm going to copy this and let me try to first run this guy over here.
+
+03:31.980 --> 03:33.990
+This is just to create the conversation.
+
+03:34.140 --> 03:39.240
+And then we're going to run the entire conversation sample over here.
+
+03:39.240 --> 03:42.660
+And let's see what is really happening with the samples.
+
+03:42.660 --> 03:45.510
+So again this is I think this is just a sample being created.
+
+03:45.720 --> 03:52.050
+Uh, we probably need to run this sample in the matrix and see how that actually works.
+
+03:52.050 --> 03:58.050
+So in order to do that, I'm gonna one more time call this, uh, matrix over here.
+
+03:58.350 --> 04:01.260
+And then we can call the metrics over here.
+
+04:01.260 --> 04:03.480
+So you see that we got the Multi-turn sample over here.
+
+04:03.510 --> 04:07.290
+So I'm gonna say dot uh multi score.
+
+04:07.290 --> 04:09.000
+And I'm going to pass the sample.
+
+04:09.000 --> 04:11.640
+And I'm going to run them over here.
+
+04:11.640 --> 04:18.270
+So you will now notice that this is going to do a multi-turn uh, sample for us over here.
+
+04:18.270 --> 04:19.290
+And then we got the response.
+
+04:19.290 --> 04:23.100
+This one looks like this is also quite close to what you're looking for.
+
+04:23.130 --> 04:24.690
+And that's the reason why you're getting one there.
+
+04:24.690 --> 04:27.960
+So this is how you perform the multi-turn sample with ragas.
+
+04:28.710 --> 04:31.770
+And these are things that you can do over here for the testing.
+
+04:31.770 --> 04:32.940
+But guess what.
+
+04:32.940 --> 04:35.460
+These are the things that they have given in their documentation.
+
+04:35.490 --> 04:39.420
+Like how you can actually do that, how you can create the evaluation data sets.
+
+04:39.570 --> 04:46.050
+Uh, over here with multiple datas and things, we are going to start looking at how the more advanced
+
+04:46.050 --> 04:55.440
+concepts of the ragas can be used for testing our already built agents and rags, starting our next
+
+04:55.440 --> 04:57.540
+section of this course with ragas.

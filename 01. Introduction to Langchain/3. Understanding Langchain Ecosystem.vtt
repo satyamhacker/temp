@@ -1,0 +1,244 @@
+WEBVTT
+
+00:00.020 --> 00:03.560
+In this lecture we are going to talk about Lange Chain's ecosystem.
+
+00:04.850 --> 00:10.220
+So Lange Chain library and its surrounding ecosystem is what makes Lange chain so special for building
+
+00:10.220 --> 00:12.230
+large language model based applications.
+
+00:12.260 --> 00:18.950
+So Lange chain has got two most important component, which is the Lange, Smith and Lange graph.
+
+00:18.980 --> 00:25.640
+I mean, apart from the Lange chain library itself, these two are the next most important component
+
+00:25.640 --> 00:28.490
+that the Lange chain has got in its ecosystem.
+
+00:28.490 --> 00:34.640
+So Lange Smith is mainly used for tracing and evaluating your large language models, applications,
+
+00:34.640 --> 00:38.960
+and intelligent agent to help you move your prototype to production.
+
+00:38.960 --> 00:44.480
+That is what this Lange Smith is all about, and this is mainly used for evaluation for every single
+
+00:44.480 --> 00:50.030
+step that you perform in the Lange chain, while you're writing the library and how your application
+
+00:50.030 --> 00:52.520
+really behaves under the hood, that is, what is this?
+
+00:52.520 --> 00:53.060
+Lange Smith?
+
+00:53.060 --> 00:55.970
+And you are going to be using this quite a lot in this entire course.
+
+00:55.970 --> 00:57.740
+And the next one is the Lange graph.
+
+00:57.770 --> 01:03.710
+I mean, Lange graph is a library for building stateful multi actor applications with a large language
+
+01:03.710 --> 01:07.190
+models used to create agents and multi-agent workflow.
+
+01:07.190 --> 01:10.730
+And this is again going to be very very important and useful.
+
+01:10.730 --> 01:15.480
+While you are going to be creating an agent and you will be understanding how this workflow of the agent
+
+01:15.480 --> 01:22.530
+can be controlled, binded with different tools and how you work with those agents for your production
+
+01:22.530 --> 01:23.250
+ready application.
+
+01:23.250 --> 01:25.590
+So that is what this line graph is all about.
+
+01:25.590 --> 01:30.750
+I'm going to quickly show you how this Lang Smith is going to look like, and how you can get started
+
+01:30.750 --> 01:35.250
+with this in this particular lecture, so that while we start working with the Lang Smith, you will
+
+01:35.250 --> 01:38.310
+have no surprise what this Lang Smith is all about.
+
+01:38.310 --> 01:38.730
+All right.
+
+01:38.730 --> 01:42.540
+So this is the Lang Chain website, as you can see over here.
+
+01:42.540 --> 01:45.900
+And this Lang chain has got Lang chain, lang Smith and Lang graph.
+
+01:45.900 --> 01:47.940
+And these are the three components that they have got.
+
+01:47.970 --> 01:52.800
+As I told you in the ecosystem, this Lang Smith and land graph are the most important component apart
+
+01:52.800 --> 01:54.840
+from the Lang chain library itself.
+
+01:54.840 --> 01:59.760
+So if you go to the Lang Smith over here, it's going to bring up this particular page over here.
+
+01:59.760 --> 02:03.690
+And they give you the information of how this particular Lang Smith is going to be useful.
+
+02:03.930 --> 02:08.700
+Like you can see that how many people have signed up and how many logs are being traced every single
+
+02:08.700 --> 02:13.590
+day, and how many monthly active team members are there, and what are the things that it does and
+
+02:13.590 --> 02:14.880
+all those details is available.
+
+02:14.880 --> 02:17.880
+So you can just go ahead and sign up from here.
+
+02:17.880 --> 02:19.950
+And I have already signed up with my GitHub account.
+
+02:19.950 --> 02:24.870
+So if I just go, you will see that it is going to take me up to this particular dashboard over here.
+
+02:24.870 --> 02:27.510
+So this is the, uh, this is the welcome page you have got.
+
+02:27.510 --> 02:30.750
+And there are some observability traces that you can see from here.
+
+02:30.750 --> 02:34.530
+So this is the one that I have got the execute automation learning over here.
+
+02:34.530 --> 02:39.750
+And there is also a default, uh, tracing project, which is something that is not going to show you
+
+02:39.750 --> 02:42.450
+any information, but the one that you are seeing over here, this is your automation.
+
+02:42.450 --> 02:44.790
+Learning is the one that I created it over here.
+
+02:44.790 --> 02:49.920
+And if I go to this automation learning project, you will notice that it is going to show quite a lot
+
+02:49.950 --> 02:52.260
+of different options or operations over here.
+
+02:52.260 --> 02:56.250
+It's going to show me like uh, like the runnable with message history.
+
+02:56.250 --> 02:59.940
+And there is also, uh, with a lot of information over here.
+
+02:59.940 --> 03:04.590
+You can see that if I just keep going down below, it's, uh, runnable sequence comes in.
+
+03:04.590 --> 03:09.030
+And there is also runnable parallels and runnable templates, chat prompt templates.
+
+03:09.060 --> 03:10.980
+There are many things going to come up over here.
+
+03:10.980 --> 03:16.080
+So if I go and click any one of the runnable with a message history, it's going to show you some information
+
+03:16.080 --> 03:16.620
+over here.
+
+03:16.650 --> 03:19.800
+So what are the things that I have uh, given as an input.
+
+03:19.800 --> 03:21.690
+And what is the input history coming up.
+
+03:21.690 --> 03:25.290
+What is the load history and what is the check going to come up?
+
+03:25.290 --> 03:27.960
+And what is the model which is being used behind the scene.
+
+03:27.960 --> 03:30.060
+So these are things is going to happen for me.
+
+03:30.060 --> 03:31.320
+Uh, behind the scene.
+
+03:31.320 --> 03:34.770
+Guys like all these informations are going to be coming up from there.
+
+03:34.800 --> 03:39.570
+We are going to talk about how these things are going to be coming up over here, and how we can make
+
+03:39.570 --> 03:44.910
+use of this particular traceability from this particular langschmidt in later part of this course.
+
+03:44.910 --> 03:48.960
+But at least you have got the first taste of what is going to be coming up in this particular course.
+
+03:48.990 --> 03:53.430
+I mean, this long chain message is going to keep on increasing in this particular Lange Smith even
+
+03:53.430 --> 03:55.380
+further with even more information.
+
+03:55.380 --> 03:59.430
+What you're seeing over here is just the basic operation, but it's going to keep on increasing even
+
+03:59.430 --> 04:00.180
+further.
+
+04:00.690 --> 04:02.880
+So that's about the Lange Smith for us.
+
+04:02.880 --> 04:06.090
+And you can also see there is something called as Lange Graff.
+
+04:06.090 --> 04:13.530
+As I told you, this Lange graph is mainly used for the agents to control how the workflow should work
+
+04:13.530 --> 04:13.800
+with.
+
+04:13.800 --> 04:18.990
+And this is also used by many, uh, many fortune 500 companies.
+
+04:18.990 --> 04:21.480
+And you can see what they have got over here.
+
+04:21.900 --> 04:25.680
+But anyways, when we talk about agent and how we're going to be using this particular Lange graph,
+
+04:25.680 --> 04:27.570
+I'll be talking about that even further.
+
+04:27.570 --> 04:33.090
+But at least for now, you got the taste of what this Lange chain, Lange Smith and Lange Graff are
+
+04:33.120 --> 04:34.680
+starting our next section.
+
+04:34.680 --> 04:40.530
+We are going to see how we can first start working with the Olama within our local machine.
+
+04:40.530 --> 04:41.430
+What is the Olama?
+
+04:41.430 --> 04:46.260
+How to import the large language model within our local machine and start using it.
+
+04:46.260 --> 04:49.890
+And then following that, we are going to start working with the Lange chain itself.

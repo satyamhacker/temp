@@ -1,0 +1,142 @@
+WEBVTT
+
+00:00.110 --> 00:00.740
+All right.
+
+00:00.740 --> 00:08.510
+So now we're going to see how we can just make use of some third party prompt from the from the hub
+
+00:08.510 --> 00:12.080
+of the lamp chain, instead of us writing all these prompts over here.
+
+00:12.110 --> 00:17.960
+I mean, this is the prompt which I have written inspired from one of the third party prompts, as you
+
+00:17.960 --> 00:19.400
+can see over here.
+
+00:19.430 --> 00:21.050
+So look at that, the rack prompt.
+
+00:21.080 --> 00:24.140
+This is the prompt that I just used like inspired.
+
+00:24.140 --> 00:29.960
+From here you can just download this prompt from using the lamp chain hub.
+
+00:29.960 --> 00:32.600
+And you can pull this particular prompt.
+
+00:32.600 --> 00:36.470
+And then you can use this particular prompt just by just one line of code over here.
+
+00:36.470 --> 00:38.330
+This is also something very much possible.
+
+00:38.330 --> 00:43.160
+So if you just go to the hub over here, you can see that there are different types of prompts available.
+
+00:43.160 --> 00:44.660
+You can also create your own prompt.
+
+00:44.660 --> 00:46.070
+You can upload it to them.
+
+00:46.190 --> 00:50.600
+And yeah there are so many different prompts available like text to SQL for that matter.
+
+00:50.600 --> 00:53.900
+So you see that how this prompt has been written over here.
+
+00:53.930 --> 00:58.880
+Given an input question, first create a synthetic correct dialect query to return to run.
+
+00:58.880 --> 01:02.480
+Then look at the result and query and return the answer.
+
+01:02.510 --> 01:04.040
+The question is here.
+
+01:04.070 --> 01:05.420
+This is the answer, blah blah blah.
+
+01:05.450 --> 01:06.470
+This is the table info.
+
+01:06.500 --> 01:08.570
+This is the few shot examples and stuff.
+
+01:08.570 --> 01:10.040
+So look at that.
+
+01:10.040 --> 01:16.250
+This is how these kind of, uh, these kinds of, uh, prompts are being created.
+
+01:16.250 --> 01:18.290
+And the one that we are going to be using is this guy.
+
+01:18.320 --> 01:21.650
+It's downloaded like 21.8 million times, which is amazing.
+
+01:21.650 --> 01:23.870
+So I'm going to use this particular prompt.
+
+01:23.870 --> 01:27.290
+So for that we just need to use these two lines of code.
+
+01:27.290 --> 01:34.610
+So I'm going to go to our VS code over here uh and probably copy this.
+
+01:34.610 --> 01:46.040
+And I'm going to paste markdown here uh using uh Lang Chain Hub for prompt.
+
+01:46.070 --> 01:48.230
+Write the same code.
+
+01:48.320 --> 01:56.090
+Just that this is going to be instead of the chat prompt template, I'm going to just use uh lang chain.
+
+01:56.090 --> 01:59.540
+And I'm going to import hub.
+
+02:00.620 --> 02:07.560
+And instead of this prompt that we have written over here like this big prompt, I can just say prompt
+
+02:07.590 --> 02:13.890
+is equal to, uh, hub dot, pull this particular prompt, that's all.
+
+02:13.890 --> 02:17.880
+This is all I have to do over here for the prompt.
+
+02:17.880 --> 02:19.080
+I'm going to be passing in.
+
+02:19.230 --> 02:21.990
+I'm going to pass the prompt over here and look at that.
+
+02:21.990 --> 02:26.340
+For this particular prompt you need you still have the question and the context over here.
+
+02:26.340 --> 02:30.630
+So it's going to just match whatever that we are passing in in the invocation part.
+
+02:30.630 --> 02:33.540
+So that's going to remain exactly the same.
+
+02:33.540 --> 02:37.080
+And I'm going to run this particular code.
+
+02:37.080 --> 02:42.900
+And you see that I'm going to get the response over here which is amazing.
+
+02:42.900 --> 02:49.770
+So this is how you can see that we can uh, we can use the chain hub, uh, hub to get the prompt over
+
+02:49.770 --> 02:50.370
+here.
+
+02:51.390 --> 02:58.800
+In our next lecture, I will show you how we can use one more way to retrieve, uh, the, uh, retrieve
+
+02:58.800 --> 03:05.580
+the information from our query, our large language model using retrieval QA.

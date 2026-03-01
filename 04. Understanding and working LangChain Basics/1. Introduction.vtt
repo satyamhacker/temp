@@ -1,0 +1,361 @@
+WEBVTT
+
+00:00.050 --> 00:05.420
+Welcome to the next section of our course building and testing AI agents, rags and chatbots using link
+
+00:05.420 --> 00:08.540
+chain with Olama and local LMS.
+
+00:08.540 --> 00:14.720
+So in this section we are going to talk about how we can start working with the link chain itself.
+
+00:14.720 --> 00:18.740
+So we are going to start doing the complete hands on from this particular section.
+
+00:19.460 --> 00:22.550
+So for doing that I'm going to flip to my Visual Studio Code.
+
+00:22.550 --> 00:26.090
+And I'm going to show you how we can get started with the link chain itself.
+
+00:26.090 --> 00:30.620
+So as you can see, I have already created some folders for Long Chain.
+
+00:30.620 --> 00:34.160
+And I have uh, I have navigated to that particular folder structure.
+
+00:34.160 --> 00:39.830
+So I'm going to open Visual Studio Code over here, and I'm going to start working from there on.
+
+00:39.830 --> 00:44.510
+But before I actually start working with this particular operation, I also need to set up the virtual
+
+00:44.510 --> 00:47.870
+environment for my Python, because we are going to be working with Python.
+
+00:47.870 --> 00:50.060
+So we need to have a virtual environment in place.
+
+00:50.060 --> 00:54.080
+So in order to create the virtual environment, all you have to do it is first of all, you need to
+
+00:54.110 --> 00:56.270
+make sure that the python is already installed in your machine.
+
+00:56.270 --> 00:58.700
+As I told you that it's a prerequisite you need to have.
+
+00:58.700 --> 01:04.400
+So make sure that you have Python installed in your machine, and once the Python is available, Then
+
+01:04.400 --> 01:07.520
+I'm going to start doing following series of operations.
+
+01:07.520 --> 01:14.210
+So I'm going to open the terminal which is inbuilt within the Visual Studio Code using Control shift
+
+01:14.240 --> 01:17.840
+P or Command shift P if you're using Mac operating system.
+
+01:17.840 --> 01:26.210
+And then I'm going to do this, I'm going to do Python 3.12 hyphen m v environment, which is the visual
+
+01:26.210 --> 01:26.900
+environment.
+
+01:26.900 --> 01:30.320
+I'm going to name it as my env 312.
+
+01:30.350 --> 01:35.330
+That is the virtual environment that I have got, and I need to activate this virtual environment using
+
+01:35.330 --> 01:36.020
+the source.
+
+01:36.020 --> 01:39.830
+My env 312 slash bin slash activate.
+
+01:39.830 --> 01:44.870
+So you see that the moment I do it, it is going to navigate to this particular virtual environment
+
+01:44.870 --> 01:45.590
+over here.
+
+01:45.590 --> 01:52.040
+And then things will be uh downloaded and set up everything from here onwards.
+
+01:52.040 --> 01:53.840
+That is the first thing that we need to do.
+
+01:53.840 --> 01:59.180
+And once you have this, we can just close this terminal because we are going to be using the Jupyter
+
+01:59.210 --> 02:01.430
+notebook for all our operation.
+
+02:01.430 --> 02:06.260
+So the Jupyter notebook that I'm talking about is something that I have already installed as a plugin
+
+02:06.260 --> 02:07.600
+within my extension.
+
+02:07.600 --> 02:14.470
+So if you don't really have it, make sure that you install the, uh, Jupyter notebooks from the extension
+
+02:14.470 --> 02:15.160
+over here.
+
+02:15.190 --> 02:18.130
+I have already installed that within my Visual Studio code.
+
+02:18.160 --> 02:21.550
+That's the reason why I can create a notebook once the installation is done.
+
+02:21.550 --> 02:26.410
+So all I have to do it is once the installation is done for the Jupyter notebook, just do a command
+
+02:26.590 --> 02:32.710
+shift P, and then you can, um, create this new Jupyter notebook.
+
+02:32.740 --> 02:35.950
+And that is going to be bringing up this Jupyter notebook for you.
+
+02:35.980 --> 02:44.170
+And once I do control s to save, uh, and I'm going to, uh, save it in a new folder, I'm going to
+
+02:44.170 --> 02:51.280
+call this as probably section one, um, which is going to be uh, basics.
+
+02:51.400 --> 02:52.450
+I'm going to hit create.
+
+02:52.480 --> 02:53.650
+That's going to create a folder.
+
+02:53.650 --> 03:01.060
+And I'm going to say, uh, basics or maybe lang chain, uh, basics.
+
+03:01.690 --> 03:02.410
+There we go.
+
+03:02.440 --> 03:04.540
+That's the notebook that I have created over here.
+
+03:04.540 --> 03:09.430
+And once the notebook is created, we're pretty good to go, and we can start working with, uh, from
+
+03:09.430 --> 03:10.030
+here on.
+
+03:10.060 --> 03:13.870
+So the first thing I'm going to do with this notebook is I'm going to do the installation part.
+
+03:13.900 --> 03:16.000
+So I'm going to go hit this markdown over here.
+
+03:16.000 --> 03:23.500
+And I'm going to say installation of required, uh dependencies okay.
+
+03:23.530 --> 03:23.860
+There.
+
+03:23.860 --> 03:25.570
+And then I'm going to select this kernel.
+
+03:25.570 --> 03:29.080
+So this kernel is very very important because the moment you select the kernel it's going to give you
+
+03:29.080 --> 03:32.500
+an option to select the Python environment or the existing Jupyter server.
+
+03:32.530 --> 03:37.150
+I'm going to choose the my env 312 that I just created this one.
+
+03:37.180 --> 03:38.110
+And it's also recommended.
+
+03:38.110 --> 03:40.330
+As you can see I'm going to choose that.
+
+03:40.330 --> 03:44.320
+That is the uh, that is the kernel that I have got over here.
+
+03:44.470 --> 03:51.940
+And now I need to start writing or maybe running the dependencies that I need for the installation part.
+
+03:51.940 --> 03:57.940
+So for doing that, I'm going to hit this code block again and I'm going to do this pip.
+
+03:58.270 --> 04:03.610
+So I'm going to put a bank symbol so that it will run the particular command if it is not installed.
+
+04:03.700 --> 04:06.370
+And then I'm going to install this Lang chain.
+
+04:07.060 --> 04:07.750
+Right.
+
+04:07.750 --> 04:16.080
+And now if I try running this it will also install an ancillary package within my within my libraries
+
+04:16.080 --> 04:16.500
+over here.
+
+04:16.530 --> 04:22.560
+You see, at the moment I only have pip, which is the python, uh, installation package for that and
+
+04:22.560 --> 04:23.640
+then the distro.
+
+04:23.640 --> 04:27.720
+And now if I try to run this, um, over here.
+
+04:27.930 --> 04:28.230
+Sorry.
+
+04:28.230 --> 04:36.540
+This one, you see that it's going to install an, uh, ipykernel package from this particular Jupyter
+
+04:36.570 --> 04:42.540
+notebook, which is required for the execution of all the code that we are going to be doing from here
+
+04:42.570 --> 04:44.190
+on from this notebook.
+
+04:44.190 --> 04:50.040
+And you see that now all of these are installed, and also now it's installing the Lang chain for me,
+
+04:50.160 --> 04:55.170
+uh, within my, uh, virtual environment.
+
+04:55.170 --> 05:00.540
+So moving forward, the virtual environment is more than enough for me to play around for everything
+
+05:00.570 --> 05:01.680
+so that the installation is done.
+
+05:01.680 --> 05:02.670
+There is a tick mark there.
+
+05:02.670 --> 05:04.170
+So that's pretty cool.
+
+05:04.170 --> 05:12.810
+And I also wanted the, uh, Allama, because we are going to be working with Allama for our local large
+
+05:12.810 --> 05:15.210
+language model for all the operation.
+
+05:15.210 --> 05:19.890
+So I need to have the, uh, long chain olama support as well.
+
+05:20.100 --> 05:23.730
+This is nothing but the, uh, integration as I was talking about.
+
+05:23.730 --> 05:32.160
+So if you just go to the long chain website over here and go to the long chain and go to the documentation
+
+05:32.160 --> 05:40.920
+of the long chain, and as I told you, there is this, uh, olama, uh, support for the long chain.
+
+05:40.950 --> 05:48.030
+So if I just say olama over here, uh, and if I hit enter, you see that this is going to be olama,
+
+05:48.270 --> 05:53.280
+uh, which is mainly used for running the large language model from your local machine.
+
+05:53.280 --> 05:59.700
+But if you're going to be using, let's say, OpenAI or probably hugging face or even maybe Cloud Anthropic,
+
+05:59.700 --> 06:06.540
+so you can choose that specific, uh, integration as well, or the package as well for your operation.
+
+06:06.540 --> 06:14.220
+So you can see that for the long chain anthropic, you can use the, uh, the LM anthropic uh, class
+
+06:14.220 --> 06:15.510
+for performing the operation.
+
+06:15.510 --> 06:24.960
+And similarly for the Appsec also, they have got the chat models of the chat model chat option available.
+
+06:24.960 --> 06:30.210
+And similarly for the olama that we are going to be using, we are going to be using that particular
+
+06:30.210 --> 06:32.940
+class, which is this one, right?
+
+06:33.240 --> 06:37.860
+So you can see that all of these are going to be coming up for you over here.
+
+06:37.860 --> 06:41.490
+And then we are going to be start working with that particular package.
+
+06:41.490 --> 06:47.460
+So once again for working with the Olama you need to install this Lang chain or Lama package within
+
+06:47.460 --> 06:48.450
+your machine.
+
+06:48.450 --> 06:53.400
+So I'm going to say pip install this particular.
+
+06:53.430 --> 06:57.750
+Is it that this is the command that we have to run install lang chain or Lama.
+
+06:57.810 --> 07:08.340
+So I'm going to say pip install lang chain and uh or lama.
+
+07:08.340 --> 07:17.400
+And I also need to have a dot env which is mainly used for reading the env file from our machine which
+
+07:17.400 --> 07:18.060
+is from here.
+
+07:18.060 --> 07:27.650
+So I'm going to create an env file uh, which is mainly used for uh reading the API keys from the OpenAI
+
+07:27.680 --> 07:30.980
+or even from the Lamb-smith, which we are going to be configuring later.
+
+07:30.980 --> 07:31.790
+Point of time.
+
+07:31.790 --> 07:37.850
+So that is something that I'm going to be doing moving forward by having reading from the dot env file,
+
+07:37.850 --> 07:43.040
+which is pretty much like how you do from other languages as well, even from JavaScript, the same
+
+07:43.040 --> 07:43.160
+thing.
+
+07:43.160 --> 07:44.540
+I'm going to do it over here as well.
+
+07:44.570 --> 07:50.600
+And for that I need to have uh, dot env package and that one I need to install it as well.
+
+07:50.600 --> 07:56.480
+So I'm going to say pip install uh and Python.
+
+07:58.670 --> 07:59.600
+Dot env.
+
+07:59.840 --> 08:01.640
+And I'm going to hit run.
+
+08:01.640 --> 08:08.840
+So now this is going to install both the lang chain olama and the python dot env package for me.
+
+08:08.840 --> 08:15.410
+And if you just go to the my env 312 libraries, you will see all the packages required like lang chain
+
+08:15.410 --> 08:21.800
+core lang chain olama and also the python dot env uh, over here for you.
+
+08:21.800 --> 08:26.330
+So once the installation is done, we are pretty good to go and then we can start writing the code starting
+
+08:26.330 --> 08:27.770
+our next lecture.

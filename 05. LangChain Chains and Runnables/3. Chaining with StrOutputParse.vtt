@@ -1,0 +1,142 @@
+WEBVTT
+
+00:00.140 --> 00:01.040
+All right.
+
+00:01.040 --> 00:09.380
+So now we are going to discuss this chaining mechanism even further with a bit more of an like message
+
+00:09.380 --> 00:12.620
+parsing probably like or the output parsing.
+
+00:12.620 --> 00:14.630
+So what I really mean about that really.
+
+00:14.630 --> 00:23.060
+So for instance, all these days we have been getting the responses as a string content over here.
+
+00:23.060 --> 00:25.610
+But these are not really parsed out quite well.
+
+00:25.610 --> 00:33.980
+So if I want to really parsed out probably like a string output with a parsing mechanism, then I can
+
+00:33.980 --> 00:40.790
+also do that, and I can then pass it to an pipeline and then get the get the response out from the
+
+00:40.790 --> 00:42.680
+parsing value as well.
+
+00:42.710 --> 00:44.240
+So I'll tell you what I really mean about that.
+
+00:44.240 --> 00:54.740
+So if I'm going to say on the markdown over here, I'm going to say a string parsing and I'm going to
+
+00:54.740 --> 00:58.400
+create a code, I'm just going to copy paste the same code over here.
+
+00:58.430 --> 01:05.980
+And I'm just going to do this, copy and paste it over here and we don't really need this one.
+
+01:06.100 --> 01:07.330
+Let me get rid of that.
+
+01:07.360 --> 01:09.100
+Also, I'm going to get rid of this comment.
+
+01:09.130 --> 01:11.110
+You are pretty familiar with that as well.
+
+01:11.410 --> 01:14.350
+And over here I'm going to do this.
+
+01:14.350 --> 01:18.550
+I'm going to import a a parser really.
+
+01:18.550 --> 01:25.360
+So I'm going to say oops from a Lang chain.
+
+01:25.510 --> 01:32.410
+Let me just stop this Lang chain core output parsers.
+
+01:32.410 --> 01:37.330
+And I'm going to import what is called as a string output parser.
+
+01:37.330 --> 01:41.140
+So this is just going to be a parser that I'm really going to be importing over here.
+
+01:41.140 --> 01:47.830
+And now I'm going to use this string output parser to get the output for me from the large language
+
+01:47.830 --> 01:48.250
+model.
+
+01:48.250 --> 01:55.900
+So now you see that I'm going to be parsing the large language model output as the string output parser
+
+01:55.930 --> 01:56.380
+over here.
+
+01:56.380 --> 01:58.840
+So I'm going to just say string output parser.
+
+01:58.960 --> 01:59.560
+Look at that.
+
+01:59.560 --> 02:01.390
+So now I can pipe it again.
+
+02:01.390 --> 02:05.520
+Or maybe I can chain it again from the large language model.
+
+02:05.520 --> 02:10.440
+I'm going to print the value out from this particular string output parser.
+
+02:10.440 --> 02:13.800
+And now I can just say response.
+
+02:14.850 --> 02:17.400
+And I'm going to say response.
+
+02:17.430 --> 02:17.730
+Okay.
+
+02:17.730 --> 02:19.590
+Print the response.
+
+02:19.590 --> 02:24.630
+I know that the output is already a string value, so there won't be much of a difference, but I wanted
+
+02:24.630 --> 02:32.010
+to show you a point here that you can keep chaining this like any further number of times as well,
+
+02:32.010 --> 02:33.690
+so that you can get the output.
+
+02:33.690 --> 02:36.780
+And again, the string output parser is also a runnable.
+
+02:36.780 --> 02:42.540
+So you are going to get the you can chain it up and then you can get the output from there as well.
+
+02:42.570 --> 02:44.760
+Let's look at that so you can change it up.
+
+02:44.760 --> 02:46.680
+And then you can get the value out from this.
+
+02:46.680 --> 02:53.520
+So this is how you can do a string parsing from this particular string output parser over here.
+
+02:53.520 --> 02:57.930
+And you can do the exact same thing for JSON or CSV or whatever that you want to do.
+
+02:57.960 --> 02:59.400
+You can do that as well.
+
+02:59.430 --> 03:05.850
+We'll be talking about that in a later point of time, but at least you got the idea of how we can actually
+
+03:05.970 --> 03:08.340
+do with the parser operation.

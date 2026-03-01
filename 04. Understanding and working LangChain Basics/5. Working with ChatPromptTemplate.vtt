@@ -1,0 +1,508 @@
+WEBVTT
+
+00:00.080 --> 00:07.190
+So in our last lecture, if you see we were doing as a user, we're passing the the request or the message
+
+00:07.190 --> 00:10.100
+to the Lamb-smith via the prompt template.
+
+00:10.100 --> 00:15.560
+And then the prompt template was formatting the the input along with the input variables.
+
+00:15.560 --> 00:19.010
+And then it was sending it to the large language model.
+
+00:19.010 --> 00:20.990
+And we're getting the response back to the lamb-smith.
+
+00:20.990 --> 00:22.580
+And then we were sending it to the user.
+
+00:22.580 --> 00:26.360
+And of course there was an observability were happening using the lamb-smith for us.
+
+00:26.390 --> 00:29.540
+And that is what we were discussing in our last lecture.
+
+00:29.540 --> 00:36.440
+But now that we are going to set a role for the large language model itself, and then we will see how
+
+00:36.440 --> 00:37.610
+we can get the responses.
+
+00:37.610 --> 00:46.340
+So basically when we say role, what I really mean about that is that if I want to say that you large
+
+00:46.340 --> 00:53.870
+language model, you are an expert in this particular field, then give me this particular response
+
+00:53.870 --> 00:55.130
+in a perfect fashion.
+
+00:55.130 --> 00:56.570
+So you can say that as well.
+
+00:56.570 --> 01:01.190
+So you can tell or assign a role to the large language model while you ask the question.
+
+01:01.190 --> 01:04.790
+So for instance, if I go to the ChatGPT over here.
+
+01:04.790 --> 01:16.850
+And then if I ask a question that, uh, can you explain me the financial world, uh, financial status
+
+01:16.850 --> 01:19.700
+or maybe financial status of NZ?
+
+01:20.630 --> 01:28.520
+Uh, it is going to give me a response over here, like what it is going to be responding like searching
+
+01:28.520 --> 01:30.350
+it and getting the responses.
+
+01:30.350 --> 01:33.350
+Pretty much like how it does like a Google search for me.
+
+01:33.380 --> 01:33.770
+Right.
+
+01:33.800 --> 01:42.800
+And now let me just stop this guy and I'm going to say you are an financial expert in NZ economy.
+
+01:42.890 --> 01:51.500
+Now give me now explain me the financial uh status of NZ.
+
+01:51.860 --> 01:59.030
+So now while I do that over here, you will notice that as a financial expert of New Zealand economy
+
+01:59.030 --> 02:02.420
+in 2025, he has the detailed breakdown of the financial status.
+
+02:02.420 --> 02:08.540
+So now you see that now this ChatGPT has got a role that he is going to play for us when it responds
+
+02:08.540 --> 02:12.770
+and it says that this is the current economic condition, what is the fiscal position?
+
+02:12.770 --> 02:17.780
+What is the monetary policy and interest rate policy and investment initiative and the conclusion?
+
+02:17.780 --> 02:19.640
+So that is what I'm talking about.
+
+02:19.640 --> 02:27.350
+So instead of you getting just like a like a search result from the ChatGPT what it knows, but this
+
+02:27.350 --> 02:32.570
+is going to give you even more of an optimized and expected result that you're looking for.
+
+02:32.570 --> 02:39.260
+So this kind of roles that you can actually set to the prompt template, and then you can send it to
+
+02:39.290 --> 02:43.700
+the ChatGPT from using the prompt template as well.
+
+02:43.700 --> 02:45.530
+That is what we're going to be discussing this lecture.
+
+02:45.530 --> 02:47.750
+So let's see how we can actually achieve that.
+
+02:48.020 --> 02:50.630
+So I'm going to just say a markdown over here.
+
+02:50.630 --> 02:54.110
+And I'm going to say this is going to be what is called as prompt template.
+
+02:54.140 --> 02:56.150
+That is what we are going to say.
+
+02:56.150 --> 02:59.240
+But this is going to be chat prompt template okay.
+
+02:59.270 --> 03:00.830
+What is chat prompt template.
+
+03:00.830 --> 03:06.380
+Well I'm going to write the exact same code that we were discussing over here as well.
+
+03:06.380 --> 03:12.950
+So I'm going to probably copy some of the code from here, I'm going to paste it, but instead of importing
+
+03:12.950 --> 03:16.610
+the prompt template, I'm going to import what is called as chat prompt template.
+
+03:16.610 --> 03:23.060
+This is another class that you can use, and over here for the chat prompt template we have to modify
+
+03:23.060 --> 03:26.750
+the code a bit from what we have got over here.
+
+03:26.750 --> 03:32.480
+So so you can pass the chat prompt template and then you can pass the the data.
+
+03:32.480 --> 03:38.390
+But because the data requires a sequence of message, as you can see over here is that there's a square
+
+03:38.390 --> 03:39.140
+bracket there.
+
+03:39.140 --> 03:45.230
+So you need to probably pass it like like a square bracket, which means it's an array of information.
+
+03:45.230 --> 03:50.000
+So you can pass the whole information there directly or within this particular array.
+
+03:50.030 --> 03:55.250
+You can now also pass the message like how you want it to.
+
+03:55.460 --> 03:58.880
+Um, for instance, you can pass the.
+
+03:58.910 --> 04:01.400
+So they said they have got the template example there.
+
+04:01.400 --> 04:03.380
+You can pass the human message.
+
+04:03.380 --> 04:06.170
+You can pass the AI message something like this.
+
+04:06.200 --> 04:09.410
+Or you can also pass the system message.
+
+04:09.920 --> 04:13.820
+So what I mean in here when I say system messages that I'm going to say system.
+
+04:13.850 --> 04:14.960
+I'm sorry, this is an array.
+
+04:14.960 --> 04:17.690
+So we need to use the parentheses there.
+
+04:17.690 --> 04:25.250
+And I'm going to say in system message, uh, you are an LM expert.
+
+04:25.250 --> 04:27.920
+I'm just going to close this guy over here.
+
+04:27.920 --> 04:40.040
+And in the next value I'm going to say as a user, I'm going to ask, what is the, uh, advantage of
+
+04:40.040 --> 04:44.300
+running AI models in.
+
+04:44.570 --> 04:47.240
+And then I'm going to pass the Env here.
+
+04:48.680 --> 04:49.190
+Right.
+
+04:49.190 --> 04:57.710
+So while I do that over here, I'm essentially going to ask the question along with system and the user
+
+04:57.710 --> 04:59.030
+prompt over there.
+
+04:59.030 --> 05:01.100
+So let me just comment these codes.
+
+05:01.100 --> 05:03.230
+I don't want to run this at the moment.
+
+05:03.230 --> 05:05.870
+I want to see how the prompt template right now looks like.
+
+05:05.870 --> 05:12.950
+So if I try running this code, we'll see that it has got the chat prompt as input variable as env and
+
+05:12.980 --> 05:13.520
+input type.
+
+05:13.520 --> 05:15.380
+Is this uh, blah blah blah.
+
+05:15.410 --> 05:17.150
+But look at that in the message.
+
+05:17.150 --> 05:19.550
+We have got a system message prompt.
+
+05:20.960 --> 05:21.470
+Wow.
+
+05:21.470 --> 05:23.900
+So that is new because we are using just a chat prompt template.
+
+05:23.900 --> 05:25.520
+But what is the system message from template?
+
+05:25.520 --> 05:29.090
+Because now we have created a system message there.
+
+05:29.090 --> 05:31.820
+So that is why it is called a system message from template.
+
+05:31.820 --> 05:37.100
+And inside the system message prompt template, we have got a prompt with a prompt template, like the
+
+05:37.100 --> 05:40.520
+generic prompt template that we actually used this guy.
+
+05:40.910 --> 05:44.330
+And here it says another input variable type blah blah blah.
+
+05:44.330 --> 05:47.210
+And you are it just has got what is called as an template.
+
+05:47.210 --> 05:49.340
+As you are an LM expert.
+
+05:49.730 --> 05:55.340
+Essentially you are creating two prompt template inside this particular chat prompt template.
+
+05:55.340 --> 05:57.500
+So this is what it is saying.
+
+05:57.500 --> 06:03.380
+And then there is this human message prompt template which is going to have the user details.
+
+06:03.380 --> 06:06.950
+So this is the human message prompt template that you are passing in.
+
+06:07.190 --> 06:08.690
+And it has got a template.
+
+06:08.690 --> 06:10.190
+So now you got the idea right.
+
+06:10.220 --> 06:13.520
+Like this particular prompt template is the shorthand of system and user.
+
+06:13.550 --> 06:18.580
+We are essentially creating a system prompt template and user prompt template.
+
+06:18.580 --> 06:21.130
+And that is what is really happening over here.
+
+06:21.130 --> 06:27.880
+So that is what we have essentially created in this particular piece of code.
+
+06:27.880 --> 06:33.910
+So this code can be written in an entirely different fashion as well, because now you got the idea
+
+06:33.910 --> 06:38.740
+how this particular prompt template is really been created, the way you can create right now, the
+
+06:38.770 --> 06:45.340
+same code, the same exact code, like how it is happening inside or behind the scene is that let's
+
+06:45.340 --> 06:54.880
+say I'm just going to probably, um, import it like this over here.
+
+06:55.390 --> 07:03.250
+Uh, so chat prompt template and then human message prompt template and then system message prompt template.
+
+07:03.820 --> 07:06.190
+So I'm going to import three things right now.
+
+07:06.700 --> 07:11.110
+And you can just say system message prompt template.
+
+07:11.860 --> 07:21.400
+Uh sorry var system message is equal to system message prompt template.
+
+07:22.090 --> 07:26.680
+And then I'm going to hit from template method.
+
+07:26.680 --> 07:28.780
+And then I'm going to pass the template over here.
+
+07:28.780 --> 07:32.710
+So basically the template is going to be you are an LLM expert.
+
+07:32.740 --> 07:35.530
+This guy right now copy paste that.
+
+07:35.740 --> 07:39.220
+And then I'm going to create a human message prompt template.
+
+07:39.220 --> 07:40.840
+So which is human message or user message.
+
+07:40.840 --> 07:48.280
+Whatever that you wanted to call it is equal to human message prompt template from template.
+
+07:48.520 --> 07:51.880
+And then this is the message that I'm talking about.
+
+07:51.910 --> 07:52.150
+Right.
+
+07:52.180 --> 07:54.730
+I'm going to go and pass that over here.
+
+07:55.390 --> 07:59.140
+And now inside this particular chat prompt template.
+
+07:59.140 --> 08:05.440
+So this is I'm going to say one way of doing it.
+
+08:05.440 --> 08:07.930
+And I'm going to comment this.
+
+08:07.930 --> 08:14.890
+And I'm going to put the prompt template is equal to chat prompt template.
+
+08:15.550 --> 08:18.070
+And as I told you this is going to be in sequence.
+
+08:18.070 --> 08:19.300
+So it's going to be an array.
+
+08:19.300 --> 08:25.780
+And over here I'm going to pass the system message and human message.
+
+08:25.810 --> 08:26.860
+Just this one.
+
+08:27.370 --> 08:32.050
+So this is also pretty much exactly the same thing that we have did over here.
+
+08:32.050 --> 08:33.370
+This is another way of doing it.
+
+08:33.370 --> 08:36.220
+So if I try running this prompt template look at that.
+
+08:36.220 --> 08:38.320
+This is exactly the same thing.
+
+08:38.320 --> 08:42.760
+So this is the chat prompt template which has got the input and input variable of e and v.
+
+08:43.300 --> 08:48.400
+And the message has got a system message prompt template which has got these many things.
+
+08:48.400 --> 08:49.900
+And you are an LLM expert.
+
+08:49.900 --> 08:54.490
+And you also have got this human message prompt template which has got these information.
+
+08:54.490 --> 09:01.270
+So this is exactly what is happening under the hood for you while you call this one.
+
+09:01.270 --> 09:06.280
+So this is these both are exactly the same thing that we are doing over here.
+
+09:06.820 --> 09:08.950
+So I hope you got the idea like how we are doing it.
+
+09:08.950 --> 09:15.670
+And now if I want to invoke this particular chat chat prompt template or the prompt template that we
+
+09:15.670 --> 09:19.000
+have got over here, this is essentially exactly the same thing.
+
+09:19.000 --> 09:22.930
+All you have to do it is just say prompt, prompt, invoke.
+
+09:22.930 --> 09:26.380
+And the same thing like how we did before E and V local machine.
+
+09:26.650 --> 09:29.200
+And then we can print the content out.
+
+09:29.200 --> 09:31.450
+So let's see if that works.
+
+09:31.480 --> 09:35.650
+I'm gonna also print the content this time.
+
+09:37.690 --> 09:40.300
+And let's try to run this.
+
+09:43.030 --> 09:43.690
+Look at that.
+
+09:43.720 --> 09:44.440
+It's executed.
+
+09:44.440 --> 09:47.860
+And we got the response pretty much like how we were doing before.
+
+09:48.040 --> 09:54.160
+And if I go back to our langschmidt over here, you should see that.
+
+09:54.190 --> 09:54.610
+There we go.
+
+09:54.610 --> 09:57.730
+So we see that that's coming up the chat Olama.
+
+09:57.730 --> 10:00.880
+And now you have got the input as system.
+
+10:00.880 --> 10:04.090
+You are an LLM expert and it has got a human message.
+
+10:04.090 --> 10:05.980
+What is the advantage of running this in local machine.
+
+10:05.980 --> 10:08.890
+And we get the response coming up over here.
+
+10:09.130 --> 10:12.370
+That is what we're talking about the chat prompt template.
+
+10:12.370 --> 10:14.980
+And what is the power of using chat prompt template.
+
+10:14.980 --> 10:18.040
+And I think the shorthand is far better.
+
+10:18.040 --> 10:24.310
+And that is what we are going to be using in this particular, uh, session most of the time, because
+
+10:24.310 --> 10:28.240
+it is very straightforward and it is shorthand as well.
+
+10:28.240 --> 10:33.820
+You don't really have to create so many different imports, and you have to create an from template
+
+10:33.850 --> 10:36.670
+there and pass it to the chat prompt template instead.
+
+10:36.670 --> 10:39.850
+You can just use this one and it is far better as well.
+
+10:40.300 --> 10:48.520
+And you can also in fact suggest like what is the AI response going to be coming up when we talk about
+
+10:48.550 --> 10:52.150
+template like custom template creation later on in this course.
+
+10:52.150 --> 10:56.050
+So you'll understand how you can actually use those prompt templates and stuff.
+
+10:56.050 --> 11:04.540
+But you got the first taste of how you can actually create the prompt templates like chat prompt template
+
+11:04.540 --> 11:10.300
+to the user role, and also chat template to send a message to the large language model, and how you
+
+11:10.300 --> 11:17.650
+can invoke the large language model using language chain, and also passing it to Lang Smith, and how
+
+11:17.650 --> 11:20.950
+you can directly interact with the large language model.
+
+11:20.950 --> 11:25.330
+So these are the things that we have discussed so far in this particular section.
+
+11:25.330 --> 11:31.390
+In our next section, starting the next section, we will understand how we can work with the Lang chain
+
+11:31.390 --> 11:32.230
+even further.

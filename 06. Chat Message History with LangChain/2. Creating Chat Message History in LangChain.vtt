@@ -1,0 +1,781 @@
+WEBVTT
+
+1
+00:00:00.290 --> 00:00:03.250
+A primeira coisa que vamos usar para nossa
+
+2
+00:00:03.250 --> 00:00:05.590
+história de mensagem será o Runnable com Libraria
+
+3
+00:00:05.590 --> 00:00:07.230
+de História de Mensagem, que é uma das
+
+4
+00:00:07.230 --> 00:00:11.130
+bibliotecas importantes que vamos usar nesta seção inteira.
+
+5
+00:00:11.730 --> 00:00:13.710
+Veja que este Runnable com História de Mensagem
+
+6
+00:00:13.710 --> 00:00:15.910
+é um Runnable que gerencia a história de
+
+7
+00:00:15.910 --> 00:00:18.150
+mensagem de conversa para outros Runnables.
+
+8
+00:00:18.370 --> 00:00:19.470
+É isso que isso realmente faz.
+
+9
+00:00:20.090 --> 00:00:21.790
+Uma história de mensagem de conversa é uma
+
+10
+00:00:21.790 --> 00:00:25.010
+sequência de mensagens que representa uma conversa.
+
+11
+00:00:25.770 --> 00:00:27.650
+E o Runnable com História de Mensagem envelhece
+
+12
+00:00:27.650 --> 00:00:30.070
+outros Runnables e gerencia a história de mensagem
+
+13
+00:00:30.070 --> 00:00:31.570
+de conversa para ele.
+
+14
+00:00:32.130 --> 00:00:35.010
+E ele é responsável por ler e atualizar
+
+15
+00:00:35.010 --> 00:00:36.090
+a história de mensagem de conversa.
+
+16
+00:00:36.650 --> 00:00:38.590
+Então, você verá que todos os levantamentos pesados
+
+17
+00:00:38.590 --> 00:00:42.150
+serão cuidadosos por este Runnable com História de
+
+18
+00:00:42.150 --> 00:00:42.630
+Mensagem para nós.
+
+19
+00:00:43.030 --> 00:00:46.250
+E você também notará que, para você invocar
+
+20
+00:00:46.250 --> 00:00:52.710
+a história das mensagens, você precisa usar o
+
+21
+00:00:52.710 --> 00:00:56.170
+objeto História.Invoke e então você precisa usar
+
+22
+00:00:56.170 --> 00:00:59.830
+este config que é igual ao configurável do
+
+23
+00:00:59.830 --> 00:01:02.170
+ID da sessão do particular usuário.
+
+24
+00:01:02.370 --> 00:01:03.690
+Então, esta é uma das coisas mais importantes
+
+25
+00:01:03.690 --> 00:01:05.750
+que você precisa entender enquanto está usando este
+
+26
+00:01:05.750 --> 00:01:07.390
+Runnable com História de Mensagem.
+
+27
+00:01:07.550 --> 00:01:09.930
+E é isso que vamos fazer nesta parte
+
+28
+00:01:09.930 --> 00:01:10.290
+particular.
+
+29
+00:01:11.450 --> 00:01:13.350
+E, a maior parte do tempo, vamos fazer
+
+30
+00:01:13.350 --> 00:01:17.410
+a mesma operação, mas vamos ver diferentes sabores
+
+31
+00:01:17.410 --> 00:01:20.370
+de como podemos usar esta operação de história
+
+32
+00:01:20.370 --> 00:01:23.290
+de mensagem de conversa com a história de
+
+33
+00:01:23.290 --> 00:01:25.190
+mensagem de conversa com a história de mensagem
+
+34
+00:01:25.190 --> 00:01:27.770
+de conversa de base ou também podemos usar
+
+35
+00:01:27.770 --> 00:01:29.390
+a história de mensagem de mensagem de SQL
+
+36
+00:01:30.610 --> 00:01:33.150
+e também podemos usar a história de mensagem
+
+37
+00:01:33.150 --> 00:01:34.470
+de mensagem de stream que vai ser guardada
+
+38
+00:01:34.470 --> 00:01:35.090
+na memória.
+
+39
+00:01:35.630 --> 00:01:37.630
+Então, vamos ver três sabores de como podemos
+
+40
+00:01:37.630 --> 00:01:40.630
+manter a história de conversa dentro das nossas
+
+41
+00:01:40.630 --> 00:01:41.950
+aplicações de modelos de linguagem maior.
+
+42
+00:01:42.810 --> 00:01:45.730
+Então, o primeiro que vamos discutir vai ser
+
+43
+00:01:45.730 --> 00:01:48.470
+com a história de mensagem de conversa da
+
+44
+00:01:48.470 --> 00:01:51.630
+edição de comunidade que actualmente downloadamos aqui.
+
+45
+00:01:51.630 --> 00:01:54.230
+Este cara, Runnable com História de Mensagem.
+
+46
+00:01:54.630 --> 00:01:56.310
+Tudo bem, vamos começar escrevendo o código aqui.
+
+47
+00:01:56.530 --> 00:01:57.950
+Então, o primeiro é...
+
+48
+00:01:57.950 --> 00:02:05.150
+Ops, vou escrever provavelmente uma marcação aqui e
+
+49
+00:02:05.150 --> 00:02:10.350
+vou dizer história de mensagem com história de
+
+50
+00:02:10.350 --> 00:02:10.450
+mensagem de conversa.
+
+51
+00:02:11.170 --> 00:02:14.370
+Pegue aqui e vamos começar escrevendo o código.
+
+52
+00:02:14.770 --> 00:02:17.270
+E aqui, vou fazer isto.
+
+53
+00:02:17.450 --> 00:02:20.530
+Vou dizer que o template é igual a...
+
+54
+00:02:20.530 --> 00:02:22.430
+Vou chamar o template de conversa de conversa
+
+55
+00:02:22.930 --> 00:02:24.950
+que estávamos usando antes.
+
+56
+00:02:26.230 --> 00:02:29.370
+E vou usar, pela primeira vez, o método
+
+57
+00:02:29.370 --> 00:02:31.930
+de mensagem de From.
+
+58
+00:02:32.290 --> 00:02:34.730
+Então, isto é novo, nunca usamos isto antes.
+
+59
+00:02:35.470 --> 00:02:37.450
+Então, vou usar isto aqui.
+
+60
+00:02:38.210 --> 00:02:42.570
+E na mensagem de From, vou pausar no
+
+61
+00:02:42.570 --> 00:02:47.370
+array, vou pausar o placeholder de mensagem e
+
+62
+00:02:47.370 --> 00:02:48.410
+a mensagem humana.
+
+63
+00:02:48.410 --> 00:02:51.030
+Lembrem-se que isto é algo que discutimos
+
+64
+00:02:51.030 --> 00:02:53.730
+antes enquanto trabalhávamos com o template de From
+
+65
+00:02:53.730 --> 00:02:53.830
+de conversa.
+
+66
+00:02:54.710 --> 00:02:56.190
+Então, vou fazer a mesma coisa aqui.
+
+67
+00:02:56.530 --> 00:03:01.070
+Vou dizer human e vou pausar o From,
+
+68
+00:03:01.390 --> 00:03:03.130
+que será uma variável de entrada.
+
+69
+00:03:04.070 --> 00:03:06.910
+E depois, preciso pausar o placeholder aqui.
+
+70
+00:03:07.490 --> 00:03:09.710
+Lembrem-se que o placeholder é algo como
+
+71
+00:03:09.710 --> 00:03:13.190
+um shorthand que podemos usar para a operação
+
+72
+00:03:13.190 --> 00:03:13.710
+do placeholder.
+
+73
+00:03:14.730 --> 00:03:18.110
+Então, se voltarmos às bases aqui e se
+
+74
+00:03:18.110 --> 00:03:21.810
+eu só ir até cima, se lembrem-se,
+
+75
+00:03:22.760 --> 00:03:26.170
+no template de From de conversa, estávamos usando
+
+76
+00:03:27.200 --> 00:03:32.890
+uma versão shorthand do placeholder, algo assim, para
+
+77
+00:03:32.890 --> 00:03:33.970
+o placeholder de mensagem.
+
+78
+00:03:34.430 --> 00:03:37.570
+É exatamente o que vou fazer aqui também.
+
+79
+00:03:38.170 --> 00:03:45.730
+Então, vou dizer placeholder, placeholder, e este particular
+
+80
+00:03:45.730 --> 00:03:50.150
+placeholder vai ser algo assim, certo?
+
+81
+00:03:50.530 --> 00:03:50.790
+É isso.
+
+82
+00:03:50.970 --> 00:03:52.390
+Esta é a única coisa que preciso fazer
+
+83
+00:03:52.390 --> 00:03:54.450
+aqui para o template.
+
+84
+00:03:55.690 --> 00:03:58.370
+Podemos usar o placeholder de mensagem, mas vou
+
+85
+00:03:58.370 --> 00:03:59.830
+usar o placeholder por enquanto.
+
+86
+00:03:59.950 --> 00:04:00.690
+Vamos ver como vai.
+
+87
+00:04:00.970 --> 00:04:04.070
+E depois, preciso criar uma linha aqui.
+
+88
+00:04:04.530 --> 00:04:07.050
+A linha que vou fazer é simples.
+
+89
+00:04:07.510 --> 00:04:11.190
+Vou chamar o template que criei e vou
+
+90
+00:04:11.190 --> 00:04:13.610
+passá-lo para o nosso modelo de língua
+
+91
+00:04:13.610 --> 00:04:17.110
+maior e vou passar ele até o nosso
+
+92
+00:04:17.110 --> 00:04:18.910
+parser de saída de linha aqui.
+
+93
+00:04:19.310 --> 00:04:24.170
+Então, vou dizer method stringOutputParser aqui.
+
+94
+00:04:24.310 --> 00:04:26.290
+Então, esta é a linha que criei, uma
+
+95
+00:04:26.290 --> 00:04:27.070
+linha super simples.
+
+96
+00:04:27.750 --> 00:04:31.470
+E agora, preciso chamar o nosso histórico, que
+
+97
+00:04:31.470 --> 00:04:34.970
+vai ser o runnable com história de mensagem,
+
+98
+00:04:35.390 --> 00:04:36.630
+que vou passar.
+
+99
+00:04:37.030 --> 00:04:42.150
+Então, como eu disse no diagrama aqui, a
+
+100
+00:04:42.150 --> 00:04:45.530
+cada vez que o template é executado na
+
+101
+00:04:45.530 --> 00:04:49.310
+operação de linha, vamos primeiro verificar o nosso
+
+102
+00:04:49.310 --> 00:04:52.010
+histórico, e se o histórico tem alguma data,
+
+103
+00:04:52.450 --> 00:04:55.710
+vai ser tomado junto com esta mensagem de
+
+104
+00:04:55.710 --> 00:04:58.450
+prompt que temos, e depois vai ser enviado
+
+105
+00:04:58.450 --> 00:05:00.830
+para o LLM para que o LLM tenha
+
+106
+00:05:00.830 --> 00:05:02.690
+o contexto da conversa anterior.
+
+107
+00:05:03.890 --> 00:05:07.310
+Então, para conseguirmos isso aqui, temos que passar
+
+108
+00:05:07.310 --> 00:05:14.190
+a linha e precisamos passar a história e
+
+109
+00:05:14.190 --> 00:05:19.630
+depois precisamos passar a mensagem de prompt que
+
+110
+00:05:19.630 --> 00:05:22.110
+vamos passar, que vai ser este cara, a
+
+111
+00:05:22.110 --> 00:05:22.610
+mensagem de prompt, certo?
+
+112
+00:05:22.970 --> 00:05:24.310
+Mas há um troço.
+
+113
+00:05:24.630 --> 00:05:27.990
+Para fazermos esta operação de história, precisamos escrever
+
+114
+00:05:27.990 --> 00:05:30.790
+um método customizado para que a operação histórica
+
+115
+00:05:30.790 --> 00:05:31.470
+seja cuidada.
+
+116
+00:05:32.070 --> 00:05:35.570
+E por essa razão, precisamos escrever algumas mais
+
+117
+00:05:35.570 --> 00:05:36.870
+linhas de código aqui.
+
+118
+00:05:37.350 --> 00:05:41.450
+Então, vou colocar um comentário aqui e vou
+
+119
+00:05:41.450 --> 00:05:44.670
+escrever um método super simples.
+
+120
+00:05:45.510 --> 00:05:48.730
+Então, vou dizer, stor é igual a, vou
+
+121
+00:05:48.730 --> 00:05:51.570
+criar um array simples e vou escrever um
+
+122
+00:05:51.570 --> 00:05:55.190
+método aqui chamado getSessionHistory.
+
+123
+00:05:56.880 --> 00:06:01.700
+E este particular getSessionHistory vai obter um id
+
+124
+00:06:01.700 --> 00:06:04.000
+de sessão, que é de tipo string.
+
+125
+00:06:05.000 --> 00:06:07.420
+E também vou, pela primeira vez, vou dizer
+
+126
+00:06:07.420 --> 00:06:10.100
+que o tipo de retorno deste particular mensagem
+
+127
+00:06:10.100 --> 00:06:12.500
+vai ser um tipo de história de mensagem
+
+128
+00:06:12.500 --> 00:06:12.940
+de chat base.
+
+129
+00:06:14.280 --> 00:06:14.520
+Certo?
+
+130
+00:06:15.120 --> 00:06:19.140
+E vou dizer, se o id de sessão
+
+131
+00:06:19.980 --> 00:06:22.940
+não está na loja, então, se a loja
+
+132
+00:06:22.940 --> 00:06:27.980
+não tiver valor, então vai criar o id
+
+133
+00:06:27.980 --> 00:06:32.660
+de sessão com uma nova história de mensagem
+
+134
+00:06:32.660 --> 00:06:32.760
+de chat.
+
+135
+00:06:33.740 --> 00:06:35.800
+Então, este é para a primeira vez que
+
+136
+00:06:35.800 --> 00:06:37.920
+vamos inicializar a história de mensagem de chat
+
+137
+00:06:38.600 --> 00:06:41.760
+que temos importada, que é este cara, certo?
+
+138
+00:06:42.040 --> 00:06:43.860
+É aqui que estas coisas vão acontecer.
+
+139
+00:06:44.660 --> 00:06:48.320
+Mas, se há uma mensagem já, então, retorne
+
+140
+00:06:48.320 --> 00:06:52.720
+-me a loja do id de sessão.
+
+141
+00:06:53.500 --> 00:06:54.100
+É isso.
+
+142
+00:06:54.340 --> 00:06:55.900
+Então, este é o que este particular método
+
+143
+00:06:55.900 --> 00:06:56.500
+vai dar.
+
+144
+00:06:57.150 --> 00:06:59.800
+E este método é algo que vai manter
+
+145
+00:06:59.800 --> 00:07:00.800
+a informação de sessão.
+
+146
+00:07:01.420 --> 00:07:03.500
+Então, o que vou fazer aqui é, vou
+
+147
+00:07:03.500 --> 00:07:06.640
+dizer, change, e aí você recebe a história,
+
+148
+00:07:06.760 --> 00:07:08.400
+a história de sessão para mim, ali em
+
+149
+00:07:08.400 --> 00:07:08.500
+cima.
+
+150
+00:07:09.480 --> 00:07:11.460
+E também, adivinha o que?
+
+151
+00:07:11.640 --> 00:07:13.680
+Vou passar duas variáveis desta vez.
+
+152
+00:07:13.920 --> 00:07:17.160
+Uma é a chave de mensagens de input.
+
+153
+00:07:19.500 --> 00:07:22.000
+E esta chave de mensagens de input é
+
+154
+00:07:22.000 --> 00:07:24.660
+nada mais do que o prompt que passamos
+
+155
+00:07:24.660 --> 00:07:25.320
+aqui.
+
+156
+00:07:25.320 --> 00:07:26.480
+Como podem ver, este.
+
+157
+00:07:26.840 --> 00:07:29.160
+Então, vou passar o prompt aqui.
+
+158
+00:07:31.140 --> 00:07:33.760
+Deixe-me fazer algo assim para que seja
+
+159
+00:07:33.760 --> 00:07:34.240
+mais legítimo.
+
+160
+00:07:36.930 --> 00:07:38.890
+Este vai ser o método de input, história.
+
+161
+00:07:39.610 --> 00:07:43.970
+E também vou ter uma mensagem de localizador
+
+162
+00:07:43.970 --> 00:07:47.210
+que temos aqui, que é a operação de
+
+163
+00:07:47.210 --> 00:07:47.530
+história, certo?
+
+164
+00:07:47.810 --> 00:07:49.650
+Isso também é algo que preciso passar.
+
+165
+00:07:50.270 --> 00:07:53.370
+Então, oh, desculpe, este é a história e
+
+166
+00:07:53.370 --> 00:07:54.190
+passei assim.
+
+167
+00:07:54.530 --> 00:07:55.270
+Vai falhar.
+
+168
+00:07:56.250 --> 00:07:56.550
+Legal.
+
+169
+00:07:57.010 --> 00:07:59.450
+Então, este método de localizador vai ser a
+
+170
+00:07:59.450 --> 00:07:59.750
+história.
+
+171
+00:08:00.110 --> 00:08:03.890
+Para isso, vou dizer chave de mensagens de
+
+172
+00:08:03.890 --> 00:08:06.630
+história, que é igual a história.
+
+173
+00:08:08.010 --> 00:08:08.390
+Ali em cima.
+
+174
+00:08:08.570 --> 00:08:09.930
+Então, estes são os valores que vão ser
+
+175
+00:08:09.930 --> 00:08:11.830
+passados para o localizador.
+
+176
+00:08:12.410 --> 00:08:14.530
+E também para o prompt, vai ser replacado
+
+177
+00:08:14.530 --> 00:08:17.110
+com o prompt que vou passar para esta
+
+178
+00:08:17.110 --> 00:08:19.130
+história enquanto tentamos invocá-lo.
+
+179
+00:08:19.910 --> 00:08:23.650
+E agora, enquanto temos todos estes aqui, posso
+
+180
+00:08:23.650 --> 00:08:28.690
+agora ir diretamente e invocar esta história usando
+
+181
+00:08:28.690 --> 00:08:31.470
+a história.invoc e veremos como isso pode
+
+182
+00:08:31.470 --> 00:08:31.789
+acontecer.
+
+183
+00:08:32.350 --> 00:08:33.070
+Mas, adivinha o que?
+
+184
+00:08:33.130 --> 00:08:35.530
+Como eu te disse, porque também precisamos passar
+
+185
+00:08:35.530 --> 00:08:38.110
+a ID de sessão junto com todas as
+
+186
+00:08:38.110 --> 00:08:42.409
+nossas mensagens, como vimos na documentação aqui, precisamos
+
+187
+00:08:42.409 --> 00:08:45.550
+passar, enquanto fazemos a história.invoc, precisamos passar
+
+188
+00:08:45.550 --> 00:08:47.850
+o config que é igual ao configurável da
+
+189
+00:08:47.850 --> 00:08:48.550
+ID de sessão.
+
+190
+00:08:48.990 --> 00:08:51.150
+Apenas então o LLM terá o contexto de
+
+191
+00:08:51.150 --> 00:08:53.950
+quem está falando com o LLM em qualquer
+
+192
+00:08:53.950 --> 00:08:54.910
+ponto de tempo.
+
+193
+00:08:55.090 --> 00:08:57.950
+Então, para você alcançar isso, também precisamos passar
+
+194
+00:08:57.950 --> 00:09:00.030
+a ID de sessão, que faremos na nossa
+
+195
+00:09:00.030 --> 00:09:00.550
+próxima aula.

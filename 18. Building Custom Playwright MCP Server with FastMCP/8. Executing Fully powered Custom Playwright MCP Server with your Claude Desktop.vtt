@@ -1,0 +1,181 @@
+WEBVTT
+
+00:00.800 --> 00:01.640
+All right.
+
+00:01.640 --> 00:07.880
+So now the last lecture of this particular section, I'm going to go to our cloud desktop, going to
+
+00:07.920 --> 00:08.880
+completely close it.
+
+00:09.160 --> 00:11.400
+And I'm going to open the cloud desktop.
+
+00:11.400 --> 00:15.760
+So because this is going to the player service has already been configured.
+
+00:15.760 --> 00:21.040
+If I'm just going to open the cloud, uh, by closing it and reopening it, it is just going to spawn
+
+00:21.040 --> 00:23.760
+up with a new server that we have configured.
+
+00:24.080 --> 00:25.960
+And look at that.
+
+00:25.960 --> 00:30.040
+We have our playwright MCP server with seven tools.
+
+00:30.080 --> 00:31.600
+Wow, that is amazing.
+
+00:31.600 --> 00:35.960
+We have already built an fully functional MCP server, which is amazing.
+
+00:36.160 --> 00:48.200
+And now if I'm going to say can you navigate uh to http colon e app, uh sammy.com and click login link
+
+00:48.240 --> 00:58.240
+and perform login operation with username as admin and password as password.
+
+00:58.640 --> 01:04.040
+And then click uh employee list.
+
+01:04.360 --> 01:17.270
+Um something like that and click create button and uh, enter the details of employee and finally log
+
+01:17.310 --> 01:17.830
+out.
+
+01:17.830 --> 01:23.350
+So I'm going to do perform and complete end to end scenario of that particular application.
+
+01:23.630 --> 01:28.990
+And we'll see how the MCP server that we have built is going to do all these job for us.
+
+01:28.990 --> 01:29.390
+Look at that.
+
+01:29.430 --> 01:34.270
+The MCP server has launched the uh, launch the browser.
+
+01:34.510 --> 01:34.670
+Now.
+
+01:34.710 --> 01:36.910
+It should perform a login link.
+
+01:36.910 --> 01:37.830
+Click look at that.
+
+01:37.830 --> 01:38.950
+It just did that.
+
+01:38.950 --> 01:39.630
+Perfect.
+
+01:39.630 --> 01:40.430
+It's done.
+
+01:40.750 --> 01:43.670
+And now it should perform a fill operation.
+
+01:43.710 --> 01:45.910
+I'm going to just say hello always.
+
+01:45.910 --> 01:50.630
+So it's going to enter the username as admin password as passwords clicking the login link.
+
+01:51.070 --> 01:54.590
+And then it should click the employee list for us over there.
+
+01:54.910 --> 01:55.430
+Done.
+
+01:56.030 --> 01:57.150
+Which is awesome.
+
+01:57.190 --> 02:02.950
+I just feel like I'm just showing a demo of my existing playwright MCP server, which is built, uh,
+
+02:03.070 --> 02:11.190
+in the it's built in available as the NPM package, which is pretty amazing to see how this is working.
+
+02:12.030 --> 02:12.630
+Ah, look at that.
+
+02:12.630 --> 02:14.510
+It's just clicking the grade as well.
+
+02:14.710 --> 02:17.830
+Uh, let's just assume that I'm going to choose that junior.
+
+02:18.870 --> 02:21.270
+Um, let's see what's really happening there.
+
+02:21.590 --> 02:24.030
+Oh, because we have not really handled the drop down.
+
+02:24.030 --> 02:27.230
+I think it's going to struggle a bit to select the drop downs.
+
+02:27.470 --> 02:31.590
+Uh, which, uh, we need to build one more tool to perform this operation.
+
+02:32.030 --> 02:36.590
+Uh, but I think that is one of the caveat that I missed to implement in this particular.
+
+02:36.830 --> 02:37.430
+Uh toolings.
+
+02:37.430 --> 02:42.910
+I will let you to do this, uh, building of the select operation from a drop down.
+
+02:42.910 --> 02:45.070
+It is so easy and so straightforward.
+
+02:45.070 --> 02:48.270
+I don't think this is going to be, uh, uh, any issue.
+
+02:48.310 --> 02:53.150
+See, the moment I, uh, the moment the player MVP server couldn't able to handle this operation is
+
+02:53.150 --> 02:55.790
+going to call the evaluate JS to perform this operation.
+
+02:55.830 --> 02:57.630
+See, that is pretty nice and neat.
+
+02:57.990 --> 03:00.150
+And then it it actually entered everything.
+
+03:00.150 --> 03:04.310
+And it also performed the log of operation which is amazing.
+
+03:04.310 --> 03:05.430
+So look at that.
+
+03:05.430 --> 03:07.750
+That's created every single thing for us.
+
+03:07.750 --> 03:12.870
+And it also performed a log of operation and it has logged out successfully.
+
+03:13.310 --> 03:13.710
+Uh.
+
+03:14.110 --> 03:17.550
+See also doing a get text to see if it has successfully logged out.
+
+03:18.030 --> 03:19.910
+And our MVP server is ready.
+
+03:19.910 --> 03:27.630
+Guys, you have successfully implemented a playwright MVP server all by yourself by using the power
+
+03:27.630 --> 03:28.670
+of fast MVP.
+
+03:28.830 --> 03:31.670
+Congratulations and thanks for purchasing this course.

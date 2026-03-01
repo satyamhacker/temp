@@ -1,0 +1,190 @@
+WEBVTT
+
+00:00.050 --> 00:06.320
+In this lecture, we are going to see how we can use this olama to act as an API server, which you
+
+00:06.320 --> 00:12.830
+can use to retrieve the the model or communicate with the model using an API request.
+
+00:12.830 --> 00:20.150
+So basically you can see that using this Olama and you can see that they have got this option called
+
+00:20.150 --> 00:22.190
+as serve.
+
+00:22.220 --> 00:24.020
+So Olama serve.
+
+00:24.050 --> 00:26.630
+So we just hit enter.
+
+00:26.630 --> 00:31.580
+You will see that currently my port is bound with this particular IP address.
+
+00:31.580 --> 00:37.490
+So basically I'm already running the Olama in the service as like up and running all the time.
+
+00:37.490 --> 00:40.880
+That's the reason why it says that the the address is already bound.
+
+00:41.240 --> 00:46.880
+And but if you're going to be running this olama serve in your terminal, you will notice that it is
+
+00:46.880 --> 00:51.020
+going to be starting as a service for you by listening to this particular port.
+
+00:51.050 --> 00:52.610
+Number 11434.
+
+00:52.610 --> 00:57.590
+So this is the port number that we are going to be using quite a lot, starting our next section while
+
+00:57.590 --> 00:58.880
+we communicate with the Olama.
+
+00:58.880 --> 01:01.160
+So the way we are going to write the code in our starting.
+
+01:01.160 --> 01:07.100
+Our next section is going to be talking to the large language model with the Olama only using the API
+
+01:07.130 --> 01:08.990
+server, which is this API server.
+
+01:08.990 --> 01:13.010
+So when I say API server, we're just going to go over here.
+
+01:13.010 --> 01:21.620
+And if I just type localhost of the port number 11434, and if I just say API and if I hit enter oh
+
+01:21.620 --> 01:22.100
+sorry.
+
+01:23.450 --> 01:26.450
+And if I hit enter like that you'll see that the olama is running.
+
+01:26.450 --> 01:28.670
+So you get the response like Olama is running.
+
+01:28.670 --> 01:35.870
+And if you see just go to the uh, 143 API generate and you can also pass the body over here.
+
+01:35.900 --> 01:43.880
+So if I just go to my browser and if I just search for Olama, you'll notice that these are the API
+
+01:43.910 --> 01:45.710
+documentation of the Olama.
+
+01:45.710 --> 01:52.220
+And you can see that they have got all the details of the APIs that you can use with the Olama over
+
+01:52.220 --> 01:55.430
+here, you see that they have got the in the generate.
+
+01:55.430 --> 01:59.990
+You can pass the model and the prompt that you want to ask, and then you get the response from the
+
+01:59.990 --> 02:00.850
+particular model.
+
+02:00.850 --> 02:07.420
+So if I just go to the postman over here and let's say if I'm going to ask the question, uh, something
+
+02:07.420 --> 02:11.500
+like this, and the model is going to be llama 3.2 that they have used.
+
+02:11.500 --> 02:12.850
+And let's see if I have got the model.
+
+02:12.850 --> 02:14.590
+Yeah, I have got the llama 3.2.
+
+02:14.620 --> 02:17.230
+So I'm just gonna leave it as it is.
+
+02:17.260 --> 02:24.430
+And I'm going to say, why is Sky, uh, blue and this is going to be a post operation that we have
+
+02:24.430 --> 02:25.000
+to do.
+
+02:25.000 --> 02:31.240
+And if I just ask this question, you'll notice that we are going to get a response from the model over
+
+02:31.240 --> 02:34.990
+here, the large language model that we are getting over here.
+
+02:34.990 --> 02:41.560
+But you see that we are getting the response in like one by one, uh, like one word at a time as a
+
+02:41.560 --> 02:42.070
+response.
+
+02:42.070 --> 02:45.190
+But we can stream this particular response as well if we wanted to.
+
+02:45.220 --> 02:49.630
+So if you just go back to the documentation over here, this is the response that you get.
+
+02:49.630 --> 02:55.090
+And over here they also have got something called a stream as a false, uh, over here.
+
+02:55.120 --> 02:57.460
+And I'm just going to leave the stream as false over here.
+
+02:57.460 --> 03:01.220
+And now if I try to send it over here, you will notice that it's not really streaming the data, but
+
+03:01.250 --> 03:05.120
+it's going to send you all the data in a chunk for you immediately.
+
+03:05.120 --> 03:05.720
+Something like this.
+
+03:05.720 --> 03:07.760
+And you see that we get the response over here.
+
+03:07.760 --> 03:10.310
+So this is how we get the entire response.
+
+03:10.310 --> 03:11.900
+So why is the sky blue.
+
+03:11.930 --> 03:16.040
+It says that the reason why the sky appears blue is a fascinating phenomenon that involves a combination
+
+03:16.040 --> 03:17.900
+of physics, lights and our atmosphere.
+
+03:17.900 --> 03:19.490
+And it gives all the details over there.
+
+03:19.490 --> 03:21.530
+So this is how we can see that.
+
+03:21.530 --> 03:30.290
+We can use the the APIs of the llama to communicate with our large language model using Olama.
+
+03:30.290 --> 03:31.370
+So olama serve.
+
+03:31.400 --> 03:35.270
+You need to run to make sure that you can communicate with your Olama.
+
+03:35.270 --> 03:39.470
+So starting our next section, we are going to communicate with this Olama with a large language model
+
+03:39.470 --> 03:40.790
+only using these APIs.
+
+03:40.790 --> 03:46.250
+So either you run them as a service like me, like how I'm doing it, or you can run this Olama serve
+
+03:46.250 --> 03:52.940
+command in the terminal so that you can now start communicating with your, uh, with the lamp chain
+
+03:52.970 --> 03:54.830
+with the olama starting in the next section.
+
+03:54.830 --> 04:00.980
+So this ends the section of the Olama and how you can use Olama to run your large language models.

@@ -1,0 +1,106 @@
+WEBVTT
+
+00:00.050 --> 00:01.550
+Welcome to the next section of our course.
+
+00:01.550 --> 00:07.010
+And in this section we are going to do pretty much completely as much like how we did in our last section
+
+00:07.010 --> 00:14.210
+over here, where we were using the Rag data of the vector stores to retrieve, and we were verifying
+
+00:14.210 --> 00:21.170
+if the Rag data that we have got is actually matching as expected by doing the evaluation with ragas.
+
+00:21.170 --> 00:26.780
+And now we are going to go a level further with our agents testing.
+
+00:26.780 --> 00:30.110
+So we are going to verify if our agent is working as expected.
+
+00:30.110 --> 00:32.330
+And it is choosing the right tool.
+
+00:32.330 --> 00:35.750
+And also it is executing the data as expected.
+
+00:35.750 --> 00:37.940
+So we are going to verify everything over here.
+
+00:37.940 --> 00:40.700
+So basically it's like a kind of an agent test as well.
+
+00:40.730 --> 00:43.880
+Apart from the vector data that we have got over here.
+
+00:43.880 --> 00:45.950
+So we're going to do two testing together this time.
+
+00:45.950 --> 00:47.750
+And we'll see how we can able to achieve that.
+
+00:47.750 --> 00:53.060
+So over here you can see that we're going to pass in the data as a prompt via Lang chain.
+
+00:53.060 --> 00:54.200
+It goes to the model.
+
+00:54.200 --> 00:56.720
+And over here we have got the tool bindings.
+
+00:56.720 --> 01:03.920
+And once again the tool binding is going to be taken care by uh by the code that we have already written
+
+01:03.920 --> 01:05.960
+in our earlier sections of the course.
+
+01:05.960 --> 01:08.380
+We're going to use the exact same thing over here as well.
+
+01:08.380 --> 01:12.730
+We're going to bind that the tools within our large language model.
+
+01:12.850 --> 01:19.150
+And then we are going to be, uh, we're going to see how the agent, the AI agent, is going to pick
+
+01:19.180 --> 01:26.650
+up the correct tools, and then it is going to choose our tool, which is nothing but this guy over
+
+01:26.650 --> 01:26.860
+here.
+
+01:26.860 --> 01:33.850
+So basically this is the one which is going to call the the agent is the one which is going to choose
+
+01:33.850 --> 01:37.480
+which tool it needs to call just this one.
+
+01:37.660 --> 01:41.380
+And it is going to execute the code for you over there.
+
+01:41.410 --> 01:41.680
+Right.
+
+01:41.710 --> 01:44.590
+This is the operation that we are going to do over here this time.
+
+01:44.590 --> 01:49.420
+So this is going to be very, very small section compared to our last section, because we have discussed
+
+01:49.420 --> 01:50.830
+a lot of details in our last section.
+
+01:50.830 --> 01:54.580
+So this section is almost like a continuation of the earlier section.
+
+01:54.580 --> 02:01.750
+So we'll see how we can test the AI agent as well, along with the existing vector stores that we have
+
+02:01.750 --> 02:09.640
+created, uh, for storing the PDF files from the papers that we had used from the large language model
+
+02:09.640 --> 02:11.710
+papers and testing the bias and stuff.
+
+02:11.710 --> 02:14.320
+So we'll see how we can able to achieve that in this particular section.

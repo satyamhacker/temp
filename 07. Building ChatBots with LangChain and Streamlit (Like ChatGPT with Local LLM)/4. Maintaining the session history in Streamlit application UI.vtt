@@ -1,0 +1,253 @@
+WEBVTT
+
+00:00.050 --> 00:06.290
+In our last lecture, we saw how we could able to build a super simple chat experience with a user logo.
+
+00:06.290 --> 00:09.440
+And and there is an icon for the assistant.
+
+00:09.440 --> 00:15.050
+And also we saw there was a glitch where if you ask an question and then if you ask a follow up question
+
+00:15.050 --> 00:19.490
+or maybe a second question, it just overrides the existing chat messages.
+
+00:19.670 --> 00:25.430
+And the reason why this is happening is because we have not really built that that experience within
+
+00:25.430 --> 00:32.390
+our code yet, and also we should not be clearing up the chat history every single time.
+
+00:32.390 --> 00:41.930
+If there is already any chat history message in the session state array that we have got right.
+
+00:41.930 --> 00:44.990
+So we have to somehow write that particular logic over here.
+
+00:44.990 --> 00:46.640
+So I'm going to cut this particular piece of code.
+
+00:46.640 --> 00:48.350
+I'm going to move this outside.
+
+00:48.380 --> 00:55.430
+I mean from outside of this prompt over here and over here, I'm going to say if there is already an
+
+00:55.430 --> 01:00.910
+existing chat history Then don't clean it up.
+
+01:00.910 --> 01:03.820
+So only if there is a only.
+
+01:03.820 --> 01:10.150
+If there is no message in the st dot uh session state, then you can clean it up.
+
+01:10.150 --> 01:12.610
+If there is already a message, don't clean it up.
+
+01:12.610 --> 01:14.710
+That is what I'm going to do over here.
+
+01:14.710 --> 01:21.580
+And also uh, and also I'm going to write a for loop over here because now you're not going to clean
+
+01:21.580 --> 01:23.110
+it up, but you need to print.
+
+01:23.140 --> 01:28.840
+Or maybe you need to keep the existing message there, which is uh, which is going to be coming below
+
+01:28.840 --> 01:32.200
+the existing message that you have got.
+
+01:32.200 --> 01:37.390
+So you have to print that below the next message that you have got.
+
+01:37.390 --> 01:45.070
+So I'm going to say for message in St dot session state dot chat history.
+
+01:45.070 --> 01:53.200
+So we have got the message over there and I'm saying with St dot chat message.
+
+01:53.830 --> 01:59.840
+Right I'm gonna get the message and I'm going to get the role.
+
+02:01.040 --> 02:05.390
+And I'm also going to get the markdown over here.
+
+02:05.390 --> 02:11.780
+So this is where I'm going to be printing the content that I'm going to be getting out from that particular
+
+02:11.780 --> 02:12.170
+message.
+
+02:12.170 --> 02:16.130
+So this is, this is this is very, very important because if you don't really have that particular,
+
+02:16.220 --> 02:23.390
+this particular stuff, then your new message will not be printed below the earlier question that you
+
+02:23.390 --> 02:24.350
+have asked.
+
+02:25.160 --> 02:26.120
+So I hope that makes sense.
+
+02:26.120 --> 02:30.530
+So this is the first foremost thing that we have to do over here for our code to work.
+
+02:30.530 --> 02:40.280
+So now let's say if I'm going to run the code and I'm going to ask, hi, how are you doing?
+
+02:40.700 --> 02:42.230
+You'll see that we get a response.
+
+02:42.230 --> 02:48.140
+And I'm going to ask, how's uh, how's weather in NZ?
+
+02:49.640 --> 02:55.810
+And you will notice that this weather information question that we have asked is going to be Answered
+
+02:55.840 --> 02:58.480
+below the first question that we have got.
+
+02:58.480 --> 03:02.770
+So it's not going to override the existing question, but it is going to print that down below over
+
+03:02.770 --> 03:03.160
+here.
+
+03:03.190 --> 03:05.590
+So this is how things are going to happen over here.
+
+03:05.590 --> 03:10.330
+So this is this particular piece of code is very very important to make that happen.
+
+03:10.540 --> 03:11.230
+Right.
+
+03:11.260 --> 03:13.630
+And now we can also ask a follow up question.
+
+03:13.630 --> 03:16.570
+Uh, how about uh, India.
+
+03:17.560 --> 03:23.230
+So now I'm asking pretty much like a follow up question for the first question, the earlier question
+
+03:23.230 --> 03:24.070
+that I have asked.
+
+03:24.070 --> 03:25.120
+So let's see.
+
+03:25.450 --> 03:26.290
+Uh, there we go.
+
+03:26.290 --> 03:28.990
+So it says India is a diverse, vast country, blah, blah, blah.
+
+03:29.020 --> 03:34.240
+So it's just getting, uh, giving us the details of the India over there.
+
+03:34.240 --> 03:41.950
+But now the first, the most important thing that we need to do is the session history that we need
+
+03:41.950 --> 03:46.780
+to maintain in our chat, because it's not really happening at the moment.
+
+03:46.780 --> 03:48.850
+So how do we actually do that?
+
+03:48.850 --> 03:55.500
+Well, guess what, I am going to do a few more coding over here.
+
+03:55.590 --> 04:02.760
+The first important coding that I wanted to do is the the the session ID that I'm actually passing in.
+
+04:02.790 --> 04:03.210
+Right.
+
+04:03.240 --> 04:05.670
+So let me cut this session ID from here.
+
+04:05.670 --> 04:08.250
+I'm going to put it all the way on the top.
+
+04:08.460 --> 04:09.510
+Just this one.
+
+04:09.930 --> 04:14.670
+And over here I'm going to get the session ID from the user.
+
+04:14.670 --> 04:23.790
+So I'm going to say session ID which is going to be coming from St dot text input.
+
+04:23.790 --> 04:28.980
+And I'm going to get uh the session ID from there.
+
+04:29.010 --> 04:33.270
+So but at the moment I'm just going to print the session ID, which is the default session ID is going
+
+04:33.300 --> 04:34.950
+to be Karthik for now.
+
+04:34.950 --> 04:37.410
+But later on we are going to improve.
+
+04:37.440 --> 04:43.440
+I mean, you can override the Karthik from the UI so that it can be printed as well.
+
+04:43.440 --> 04:45.870
+That session ID can be printed as well, right?
+
+04:45.870 --> 04:51.510
+So if I'm going to stop this and if I run this, you will notice that we will have, we will have like
+
+04:51.540 --> 04:53.470
+something like a Karthik over there.
+
+04:53.470 --> 04:57.880
+Maybe instead of that, because it looks like this UI has got like Karthik over here and doesn't really
+
+04:57.880 --> 04:59.290
+give me any information there.
+
+04:59.290 --> 05:04.030
+So I can just uh, add this probably as I enter your name.
+
+05:04.030 --> 05:04.660
+Something like that.
+
+05:04.690 --> 05:14.740
+Enter your name, uh, like this and session ID and now if I try to run this, it may be, it may be
+
+05:15.040 --> 05:16.420
+a bit more for better.
+
+05:16.450 --> 05:16.750
+Right.
+
+05:16.900 --> 05:17.500
+Enter your name.
+
+05:17.500 --> 05:23.920
+And I have just given the the name as Karthik over here, but you can override this particular, uh,
+
+05:23.920 --> 05:25.120
+name from there on.
+
+05:25.120 --> 05:31.000
+So now that we have fixed this issue of the chat, uh, which is going to be coming up in the, in the
+
+05:31.000 --> 05:36.100
+history and how it is going to be showing up, the follow up, uh, questions over there.
+
+05:36.100 --> 05:41.440
+The last piece of puzzle that we are going to be doing is in our next lecture is going to be how we
+
+05:41.440 --> 05:45.280
+can actually start a new conversation.
+
+05:45.280 --> 05:51.010
+And also we can maintain the session information across our chat in the chatbot.

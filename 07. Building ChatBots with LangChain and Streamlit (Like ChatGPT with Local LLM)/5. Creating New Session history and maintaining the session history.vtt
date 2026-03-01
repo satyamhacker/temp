@@ -1,0 +1,196 @@
+WEBVTT
+
+00:00.020 --> 00:00.410
+All right.
+
+00:00.410 --> 00:07.400
+So now that we are going to see how we can build a few more details within our chatbot that we are building.
+
+00:07.400 --> 00:18.200
+So essentially what I'm going to do is I'm going to say probably in here is if there is a start button
+
+00:18.200 --> 00:26.180
+and I'm going to ask like start all new conversation over here.
+
+00:26.180 --> 00:36.590
+So if we hit this particular button then I'm going to set the session state dot chat history as empty.
+
+00:37.040 --> 00:39.830
+So this is where I'm going to set the chat history.
+
+00:39.860 --> 00:42.380
+And I'm going to get the session history.
+
+00:42.380 --> 00:45.500
+So this is where we are going to be getting the session history.
+
+00:45.500 --> 00:48.680
+So so far we have not really got the session history yet.
+
+00:48.680 --> 00:52.220
+And this is the place where we're going to get the session history over here.
+
+00:52.220 --> 00:59.540
+And then we need to also clear the session history of the session ID that we're going to pass in.
+
+00:59.540 --> 01:08.930
+So I'm going to say dot clear, which is going to clear the session history for us.
+
+01:08.960 --> 01:16.300
+And looks like the message that this particular method needs to be, uh, met needs to be somewhere
+
+01:16.300 --> 01:18.460
+here because this code is not going to work.
+
+01:18.460 --> 01:20.980
+If I do that this way.
+
+01:21.100 --> 01:25.150
+And then I also need to bring these code.
+
+01:25.480 --> 01:27.640
+I'm going to cut this code from here.
+
+01:28.090 --> 01:33.220
+Uh, maybe even we can remove this, get session history clear because this is not required.
+
+01:33.520 --> 01:37.180
+Uh, and I'm going to put them all.
+
+01:37.180 --> 01:44.830
+So basically I'm going to put all the street code in one single place so that it can be easily maintained.
+
+01:44.830 --> 01:49.000
+So this is that all of these are the SD code, the Streamlit code that we have got.
+
+01:49.030 --> 01:50.500
+So I put that over here.
+
+01:50.740 --> 01:58.690
+Uh, and now we have got the logic for, uh, how the parsing should happen from the, uh, from our
+
+01:58.690 --> 02:00.400
+Lang chain sitting in here.
+
+02:00.400 --> 02:04.150
+And then we have got the prompt and the final quest over here.
+
+02:04.180 --> 02:04.600
+Right.
+
+02:04.600 --> 02:08.500
+So I'm going to save all of these, and I'm going to run the application.
+
+02:08.500 --> 02:10.630
+And I will show you how this is going to work this time.
+
+02:10.660 --> 02:13.750
+See that we have got this new button like start all new conversation.
+
+02:13.750 --> 02:18.160
+So once I hit that it is going to clear all the session information at the same time.
+
+02:18.160 --> 02:21.770
+Now it's ready for our new fresh new session to work with.
+
+02:21.800 --> 02:26.330
+So I'm going to say, how are you doing today?
+
+02:26.330 --> 02:38.480
+And um, can I get direction to GPU stores near me?
+
+02:39.050 --> 02:43.760
+And if I do that, you will see that it's going to give me a response over here because you don't really
+
+02:43.760 --> 02:45.140
+have access to the internet.
+
+02:45.140 --> 02:48.560
+So you see that it's going to give me some detail over here.
+
+02:48.560 --> 02:52.070
+But now I'm going to just ask a follow up question over here.
+
+02:52.070 --> 02:59.000
+I'm going to say, um, is there any other reason?
+
+02:59.000 --> 03:00.170
+So you see that.
+
+03:00.170 --> 03:03.920
+Now I'm asking like a follow up question to the AI assistant.
+
+03:03.950 --> 03:09.800
+It's going to say, sure, if you can provide me your city and more specific location, uh, I can give
+
+03:09.800 --> 03:10.850
+you this information.
+
+03:10.850 --> 03:16.100
+So it's like the follow up question that we are going to get for the GPU store, as you can see over
+
+03:16.100 --> 03:16.610
+here.
+
+03:16.640 --> 03:17.150
+Right.
+
+03:17.150 --> 03:22.850
+So maybe I'm going to ask one more question so I can just, uh, if I'm going to start a new conversation,
+
+03:22.850 --> 03:24.860
+I can just say start new conversation.
+
+03:24.890 --> 03:26.840
+See, everything is going to be clear at this time.
+
+03:26.840 --> 03:34.980
+And I'm going to ask, what is the power of local LM?
+
+03:35.160 --> 03:37.950
+And you see that it's taking a bit of a time over there.
+
+03:37.980 --> 03:43.170
+It's not really printing everything instantly, but it is taking so much time before it really prints
+
+03:43.170 --> 03:45.030
+all the value in one start.
+
+03:45.030 --> 03:47.250
+Because we need to stream the response.
+
+03:47.250 --> 03:52.350
+We are going to do that in our next lecture, but for now you see that we have got the entire detail
+
+03:52.350 --> 03:52.980
+over here.
+
+03:53.010 --> 04:07.020
+And I want to say, can you just, uh, print the headings in bullet points as a summary, oops, as
+
+04:07.050 --> 04:08.580
+a summary.
+
+04:10.320 --> 04:12.420
+And look at that immediately we get all these details.
+
+04:12.420 --> 04:17.580
+So this is happening because we have got the context over here.
+
+04:17.580 --> 04:22.260
+And we get all the context contextual response coming up over there.
+
+04:22.620 --> 04:23.340
+Pretty cool right.
+
+04:23.340 --> 04:26.310
+So this is already working for us over here guys.
+
+04:26.310 --> 04:34.020
+And the last thing which I wanted to do is how do I actually stream the responses and also make some
+
+04:34.020 --> 04:39.210
+more cosmetic changes in this particular UI so that it can look pretty much like what I showed you in
+
+04:39.210 --> 04:40.950
+the starting of this particular section.

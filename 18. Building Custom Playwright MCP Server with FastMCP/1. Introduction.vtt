@@ -1,0 +1,136 @@
+WEBVTT
+
+00:00.360 --> 00:02.120
+Welcome to the next section of our course.
+
+00:02.120 --> 00:08.440
+And in this section we are going to talk about how we can build our own playwright MCP server using
+
+00:08.440 --> 00:14.000
+fast MCP that we have been talking about from our last section of this course.
+
+00:14.400 --> 00:20.720
+So you can see that this is the Playwright Model Contest protocol server that I have built and is also
+
+00:20.720 --> 00:22.600
+available in GitHub.
+
+00:22.800 --> 00:29.080
+And you can see that there are totally 4500 stars and people are really contributing it, and it's pretty
+
+00:29.080 --> 00:29.400
+good.
+
+00:29.400 --> 00:35.640
+It's pretty amazing that how everything is spanning out and people are really using, which is amazing.
+
+00:35.920 --> 00:40.720
+But this MCP server actually is written using Node.js.
+
+00:41.120 --> 00:43.720
+Like how I told you in our last section of this course.
+
+00:43.760 --> 00:45.480
+So just go to the source over here.
+
+00:45.480 --> 00:49.040
+You can see that it has got a lot of different toolings over here.
+
+00:49.160 --> 00:50.360
+It supports API.
+
+00:50.760 --> 00:53.120
+It also supports browser automation.
+
+00:53.160 --> 00:54.960
+It supports code generations.
+
+00:54.960 --> 00:57.600
+It also has got some common utilities and things right.
+
+00:57.640 --> 00:59.570
+So these are things that we have over here.
+
+00:59.570 --> 01:04.370
+It also has got some tests for every single tool just fine.
+
+01:04.370 --> 01:06.850
+And then we also have got evals and things right.
+
+01:06.890 --> 01:11.930
+So these are the things that you have to do while you build an application, which is going to be used
+
+01:11.930 --> 01:13.130
+by a wider community.
+
+01:13.130 --> 01:17.730
+But don't you worry about all of these, at least in this particular section, we're going to see how
+
+01:17.730 --> 01:24.370
+we can build a very lightweight MCP server, and then we can get rid of these kind of MCP servers,
+
+01:24.570 --> 01:30.010
+because this way you can create your own MCP server and start using it.
+
+01:30.010 --> 01:34.810
+You may ask Karthik, this MCP server is fine and we can build our own MCP server.
+
+01:34.850 --> 01:35.210
+What?
+
+01:35.210 --> 01:36.490
+But what difference does it make?
+
+01:36.930 --> 01:37.690
+Make sense?
+
+01:37.930 --> 01:42.050
+It's not going to make any much of a difference because people are already holding this kind of tool.
+
+01:42.050 --> 01:47.010
+That's the reason why you are just going to use the existing MCP servers as much as possible.
+
+01:47.010 --> 01:52.490
+But if you are gonna build something similar to this kind of operation, like MCP server with playwright,
+
+01:52.530 --> 01:59.550
+maybe in selenium tomorrow, today or tomorrow and then Cypress or WebDriver, IO and all these toolings
+
+01:59.550 --> 02:01.270
+that you can keep on building yourself.
+
+02:01.430 --> 02:08.070
+That way you will get a hands on ability of how you can build your own systems for testing as well as
+
+02:08.070 --> 02:09.430
+for development purpose.
+
+02:09.430 --> 02:11.790
+This is something which the test engineers all the time.
+
+02:11.790 --> 02:17.150
+We use it because we know that playwright is not the most popular tools which people really use it,
+
+02:17.150 --> 02:22.110
+and playwright by itself has got their own MCP servers, which is written by Microsoft.
+
+02:22.150 --> 02:27.750
+It is very, very popular because it is built by Microsoft and playwright itself is built by Microsoft,
+
+02:27.750 --> 02:32.230
+and now it is fused along with the GitHub coding agents automatically.
+
+02:32.230 --> 02:35.510
+And you can use this MCP server to do a lot of different operation.
+
+02:35.550 --> 02:43.070
+They also have got this and it is also built using node version, like how I have built in my playwright
+
+02:43.070 --> 02:45.310
+MCP server as well.
+
+02:45.310 --> 02:51.670
+As that said, we are going to see how we can build all of these in this particular section from complete
+
+02:51.670 --> 02:56.990
+ground up using fast MCP and you will understand and realize how amazing they are.

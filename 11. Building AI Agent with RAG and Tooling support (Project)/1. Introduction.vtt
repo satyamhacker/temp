@@ -1,0 +1,190 @@
+WEBVTT
+
+00:00.080 --> 00:01.940
+Welcome to the next section of our course.
+
+00:01.940 --> 00:08.720
+And in this section we are going to talk about how we can build agents with rag and tool support with
+
+00:08.720 --> 00:11.600
+our local large language model.
+
+00:11.810 --> 00:19.700
+If you remember, until our last section, we were trying to use our local large language model and
+
+00:19.700 --> 00:27.320
+binding all these tools that we created earlier, including custom tools and also the Wikipedia tools
+
+00:27.320 --> 00:29.510
+and also playwright tools for that matter.
+
+00:29.510 --> 00:37.310
+And then we use these agent to to take the decision based on the query that we ask, or the prompt that
+
+00:37.310 --> 00:39.440
+we pass to the large language model.
+
+00:39.440 --> 00:45.350
+And then the agent will choose which tool which is appropriate to perform an action.
+
+00:45.350 --> 00:47.720
+And then it gives us the response back.
+
+00:47.720 --> 00:55.760
+And now in this section we are going to go a level further where we are going to be doing a bit more
+
+00:55.790 --> 01:02.800
+operation, where we are going to be doing the or calling the rag as a tool.
+
+01:02.800 --> 01:06.190
+So we are going to create a rag tool this time.
+
+01:06.220 --> 01:12.640
+If you remember we were discussing about the rag earlier, which is nothing but the retrieval augmented
+
+01:12.640 --> 01:20.140
+generation where we can actually extract the data from external files, split them and embed them and
+
+01:20.140 --> 01:21.430
+store them into the database.
+
+01:21.430 --> 01:28.600
+And then we use this vector database to query, which can also be passed as a reference to our large
+
+01:28.600 --> 01:35.230
+language model, which can be retrieved and generate the answer for us from those stored data.
+
+01:35.620 --> 01:41.260
+So you already saw those information in our earlier sections of this course, and we are going to go
+
+01:41.290 --> 01:50.710
+a level further this time to use these Rag operations as well, along with our playwright tool, which
+
+01:50.740 --> 01:54.640
+actually helps us extract the data from any given web page.
+
+01:54.640 --> 02:01.360
+And then it is going to use the knowledge that it has acquired from the Rag or the retrieval augmented
+
+02:01.360 --> 02:05.040
+generation, like all the documentation and the knowledge it has got.
+
+02:05.040 --> 02:09.960
+And then based on both of these knowledge, it is going to give us the response for us.
+
+02:09.960 --> 02:13.830
+So you will see that we are going to use quite a lot of different tools this time, and we're going
+
+02:13.830 --> 02:21.690
+to empower our local large language model with all the information that it can then use to serve or
+
+02:21.690 --> 02:25.410
+help us serve the information that we are looking for.
+
+02:25.410 --> 02:31.740
+So now you will see that our local large language model is more powerful because now it has support
+
+02:31.770 --> 02:39.060
+to a lot of different tool bindings over here, along with the retrieval augmented generation data.
+
+02:39.210 --> 02:43.440
+So it's going to use this vector data store to retrieve the data as well.
+
+02:43.440 --> 02:49.440
+And then you can see that there is going to be a lot of potentials and power going to come for this
+
+02:49.440 --> 02:51.810
+particular large language model.
+
+02:51.810 --> 02:58.380
+So let's say if I'm going to give a page to this particular large language model asking is this page
+
+02:58.380 --> 03:02.910
+has got any bias for this particular web page?
+
+03:02.910 --> 03:02.910
+Webpage.
+
+03:02.910 --> 03:09.990
+So what is going to do is immediately the Q1 model will not have the ability to go and talk to the actual
+
+03:09.990 --> 03:14.250
+page, because the given page is an external internet page that it needs to access.
+
+03:14.250 --> 03:20.970
+So it will go and ask the agent, and the agent will know that which tool binding can help us extract
+
+03:20.970 --> 03:24.330
+the page information or navigate to that particular page.
+
+03:24.330 --> 03:30.960
+And now this guy, the the agent is going to invoke the the playwright tool for us.
+
+03:30.960 --> 03:37.530
+And based on that particular information, it is going to then, uh, it is going to invoke this particular
+
+03:37.530 --> 03:42.210
+tool, and this playwright is going to perform all the action for us, and then it's going to give the
+
+03:42.210 --> 03:44.100
+page information to the agent.
+
+03:44.100 --> 03:50.310
+And the next operation we asked is, how about, uh, whether the page is talking about any bias information?
+
+03:50.310 --> 03:55.590
+Now, the bias information details is something which is already available with this tool that we are
+
+03:55.590 --> 04:02.070
+going to be building in this particular section, where it is going to in turn call the, uh, Rag data,
+
+04:02.100 --> 04:08.570
+which is something we already have in our earlier sections, which is going to store the external informations
+
+04:08.570 --> 04:14.870
+from the PDF file, and it is stored in here in this particular vector data store, which is the data
+
+04:14.870 --> 04:16.640
+which has got all the different information.
+
+04:16.640 --> 04:22.760
+So we're going to use this data and then we're going to return it back from the tool to the agent.
+
+04:22.760 --> 04:28.280
+And then that agent is going to perform the rest of the operation for us to verify if there is a bias
+
+04:28.280 --> 04:29.360
+information there or not.
+
+04:29.360 --> 04:35.150
+And then it's going to give the information back to the to the customer or to the person who is asking
+
+04:35.150 --> 04:36.410
+this particular question.
+
+04:36.440 --> 04:36.920
+Look at that.
+
+04:36.950 --> 04:38.900
+There is so many things going on over here.
+
+04:38.930 --> 04:40.880
+I know this is a lot of different things.
+
+04:40.880 --> 04:42.050
+Uh, over here.
+
+04:42.080 --> 04:46.580
+This is just like a fun project which I have created, and I wanted to show you how we can utilize all
+
+04:46.580 --> 04:51.170
+the potentials and learnings that we have did in our earlier sections of this course.
+
+04:51.530 --> 04:53.360
+So this section is going to be really fun.
+
+04:53.360 --> 04:58.820
+So I'm quite excited to show you what are the things that you can do in this particular section to make
+
+04:58.820 --> 05:05.300
+your agent more powerful and more meaningful, to return you the answer that you're looking for?

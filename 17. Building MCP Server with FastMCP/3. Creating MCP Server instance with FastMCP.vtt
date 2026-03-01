@@ -1,0 +1,394 @@
+WEBVTT
+
+00:00.160 --> 00:03.560
+All right, now it's time for us to start writing the code.
+
+00:03.560 --> 00:10.080
+But before I start writing the code, I'm going to quickly show you the MCP server connectivity to a
+
+00:10.120 --> 00:10.840
+client.
+
+00:10.880 --> 00:11.160
+Right?
+
+00:11.200 --> 00:16.480
+So we need to have a client which is going to connect to the server that we are going to be building.
+
+00:16.480 --> 00:19.480
+And the server is nothing but the one that we are going to be writing over here.
+
+00:19.480 --> 00:24.160
+And the client is going to be any one of the client can be a cloud desktop, it can be a cursor, it
+
+00:24.160 --> 00:28.240
+can be a Visual Studio Code, GitHub Copilot or raw IDE.
+
+00:28.280 --> 00:32.360
+Whatever it is, you can use any of these as a as a client.
+
+00:32.360 --> 00:35.960
+And in here I'm going to quickly show you one of the client, which is the cloud desktop.
+
+00:35.960 --> 00:37.800
+We already saw about this in a demonstration.
+
+00:37.800 --> 00:39.880
+But I'm going to quickly show you one more time.
+
+00:39.880 --> 00:43.840
+So this is the cloud desktop that I have already installed over here.
+
+00:43.840 --> 00:49.200
+And you can see that we have got some, uh, some tools, which is the sorry, the servers over here,
+
+00:49.240 --> 00:53.600
+the playwright server and the SQLite, which is the database MCP server.
+
+00:53.600 --> 00:55.600
+These are the two MCP servers I have got.
+
+00:55.640 --> 00:59.400
+And each of these servers has got a lot of different tools.
+
+00:59.400 --> 01:04.960
+This is the same kind of similar kind of tools that we have written in our Lang chain earlier with the
+
+01:05.000 --> 01:08.240
+Add Tools annotation the same exact thing.
+
+01:08.240 --> 01:09.520
+There is no big difference.
+
+01:09.640 --> 01:10.560
+And guess what?
+
+01:10.600 --> 01:12.520
+Because we'd also be doing some testing.
+
+01:12.960 --> 01:15.760
+The testing side of things are also going to be coming up over here.
+
+01:15.760 --> 01:19.360
+For example, if you're going to be writing your own playwright MCP server, we're going to be building
+
+01:19.360 --> 01:20.920
+in this particular course anyways.
+
+01:20.960 --> 01:24.480
+I'll show you how easy it is while we do everything with the fast.
+
+01:24.480 --> 01:33.160
+MCP and I have configured these two MCP server from our GitHub repository, just go to the GitHub repository.
+
+01:33.200 --> 01:39.920
+We have got this MCP database server as well as the MCP playwright which is actually doing those things.
+
+01:40.120 --> 01:46.360
+So basically in the MCP database server you need to configure MCP server using this particular path.
+
+01:46.400 --> 01:51.600
+And the thing is these MCP servers at the moment are written using NodeJS.
+
+01:51.760 --> 01:54.320
+That's why we are using the command as NP.
+
+01:54.600 --> 02:00.520
+And the arguments are with hyphen y and the at zero automation slash database server.
+
+02:00.520 --> 02:06.000
+And because this is already deployed on the npm package, that's the reason why it's just going to pull
+
+02:06.000 --> 02:07.520
+it from there automatically.
+
+02:07.560 --> 02:07.720
+Right.
+
+02:07.760 --> 02:09.800
+That's what it's really happening over here.
+
+02:09.880 --> 02:16.890
+The same thing goes for the MCP playwright as well, because even the playwright MCP is deployed on
+
+02:16.890 --> 02:18.770
+the uh, on the node.
+
+02:19.010 --> 02:24.290
+Uh, sorry, NPM, and that's the reason why you can actually able to get it from this particular command.
+
+02:24.330 --> 02:31.090
+But because we are going to be using Python and fast MCP for that matter, we are going to need a different
+
+02:31.090 --> 02:33.330
+way to configure that over here.
+
+02:33.370 --> 02:35.650
+And I will show you while we start configuring it.
+
+02:35.650 --> 02:37.170
+But don't worry about it for now.
+
+02:37.330 --> 02:38.650
+This is what we're going to be doing.
+
+02:38.890 --> 02:43.650
+If I go back to the client, which is the cloud desktop over here, and if I want to show you like how
+
+02:43.650 --> 02:52.010
+I have configured this particular, uh, cloud desktop in the settings, if I go to this settings developers,
+
+02:52.210 --> 02:58.650
+you see that we have got two MCP servers up and running, the playwright and the SQL Lite, and these
+
+02:58.650 --> 03:02.970
+two I have configured, if I'm going to go and click the edit configuration, it's going to show me
+
+03:02.970 --> 03:04.210
+a window over here.
+
+03:04.210 --> 03:09.770
+And if I'm going to open with a windsurf you should see that this is the uh two configuration, the
+
+03:09.770 --> 03:14.050
+two servers configuration that I have made, the MCP servers configuration that I have made.
+
+03:14.370 --> 03:22.570
+And as I told you, the MCP server as I mean two or more MCP servers can be communicating with your,
+
+03:23.010 --> 03:26.130
+uh, client, which is the cloud desktop over here.
+
+03:26.130 --> 03:27.370
+Without any hesitation.
+
+03:27.370 --> 03:29.970
+It can just work fine without any problem, right?
+
+03:30.010 --> 03:31.970
+That's what we are going to be doing as well.
+
+03:31.970 --> 03:34.930
+We're going to be building a simple calculator in this particular demonstration.
+
+03:34.930 --> 03:42.930
+And then we'll see how we can, uh, connect that simple calculator with the cloud desktop, which is
+
+03:42.930 --> 03:43.410
+the client.
+
+03:43.410 --> 03:49.610
+And then we'll see how the large language model can invoke these tools, like how it did the invocation
+
+03:49.610 --> 03:55.010
+using the AI agents, which we discussed in our earlier sections of this course, where we automatically
+
+03:55.010 --> 04:01.490
+invoked the add tool or subtract tool or multiplication tool using the power of the AI agent.
+
+04:01.490 --> 04:06.450
+That's exactly the same thing we're going to be doing over here, and you will see how easy it is while
+
+04:06.450 --> 04:10.690
+we work with the model context protocol, pretty much similar to long chain, to be honest.
+
+04:10.690 --> 04:12.410
+So we'll see how we can do that.
+
+04:12.450 --> 04:15.730
+Well, as it said over here, I'm going to start writing a basic code.
+
+04:15.770 --> 04:17.930
+To be honest, it's really, really basic code.
+
+04:18.050 --> 04:23.660
+So the way I'm going to write this code is I'm going to start creating a file over here.
+
+04:23.660 --> 04:28.220
+I'm going to call this as simple calculator dot pi.
+
+04:28.500 --> 04:29.700
+That's it right.
+
+04:29.740 --> 04:38.860
+And over here we need to import the package which is going to be from I'm going to say MCP dot.
+
+04:38.980 --> 04:42.020
+See that once I do that it's automatically recognizing which is amazing.
+
+04:42.180 --> 04:45.340
+And I'm going to say server Dot.
+
+04:45.340 --> 04:49.140
+And there is something called as fast MCP which is pretty cool.
+
+04:49.140 --> 04:52.100
+So we are writing things in the fast MCP here.
+
+04:52.580 --> 04:56.620
+And I'm going to import the fast MCP class.
+
+04:57.500 --> 05:00.060
+And that's the first invocation that we have to.
+
+05:00.660 --> 05:07.980
+And then I'm going to say MCP, which is the MCP server that we are going to be creating.
+
+05:07.980 --> 05:10.900
+So this is the place where I'm actually going to create the fast MCP server.
+
+05:10.900 --> 05:13.700
+So I'm going to say fast MCP.
+
+05:14.300 --> 05:18.420
+And over here I'm going to name this particular server so I can name whatever that I wanted to.
+
+05:18.460 --> 05:21.820
+So I'm going to say simple calculator for that matter like that.
+
+05:22.060 --> 05:24.620
+And let's give this this is the place where I invoke this server.
+
+05:24.620 --> 05:30.180
+So this is already an MCP server for you, but without any tool.
+
+05:30.180 --> 05:32.140
+So there is no tool whatsoever.
+
+05:32.420 --> 05:35.580
+Uh, so you you can't just use this.
+
+05:35.620 --> 05:41.460
+It's just like it's just like an server which we have defined in order to run this particular MCP server,
+
+05:41.500 --> 05:45.540
+all you have to do it is, uh, you just have to say MCP dot run.
+
+05:45.580 --> 05:51.620
+But you need to call this run method inside a main method because the main is what is going to trigger.
+
+05:51.660 --> 05:52.140
+Right.
+
+05:52.180 --> 05:56.420
+So you're going to say if the name is equal to.
+
+05:58.980 --> 06:04.740
+Main something like that, then do the MCP run.
+
+06:04.780 --> 06:10.340
+So this is going to run the MCP server that we have created this guy.
+
+06:11.460 --> 06:11.900
+Right.
+
+06:11.940 --> 06:19.780
+So now if I run this code I'm going to say uh Python sorry Python and simple calculator dot pi.
+
+06:19.980 --> 06:25.180
+See nothing is really happening at the moment, but it is running the, uh, the MCP server for us over
+
+06:25.180 --> 06:25.700
+here.
+
+06:26.020 --> 06:34.670
+You can add some, uh, description, maybe print over here, and then you can say, um, MCP server
+
+06:35.790 --> 06:46.470
+is running and then you can say simple calculator, MCP server is running.
+
+06:47.150 --> 06:50.590
+And now I'm just going to close it, then run it back.
+
+06:50.630 --> 06:50.990
+You see that.
+
+06:50.990 --> 06:54.230
+It's going to show you that simple calculator MCP server is running right.
+
+06:54.230 --> 06:56.590
+That shows that this is already running in loop.
+
+06:57.630 --> 07:00.750
+Now you can connect this MCP server from the cloud desktop.
+
+07:00.750 --> 07:05.270
+It's just going to work, but it's not going to do anything because there is no tooling whatsoever.
+
+07:05.750 --> 07:10.790
+The next step we're going to do is we need to add the toolings, which we are going to do in our next
+
+07:10.790 --> 07:11.910
+lecture of this course.
+
+07:11.910 --> 07:14.910
+But you already got the idea how easy it is.
+
+07:15.230 --> 07:16.150
+Guess what guys?
+
+07:16.150 --> 07:24.190
+If I wanted to do the exact same thing with the NodeJS version, it is, to be honest, very very hard.
+
+07:24.230 --> 07:25.790
+I'll tell you how that really works.
+
+07:25.790 --> 07:33.510
+I'm going to copy this code, go to the cloud desktop, and I'm going to go to the chat over here.
+
+07:33.910 --> 07:48.550
+And I'm going to say can you write this fast MCP code written in Python into a node version?
+
+07:49.510 --> 07:51.550
+And I'm going to paste that over here.
+
+07:51.830 --> 07:58.150
+And if I'm going to run this, you will notice that the boilerplate code just kicks in with the node
+
+07:58.150 --> 07:58.470
+JS.
+
+07:58.470 --> 08:00.550
+It is to be honest, it's very big.
+
+08:00.590 --> 08:01.910
+See how how it is.
+
+08:02.070 --> 08:05.270
+So you need to define a model context protocol.
+
+08:05.270 --> 08:08.510
+So this is the SDK that you've got to be using it over here.
+
+08:08.830 --> 08:09.750
+Um like that.
+
+08:09.750 --> 08:16.430
+And then you need to use the studio or the studio server transport which is basically for the I o operation
+
+08:16.430 --> 08:17.350
+that you are doing.
+
+08:17.350 --> 08:21.390
+This is where you define the server and its capabilities.
+
+08:21.750 --> 08:25.710
+And then you also need to define the main method.
+
+08:25.750 --> 08:27.790
+And this is the place where you call the main method and things.
+
+08:27.790 --> 08:28.750
+But but guess what?
+
+08:28.750 --> 08:31.750
+This is how you need to do all of these over here.
+
+08:31.910 --> 08:36.150
+I have not added any toolings, but the moment I add the toolings I will show you how complex it is.
+
+08:36.150 --> 08:40.270
+I'm going to just hold this window for you and I will show you how complex it is when you start writing
+
+08:40.270 --> 08:41.110
+the Toolings.

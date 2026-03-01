@@ -1,0 +1,181 @@
+WEBVTT
+
+00:00.110 --> 00:07.790
+So now that we saw how we can run the LM like deep Seac or Qn 1.8 billion parameter models within our
+
+00:07.790 --> 00:14.120
+local machine, now we're going to see how we can make use of the user interface looks better.
+
+00:14.150 --> 00:16.040
+Pretty much like the ChatGPT interface.
+
+00:16.070 --> 00:17.540
+Like how you're going to see that.
+
+00:17.630 --> 00:18.320
+Guess what?
+
+00:18.320 --> 00:24.830
+We are going to be building these kind of interfaces using our Lang chain agent in our upcoming section
+
+00:24.830 --> 00:30.920
+of this course, like chatbots, but I just wanted to give you a flavor of how you can use these models
+
+00:30.920 --> 00:32.750
+as a GUI interface to your machine.
+
+00:32.750 --> 00:33.560
+You can also use.
+
+00:33.560 --> 00:38.780
+There are so many different tools available, something like Misty over here dot app, as you can see
+
+00:38.780 --> 00:39.140
+over here.
+
+00:39.140 --> 00:43.640
+So this is the easiest way to use the local and online AI model within your machine.
+
+00:43.640 --> 00:46.940
+So you can just use this particular tool over here.
+
+00:46.940 --> 00:51.110
+Or you can also use something called as the GPT for all.
+
+00:51.110 --> 00:53.660
+So just go search for GPT four dot GPT.
+
+00:53.690 --> 01:02.240
+For all I know, this is also another tool that you can use in order for using the model within your
+
+01:02.270 --> 01:02.780
+machine.
+
+01:02.780 --> 01:07.280
+So you see that they also support the, uh, the R one model over here.
+
+01:07.280 --> 01:11.780
+And then the thinking is going to come up over there, and then it is going to start answering the questions
+
+01:11.780 --> 01:12.140
+for you.
+
+01:12.140 --> 01:13.580
+So you can use that as well.
+
+01:13.580 --> 01:16.600
+I'm going to quickly show you the mistake that I was talking about.
+
+01:16.600 --> 01:22.240
+So if I just say that Misty like Misty, this is going to come up over here.
+
+01:22.270 --> 01:22.690
+You see that?
+
+01:22.690 --> 01:24.970
+This is the interface looks pretty familiar for you.
+
+01:24.970 --> 01:26.740
+You can use for inferencing.
+
+01:26.740 --> 01:28.870
+You can also upload the document if you wanted to.
+
+01:28.900 --> 01:36.130
+You can also attach YouTube links and also images to to also get the response from the vision models
+
+01:36.130 --> 01:36.790
+if you wanted to.
+
+01:36.820 --> 01:38.500
+So those things you can do it as well.
+
+01:38.530 --> 01:39.250
+And look at that.
+
+01:39.250 --> 01:44.080
+It is also automatically detecting all the model which is available within my machine.
+
+01:44.110 --> 01:51.040
+See that it's telling me that there is an active queue, an 8.1 billion parameter, um, model over
+
+01:51.040 --> 01:51.490
+here.
+
+01:51.490 --> 01:54.250
+But you can also choose the different model within my machine.
+
+01:54.250 --> 01:57.100
+You see that it's showing me all the different models that I have got.
+
+01:57.100 --> 02:02.350
+And if I'm going to choose the deep sea cod one model over here, and if I'm going to ask the same question
+
+02:02.350 --> 02:08.290
+that I just asked, uh, over here, if you remember, which is the right, the selenium C-sharp code,
+
+02:08.440 --> 02:10.840
+uh, I can do that as well if I wanted to.
+
+02:10.870 --> 02:16.480
+So let's say I'm going to copy this whole thing, but this time I'm going to ask for a different website,
+
+02:16.480 --> 02:22.450
+let's say E app dot uh, swami.com uh, website.
+
+02:22.540 --> 02:28.340
+Uh, and I'm going to say write a playwright uh, with c dotnet code.
+
+02:28.370 --> 02:32.810
+And the moment I ask it, you see that now the deep c r1 is going to start running it.
+
+02:32.810 --> 02:33.500
+And guess what?
+
+02:33.500 --> 02:35.810
+I'm also going to stop the internet over here.
+
+02:35.810 --> 02:39.890
+So it's going to just work on my local large language model.
+
+02:39.890 --> 02:43.970
+And it's going to give you the response, as you can see over here.
+
+02:44.330 --> 02:52.100
+And it's also doing every single thing from the local large language model without going to the internet
+
+02:52.100 --> 02:57.590
+for that matter, is that thing is now created over here, and now it is starting to write the code
+
+02:57.590 --> 03:00.260
+for me, uh, which is amazing.
+
+03:00.260 --> 03:02.750
+And look at that.
+
+03:02.750 --> 03:04.880
+It's doing quite a lot of different operations.
+
+03:04.880 --> 03:11.330
+So this is how you can see that we can run a local large language model and also make use of the realm,
+
+03:11.330 --> 03:18.620
+uh, pretty much uh, with the chat bots or the tools available over here to use as a chatbot, uh,
+
+03:18.620 --> 03:21.740
+for our response that we are looking for.
+
+03:21.740 --> 03:25.130
+So that's the thing that you can do within your local machine.
+
+03:25.220 --> 03:28.670
+And now you have got the idea of how these things are working.
+
+03:28.670 --> 03:34.340
+Starting our next lecture will also see how we can play around with this Olama tool even further, so
+
+03:34.340 --> 03:39.890
+that we are going to be making use of the Olama starting our next section while we start working with
+
+03:39.890 --> 03:40.280
+the language.

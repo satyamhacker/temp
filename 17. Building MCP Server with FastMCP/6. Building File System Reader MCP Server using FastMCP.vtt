@@ -1,0 +1,343 @@
+WEBVTT
+
+00:00.080 --> 00:00.640
+All right.
+
+00:00.680 --> 00:06.640
+So now that we're going to go to an advanced part, basically we are going to see how we can read the
+
+00:06.640 --> 00:07.040
+file.
+
+00:07.040 --> 00:13.440
+So we're going to give an access to our external systems, which is the file systems to the large language
+
+00:13.440 --> 00:15.920
+model via model Context Protocol.
+
+00:15.920 --> 00:19.440
+So Model Context Protocol is going to go and access your local file systems.
+
+00:19.440 --> 00:24.200
+And that's going to be exposed by the tools like how we did in our earlier sections of this course.
+
+00:24.680 --> 00:29.880
+And then we are going to see how that can be fused with our server.
+
+00:29.920 --> 00:30.400
+Right.
+
+00:30.440 --> 00:31.800
+So we'll see how that can be done.
+
+00:32.120 --> 00:34.640
+So for that I'm going to write a simple tool.
+
+00:34.680 --> 00:43.320
+I'm going to say maybe for file system dot or file system reader whatever.
+
+00:43.320 --> 00:48.360
+I don't know what is the name that I can come up with, but I'm just going to give whatever just came
+
+00:48.360 --> 00:49.440
+up to my mind right now.
+
+00:49.480 --> 00:53.760
+I'm going to give that over here, and I'm going to start writing the code I'm going to because I'm
+
+00:53.800 --> 00:55.760
+working with the the file system.
+
+00:55.760 --> 01:03.440
+We need to have the OS, which is the operating system, and then the pathlib to work with the path
+
+01:03.720 --> 01:04.240
+class.
+
+01:04.240 --> 01:09.970
+And then I'm also going to have the MCP server, Her, uh, which is this one?
+
+01:09.970 --> 01:12.170
+And the fast MCP, of course.
+
+01:12.570 --> 01:14.050
+And this is going to be this class.
+
+01:14.050 --> 01:14.410
+Right.
+
+01:14.450 --> 01:18.370
+And then, uh, we're going to work with the fast MCP.
+
+01:18.370 --> 01:22.610
+So basically I'm going to create a name for the fast MCP server, which is going to be this one.
+
+01:22.810 --> 01:25.170
+And then we're going to start writing the Toolings over here.
+
+01:25.450 --> 01:30.090
+So the first thing which I'm going to do is I could I could see that the I is already writing code for
+
+01:30.090 --> 01:33.330
+me, which is amazing, but I'm going to just write a code over here.
+
+01:33.330 --> 01:35.930
+I'm going to say read file.
+
+01:36.570 --> 01:36.890
+Right.
+
+01:36.930 --> 01:40.610
+So I'm going to give the file name which is going to be an input.
+
+01:40.610 --> 01:44.490
+And over here I'm just going to say string.
+
+01:44.930 --> 01:55.970
+Uh, and this is basically going to be uh, read a file from the document, uh, or document or any
+
+01:56.330 --> 01:58.090
+given directory.
+
+01:58.490 --> 01:59.130
+Right.
+
+01:59.130 --> 02:01.690
+That's what this thing, this thing is going to do for me.
+
+02:02.450 --> 02:03.050
+Pretty cool.
+
+02:03.370 --> 02:08.930
+Uh, once we have this, then I'm going to start writing the actual logic for reading the file.
+
+02:08.930 --> 02:13.290
+So this is going to be the same logic that you can write in the Python where you're going to read the
+
+02:13.290 --> 02:13.810
+file.
+
+02:13.810 --> 02:17.990
+So see that this is the logic which this AI is already writing for me.
+
+02:18.070 --> 02:22.030
+So basically you need to have a file path.
+
+02:22.110 --> 02:23.510
+And then you can work from there.
+
+02:23.510 --> 02:28.470
+And because we are going to be working with, uh, some of the.
+
+02:29.190 --> 02:34.110
+Already configured directory, because we can't give the entire machine, uh, as the access.
+
+02:34.150 --> 02:40.150
+We can actually, uh, configure a specific directory where this MCP server can work with.
+
+02:40.150 --> 02:40.910
+So we can.
+
+02:40.950 --> 02:42.750
+Probably say a base directory.
+
+02:43.190 --> 02:47.230
+And over here I'm just going to give the base directory some access.
+
+02:47.270 --> 02:48.710
+Like some path over here.
+
+02:48.710 --> 02:50.110
+So I'm going to say get env.
+
+02:50.310 --> 02:52.270
+So I'm going to get the environment variable.
+
+02:52.550 --> 02:58.990
+Over here and I'm going to say file uh reader directory or whatever.
+
+02:59.430 --> 03:00.070
+Something like that.
+
+03:00.070 --> 03:00.230
+Right.
+
+03:00.270 --> 03:06.230
+So this is the directory which I wanted the MCP server to work with.
+
+03:06.390 --> 03:08.230
+If there is no such directory.
+
+03:08.350 --> 03:14.310
+Then probably you can, uh, instead of you throwing me an error, I can just, like, probably just,
+
+03:14.350 --> 03:14.830
+you know.
+
+03:15.910 --> 03:18.390
+Default to a documents directory or whatever.
+
+03:18.830 --> 03:19.310
+Right.
+
+03:19.350 --> 03:20.590
+So this is something I wanted to give.
+
+03:20.630 --> 03:21.790
+So this is the base directory.
+
+03:21.790 --> 03:28.600
+I'm going to pass it as an environment variable within my configuration over here in the cloud Desktop's
+
+03:28.600 --> 03:29.360
+configuration.
+
+03:31.040 --> 03:35.320
+So this will restrict the MCP server to access only specific directories.
+
+03:35.680 --> 03:36.200
+Right.
+
+03:36.280 --> 03:41.000
+So once we have this I'm then going to say okay file path over here.
+
+03:41.520 --> 03:47.160
+And I'm going to say is equal to base directory and the file name.
+
+03:47.600 --> 03:50.840
+This is going to be the file that is going to be reading through right.
+
+03:51.200 --> 04:03.320
+And I'm also going to say if not if the file is does not exist in the file path, then resolve it and
+
+04:03.480 --> 04:12.680
+starts with the string of the base directory dot resolve.
+
+04:12.760 --> 04:19.000
+Basically, I'm just trying to see how effectively I can get the the path there.
+
+04:20.600 --> 04:21.120
+Right.
+
+04:21.320 --> 04:25.760
+And then I'm going to say if none of things are really working, then I'm going to just say an error
+
+04:25.760 --> 04:30.400
+here saying the access is denied or something like that.
+
+04:30.400 --> 04:32.020
+So access denied.
+
+04:33.100 --> 04:35.100
+And it's an invalid path.
+
+04:35.500 --> 04:36.300
+Something like that.
+
+04:36.780 --> 04:37.340
+Right.
+
+04:37.380 --> 04:40.740
+So that's going to be the error that I'm going to be throwing over here.
+
+04:40.820 --> 04:43.020
+So if I find that particular file.
+
+04:43.020 --> 04:44.980
+So I'm just going to say get the content.
+
+04:44.980 --> 04:50.380
+So I'm going to say file path dot read text if it is a text file.
+
+04:50.620 --> 04:59.060
+And then I'm going to say encoding is equal to UTF of eight which is the standard text format.
+
+04:59.060 --> 05:02.180
+And then I'm going to return the file information.
+
+05:02.220 --> 05:05.420
+Probably I'm just going to do a bit of formatting over here.
+
+05:05.420 --> 05:17.660
+So I'm going to say file and the file name slash n and then slash n of the content which I'm reading
+
+05:17.660 --> 05:19.460
+through from the file.
+
+05:19.500 --> 05:21.140
+Just this one right.
+
+05:22.020 --> 05:26.580
+I'm putting everything in the try catch block so that even if there is any exception, it is going to
+
+05:26.580 --> 05:28.740
+be catching that for me.
+
+05:29.180 --> 05:34.300
+And I'm going to say because this is the exception, which is going to be cards I'm going to accept
+
+05:34.460 --> 05:42.110
+as E and I'm going to return Turn that maybe error reading the file or something like that.
+
+05:42.150 --> 05:47.550
+So if error reading the given file, whatever.
+
+05:50.030 --> 05:50.470
+Cool.
+
+05:50.670 --> 05:55.030
+So that's the first tool that I have built that is the uh, the tool which is going to read the file
+
+05:55.030 --> 05:55.590
+for me.
+
+05:56.270 --> 05:59.990
+And the next one I'm going to write is going to be, uh, listing the file.
+
+05:59.990 --> 06:04.910
+So I'm not really going to write that code because obviously it's something I have already done before.
+
+06:04.910 --> 06:06.710
+So I'm going to go and paste that code over here.
+
+06:06.710 --> 06:08.150
+So it's going to be the listing, the file.
+
+06:08.150 --> 06:09.950
+So this is the reading the file.
+
+06:09.950 --> 06:11.830
+This is going to be the listing the files.
+
+06:11.870 --> 06:13.910
+Uh and it's going to list the files for me.
+
+06:13.910 --> 06:16.270
+It's going to say list files in the directory.
+
+06:16.310 --> 06:20.750
+I'm going to go through all the files in the directory and get those details for me over here.
+
+06:21.110 --> 06:22.590
+So we have got two tools.
+
+06:23.110 --> 06:25.750
+And we have the server being defined.
+
+06:25.790 --> 06:31.350
+The last operation which we have to do is we are going to run the MCP server, which I'm going to do
+
+06:31.350 --> 06:32.830
+it in our next lecture.
+
+06:32.830 --> 06:38.270
+But if you have already seen all the earlier videos, then you know what to do.
+
+06:38.310 --> 06:42.550
+See the the I is already telling me what I have to do, so just keep writing it.
+
+06:42.590 --> 06:44.630
+Try to run this yourself and see how it goes.
+
+06:44.630 --> 06:47.110
+If not, we're going to be doing that in our next lecture.

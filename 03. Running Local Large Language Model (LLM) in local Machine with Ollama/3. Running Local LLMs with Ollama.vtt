@@ -1,0 +1,343 @@
+WEBVTT
+
+00:00.080 --> 00:00.620
+All right.
+
+00:00.620 --> 00:05.810
+So now we are going to start using any of the model which is available within the llama website over
+
+00:05.810 --> 00:06.170
+here.
+
+00:06.170 --> 00:10.820
+And then we will see how we can run this particular model within our machine.
+
+00:10.820 --> 00:18.050
+So in order for me to do that, I'm going to just go to uh, my hyper or terminal or any terminal that
+
+00:18.050 --> 00:19.070
+you are really using.
+
+00:19.070 --> 00:24.260
+And I use hyper terminal, uh, in my Mac operating system because it's quite clean and neat.
+
+00:24.290 --> 00:28.670
+And this is one of the terminal that you can download it from the internet and then start using it as
+
+00:28.670 --> 00:28.820
+well.
+
+00:28.820 --> 00:30.020
+It's pretty straightforward.
+
+00:30.140 --> 00:34.340
+Uh, and this terminal over here, I'm just going to say uh oh llama.
+
+00:34.520 --> 00:40.970
+And if I just say list over here, it is going to list me all the models, which is available over here
+
+00:40.970 --> 00:45.620
+the moment I run this all llama list, as you can see, there is this llama is also up and running for
+
+00:45.620 --> 00:46.700
+me over here.
+
+00:46.730 --> 00:53.810
+So all you have to do is you need to either run the llama first and then use the command o llama list,
+
+00:53.810 --> 01:00.320
+which is going to show you the list of all the models which is already available within your, uh,
+
+01:00.320 --> 01:00.860
+machine.
+
+01:00.860 --> 01:04.930
+So that is what is the model that I have already downloaded it in my machine and it is running.
+
+01:04.960 --> 01:08.140
+I mean, it's not running, but it is already there within my machine.
+
+01:08.140 --> 01:14.290
+I can use this models within my machine, but if I wanted to, maybe you can see that I don't really
+
+01:14.290 --> 01:19.060
+have the Pi for, uh, over here, this particular model.
+
+01:19.060 --> 01:22.210
+So if I want to use this particular model, I can really use that as well.
+
+01:22.240 --> 01:28.450
+So let's say if there is any smaller model that I can show you as a demo, probably, um, maybe.
+
+01:28.480 --> 01:30.370
+What is this model?
+
+01:30.400 --> 01:31.960
+Uh, this looks.
+
+01:31.990 --> 01:34.630
+Yeah, I'm just going to download this for the demonstration purpose.
+
+01:34.630 --> 01:39.940
+So if I want to use this particular model, like 1.8 billion parameter model, I have to just run this
+
+01:39.940 --> 01:40.330
+command.
+
+01:40.330 --> 01:44.230
+Oh, llama run QN1 and colon 1.8 billion.
+
+01:44.260 --> 01:46.960
+Just copy this whole thing and paste it over here.
+
+01:46.960 --> 01:51.730
+And if I hit enter you'll notice that pretty much like if you have used a Docker before, it is going
+
+01:51.760 --> 01:54.490
+to download the image from Docker.
+
+01:54.520 --> 01:55.750
+You remember from the Docker Hub.
+
+01:55.750 --> 02:02.300
+You can download the image similarly over here in the llama, if you just do a llama run QN1 point 8
+
+02:02.300 --> 02:07.690
+billion, it is going to go and pull the manifest first, and then it's going to start downloading the
+
+02:07.690 --> 02:11.350
+the entire model for you within your local machine.
+
+02:11.350 --> 02:16.750
+And you see that I have downloaded it in my local machine and once it is downloaded, it is going to
+
+02:16.780 --> 02:18.430
+get all the metadata and everything.
+
+02:18.430 --> 02:23.530
+And then it is going to start running because we have specified run here, you can start seeing that
+
+02:23.560 --> 02:26.740
+this particular model can be even executed over here.
+
+02:26.740 --> 02:32.080
+And you can start typing the command and ask the question pretty much like how you do with the ChatGPT.
+
+02:32.860 --> 02:36.130
+So if you have the ChatGPT account, that's what you do, right?
+
+02:36.160 --> 02:40.060
+You just go to the ChatGPT and then you're going to start asking the question over here.
+
+02:40.060 --> 02:43.750
+The same thing is going to happen with this as well over here.
+
+02:43.780 --> 02:48.730
+See, now you have got a prompt, uh, ready for you to type so that you can get answers.
+
+02:48.730 --> 02:52.060
+So if I ask, like, how are you doing?
+
+02:52.360 --> 02:54.610
+Uh, and you see that it's going to start responding.
+
+02:54.610 --> 02:56.140
+I'm an artificial intelligence language model.
+
+02:56.140 --> 02:59.020
+I don't have feeling in this traditional sense.
+
+02:59.020 --> 03:03.100
+However, I'm functional, properly ready to assist any of the questions or task.
+
+03:03.130 --> 03:03.850
+Amazing.
+
+03:03.850 --> 03:04.450
+Great.
+
+03:04.450 --> 03:11.100
+So that is how you actually pull, uh, A model and then run the model within your local machine.
+
+03:11.100 --> 03:17.010
+And let's say if you want to, uh, if you're going to ask some question like write a selenium with
+
+03:17.160 --> 03:23.910
+C-sharp dotnet code for uh, google.com, uh, website.
+
+03:23.910 --> 03:28.980
+And if I ask this question, you see that now it is going to immediately start writing the code.
+
+03:28.980 --> 03:31.110
+I mean, the code itself is entirely wrong.
+
+03:31.110 --> 03:35.910
+As you can see, it is doing HTTP client, HTTP client, HTTP client, or SSL protocol.
+
+03:36.120 --> 03:37.650
+Uh, something like that.
+
+03:37.650 --> 03:41.760
+I don't even understand what this is writing because it's not even a selenium code, to be honest.
+
+03:41.760 --> 03:44.370
+It's completely messed up with the selenium code.
+
+03:44.370 --> 03:52.230
+So it's just writing, uh, is using the system dot net dot http uh package and then is writing a selenium
+
+03:52.230 --> 03:53.010
+code from that.
+
+03:53.040 --> 03:53.910
+It's crazy.
+
+03:53.940 --> 03:55.410
+Like it's completely wrong code.
+
+03:55.410 --> 04:02.520
+So this is because, as I told you, the model that we are using over here is actually a very, very
+
+04:02.520 --> 04:08.250
+small, uh, I mean old 11.5 series, uh, from Alibaba Cloud.
+
+04:08.460 --> 04:13.190
+And it is also having less, uh, less parameters over here.
+
+04:13.700 --> 04:20.600
+But if I'm going to use some other models, then I will have even more, uh, even accurate answer.
+
+04:20.630 --> 04:26.090
+Like if I use some model which has got maybe the deep sea model, and if I try to ask the same question,
+
+04:26.090 --> 04:27.980
+things will be entirely different.
+
+04:27.980 --> 04:32.180
+So I will quickly show you how it is going to look like if I'm going to use the deep sea model.
+
+04:32.180 --> 04:37.550
+So if I want to quit this particular prompt, all I have to do is I want to just say by like slash by.
+
+04:37.580 --> 04:41.300
+So it will just quit the prompt execution over here.
+
+04:41.300 --> 04:47.120
+And now, as I told you in the Olama list, I can see all my models coming up over here.
+
+04:47.120 --> 04:52.460
+And if I want to use any one of the other model, for instance, I have gotten deep sea r one um, uh,
+
+04:52.460 --> 04:54.110
+8 billion parameter.
+
+04:54.110 --> 04:55.700
+So if I want to use that.
+
+04:55.700 --> 04:58.670
+So I'm just going to say, oh llama run.
+
+04:58.670 --> 05:03.170
+And if I hit says space, there is going to show me all the different model that I have got.
+
+05:03.170 --> 05:07.940
+You may not be getting this option over here within your machine, because you may need to install some
+
+05:07.940 --> 05:10.220
+third party plugin to get this kind of answer.
+
+05:10.250 --> 05:12.460
+If you don't get it, don't worry, you just have to do this.
+
+05:12.490 --> 05:15.910
+Copy this entire thing from here.
+
+05:15.940 --> 05:16.810
+Like deep sea.
+
+05:17.020 --> 05:19.420
+And then paste it over here.
+
+05:19.450 --> 05:20.770
+Like, uh, deep sea.
+
+05:20.830 --> 05:22.990
+Uh, hyphen R1 8 billion.
+
+05:22.990 --> 05:27.850
+And if I hit enter, you'll notice that because it is already downloaded in my machine, it doesn't
+
+05:27.850 --> 05:34.180
+really download it once again, but it will start running this particular model within my local machine.
+
+05:34.180 --> 05:36.820
+So you see that it's a big, um, model.
+
+05:36.820 --> 05:43.300
+And it has got a lot of things to be inferred to be set up before you start inferencing.
+
+05:43.300 --> 05:47.110
+That's the reason why taking a bit of a time while it was initiating things.
+
+05:47.110 --> 05:47.830
+Right.
+
+05:47.830 --> 05:53.740
+And now if I'm going to ask the same question that I asked to this, uh, model, uh, so I'm going
+
+05:53.740 --> 05:56.830
+to just copy this whole thing and I'm going to paste it over here.
+
+05:56.860 --> 05:56.980
+Right.
+
+05:56.980 --> 05:59.440
+Selenium, C-sharp code for google.com website.
+
+05:59.440 --> 06:06.280
+You see that the moment I asked this question now, because this deep seek R1 model is a, uh, reasoning
+
+06:06.280 --> 06:09.940
+model, it is first starting to think like what it has to do.
+
+06:10.000 --> 06:15.460
+You see that it is writing all the thinking process, um, before it Start writing the answer.
+
+06:15.460 --> 06:19.420
+And look at that now it's writing a selenium C-sharp code for us guys.
+
+06:19.420 --> 06:25.390
+It has thought a lot of things before it answered the question, and then it is writing the correct
+
+06:25.390 --> 06:26.740
+selenium C-sharp code.
+
+06:26.740 --> 06:32.980
+I am 100% sure this code, if I'm going to use it within my local Visual Studio or Visual Studio Code,
+
+06:33.010 --> 06:38.890
+it is just going to work because the the answer is quite right and this is what you should be doing
+
+06:38.890 --> 06:40.870
+while you use this particular model.
+
+06:41.050 --> 06:45.730
+Um, and that's the reason why, as I told you, if you're going to be using an effective model, if
+
+06:45.730 --> 06:52.810
+you're going to be using a hyper parameter model, then you should be using, then you should be getting
+
+06:52.840 --> 06:58.270
+a good response as opposed to a smaller model with a lesser parameter support on that.
+
+06:58.540 --> 07:05.800
+But as I said, this is how you can actually run a deep Sikh model or other types of model within your
+
+07:05.800 --> 07:07.180
+local machine.
+
+07:07.330 --> 07:12.100
+Even without even having an internet connectivity, you can run all these operations for you.
+
+07:12.100 --> 07:16.870
+That is the power of running the local large language model using Olama.

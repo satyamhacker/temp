@@ -1,0 +1,385 @@
+WEBVTT
+
+00:00.080 --> 00:05.240
+So now we are going to start testing the rack based system that we have got over here using our Visual
+
+00:05.240 --> 00:06.140
+Studio Code.
+
+00:06.140 --> 00:10.520
+But in order to start doing that using ragas, the first thing which we need to do over here is we need
+
+00:10.520 --> 00:17.330
+to have a document store, which is going to have all the documents, like a PDF file, which can be
+
+00:17.330 --> 00:20.270
+storing the information on a vector database.
+
+00:20.270 --> 00:23.810
+And then we need to retrieve the database data from here.
+
+00:23.810 --> 00:27.410
+And we also need embedding while we store the data into the vector database.
+
+00:27.410 --> 00:31.790
+You remember all these details we already discussed in our earlier sections of this course.
+
+00:31.790 --> 00:38.540
+So please make sure that you have already gone through the section which is going to be, I guess this
+
+00:38.540 --> 00:44.630
+one, like building the rag with the documents over here where we discussed how we we do all those things
+
+00:44.630 --> 00:45.140
+over there.
+
+00:45.140 --> 00:50.780
+So that is the foundation of what we are going to be doing in this particular section as well.
+
+00:50.810 --> 00:51.620
+But guess what?
+
+00:51.620 --> 00:56.750
+This time, just for simplicity, like additional simplicity purpose, I'm not going to use any external
+
+00:56.750 --> 01:03.720
+PDF file, which is something that I need to extract and things just to get a sense that the Rag system
+
+01:03.720 --> 01:05.190
+can be tested using ragas.
+
+01:05.190 --> 01:12.090
+Using the evaluation, I am going to be creating a doc just like a structure of the document with the
+
+01:12.090 --> 01:12.930
+page contents.
+
+01:12.930 --> 01:20.100
+And then I'm also going to create some reference questions and stuff, and then we can just use that
+
+01:20.100 --> 01:23.010
+particular doc over here for evaluating.
+
+01:23.010 --> 01:26.010
+So that is what is the whole idea in this particular lectures.
+
+01:26.010 --> 01:26.820
+And couple of them.
+
+01:26.820 --> 01:32.040
+And then following that we're also going to test our own rag that we have built with this particular
+
+01:32.100 --> 01:35.100
+chroma lang DB that we have got over here.
+
+01:35.130 --> 01:36.600
+We're going to test this as well.
+
+01:36.600 --> 01:41.070
+So it is going to be interesting to see how our evaluation really works.
+
+01:41.070 --> 01:43.170
+So we are going to create all those things over here.
+
+01:43.170 --> 01:48.210
+So we'll just go step by step so that you can have a clear understanding of how we are going to be testing
+
+01:48.210 --> 01:50.010
+all of these using ragas.
+
+01:50.010 --> 01:57.180
+So I have also created a simple notebook file over here for our testing in this particular lecture.
+
+01:57.180 --> 02:00.600
+So testing a rag based system with the LLM being an evaluator.
+
+02:00.600 --> 02:05.050
+So I have added this file, this line of code which is required, as you know already.
+
+02:05.050 --> 02:09.640
+And now I'm gonna add a few more details over here.
+
+02:09.640 --> 02:17.170
+So basically I'm going to be using, as I told you, the chroma DB and the Allama embedding, which
+
+02:17.170 --> 02:24.670
+we were using earlier in our other sections for the embedding as well as for the vector store.
+
+02:24.670 --> 02:26.440
+So I'm going to do the exact same thing over here.
+
+02:26.440 --> 02:30.640
+So let me just copy this code from here and let's do this.
+
+02:30.640 --> 02:35.650
+I'm going to put a probably markdown over here.
+
+02:35.650 --> 02:38.800
+And I'm going to say embedding.
+
+02:39.130 --> 02:45.100
+And this embedding is going to be these lines of code.
+
+02:45.100 --> 02:48.670
+And I'm going to use the same Allama 3.2 latest model.
+
+02:48.700 --> 02:50.410
+Let me open the Allama.
+
+02:51.940 --> 02:54.280
+And now let's try to run this.
+
+02:54.310 --> 02:54.820
+All right.
+
+02:54.850 --> 02:56.050
+So embedding is done.
+
+02:56.290 --> 03:01.450
+And now I'm also going to create the vector stores over here.
+
+03:01.450 --> 03:05.980
+but the vector stores, I don't really have to create, like how I have created over here, because
+
+03:05.980 --> 03:11.680
+I'm going to be creating the vector stores in such a way that I'm just going to need this chroma import.
+
+03:11.680 --> 03:15.790
+But the document I'm going to create the entire document structure this time.
+
+03:15.790 --> 03:17.860
+That is the idea over here.
+
+03:17.860 --> 03:22.660
+So I'm going to probably import in the same line over here.
+
+03:22.690 --> 03:23.380
+There we go.
+
+03:23.650 --> 03:28.000
+And here I'm going to create the the document structure as I was telling.
+
+03:28.000 --> 03:34.390
+So what is the data and document structure like I'm going to do is I'm going to say from Lang chain
+
+03:34.780 --> 03:37.330
+of doc store.
+
+03:37.330 --> 03:42.280
+And I'm going to create the document and I'm going to import the documents over here.
+
+03:42.310 --> 03:42.880
+Right.
+
+03:43.570 --> 03:46.840
+And then I'm going to create a docs.
+
+03:47.200 --> 03:50.260
+So you will notice that this is an array of document that I'm creating.
+
+03:50.260 --> 03:54.640
+So basically this is a multi shot sample test that we are going to be doing in ragas.
+
+03:54.670 --> 03:57.160
+That's the reason why I wanted to create this over here.
+
+03:57.160 --> 04:03.660
+And I'm going to create the document with um with It's probably a page content.
+
+04:05.790 --> 04:08.370
+And the page content is equal to.
+
+04:08.400 --> 04:13.560
+I'm going to write a series of content here, like playwright is a modern web automation testing tool
+
+04:13.560 --> 04:16.470
+and selenium is widely used, something like that.
+
+04:16.470 --> 04:22.320
+So I wanted to create a sample details which is going to look something like this.
+
+04:22.350 --> 04:24.900
+I don't want to write that, so I'm just going to copy paste it.
+
+04:24.900 --> 04:29.460
+So you see that the playwright is a modern automation library for end to end testing.
+
+04:29.460 --> 04:32.310
+It supports multiple browsers like Chrome, Firefox and WebKit.
+
+04:32.340 --> 04:33.570
+This is one of the document.
+
+04:33.600 --> 04:38.550
+Similarly, selenium is widely used open source framework for web automation, supporting multiple programming
+
+04:38.550 --> 04:39.660
+languages and browsers.
+
+04:39.660 --> 04:42.240
+So I'm adding all the tool details over here.
+
+04:42.240 --> 04:46.830
+I'm also saying some more details like playwright allows network interception, headless execution and
+
+04:46.830 --> 04:51.960
+tracing for debugging, complex web applications and all those features I'm just adding over here.
+
+04:51.960 --> 04:52.980
+So these are the documents.
+
+04:53.010 --> 04:55.320
+I mean, you can keep on adding any number of document.
+
+04:55.320 --> 05:00.900
+But just for this simple ragas evaluation testing I want to keep things simple over here.
+
+05:00.930 --> 05:01.170
+Right.
+
+05:01.200 --> 05:06.030
+These are the documents that I have got, and you see that the document structure is pretty much the
+
+05:06.030 --> 05:11.070
+same structure, like how we do with the vector stores which stores the document.
+
+05:11.070 --> 05:12.750
+That's the whole idea over here.
+
+05:12.750 --> 05:15.300
+And I want to create some questions here.
+
+05:15.300 --> 05:20.970
+So this is the question that we are going to ask to infer uh, during the evaluation purpose.
+
+05:21.000 --> 05:22.110
+Look at that already.
+
+05:22.110 --> 05:23.070
+This I is writing.
+
+05:23.070 --> 05:29.280
+And the questions I have also prepared, which I'm going to be pasting it over here so you can see that.
+
+05:29.280 --> 05:33.060
+So what is the playwright what is playwright and what browsers does it supports.
+
+05:33.060 --> 05:39.000
+So mainly I'm expecting the response from the vector stores will be like playwright is a modern automation
+
+05:39.000 --> 05:40.830
+library for automation testing.
+
+05:40.950 --> 05:43.770
+Uh, multiple browsers like Chrome, Firefox and WebKit.
+
+05:43.770 --> 05:45.540
+That is the knowledge that it has got.
+
+05:45.540 --> 05:49.290
+So it should give me when I ask what is the playwright and what browser does it support?
+
+05:49.320 --> 05:54.180
+It should give me the the details like it supports Chrome, Firefox and WebKit.
+
+05:54.180 --> 05:58.920
+So similarly, if I ask the selenium question over here, it should give me this answer.
+
+05:58.920 --> 06:00.210
+As you can see over here.
+
+06:00.720 --> 06:03.010
+So it's pretty much like a 1 to 1 match that I have added.
+
+06:03.010 --> 06:08.740
+But you can add any number of questions over here, maybe like a follow up questions, and maybe based
+
+06:08.740 --> 06:12.100
+on the number of datas that you have got, these things will change.
+
+06:12.190 --> 06:17.350
+But you'll notice that there are 12345671234567.
+
+06:17.350 --> 06:22.690
+So totally, exactly one on one match that I have made for documents as well as with the questions,
+
+06:22.690 --> 06:25.960
+so that it always matches as expected.
+
+06:25.960 --> 06:33.160
+And we we will see if the the response coming up from this particular vector store is actually matching
+
+06:33.250 --> 06:34.930
+with both of them or not.
+
+06:35.050 --> 06:41.800
+And the similarities that we are going to match is exactly evaluated using the ragas.
+
+06:41.860 --> 06:42.430
+All right.
+
+06:42.430 --> 06:45.490
+So this is the document that I have created over here.
+
+06:45.490 --> 06:48.730
+And the next one is the vector store that I wanted to create.
+
+06:48.730 --> 06:52.750
+So in order for me to create the vector stores it's also very, very simple.
+
+06:52.780 --> 06:56.470
+I'm going to say vector stores is equal to.
+
+06:56.500 --> 06:58.810
+And I'm going to call our Croma database.
+
+06:58.810 --> 07:00.970
+And I'm going to import from documents.
+
+07:00.970 --> 07:06.350
+This time Uh, I'm just going to say docs, which we already have over here, this array.
+
+07:06.350 --> 07:11.120
+And I'm going to pass the embedding, which is the embedding that I have created over here.
+
+07:11.120 --> 07:14.030
+So this is going to create the vector stores for us.
+
+07:14.030 --> 07:14.900
+That's all.
+
+07:14.900 --> 07:18.170
+So hope you got the idea like what we are trying to do over here.
+
+07:18.170 --> 07:21.470
+So this is the prerequisite setup that I wanted to make.
+
+07:21.530 --> 07:27.110
+Uh, pretty much like the rack system that we have built already, this kind of setup.
+
+07:27.140 --> 07:30.440
+Right now, we need to do a few more things.
+
+07:30.440 --> 07:32.090
+We need to add the retriever.
+
+07:32.360 --> 07:40.820
+And we also need to check, um, with the retrieval, uh, QA for that matter, to see how we can retrieve
+
+07:40.820 --> 07:41.300
+the data.
+
+07:41.330 --> 07:50.600
+If you remember, we tried doing that as well, uh, in our last section using the retrieval QA and
+
+07:50.600 --> 07:52.580
+to retrieve the document, this one.
+
+07:52.580 --> 07:54.650
+So we are going to do this one as well.
+
+07:54.650 --> 07:59.990
+Uh, this time, instead of writing our own manual steps of doing it, uh, I'm going to use the retrieval
+
+07:59.990 --> 08:03.530
+QA to verify to retrieve the data out from the, uh, from the chain.

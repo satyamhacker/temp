@@ -1,0 +1,253 @@
+WEBVTT
+
+00:00.200 --> 00:07.100
+All right, so now that we need to see how we can test the tool callings of our AI agent, and for that
+
+00:07.100 --> 00:09.110
+we need to prepare the golden data set.
+
+00:09.110 --> 00:20.180
+So I'm going to say preparing the golden data set for deep level a test case that we are going to be
+
+00:20.180 --> 00:20.570
+creating.
+
+00:20.600 --> 00:20.780
+Right.
+
+00:20.810 --> 00:22.940
+That's what we are essentially going to do over here.
+
+00:22.940 --> 00:28.520
+So in order to do that, I'm going to go and I'm going to say once again golden underscore data set.
+
+00:28.550 --> 00:29.780
+It can be of any name.
+
+00:29.780 --> 00:34.130
+And over here I'm going to start writing the array of all the data sets.
+
+00:34.130 --> 00:36.440
+So basically the first one is going to be the question.
+
+00:36.440 --> 00:43.370
+And I'm going to say what is the sum of two and four.
+
+00:43.370 --> 00:51.890
+So for this particular question the answer is the expected answer that I'm looking for from the realm
+
+00:51.890 --> 00:59.510
+is going to be the sum of uh, two and four is six, something like that.
+
+00:59.540 --> 01:05.560
+And similarly, I'm going to have one more question over here, which is going to be this what is the
+
+01:05.560 --> 01:07.180
+double of the two and four?
+
+01:07.210 --> 01:10.900
+Then the answer is going to be this one.
+
+01:10.900 --> 01:14.470
+And maybe I'm going to ask one more question over here.
+
+01:14.470 --> 01:17.260
+So what is the what is two minus four.
+
+01:17.290 --> 01:18.520
+Then it's going to be minus two.
+
+01:18.550 --> 01:21.970
+So you can see that in all of these places we are going to be asking the question.
+
+01:22.000 --> 01:24.490
+We're going to get the expected answer over here.
+
+01:24.490 --> 01:32.410
+But the problem that we have over here is we are not telling which tool that we are going to be calling
+
+01:32.410 --> 01:33.190
+itself.
+
+01:33.220 --> 01:39.940
+So we need to check the tools being called along with this particular answer, because the expected
+
+01:39.940 --> 01:41.680
+answer is not the important part over here.
+
+01:42.010 --> 01:44.290
+The important part is which tool is being called.
+
+01:44.290 --> 01:52.300
+That is, what is the quest for us to verify whether the agent is really invoking the correct tool for
+
+01:52.300 --> 01:53.560
+this particular question?
+
+01:53.560 --> 01:58.000
+Because as you see, when I say what is the double of two, it is going to invoke the multiply numbers
+
+01:58.000 --> 01:58.630
+tool.
+
+01:58.720 --> 02:01.780
+And this is the action that we have got.
+
+02:01.930 --> 02:08.520
+And this is the parameter which has been passed over here like a as two and b as two.
+
+02:08.550 --> 02:18.330
+So with this knowledge in place, the way that you can design the toolings over here comes a bit more
+
+02:18.330 --> 02:19.470
+tricky this time.
+
+02:19.470 --> 02:21.210
+This is where you need to learn this part.
+
+02:21.480 --> 02:26.940
+Over here you can just say var deep eval dot test underscore case.
+
+02:26.940 --> 02:30.810
+See these details are not unfortunately there in the documentation.
+
+02:30.810 --> 02:32.730
+So far the documentation is quite poor.
+
+02:32.730 --> 02:38.820
+So I just ended up doing a bit of a digging around how I can get through all this information.
+
+02:38.820 --> 02:43.560
+So this is how I ended up creating the golden data set over here.
+
+02:43.560 --> 02:48.270
+So over here you just need to give a parameter called as tool called.
+
+02:48.300 --> 02:51.000
+And this parameter I mean it can be any name to be honest.
+
+02:51.000 --> 02:54.480
+But over here in the tool called you need to create an array.
+
+02:54.480 --> 02:57.210
+And then you need to call this tool called class.
+
+02:57.420 --> 03:02.220
+And within this tool class tool called class you need to give the name as.
+
+03:02.220 --> 03:04.390
+So for this one you can see that?
+
+03:04.420 --> 03:05.470
+This guy.
+
+03:05.590 --> 03:08.140
+This is going to be add numbers tool that we are going to be calling.
+
+03:08.170 --> 03:08.680
+Right.
+
+03:08.680 --> 03:16.120
+And the parameters that we are going to be passing for this particular uh so parameters it can be input
+
+03:16.120 --> 03:20.230
+parameters or maybe uh yeah I think there is an input parameter.
+
+03:20.230 --> 03:28.300
+So I'm going to choose the input parameter uh which is going to be this the value is going to be uh,
+
+03:28.300 --> 03:37.540
+the input parameter which is going to be a is equal to two and b which is equal to a four.
+
+03:37.570 --> 03:38.680
+That's what we are passing in right.
+
+03:38.710 --> 03:42.970
+This is the input parameter that we are going to pass in for this add numbers.
+
+03:42.970 --> 03:44.260
+So now you got the idea right.
+
+03:44.290 --> 03:49.330
+This is what we are we really wanted to do in this particular place so that it could able to identify
+
+03:49.360 --> 03:50.440
+things more easily.
+
+03:50.440 --> 03:55.900
+And the same thing is going to happen for the tool calls for the multiplications over here.
+
+03:56.020 --> 03:58.030
+Uh, just that this is going to be multiply numbers.
+
+03:58.030 --> 04:02.530
+So it's just going to say multiply numbers tool is going to be invoked.
+
+04:02.530 --> 04:04.900
+And this is the same thing that we are going to pass in.
+
+04:05.140 --> 04:11.610
+And the same thing is going to happen for the, uh, for the subtract numbers, which is this tool is
+
+04:11.610 --> 04:13.740
+going to be invoked if I'm not wrong.
+
+04:14.220 --> 04:15.900
+So you want to keep things simple.
+
+04:15.900 --> 04:19.290
+That's the reason why I just wanted to do, uh, in this operation over here.
+
+04:19.290 --> 04:20.940
+So this is the subtract numbers.
+
+04:20.940 --> 04:22.590
+We're just going to call this input parameters.
+
+04:22.680 --> 04:23.970
+This is the multiply number.
+
+04:24.000 --> 04:24.900
+This is input parameters.
+
+04:24.900 --> 04:26.370
+And this is the add numbers.
+
+04:26.370 --> 04:27.990
+It's going to have this input parameters.
+
+04:27.990 --> 04:29.220
+So hope you got the idea.
+
+04:29.220 --> 04:32.730
+So this is what is the golden data set that we are going to be creating.
+
+04:32.730 --> 04:36.570
+And now we can just print the golden data set and see how it actually looks.
+
+04:36.570 --> 04:39.390
+So you see that the Golden data set will have a tool called.
+
+04:40.110 --> 04:42.390
+It also will have the name and input parameters.
+
+04:42.390 --> 04:44.880
+And it's going to have the question and the expected answer.
+
+04:44.880 --> 04:51.000
+So now that we have this golden data set, we need to convert this golden data set into the test case
+
+04:51.000 --> 04:52.470
+format if you remember correctly.
+
+04:52.470 --> 04:57.390
+So that is what something that we need to do so that we can push this to this, um, this confident
+
+04:57.450 --> 04:59.550
+AI cloud using their evaluate.
+
+04:59.550 --> 05:04.230
+But that is what is the procedure that we need to follow in order to make this happen.
+
+05:04.230 --> 05:07.530
+So that is something we'll be doing in our next lecture.

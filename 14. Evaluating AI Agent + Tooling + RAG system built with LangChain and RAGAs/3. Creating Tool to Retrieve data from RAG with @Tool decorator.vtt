@@ -1,0 +1,340 @@
+WEBVTT
+
+00:00.050 --> 00:00.650
+All right.
+
+00:00.650 --> 00:05.660
+So now I was talking about we need to create a tool for the bias detection.
+
+00:05.660 --> 00:12.140
+But you may think that Karthik, we have already created the tool for the bias detection in our building.
+
+00:12.140 --> 00:17.300
+Uh, bias or building agent of, uh, with the ragas over here.
+
+00:17.300 --> 00:19.430
+So what difference does it really make?
+
+00:19.430 --> 00:22.850
+But you can see that this, uh, tool that we have got is quite generic.
+
+00:22.880 --> 00:26.210
+Like it says, what kind of bias is mentioned in this article?
+
+00:26.210 --> 00:31.550
+You must use this tool for bias related, uh, testing in LM or large language model.
+
+00:31.550 --> 00:34.400
+This is what I have mentioned in this tool over here.
+
+00:34.400 --> 00:40.250
+But what I really wanted is that because this tool actually gives me quite a lot of big responses.
+
+00:40.250 --> 00:46.130
+And if you see the text editor over here, see the response is, uh, so big over here.
+
+00:46.130 --> 00:52.220
+So I don't want to really get this big response and then get the output, like what I'm looking for,
+
+00:52.250 --> 00:56.420
+because that is going to be ruining my entire testing, which I'm doing, because I want it to be like
+
+00:56.420 --> 00:56.870
+crisp.
+
+00:56.870 --> 01:00.940
+I want to see if the answer really matches with the with the sponsors I'm going to get.
+
+01:00.940 --> 01:07.750
+So I need to change our our tooling a bit in a way that it can summarize the response which is actually
+
+01:07.750 --> 01:08.230
+getting out.
+
+01:08.230 --> 01:14.620
+So I'm going to say create bias detection tool.
+
+01:14.710 --> 01:21.310
+And the tool that I'm going to write this time is pretty much like how we did in our earlier, uh,
+
+01:21.310 --> 01:25.810
+section of this course, which is going to be like the Lang chain tool bias detection.
+
+01:25.810 --> 01:26.470
+Great.
+
+01:26.470 --> 01:28.030
+All those things remain the same.
+
+01:28.030 --> 01:34.210
+But the only thing over here, the only change that I wanted to suggest here, is that the way it is
+
+01:34.210 --> 01:40.870
+actually written in the prompt, because I wanted to detect, uh, the bias in the given statement,
+
+01:41.410 --> 01:47.500
+detect, uh, bias in the given statement.
+
+01:50.350 --> 01:55.990
+And summarize our findings for me.
+
+01:57.070 --> 01:57.430
+Right.
+
+01:57.430 --> 01:59.280
+That's what I'm going to tell over here.
+
+01:59.280 --> 02:02.550
+So I wanted it to summarize that particular response for me.
+
+02:02.550 --> 02:08.610
+And over here I'm just going to say arguments where the arguments is going to be query this query,
+
+02:08.610 --> 02:09.690
+which I'm passing in.
+
+02:09.690 --> 02:19.710
+And this query is the search query, uh, related to bias in LLM.
+
+02:20.220 --> 02:20.550
+Right.
+
+02:20.550 --> 02:23.520
+That is my search query that I'm passing in.
+
+02:23.610 --> 02:38.100
+And the return types are the returns that you're going to get is going to be a string containing the
+
+02:38.100 --> 02:39.450
+summary
+
+02:41.400 --> 02:51.300
+of the bias in the or maybe bias related findings from the query.
+
+02:52.290 --> 02:52.620
+Right.
+
+02:52.650 --> 02:57.590
+That is this thing that is going to be returned to me over here and now, because we need to do the
+
+02:57.620 --> 03:02.870
+summary and because the vector database doesn't do any summary, even if you try to invoke it.
+
+03:02.870 --> 03:05.090
+Because, see, this is the return type.
+
+03:05.090 --> 03:10.460
+And if you just go to the ragas over here, sorry, the agent with tool over here, you will notice
+
+03:10.460 --> 03:14.840
+that the tool really does retrieve and retrieve and invokes the query over there.
+
+03:14.840 --> 03:17.900
+But this is just going to retrieve the value for us over here.
+
+03:17.900 --> 03:19.730
+But it doesn't really do the summarization.
+
+03:19.730 --> 03:25.790
+So we need to do a bit of a summarization before I actually start using that particular stuff over there.
+
+03:25.790 --> 03:27.470
+So how do I actually do that?
+
+03:27.470 --> 03:31.010
+This is where things are going to be a bit trickier this time.
+
+03:31.010 --> 03:35.270
+So what I'm going to do is I'm going to add some retrieve documents, pretty much like how we did.
+
+03:35.300 --> 03:37.010
+So retrieve documents.
+
+03:37.100 --> 03:41.630
+So retriever um, oh, we did not add the retriever as well.
+
+03:42.980 --> 03:43.820
+Uh, sorry about that.
+
+03:43.820 --> 03:44.900
+We need to add the retriever.
+
+03:44.900 --> 03:47.870
+So we just missed adding the retriever part.
+
+03:47.930 --> 03:50.600
+So we need to add the retriever as well.
+
+03:50.600 --> 03:59.350
+So for doing that I'm going to go over here I'm going to add the markdown, I'm going to say a driver.
+
+03:59.590 --> 04:03.880
+I'm going to add the code block over here, which is going to be the retriever QA.
+
+04:04.330 --> 04:07.420
+Let me just one is fine this time and I'm going to run this.
+
+04:07.420 --> 04:08.800
+So that's going to give me the retriever.
+
+04:08.800 --> 04:12.550
+So I'm going to now use this retriever dot.
+
+04:12.550 --> 04:19.420
+And I'm going to invoke the retriever with the query that I'm passing in, which is this query that
+
+04:19.420 --> 04:19.900
+I'm passing in.
+
+04:19.900 --> 04:21.760
+So this is just going to give the retriever document.
+
+04:21.790 --> 04:22.270
+Right.
+
+04:22.270 --> 04:26.950
+But now with this retriever document we can't really do anything over here.
+
+04:26.950 --> 04:32.500
+We need to do the summarization of all the records which has been retrieved out from this retriever
+
+04:32.530 --> 04:33.070
+document.
+
+04:33.070 --> 04:36.940
+And then we need to summarize this entire things for me over here.
+
+04:36.940 --> 04:42.430
+That is why I think we need to have two retriever values over there so that it can combine all of them.
+
+04:42.850 --> 04:46.540
+So what I'm going to do is I'm going to write a context over here.
+
+04:46.960 --> 04:51.130
+I'm going to say, just combine me, all the retriever documents.
+
+04:51.130 --> 04:54.040
+So just join all the retriever retrieved documents for me.
+
+04:54.310 --> 05:05.950
+Uh, so I'm going to say doc dot uh, page underscore content, which is this one for doc in the uh,
+
+05:05.950 --> 05:08.170
+retrieved documents.
+
+05:08.170 --> 05:09.430
+Just this one.
+
+05:11.170 --> 05:13.840
+So I'm just going to have all the context for me over here.
+
+05:13.840 --> 05:19.120
+And now I can use this context which I am retrieving out from this guy.
+
+05:19.870 --> 05:21.250
+I have this context.
+
+05:21.250 --> 05:27.310
+And now I can just pass this particular context to an LM to do the summarization for me.
+
+05:27.340 --> 05:31.660
+See, this is where things are going to be interesting, because now the response that you are getting
+
+05:31.660 --> 05:34.990
+it from the vector stores are not always going to be smart enough.
+
+05:34.990 --> 05:38.830
+So we need to have an LM in place to do that summarization for us.
+
+05:38.830 --> 05:41.680
+So that's why I'm going to write another prompt here.
+
+05:41.680 --> 05:46.450
+And I'm going to say, uh, here, something like this.
+
+05:46.480 --> 05:48.100
+I don't know where this is coming from.
+
+05:48.340 --> 05:58.500
+Um, and over here I'm going to say in And this particular prompt that the following text discusses
+
+05:58.530 --> 06:04.110
+potential biases in llms.
+
+06:04.860 --> 06:09.840
+And that is this context which I'm going to pass in as an input variable.
+
+06:10.140 --> 06:18.960
+And I'm going to say please extract and summarize the bias related thing.
+
+06:18.960 --> 06:23.910
+So I'm going to just probably copy paste the code that I have already done.
+
+06:27.780 --> 06:28.350
+Right.
+
+06:28.350 --> 06:31.680
+So that is what I'm essentially telling over here.
+
+06:31.680 --> 06:37.650
+And with that in place, I can now use this particular prompt over here.
+
+06:37.650 --> 06:43.230
+And I'm going to say I want to get a response out from the LLM.
+
+06:44.250 --> 06:49.020
+And I'm going to invoke our prompt which is this prompt.
+
+06:49.020 --> 06:56.180
+So I'm going to get this response and I'm going to return the, uh, the response dot content which
+
+06:56.180 --> 06:58.130
+has been generated from this particular LM.
+
+06:58.130 --> 06:58.970
+Look at that.
+
+06:59.000 --> 07:03.560
+This is the tool like this is this is like a big gigantic tool that we have built.
+
+07:03.560 --> 07:05.390
+This is something which is very, very important.
+
+07:05.390 --> 07:09.980
+And the reason why this is important is because the vector data store doesn't really have any intelligence
+
+07:09.980 --> 07:11.390
+to get me the summarization.
+
+07:11.390 --> 07:16.640
+So because I have asked it to summarize my findings of the given statement, if there is, if there
+
+07:16.640 --> 07:20.390
+is any bias, then that needs to be done over here, right?
+
+07:20.420 --> 07:22.790
+So it is going to be stored over here.
+
+07:22.790 --> 07:24.500
+And then we're going to get all of this.
+
+07:24.500 --> 07:29.990
+And now with all these changes in place, if I try to run this, you see that the tool is being fully
+
+07:29.990 --> 07:30.560
+built.
+
+07:30.560 --> 07:35.630
+And once this is fully built, the final operation is we need to build our link chain agent and then
+
+07:35.630 --> 07:36.710
+get the response out.
+
+07:36.710 --> 07:43.370
+And then we need to create a data set, like how we did in our last lecture where we were creating this
+
+07:43.370 --> 07:44.540
+data set, something like this.
+
+07:44.540 --> 07:49.100
+So this is something we need to build as well, which we'll be doing in our next lecture.

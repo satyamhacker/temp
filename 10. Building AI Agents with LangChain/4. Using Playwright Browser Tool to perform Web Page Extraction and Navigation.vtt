@@ -1,0 +1,349 @@
+WEBVTT
+
+00:00.080 --> 00:06.800
+In this lecture, we are going to talk about how we can make use of our agent to perform other operation,
+
+00:06.800 --> 00:11.150
+not just about like the current information or anything like that, but we are going to see how we can
+
+00:11.150 --> 00:20.420
+build an agent which can do real time data extraction or web page data extraction using a playwright
+
+00:20.450 --> 00:20.930
+tool.
+
+00:20.930 --> 00:24.830
+So that is what we are going to be discussing in this particular lecture.
+
+00:24.830 --> 00:31.010
+So in order to do that I'm going to use a tool which is already built by the community, which is the
+
+00:31.670 --> 00:33.890
+uh, let's say lang chain.
+
+00:36.830 --> 00:37.460
+R tool.
+
+00:37.460 --> 00:40.280
+So if I just go navigate there, this is the tools.
+
+00:40.580 --> 00:46.490
+Uh, and if you just go all the way down, you can see that it's a web browsing tool, which is, uh,
+
+00:46.490 --> 00:50.750
+there are three tools available and one tool which I really like is the playwright browser tool.
+
+00:50.750 --> 00:57.770
+So if I just go choose this tool, you can see that this tool is quite interesting because it has got,
+
+00:57.860 --> 01:00.920
+uh, a bundle of toolkits included.
+
+01:00.920 --> 01:06.810
+One is the navigate tool, which is going to navigate the browser to any specified URL that you have
+
+01:06.840 --> 01:11.700
+got, and you can navigate back tool which is going to navigate you to the previous page.
+
+01:11.730 --> 01:13.620
+Click tool, extract text tool.
+
+01:13.620 --> 01:14.910
+Extract hyperlink tools.
+
+01:14.940 --> 01:16.410
+Get elements tool.
+
+01:16.650 --> 01:17.850
+Current page tool.
+
+01:18.120 --> 01:23.430
+These are things that are very, very interesting for us to work with because now we can use this within
+
+01:23.430 --> 01:25.020
+our code.
+
+01:25.020 --> 01:30.270
+And we'll see how that we can make use of it with our large language model as well of course.
+
+01:30.990 --> 01:35.970
+But before we start using it with our large language model and with our agents, I'm going to first
+
+01:35.970 --> 01:39.600
+use this tool and I will show you how we can make use of it.
+
+01:39.630 --> 01:45.780
+So in order for doing that, I'm going to go back to our Visual Studio Code over here.
+
+01:45.810 --> 01:52.680
+I'm going to put a markdown here, uh, using playwright uh, browser tool.
+
+01:52.710 --> 01:57.120
+And I'm going to add the code over here.
+
+01:57.390 --> 02:03.170
+Uh, so in order for working with that, we need to install the playwright, as you can see over here.
+
+02:03.170 --> 02:12.830
+So I'm going to go ahead and install that just playwright and also need to install the playwright web
+
+02:12.830 --> 02:14.210
+browser toolkit.
+
+02:14.240 --> 02:20.030
+I think the Playwright web browser toolkit is just going to be added for us with the toolkits that we
+
+02:20.030 --> 02:20.510
+have got.
+
+02:20.510 --> 02:21.920
+So I think that should be fine.
+
+02:21.920 --> 02:24.260
+So I'm going to put the code over here.
+
+02:24.260 --> 02:28.760
+So these are the things just require the from Lang Chain community.
+
+02:28.760 --> 02:32.030
+And we have this playwright uh browser toolkit.
+
+02:32.030 --> 02:38.750
+And we also need to run and create a async browser code which is this one.
+
+02:38.750 --> 02:41.750
+So if you want to run the synchronous code you can also do that.
+
+02:41.750 --> 02:45.110
+But if you're going to run the asynchronous code, this is what you should do.
+
+02:45.110 --> 02:52.370
+And because we're going to be running this code in the notebooks, we also need to call another library,
+
+02:52.400 --> 02:59.780
+which is the uh nest underscore async IO, because this is going to make your code to run, uh, in
+
+02:59.780 --> 03:04.050
+the loop in the Repl, loop in the, in the the notebook itself.
+
+03:04.050 --> 03:11.040
+And the way you can invoke this is by using nest underscore async dot apply, which is going to do it
+
+03:11.040 --> 03:11.730
+for you.
+
+03:12.420 --> 03:17.280
+So this is the important part that we have to do in order for our code to execute.
+
+03:17.280 --> 03:25.230
+And now we actually need to create the the async browser which which is basically in the playwright,
+
+03:25.230 --> 03:31.770
+we need to create the browser instance which can uh, which can be helpful for us to navigate to a page
+
+03:31.770 --> 03:32.700
+and things of that nature.
+
+03:32.700 --> 03:39.150
+So this is the, uh, this is the place where we create the browser instance, and I'm going to initialize
+
+03:39.150 --> 03:45.450
+all the toolkit which the playwright team has provided, like all these toolkits, which is required
+
+03:45.450 --> 03:47.340
+for, uh, me to execute.
+
+03:47.340 --> 03:54.390
+So I'm going to say, uh playwright web browser toolkit dot and I'm going to say from browser and the
+
+03:54.390 --> 03:58.680
+browser is going to be the async browser, which is going to be this guy.
+
+03:58.710 --> 04:02.310
+I'm going to list all the toolkit and I will show you how it's going to look like.
+
+04:02.310 --> 04:10.850
+So I'm going to say tools is equal to uh toolkit dot uh get tools because remember we need to have all
+
+04:10.850 --> 04:16.610
+these tools in place so that we can then pass it to the agent in our upcoming lectures, which can then
+
+04:16.640 --> 04:19.250
+execute based on the tools that we have got.
+
+04:19.250 --> 04:25.490
+And we can also pass these tools, uh, to perform an app operation using the large language models.
+
+04:25.490 --> 04:31.220
+So let's see how many tools that we have got, uh, within this particular async browser.
+
+04:31.220 --> 04:36.650
+So we have got Click tools, Navigate Tools, navigate back tool, extract tool and all these things
+
+04:36.650 --> 04:38.900
+that we actually saw over here.
+
+04:39.980 --> 04:40.550
+All right.
+
+04:40.580 --> 04:43.040
+It says current web page tools.
+
+04:43.070 --> 04:47.750
+There is a typo there I think this is current web page tool okay cool.
+
+04:47.780 --> 04:51.350
+But anyways these are the tools that we have got listed over here.
+
+04:51.350 --> 04:53.720
+And now we know what we need to do with this particular tools.
+
+04:53.720 --> 04:54.020
+Right?
+
+04:54.020 --> 05:00.800
+We can execute this tool by ourselves if we wanted to or if we wanted to uh, use it with LM, we can
+
+05:00.800 --> 05:01.490
+do that as well.
+
+05:01.490 --> 05:10.050
+So let's try to just use this tool locally and we will see how we can able to navigate to a tool.
+
+05:10.050 --> 05:17.610
+So for doing that, first of all, I'm going to get all the tools because I'm going to not use the,
+
+05:18.180 --> 05:20.700
+uh, the agent for now.
+
+05:20.700 --> 05:27.990
+So I'm just going to say tool dot name, like how we did in our, uh, last lecture while we were talking
+
+05:27.990 --> 05:29.910
+about tools, uh, last section.
+
+05:29.910 --> 05:32.460
+So I'm going to just do that same thing over here as well.
+
+05:32.490 --> 05:35.790
+Tool uh, in tools.
+
+05:35.790 --> 05:40.470
+So I'm going to grab all the tools and I'm going to create like a navigate tool.
+
+05:40.470 --> 05:53.490
+And this tool I'm going to get by name and I'm going to pass it as navigate uh to Navigate browser,
+
+05:53.520 --> 06:00.540
+probably because it's going to be navigating to the browser.
+
+06:01.890 --> 06:04.290
+So that is what I'm giving over here.
+
+06:04.350 --> 06:11.690
+Uh and then I also need to get the element for that matter, if I want to get it so I can do it as well.
+
+06:11.960 --> 06:22.040
+And if I want to get the elements, I can just do get uh, element tool is equal to tools by name.
+
+06:22.400 --> 06:27.860
+Uh, and I'm going to say get elements, something like that.
+
+06:27.980 --> 06:31.370
+So yeah, these are the tools that I have got over here.
+
+06:31.400 --> 06:36.620
+And let's try to print both the navigate tool and the Get Element tool.
+
+06:36.920 --> 06:42.050
+You'll notice that we're going to get this particular output over here for both the navigate tool as
+
+06:42.050 --> 06:43.850
+well as for the Get Element tool which is great.
+
+06:43.880 --> 06:48.380
+Now let's try to use this particular tool and see how that can uh can work.
+
+06:48.380 --> 06:54.230
+So I'm going to say uh await navigate tool dot a run like asynchronous run.
+
+06:54.320 --> 06:57.740
+And I'm going to say uh URL.
+
+06:58.760 --> 07:07.260
+And I'm going to pass the URL here as http colon e app.swami.com Uh, slash employee.
+
+07:08.340 --> 07:17.340
+So I'm going to ask the, uh, the tool to navigate me to this particular, uh, page, and you see
+
+07:17.340 --> 07:21.540
+that it returns me true over here, which means it could able to navigate it correctly.
+
+07:21.540 --> 07:26.790
+And I'm going to grab all the, uh, the table information from this particular link.
+
+07:26.790 --> 07:33.960
+So if I'm just going to go copy this URL and if I'm going to go search for this particular URL, I'll
+
+07:33.960 --> 07:34.500
+look at that.
+
+07:34.500 --> 07:39.990
+We have got these many users over here, uh, in this particular page.
+
+07:39.990 --> 07:42.030
+And I want to grab all the information.
+
+07:42.030 --> 07:44.130
+I wanted to list it down over here.
+
+07:44.130 --> 07:53.670
+So in order for me to do that I'm going to say await, uh, get Element Tools dot a run, and then I'm
+
+07:53.670 --> 08:05.850
+going to pass a selector here and that is going to be probably, uh, TD uh, I want to select all the
+
+08:05.850 --> 08:08.060
+uh, attributes.
+
+08:13.370 --> 08:18.950
+Inside the TD, which is going to be, uh, inner text for that matter.
+
+08:19.820 --> 08:25.040
+So if I want to get all the inner text from this particular TD, which is TD, is nothing but this particular
+
+08:25.070 --> 08:27.140
+TR, because it's a table row.
+
+08:27.140 --> 08:30.380
+And inside the table row you have got TD, which is the table data.
+
+08:30.380 --> 08:34.940
+So it is this is how like the tables are being designed in HTML file.
+
+08:34.940 --> 08:37.160
+So now I want to get all the information.
+
+08:37.160 --> 08:37.730
+Look at that.
+
+08:37.760 --> 08:42.410
+It just instantly gives me all the information over here.
+
+08:44.480 --> 08:46.520
+See which is amazing.
+
+08:46.520 --> 08:47.810
+This is powerful guys.
+
+08:47.840 --> 08:51.440
+Now we can see that this tool is quite amazing.
+
+08:51.470 --> 08:58.460
+Using this tool we could able to extract the web page and we can grab the information from the web page.
+
+08:58.490 --> 09:04.130
+In our next lecture, we will see how we can use this tool along with our AI agent.
+
+09:04.310 --> 09:08.120
+And we will see if we could able to perform the action that we are looking for.

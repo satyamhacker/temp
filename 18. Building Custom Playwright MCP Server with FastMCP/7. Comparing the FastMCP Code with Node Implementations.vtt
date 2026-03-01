@@ -1,0 +1,118 @@
+WEBVTT
+
+00:00.080 --> 00:00.760
+All right.
+
+00:00.760 --> 00:05.000
+In this lecture, I will quickly show you how much difference this particular code is going to make,
+
+00:06.360 --> 00:13.560
+as opposed to how you can write in the node version of the playwright MCP server, which I was actually
+
+00:13.560 --> 00:15.000
+implementing it originally.
+
+00:15.240 --> 00:19.120
+So you see that this is the total number of code that you have got over here.
+
+00:19.120 --> 00:24.720
+And if you try to do I mean, if you try to reduce it, try an exception block, it's going to be even
+
+00:24.720 --> 00:25.640
+more lesser.
+
+00:25.640 --> 00:29.160
+But I'm just going to keep this over here like 105 lines of code.
+
+00:29.160 --> 00:29.680
+Right?
+
+00:29.720 --> 00:35.320
+I'm going to copy this entire code and I'm going to go to cloud Desktop because cloud knows better.
+
+00:35.360 --> 00:52.080
+In order to write the MCP server I'm going to say write the node JS version of MCP server for this code,
+
+00:52.240 --> 00:57.520
+which I have written using fast MCP.
+
+00:58.000 --> 00:59.240
+So I'm going to paste that.
+
+00:59.240 --> 01:00.320
+I'm going to hit enter.
+
+01:00.360 --> 01:04.280
+And you will notice that how much the lines of code that is going to be writing.
+
+01:04.280 --> 01:05.440
+So look at that.
+
+01:05.720 --> 01:11.920
+See for the MCP server, the playwright MCP server, you have to write a lot of boilerplate code.
+
+01:11.960 --> 01:16.420
+So this is the list of available tools that you have to write, and all these schemas that you have
+
+01:16.420 --> 01:17.260
+to provide.
+
+01:17.500 --> 01:22.420
+And for every single selector, you have to give like a string of the descriptions.
+
+01:22.420 --> 01:24.260
+And then this is the value that you have to put.
+
+01:24.260 --> 01:27.300
+And this is the required fields that you have to do.
+
+01:27.340 --> 01:32.420
+And similarly similarly it goes with the evaluation of the javascripts and stuffs over there.
+
+01:32.500 --> 01:38.340
+Similarly it has to do the uh request handler and see how many lines of code that you have to write
+
+01:38.340 --> 01:40.620
+for every single operation.
+
+01:40.620 --> 01:41.980
+This is humongous.
+
+01:42.180 --> 01:44.220
+And then you have to do all these operation.
+
+01:44.340 --> 01:49.820
+If I'm going to copy these lines of code, and if I'm going to just paste it from 105, it turns into
+
+01:49.820 --> 01:51.860
+263, right.
+
+01:51.900 --> 01:54.660
+Let's assume that the comments been gone there.
+
+01:54.660 --> 02:00.980
+It will be around 250 or maybe 260 I think.
+
+02:01.020 --> 02:01.220
+Right.
+
+02:01.220 --> 02:03.300
+It's a lot of comments as well I can see.
+
+02:03.700 --> 02:04.900
+But yeah look at that.
+
+02:04.900 --> 02:06.140
+That's humongous.
+
+02:06.140 --> 02:09.140
+That's the way that you actually write the same code in JavaScript.
+
+02:09.140 --> 02:11.500
+Whereas in Python it is so much easier.
+
+02:11.580 --> 02:18.460
+So this is the power of the fast server that we have got while writing the MCP servers in Python.
+
+02:18.860 --> 02:24.900
+In our last lecture of this section, I'll quickly show you how this new code has boiled down as well.

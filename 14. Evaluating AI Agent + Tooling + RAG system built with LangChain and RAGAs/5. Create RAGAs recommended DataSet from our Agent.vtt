@@ -1,0 +1,265 @@
+WEBVTT
+
+00:00.380 --> 00:01.310
+All right.
+
+00:01.310 --> 00:06.050
+The last thing that we have to do is to create, like a data set, like how we have got over here.
+
+00:06.050 --> 00:08.840
+So how do we actually do that in this particular area.
+
+00:08.840 --> 00:13.070
+So I'm going to just say creating data set.
+
+00:13.580 --> 00:15.170
+Uh I hit okay.
+
+00:15.170 --> 00:17.510
+And here is where we're going to create the data set.
+
+00:17.510 --> 00:18.680
+So for data set creation.
+
+00:18.680 --> 00:22.100
+So I'm just going to say data set is equal to an array.
+
+00:22.610 --> 00:24.620
+And I'm going to start writing the code.
+
+00:24.620 --> 00:32.270
+So I'm going to say for query and reference in zip and the query over here we know that in the data
+
+00:32.300 --> 00:34.970
+frame we saw that it was a query.
+
+00:34.970 --> 00:37.640
+And the reference is going to be DF.
+
+00:37.670 --> 00:39.380
+And the reference was actually answer.
+
+00:39.410 --> 00:39.680
+Right.
+
+00:39.680 --> 00:45.290
+So these are the two things that we saw in our uh actual data frame.
+
+00:45.650 --> 00:55.760
+And over here I'm going to add the relevant uh, data or docs, which is going to be retriever dot invoke.
+
+00:56.090 --> 01:02.780
+I'm just going to say query of maybe just um, the first one was actually a query.
+
+01:02.780 --> 01:05.510
+And then I'm going to get the page underscore content.
+
+01:05.690 --> 01:14.450
+And then I'm going to get the response which is equal to the, uh, the agent that we have got, uh,
+
+01:14.450 --> 01:15.440
+over here.
+
+01:15.470 --> 01:15.980
+Right.
+
+01:15.980 --> 01:22.520
+So I'm going to call the agent and I'm going to add a run, and I'm going to pass the query over here.
+
+01:22.520 --> 01:24.080
+That's going to be the response coming up.
+
+01:24.080 --> 01:26.120
+Finally, we need to start creating the data set.
+
+01:26.120 --> 01:30.800
+Because now we have all the bells and whistles which is required for creating me the data set over the
+
+01:30.800 --> 01:31.070
+years.
+
+01:31.100 --> 01:31.310
+Okay.
+
+01:31.340 --> 01:32.390
+What are the things that we need.
+
+01:32.420 --> 01:33.890
+The first one is the user input.
+
+01:33.890 --> 01:37.880
+If you remember, that was something that we were adding over there like user input, retrieval, context
+
+01:37.910 --> 01:38.600
+and everything.
+
+01:38.630 --> 01:39.890
+Let me just copy that.
+
+01:40.280 --> 01:43.430
+Uh, for saving some keystrokes, uh, over here.
+
+01:43.490 --> 01:48.560
+And the question is nothing but our query that we are going to get from the CSV file.
+
+01:48.560 --> 01:52.850
+And this is sitting in the data frame, and the retrieval context is going to be the relevant docs.
+
+01:53.000 --> 01:54.890
+Our response is obviously going to be the response.
+
+01:54.890 --> 01:59.510
+And the reference is nothing but uh, the reference that we have got over here.
+
+01:59.510 --> 02:00.950
+So I'm going to say reference.
+
+02:00.950 --> 02:01.760
+Cool.
+
+02:02.240 --> 02:05.840
+Now I'm going to see what happens to our data set.
+
+02:05.870 --> 02:06.650
+Look at that.
+
+02:06.650 --> 02:08.450
+This is where things are going to happen.
+
+02:08.480 --> 02:13.070
+Like now when I run this guy it is going to invoke our vector data store.
+
+02:13.070 --> 02:19.190
+And the agent is then going to invoke our tool which is the bias detection tool.
+
+02:19.190 --> 02:20.640
+And then it's going to run that.
+
+02:20.640 --> 02:23.820
+And the bias detection tool actually has got an LM invoke.
+
+02:23.820 --> 02:26.160
+And this is nothing but our local LM.
+
+02:26.160 --> 02:28.950
+So it's going to be invoking and creating the Summarisation for me.
+
+02:28.950 --> 02:35.730
+At the same time, the agent is going to also do the verification of the response.
+
+02:35.760 --> 02:38.880
+And then it is going to store that particular value over here.
+
+02:38.880 --> 02:42.540
+So now let's try to run this code and see what is really going to happen.
+
+02:42.540 --> 02:48.990
+So the moment I try to run this particular code, you will see that the agent executor chain is executing
+
+02:49.350 --> 02:53.190
+and it is going to run all of these over here.
+
+02:53.190 --> 02:53.610
+Look at that.
+
+02:53.610 --> 02:54.750
+That's the final answer.
+
+02:54.750 --> 03:00.540
+And then it just keep on doing all these things for us over here and see that all the questions are
+
+03:00.540 --> 03:02.040
+being passed one by one.
+
+03:02.040 --> 03:07.800
+And the, uh, the operations are happening for us over there, which is pretty cool.
+
+03:07.800 --> 03:10.830
+So we see that everything is happening.
+
+03:11.190 --> 03:17.970
+Uh, and you are also going to get the responses in the text editor if you just go and see that.
+
+03:18.000 --> 03:18.450
+Look at that.
+
+03:18.600 --> 03:20.820
+All the chains of thoughts are really happening there.
+
+03:20.880 --> 03:25.110
+And it's creating the data for the entirety for us over there.
+
+03:25.110 --> 03:27.750
+I think it is still running over here.
+
+03:27.780 --> 03:30.260
+Like you see that it is 47 seconds.
+
+03:30.260 --> 03:38.840
+So if I just go to our Safari browser and let's see our long chain over here, we should see that this
+
+03:38.840 --> 03:40.580
+guy is still running the agent executor.
+
+03:40.580 --> 03:41.150
+And it is.
+
+03:41.150 --> 03:46.340
+Keep on calling the bias detection and it is running things for us over here.
+
+03:46.340 --> 03:48.860
+So it is going to take a bit of a time I'm sure.
+
+03:48.950 --> 03:52.100
+Last time it took me so much time to complete the entire operation.
+
+03:52.100 --> 03:55.130
+So let this every entire operation to complete.
+
+03:55.160 --> 03:55.670
+Ah, there we go.
+
+03:55.670 --> 03:56.240
+It's done.
+
+03:56.240 --> 03:58.460
+And you can see that we have got the response.
+
+03:58.460 --> 04:01.760
+So user input retrieved context response and reference.
+
+04:02.000 --> 04:04.820
+And these are all been stored over here.
+
+04:04.850 --> 04:05.600
+That's all.
+
+04:05.600 --> 04:08.420
+So this is how we create the data set.
+
+04:08.600 --> 04:15.230
+Like how we can um how we did in our last lecture, last section where we're creating the data set over
+
+04:15.230 --> 04:20.390
+here, the last operation, we know that we just have to run the ragas evaluation.
+
+04:20.420 --> 04:25.670
+And also this guy which is going to evaluate and give us the result.
+
+04:25.670 --> 04:26.840
+So I'm going to do this.
+
+04:26.840 --> 04:30.170
+And this time I'm just going to copy paste the entire code and see how that works.
+
+04:30.170 --> 04:34.220
+If you have time just try to work it out yourself until this point of time.
+
+04:34.220 --> 04:35.120
+If you already did it.
+
+04:35.120 --> 04:38.060
+If not, we're going to do that anyways in our next lecture.
+
+04:38.090 --> 04:40.100
+So catch you in our next lecture.

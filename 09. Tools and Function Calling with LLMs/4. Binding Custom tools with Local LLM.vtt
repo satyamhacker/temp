@@ -1,0 +1,490 @@
+WEBVTT
+
+00:00.020 --> 00:05.090
+In this lecture, we are going to see how we can make use of these tools that we have got, like custom
+
+00:05.120 --> 00:11.480
+tools as well as the one that we have downloaded from the community, like Wikipedia tool and use it
+
+00:11.480 --> 00:13.700
+with our large language model.
+
+00:13.700 --> 00:16.040
+So we are going to see how we can actually achieve that.
+
+00:16.040 --> 00:24.230
+And we are going to test if our large language model can actually grab the correct tool for that matter,
+
+00:24.230 --> 00:31.130
+because you see that now we have not only mapped Wikipedia, but we have also mapped or we have also
+
+00:31.340 --> 00:33.110
+built our own custom tools.
+
+00:33.110 --> 00:40.400
+We are going to bind those tools with our large language model, and we are going to see if that all
+
+00:40.460 --> 00:47.660
+works, and if the large language model can intelligently select that particular tool that we are supposed
+
+00:47.660 --> 00:50.240
+to use, like we are expecting it to use for that matter.
+
+00:50.240 --> 00:52.490
+So we will see how that can actually happen.
+
+00:52.580 --> 00:59.600
+Well, we have got this list of tools here already, and now we need to map these tool or bind these
+
+00:59.600 --> 01:01.850
+tools with our large language model.
+
+01:01.880 --> 01:06.720
+And again Lang long chain is so much sophisticated and that is the reason why long chain is so popular,
+
+01:06.720 --> 01:14.910
+because it now helps you provide the mechanism to bind your tools with the existing large language model.
+
+01:14.910 --> 01:19.950
+So for instance, this particular large language model that you can see over here is the chatbot llama
+
+01:19.980 --> 01:21.570
+that we have got over here.
+
+01:21.720 --> 01:26.550
+And I wanted to ask the question to this particular large language model.
+
+01:27.120 --> 01:30.600
+For instance, if I want to ask uh lm dot invoke.
+
+01:30.720 --> 01:35.250
+So response is equal to lm dot invoke.
+
+01:35.400 --> 01:50.550
+Uh and I want to say uh when did uh, avatar movie released, uh, The Ways of Water.
+
+01:51.090 --> 01:58.920
+Uh, so I'm gonna just say, uh, print and response dot content.
+
+01:58.920 --> 02:05.870
+And now if I try to run this, maybe this particular LM was actually trying to give the answer?
+
+02:05.870 --> 02:11.690
+As you can see over here, because The Ways of Water is a is a 2020 second 2022 movie.
+
+02:11.690 --> 02:15.980
+So of course it is trying to get that particular answer for us over here.
+
+02:15.980 --> 02:23.420
+But what if I ask some latest, uh, details like a Donald Trump election result for that matter?
+
+02:23.420 --> 02:26.690
+If I ask that question, this particular film is not going to answer for us.
+
+02:26.690 --> 02:27.290
+Right.
+
+02:27.290 --> 02:36.380
+But now I wanted to see instead of the LM actually grabs the information from the existing knowledge
+
+02:36.380 --> 02:38.810
+that it has learned over here.
+
+02:38.810 --> 02:44.960
+I wanted this album to use the tool, which is this tool like Wikipedia tool, and go and search there
+
+02:44.960 --> 02:49.790
+to get the answer instead of what it has learned already.
+
+02:49.790 --> 02:51.530
+That is what is my whole idea.
+
+02:51.530 --> 02:55.850
+So if I wanted to do that, all I am going to do it is I'm going to comment this code.
+
+02:55.850 --> 02:58.010
+I will just for the comparison purpose.
+
+02:58.010 --> 03:05.690
+What I'm going to do is I'm going to create a new variable called as LM with tools, something like
+
+03:05.690 --> 03:06.110
+that.
+
+03:06.110 --> 03:08.210
+And I'm going to say LM dot.
+
+03:08.240 --> 03:08.900
+And look at that.
+
+03:08.900 --> 03:12.770
+We have got a method called as bind tools.
+
+03:13.550 --> 03:21.860
+So this bind tools is going to be binding all the tools for us over here.
+
+03:21.860 --> 03:25.580
+But before I do that you know what.
+
+03:25.610 --> 03:34.850
+Not all the large language models that we have got over here, like the Cuban 2.5 is going to be supporting
+
+03:34.850 --> 03:35.930
+the Toolings.
+
+03:35.930 --> 03:41.660
+So if we use deep seq R1 for that matter, you can't really use it because deep seq R1 doesn't support
+
+03:41.660 --> 03:48.260
+the tooling, only the Q and 2.5 at the moment supported llama supported, but not all the llama models
+
+03:48.260 --> 03:51.140
+that you download will have the support for the tooling.
+
+03:51.140 --> 03:57.380
+So if we just go back to our, um, our llama website and if you go to the models, you see that we
+
+03:57.380 --> 03:59.360
+have got this tools option over here.
+
+03:59.360 --> 04:06.170
+So if I go and choose the tools, you see that these models like llama theta 33.23.1 Q1 2.5 model that
+
+04:06.170 --> 04:10.220
+we are using these models all supports toolings.
+
+04:10.220 --> 04:12.440
+But see, there is no deep sea core here.
+
+04:12.440 --> 04:16.880
+So if I try to use a deep sea model, that model will not support tooling for that matter.
+
+04:16.880 --> 04:23.750
+So if you can't bind the tools like Wikipedia tools or custom tools that you have got, you can't bind
+
+04:23.780 --> 04:27.650
+to the deep sea carbon model because it is not even supported.
+
+04:28.130 --> 04:34.580
+So that's the reason why make sure that you choose the right model, which does offer the support for
+
+04:34.580 --> 04:35.150
+tools.
+
+04:35.150 --> 04:40.670
+I'm sure Deep Sea is going to support tools pretty soon, but at the moment they don't support it.
+
+04:40.670 --> 04:45.050
+So as we know that the Q and 2.5 model does support tools.
+
+04:45.050 --> 04:49.550
+So it is very easy for us to now do the bind over here.
+
+04:49.550 --> 04:51.380
+So LM dot bind will work.
+
+04:51.380 --> 04:55.490
+So you can use the not the bind bind tools.
+
+04:55.550 --> 04:58.640
+And over here I need to pass the tools.
+
+04:58.640 --> 05:02.870
+So the tools is nothing but the tools that we have created.
+
+05:02.870 --> 05:07.190
+This guy all these tools I'm going to pass it over here.
+
+05:08.300 --> 05:08.870
+Right.
+
+05:08.870 --> 05:16.910
+And now I'm going to invoke this particular LM with the tools option that I have got.
+
+05:16.910 --> 05:26.960
+So for doing that, I need to probably do something like this tool, uh, call response probably uh,
+
+05:26.960 --> 05:31.580
+and I'm going to say, uh LM with tools, which is this one.
+
+05:31.580 --> 05:36.470
+And you remember we have this method called as invoke or run method.
+
+05:36.470 --> 05:37.760
+Whichever method that you want, you can use it.
+
+05:37.790 --> 05:39.800
+I mean, invoke is the right method to do it.
+
+05:39.830 --> 05:41.000
+Invoke.
+
+05:41.090 --> 05:51.890
+And over here I'm going to call when uh, did author movie uh got release or whatever.
+
+05:51.920 --> 05:54.530
+Same question I'm asking this time as well.
+
+05:55.700 --> 06:02.330
+And now I wanted to print, uh, what is really getting as an response for this particular question
+
+06:02.330 --> 06:03.110
+that I'm asking.
+
+06:03.110 --> 06:04.220
+So I'm going to save this code.
+
+06:04.220 --> 06:11.780
+And if I try to run this this time, you will notice that in the tool called response, we are not going
+
+06:11.810 --> 06:14.960
+to get the actual answer for the question.
+
+06:14.990 --> 06:22.580
+Rather, we're actually getting some metadata and all those stuffs over here.
+
+06:22.580 --> 06:26.390
+And if you just go all the way, look at that.
+
+06:26.390 --> 06:32.930
+It says tool calls and the tool calls, it says name as Wikipedia.
+
+06:32.930 --> 06:40.820
+So basically it knows that for this question it needs to not answer from the content or the knowledge
+
+06:40.820 --> 06:42.080
+that it already has.
+
+06:42.080 --> 06:47.480
+The Cuban model already has been trained with, even though it knows the answer already, like 2022,
+
+06:47.510 --> 06:51.260
+it's it got released, but it won't give you the answer right away.
+
+06:51.260 --> 06:57.650
+Rather it goes I mean, the model goes and find the latest information from the tools.
+
+06:57.650 --> 06:58.010
+Smart.
+
+06:58.040 --> 06:58.850
+So smart right.
+
+06:58.880 --> 07:01.670
+Like this model is so smart that it could able to do that.
+
+07:01.790 --> 07:04.280
+It finds a tool like Wikipedia is there.
+
+07:04.280 --> 07:07.100
+I'm already, uh, have the ability to do that.
+
+07:07.100 --> 07:13.370
+And now it is passing the argument with the query saying Avatar the Way of Water release date is now
+
+07:13.400 --> 07:16.440
+the model is asking the question on behalf of you.
+
+07:16.470 --> 07:19.440
+Like when the when was the movie got released?
+
+07:19.560 --> 07:21.030
+And look at that.
+
+07:21.030 --> 07:22.350
+This is amazing, right?
+
+07:22.380 --> 07:24.120
+Like this is what is really happening.
+
+07:24.120 --> 07:30.900
+So you can also print the, uh, tool calls and you can just see the tool calls alone here.
+
+07:30.930 --> 07:34.710
+See, this is what is really happening for us behind the scenes.
+
+07:34.740 --> 07:43.500
+Now this model, uh, while you invoke the model, which is bound with the tools, it suggests that
+
+07:43.500 --> 07:46.140
+you need to use this tool for us over here.
+
+07:46.170 --> 07:47.850
+That's what is really happening.
+
+07:47.850 --> 07:54.600
+And now, if you go back to our, uh, like, the Lang Smith over here, look at what's really happening
+
+07:54.600 --> 07:55.530
+over here.
+
+07:55.680 --> 07:59.130
+Uh, on the chat model, the chat olama.
+
+07:59.490 --> 08:01.140
+Um, look at that.
+
+08:01.170 --> 08:04.080
+It has the functions and tools like Wikipedia.
+
+08:04.440 --> 08:08.250
+Uh, and it gets the details, like what this particular Wikipedia is all about.
+
+08:08.250 --> 08:12.180
+And add numbers, the add two numbers type integer subtract.
+
+08:12.210 --> 08:14.700
+And it has got a and b, which is amazing.
+
+08:14.760 --> 08:17.310
+It also gives subtract numbers multiply numbers.
+
+08:17.310 --> 08:23.480
+So it shows you what are the functions and tools being supported and what's even being called.
+
+08:24.440 --> 08:26.000
+I mean, I really love this.
+
+08:26.000 --> 08:31.400
+Uh lamb-smith to be honest, because it gives so much of information which are very, very important.
+
+08:31.400 --> 08:37.160
+While we do the debugging of our LLM, like what happens if some prompt goes wrong?
+
+08:37.160 --> 08:43.430
+And guess what, in the input we have asked the human of this one, and the AI has really called the
+
+08:43.430 --> 08:49.760
+Wikipedia tool, and it has supplied this particular query for us over there, and there is no YAML
+
+08:49.760 --> 08:52.430
+response because of course there is no response for that.
+
+08:53.090 --> 09:02.240
+This is really is what happens while you actually call the, uh, the chat olama, uh, from your code.
+
+09:02.420 --> 09:06.140
+Now, that is what has really happened over here.
+
+09:06.140 --> 09:08.720
+And now let's change our question a bit.
+
+09:08.750 --> 09:13.250
+Let's say I'm going to ask not this, what did the when did the other movie was released?
+
+09:13.460 --> 09:18.770
+Uh, what's the sum of two and four now?
+
+09:18.770 --> 09:25.760
+I wanted my custom ad numbers to be invoked this time because I'm asking what's the sum of two and four?
+
+09:26.540 --> 09:28.250
+So I'm going to save this code.
+
+09:28.250 --> 09:34.670
+And if I try to run this, look at what's going to happen, it's going to call the ad numbers here.
+
+09:34.670 --> 09:38.870
+And the arguments is A is two and B is four.
+
+09:39.110 --> 09:41.210
+And then it's going to do a tool calls.
+
+09:41.450 --> 09:42.110
+Look at that.
+
+09:42.140 --> 09:50.480
+If I go to the chat or llama here see ad numbers is being called and it is supplying these values there.
+
+09:50.690 --> 09:51.380
+Amazing.
+
+09:51.380 --> 09:53.810
+So this is this is really pretty good.
+
+09:53.840 --> 09:55.220
+And so what.
+
+09:55.220 --> 10:01.880
+Uh, so let's say if I want to ask a question, what is the double of two?
+
+10:01.910 --> 10:06.350
+I don't know, I'm just going to ask maybe, uh, I haven't tried that query before.
+
+10:06.380 --> 10:07.340
+So let's see what's going to happen.
+
+10:07.370 --> 10:07.790
+There we go.
+
+10:07.820 --> 10:09.560
+So look at the double of two.
+
+10:10.130 --> 10:12.770
+The LM knows that this is a multiplication that you're talking about.
+
+10:12.770 --> 10:15.380
+So it's just going to say multiply numbers.
+
+10:16.070 --> 10:18.320
+And it has passed the argument two of two.
+
+10:18.800 --> 10:25.490
+And if we just go to chat llama you will notice that the multiply number tools has been called, which
+
+10:25.490 --> 10:26.120
+is amazing.
+
+10:26.120 --> 10:35.480
+So this is how we can see that we could able to, uh, use our LM to invoke a particular tool for us
+
+10:35.480 --> 10:37.970
+over here and give you the details back.
+
+10:37.970 --> 10:41.000
+But now the question actually comes is, hey, Karthik.
+
+10:41.090 --> 10:41.450
+Fine.
+
+10:41.450 --> 10:49.880
+I mean, your lm, uh, it's actually invoking the right tool for the given query from the user, but
+
+10:49.910 --> 10:51.470
+where is the execution result?
+
+10:51.470 --> 10:53.390
+Because two into two should be four.
+
+10:53.390 --> 10:55.430
+And where can I see the result output?
+
+10:55.430 --> 10:58.670
+And what about the result for the when did the movie avatar was released?
+
+10:58.700 --> 10:59.810
+It should be 2022.
+
+10:59.840 --> 11:01.520
+Where is that particular result coming up?
+
+11:01.520 --> 11:03.350
+What about addition result?
+
+11:03.350 --> 11:04.310
+Where are those?
+
+11:04.340 --> 11:05.300
+Well guess what.
+
+11:05.330 --> 11:12.470
+Those things we have to do a bit more to be honest, which we'll be doing in our next lecture, but
+
+11:12.500 --> 11:16.730
+because it requires quite a lot of different changes that I have to make over there in order for us
+
+11:16.730 --> 11:21.020
+to execute this particular course, because at the moment we're just invoking the tool.
+
+11:21.020 --> 11:24.980
+We are not really executing the tool, which we'll be doing in our next lecture.

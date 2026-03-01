@@ -1,0 +1,415 @@
+WEBVTT
+
+00:00.080 --> 00:09.140
+Now let's talk about building the custom tools that we can write our own and then start using it using
+
+00:09.140 --> 00:10.970
+the large language model.
+
+00:10.970 --> 00:12.770
+So how do we actually do that?
+
+00:12.770 --> 00:23.210
+Well, if you just go to the tool page of our lamp chain, they have given this how tos of using creating
+
+00:23.210 --> 00:23.840
+your own tool.
+
+00:23.840 --> 00:29.960
+So when constructing an agent, you need to provide it with a list of tools that you can use beside
+
+00:29.960 --> 00:33.110
+the actual functions that is called.
+
+00:33.140 --> 00:34.880
+And the tool consists of several components.
+
+00:34.880 --> 00:38.570
+It says name, description, arg, schema, return direct.
+
+00:38.840 --> 00:45.800
+And they have got some details over here like how you can write the functions lang chain runners and
+
+00:45.800 --> 00:47.810
+subclasses from the base tools.
+
+00:47.810 --> 00:51.860
+So these are three different ways that you can actually create a tool.
+
+00:51.860 --> 00:57.290
+It can be either a functions like a normal Python function, or you can write a Java like a lang chain
+
+00:57.290 --> 00:57.920
+Runnables.
+
+00:57.920 --> 01:02.130
+Or you can also use a subclass of base Bayes tool.
+
+01:02.130 --> 01:03.870
+And then you can write from there.
+
+01:03.870 --> 01:06.240
+So all these things you can do it.
+
+01:06.270 --> 01:08.520
+And then you need to create a function.
+
+01:08.520 --> 01:12.750
+For instance, if you're just going to create a function all you have to do is just use a decorator
+
+01:12.780 --> 01:17.220
+add tool decorator for any of your Python code.
+
+01:17.220 --> 01:20.010
+And that becomes a tool already.
+
+01:20.010 --> 01:20.400
+Amazing.
+
+01:20.400 --> 01:22.770
+That's very easy and straightforward way of doing it.
+
+01:22.800 --> 01:26.550
+Or you can also create an async implementation of the tool over here.
+
+01:26.790 --> 01:28.440
+And these are the details which is available.
+
+01:28.440 --> 01:34.050
+And the one which I was talking about with the uh with the structured tool.
+
+01:34.050 --> 01:35.070
+So this is the structure tool.
+
+01:35.070 --> 01:36.930
+That is what we are going to be writing anyways.
+
+01:36.960 --> 01:43.650
+And they also have got this, uh, creating runnables like tools from Runnables where they have given
+
+01:43.650 --> 01:51.780
+like how you can create a runnables like chain as tool, you can make even a chain as a tool and then
+
+01:51.780 --> 01:54.060
+you can respond from there on as well.
+
+01:54.060 --> 01:58.020
+This is also something that you can do to create a tool.
+
+01:58.020 --> 02:01.800
+So you can make an entire runnables as a chain.
+
+02:01.800 --> 02:04.780
+And then you can use this subclass based tool.
+
+02:04.780 --> 02:06.250
+So you can use this subclass.
+
+02:06.310 --> 02:12.310
+You can see that the base tool has been passed in the class method, uh in a class constructor.
+
+02:12.310 --> 02:15.970
+And then you can uh you can create the tool from there.
+
+02:16.000 --> 02:18.220
+So these are three different ways that you can create a tool.
+
+02:18.220 --> 02:22.960
+And we'll first start off with the with the add tool decorator in this particular lecture.
+
+02:22.960 --> 02:31.090
+So for doing that I'm going to put a markdown over here I'm going to say creating custom tools.
+
+02:31.090 --> 02:34.750
+And I'm going to start adding things over here.
+
+02:34.750 --> 02:45.100
+So for building a custom tool we are going to import this from Lang chain dot tools I'm going to import
+
+02:45.610 --> 02:46.480
+tool.
+
+02:47.440 --> 02:47.890
+That's it.
+
+02:47.890 --> 02:52.600
+That is the only, uh, import that I have to do in order for me to work with the tools.
+
+02:52.600 --> 03:00.760
+And over here I'm going to, uh, create a method called as def of add numbers for that matter.
+
+03:00.790 --> 03:01.600
+Right.
+
+03:01.900 --> 03:10.160
+I'm going to say the number which I'm going to be adding is basically going to be an variable like there
+
+03:10.160 --> 03:10.940
+are two parameters.
+
+03:10.940 --> 03:16.940
+One is the int like a which is of an int type, and b which is also of an int type.
+
+03:16.940 --> 03:20.780
+And this guy is also going to return me an integer.
+
+03:22.430 --> 03:23.090
+Right.
+
+03:23.090 --> 03:25.190
+That is what this particular method is doing.
+
+03:25.190 --> 03:31.730
+And over here I'm going to say a description property which is important for the LM to understand.
+
+03:31.760 --> 03:36.320
+While it calls the tool because it needs to know which tool it needs to call.
+
+03:36.320 --> 03:42.770
+So you need to have a description there and you're going to say add two numbers and return.
+
+03:45.170 --> 03:46.430
+Results.
+
+03:47.150 --> 03:48.710
+That is what this particular tool is doing.
+
+03:48.710 --> 03:52.340
+And I'm going to return an integer as well.
+
+03:52.340 --> 03:56.660
+So I'm going to say add into a and int b.
+
+03:57.290 --> 03:58.250
+Look at that.
+
+03:58.850 --> 04:05.730
+This is how I actually create the simple super simple function in the Python.
+
+04:05.730 --> 04:13.260
+And in order to make this function as an tool, I need to use this add tool decorator.
+
+04:14.520 --> 04:15.240
+That's it.
+
+04:15.270 --> 04:18.630
+This is already a tool right now.
+
+04:18.630 --> 04:26.190
+So if I want to, um, invoke this particular tool, you know how we do it in our large language model
+
+04:26.220 --> 04:28.560
+or prompts or whatever runnables that we have?
+
+04:28.560 --> 04:30.090
+This is already a runnable right now.
+
+04:30.090 --> 04:37.470
+So in order for me to invoke this, all I have to do is like print off, add numbers, dot invoke over
+
+04:37.470 --> 04:37.980
+here.
+
+04:37.980 --> 04:41.790
+And because it requires two parameter to be passed, you know how we do that.
+
+04:41.790 --> 04:50.010
+So we are just going to say a which is going to be ten and B, uh, which is going to be 20 for that
+
+04:50.010 --> 04:50.430
+matter.
+
+04:50.430 --> 04:52.830
+And let's try to print the value.
+
+04:52.860 --> 04:54.030
+Look at that 30.
+
+04:54.900 --> 05:00.300
+So this is how we invoke this particular, uh, custom tool over here.
+
+05:00.300 --> 05:05.460
+But this is we're calling the tool directly, like how we have called over here for the Wikipedia dot
+
+05:05.460 --> 05:05.970
+run.
+
+05:06.020 --> 05:08.600
+Or you can also use Wikipedia Invoke for that matter.
+
+05:08.630 --> 05:13.130
+Same thing happens for both of them and that is what we are doing over here.
+
+05:13.130 --> 05:16.610
+We can even call run, which is also going to return the same thing.
+
+05:16.640 --> 05:20.420
+You can also call invoke, which is also going to call the exact same thing.
+
+05:20.420 --> 05:21.770
+That is what we have done.
+
+05:21.770 --> 05:27.260
+We have created a simple tool and we have invoked it like how we did for the Wikipedia.
+
+05:27.290 --> 05:31.070
+And the same thing goes on for the rest of the tools as well.
+
+05:31.070 --> 05:34.370
+So for instance, I'm going to create three more tools over here.
+
+05:34.670 --> 05:39.830
+I'm going to say probably subtract numbers.
+
+05:39.830 --> 05:42.770
+And I'm going to just say subtract.
+
+05:42.770 --> 05:47.630
+And I'm going to say subtract two numbers and return result.
+
+05:47.630 --> 05:50.330
+And if I'm going to say multiply.
+
+05:53.390 --> 05:58.040
+And I'm going to say multiply two numbers.
+
+05:58.040 --> 06:02.330
+And I'm just going to multiply them I'm going to return the result.
+
+06:02.330 --> 06:08.970
+So this is how I can create three tools over here Uh, within my custom tools, which is amazing.
+
+06:09.000 --> 06:09.390
+Right.
+
+06:09.390 --> 06:10.350
+And guess what?
+
+06:10.350 --> 06:18.690
+We can now even add these tools into an array, and we can call all these tools one by one as well.
+
+06:18.690 --> 06:21.720
+We can see all these tools one by one as well.
+
+06:21.720 --> 06:27.540
+So for instance if I want to see all of them, like if I want to add all these tools into an array,
+
+06:27.570 --> 06:37.110
+I'm going to say tools is equal to uh, I'm going to say probably the Wikipedia tool and add numbers,
+
+06:37.650 --> 06:41.340
+uh, subtract numbers and multiply numbers.
+
+06:41.340 --> 06:49.650
+And if I wanted to print all these tools, um, for instance, I wanted to store all the tools into
+
+06:49.680 --> 06:56.010
+a collection, but along with their names and what this tool does, because this is required for me
+
+06:56.010 --> 06:59.340
+in the later point of operation, which I'm going to be doing.
+
+06:59.340 --> 07:03.300
+And that's the reason why I also need to do it right now.
+
+07:03.300 --> 07:09.730
+So I'm going to say list of Rules is equal to.
+
+07:09.760 --> 07:16.840
+And what I'm going to do is I'm going to iterate through all the tools, which is going to be for tool
+
+07:16.840 --> 07:18.640
+in tools.
+
+07:18.640 --> 07:22.900
+And I wanted to store all the tool names and the tool details in them.
+
+07:22.900 --> 07:26.230
+So the way I'm going to do it is I'm going to say tool dot name.
+
+07:26.560 --> 07:30.400
+And this is the tool that I wanted to store in.
+
+07:30.880 --> 07:34.570
+And now let's try to print this list of all the tools that I have got.
+
+07:34.660 --> 07:40.870
+See, I have not just the custom tools alone, but I have also used the already built in built tool,
+
+07:40.900 --> 07:43.720
+which is the Wikipedia tool that I have just downloaded from the community.
+
+07:43.900 --> 07:50.500
+And while I run this particular code over here, uh, oops, sorry, multiply numbers.
+
+07:50.980 --> 07:52.780
+Or maybe I did not even executed this line of code.
+
+07:52.780 --> 07:53.740
+That is a problem.
+
+07:54.160 --> 07:54.940
+Run that.
+
+07:54.940 --> 07:57.310
+And now let's try to run this.
+
+07:57.340 --> 07:58.060
+Ah, there we go.
+
+07:58.060 --> 07:59.050
+So that is working.
+
+07:59.050 --> 08:05.380
+So you see that now we have all the tools that Wikipedia add numbers subtract subtract numbers and multiply
+
+08:05.380 --> 08:05.740
+numbers.
+
+08:05.740 --> 08:13.820
+So this is already going to store me all the different details of my, uh, of my tools over here.
+
+08:13.820 --> 08:14.300
+And look at that.
+
+08:14.330 --> 08:16.190
+How the Wikipedia tool is going to be shown.
+
+08:16.190 --> 08:18.140
+It's a Wikipedia query run.
+
+08:18.170 --> 08:26.540
+This is the API wrapper has been used and it has got the, uh, details like how this particular tool
+
+08:26.540 --> 08:31.340
+is going to be executed and the total number of top k result that is going to return is three.
+
+08:31.370 --> 08:32.870
+The language is going to be English.
+
+08:32.870 --> 08:35.120
+And these are the details of this particular tool.
+
+08:35.120 --> 08:38.300
+Similarly for add numbers it is a structured tool.
+
+08:38.330 --> 08:44.330
+See that this is a structured tool because we have structured it in this way and it is an add numbers.
+
+08:44.330 --> 08:49.910
+The description is this and this is the thing that is going to do right.
+
+08:49.970 --> 08:53.660
+Same for the subtract numbers and the multiply numbers.
+
+08:53.660 --> 08:59.870
+So now we have created a tool list which is going to show me all the tools which is available within
+
+08:59.870 --> 09:00.680
+my system.
+
+09:00.710 --> 09:08.300
+And the next operation that we actually need to do is how we can invoke this tool with the power of
+
+09:08.300 --> 09:10.880
+our large language model, which is magic.

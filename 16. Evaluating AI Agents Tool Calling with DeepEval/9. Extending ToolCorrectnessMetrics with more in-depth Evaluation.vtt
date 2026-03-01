@@ -1,0 +1,307 @@
+WEBVTT
+
+00:00.050 --> 00:05.060
+The last operation in this particular section is going to be checking the tool correctness metrics of
+
+00:05.060 --> 00:06.350
+different parameters.
+
+00:06.380 --> 00:10.490
+This is something which I end up digging in this particular library a bit as well.
+
+00:10.490 --> 00:16.580
+So what I really mean about that is that go copy this and put a mark down here.
+
+00:16.580 --> 00:23.690
+And I'm going to say digging into tool correction metrics.
+
+00:24.380 --> 00:33.470
+And this one as you can see over here you can use this tool correction metrics in a even more better
+
+00:33.470 --> 00:43.310
+fashion, which is going to be you can just say probably like a tool metrics is equal to tool correction
+
+00:43.310 --> 00:44.030
+metrics.
+
+00:44.030 --> 00:47.840
+And in this tool correction metrics we just go to this particular class file a bit.
+
+00:47.840 --> 00:51.020
+You will notice that there are many different parameters that you can pass in.
+
+00:51.050 --> 00:54.260
+Like these are the required parameters like these.
+
+00:54.290 --> 01:00.440
+And you can also pass a lot of details as well like the threshold evaluation parameters include reasons
+
+01:00.440 --> 01:04.790
+strict mode verbose exact match should consider ordering.
+
+01:05.450 --> 01:07.130
+So consider your two.
+
+01:07.160 --> 01:12.480
+Your agent is going to call multiple different tools in a different order, or maybe in a sequence of
+
+01:12.480 --> 01:15.510
+order, and you wanted to measure the tools order as well.
+
+01:15.510 --> 01:17.730
+You can do it over here.
+
+01:18.090 --> 01:22.590
+I mean, at the moment in our test case, we don't have like multiple tools being called for one single
+
+01:22.590 --> 01:23.070
+query.
+
+01:23.070 --> 01:29.700
+But if you have a if you have a situation where you also need to check for the queries, you can also
+
+01:29.700 --> 01:32.790
+do that in in multiple different orders as well.
+
+01:32.820 --> 01:38.250
+You remember, uh, in our earlier sections of this course, while I was showing you with the agent,
+
+01:38.250 --> 01:44.430
+you can ask two questions, uh, together, for instance, you can ask what is the sum of two and four?
+
+01:44.430 --> 01:47.760
+And did Donald Trump won 2024 presidential election?
+
+01:47.760 --> 01:52.620
+Then these two questions are going to be executing two chain calls.
+
+01:52.680 --> 01:56.430
+One is the Wikipedia and also another one is the ad numbers.
+
+01:57.000 --> 02:02.220
+So if you're going to verify these two are going to be called in a sequence of order.
+
+02:02.220 --> 02:04.590
+Or maybe they are called together as well.
+
+02:04.590 --> 02:07.410
+If you're going to verify in these kind of fashion you can do that.
+
+02:07.410 --> 02:11.370
+So all these metrics you can evaluate using this tool collection metrics.
+
+02:11.580 --> 02:15.150
+So in order to show you what are the things that you can pass over here.
+
+02:15.150 --> 02:18.090
+You can pass a threshold, let's say 0.5.
+
+02:18.120 --> 02:19.710
+I mean, the one is the threshold in our case.
+
+02:19.710 --> 02:22.500
+So I can just say it should be always one.
+
+02:22.500 --> 02:23.520
+You can do that.
+
+02:23.520 --> 02:26.970
+And you can pass the evaluation parameters over here.
+
+02:26.970 --> 02:33.360
+And the parameters is nothing but the the LM test case I think there is an there is something called
+
+02:33.360 --> 02:37.980
+as LM test case, uh, of uh test case parameters.
+
+02:37.980 --> 02:39.990
+So you can pass the params.
+
+02:40.140 --> 02:43.200
+And over here you can pass the input.
+
+02:43.350 --> 02:46.650
+So that is going to verify the input parameter.
+
+02:46.770 --> 02:51.990
+And similarly you can just say uh actual output.
+
+02:51.990 --> 02:53.520
+You can verify that.
+
+02:53.520 --> 03:01.230
+And then you can also verify uh the expected output and expected tools.
+
+03:02.280 --> 03:07.920
+So you can verify all of these in the evaluation parameter like how we have got all these informations
+
+03:07.950 --> 03:09.720
+in our data already.
+
+03:10.110 --> 03:10.530
+Right.
+
+03:10.560 --> 03:13.830
+These things you can verify it as well which is pretty cool.
+
+03:14.070 --> 03:23.910
+And you can also verify should include a reason true and should exact match, which is true because
+
+03:23.910 --> 03:25.020
+it should be exactly matching.
+
+03:25.020 --> 03:27.030
+The tool name should consider order.
+
+03:27.060 --> 03:32.580
+Probably not, because at the moment we don't really have any of these sequence or ordering, but I'm
+
+03:32.580 --> 03:37.770
+just going to say true because we just have only one tool at the moment and you can say strict mode
+
+03:37.920 --> 03:39.960
+as true as well if you wanted to.
+
+03:40.410 --> 03:43.920
+There is one bug if you try to include the verbose mode.
+
+03:44.070 --> 03:47.280
+I tried doing that like true, it just fails abruptly.
+
+03:47.280 --> 03:48.540
+I will show you in a minute.
+
+03:48.900 --> 03:52.950
+But these are the things that you can pass this tool metrics and this tool metric.
+
+03:52.980 --> 03:56.070
+You can pass it over here.
+
+03:56.070 --> 04:01.530
+So basically instead of creating the tool collection something like this, you can just say tool metrics
+
+04:01.530 --> 04:02.670
+dot measure.
+
+04:02.760 --> 04:06.240
+So this will measure every single things for you.
+
+04:06.240 --> 04:08.550
+So you get the score you get the reason.
+
+04:08.760 --> 04:11.610
+Um guess what I can just say score.
+
+04:11.880 --> 04:27.360
+Uh and reason and I can also print probably print uh metrics dot uh include reason and I can also print
+
+04:27.480 --> 04:38.780
+uh metrics dot expected tools, and I can also print a metrics dot evaluation parameters.
+
+04:38.780 --> 04:43.520
+So I can put all these over here for my reporting purpose, so that I can see that everything works
+
+04:43.520 --> 04:45.080
+as expected or not as well.
+
+04:45.080 --> 04:45.650
+Look at that.
+
+04:45.650 --> 04:48.260
+It's just going to show me every single things over there.
+
+04:48.260 --> 04:54.620
+So you see that this is this is the power guys like we have got like all of these information coming
+
+04:54.620 --> 04:55.790
+up for us over here.
+
+04:55.790 --> 05:00.260
+Like it is going to have the name like the parsing result.
+
+05:00.260 --> 05:02.000
+All the expected tools are coming up.
+
+05:02.000 --> 05:07.610
+And the true is for this, uh, is for the reason which is true.
+
+05:07.610 --> 05:11.180
+And then this is the tool being called uh, which is the include reason.
+
+05:11.180 --> 05:13.430
+And then we have got all this information.
+
+05:13.430 --> 05:17.030
+So expected tools for some reason is not coming up over there.
+
+05:17.030 --> 05:19.010
+But we have got the information.
+
+05:19.010 --> 05:22.130
+So but so yeah this is how you can see everything.
+
+05:22.130 --> 05:23.210
+You can print it out.
+
+05:23.240 --> 05:29.270
+As I told you, if you just give verbose mode as true for some reason it just gives me it runs in a
+
+05:29.270 --> 05:31.130
+loop and then it fails abruptly.
+
+05:31.130 --> 05:31.970
+Look at that.
+
+05:32.180 --> 05:33.890
+It just keeps on running like that.
+
+05:34.160 --> 05:41.880
+And at the at the end it just fails, saying that the maximum recursion depth exceeded and then it fails.
+
+05:41.880 --> 05:47.280
+So that's the reason why I don't want to show you the verbose mode as true there.
+
+05:47.550 --> 05:50.370
+But other than that, everything looks quite right.
+
+05:50.400 --> 05:51.720
+It just works fine.
+
+05:51.990 --> 05:55.830
+And this is how you can see the results are all coming up for you.
+
+05:55.830 --> 06:01.050
+So yeah, these are the things that we can actually do it from our tool correction metrics.
+
+06:01.050 --> 06:03.930
+We can pass multiple different parameters and we can get the response out.
+
+06:03.960 --> 06:09.660
+As I told you, the only bummer of this entire thing is that we can't we can't run the evaluate method,
+
+06:09.660 --> 06:15.900
+like how we did in our last section, which can run on the open AI and get the deep values result and
+
+06:15.900 --> 06:23.310
+get into the into the metrics in the dashboard, the confident AI, those things are still not supported.
+
+06:23.430 --> 06:28.470
+So you can't see something like these kind of fancy metrics, but at least you got the idea.
+
+06:28.500 --> 06:30.780
+You got the response coming up over here.
+
+06:30.780 --> 06:35.580
+This is how we can validate our agent calling the correct tool.
+
+06:35.580 --> 06:38.880
+And it gets the responses like how we are looking for.
+
+06:39.840 --> 06:40.350
+That's it guys.
+
+06:40.350 --> 06:42.660
+Once again thank you so much for purchasing this course.
+
+06:42.660 --> 06:44.100
+And you guys have a great day.

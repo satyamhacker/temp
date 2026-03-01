@@ -1,0 +1,208 @@
+WEBVTT
+
+00:00.020 --> 00:07.970
+In this lecture, we can talk about how we can embed our text representation of data into vector representation
+
+00:07.970 --> 00:10.820
+using the embedding models.
+
+00:10.850 --> 00:17.000
+As I told you in the first lecture of this section, we are going to have quite a lot of different,
+
+00:17.000 --> 00:19.160
+uh, ways to embed the models.
+
+00:19.160 --> 00:24.410
+And we are going to be using the O Lama, of course, to perform the embedding.
+
+00:24.410 --> 00:28.220
+And we are going to use this particular piece of code, the O Lama embedding.
+
+00:28.220 --> 00:31.790
+And the model that we are going to be using is going to be Lama 3.2.
+
+00:31.820 --> 00:38.000
+In this particular case, and this way, this embedding can help us do the vectorization of the piece
+
+00:38.000 --> 00:39.440
+of text that we are going to be passing.
+
+00:39.440 --> 00:46.700
+And you know that we have already splitted the text into multiple chunks, so we can now easily split
+
+00:46.700 --> 00:47.300
+them all.
+
+00:47.330 --> 00:49.580
+I mean, embed them all over here.
+
+00:49.580 --> 00:51.620
+So let's see how we can actually do that.
+
+00:51.620 --> 00:55.760
+So I'm gonna again go back to my notebook uh, over here.
+
+00:55.760 --> 01:00.860
+And I'm going to do uh, part three which is the embedding part.
+
+01:00.860 --> 01:06.320
+So I'm going to do that and I'm going to add the code there.
+
+01:06.320 --> 01:13.440
+So once again for the piece of code I'm just going to say uh, link chain, uh, underscore olama,
+
+01:14.010 --> 01:18.900
+uh, and I'm going to import the olama embeddings.
+
+01:19.080 --> 01:22.140
+And this will help us do the embedding, as I told you.
+
+01:22.140 --> 01:26.310
+So I'm going to say embedding Olama embedding.
+
+01:26.310 --> 01:35.310
+And the model which I'm going to be using, uh, is going to be a lemma 3.2 latest model.
+
+01:35.310 --> 01:36.750
+So I already have the particular model.
+
+01:36.750 --> 01:39.270
+As you remember we we used that before as well.
+
+01:39.270 --> 01:44.400
+So I'm going to use that particular model which I have already downloaded within my local machine.
+
+01:44.400 --> 01:49.110
+So in order to check how this embedding is going to create the vector, I'm just going to quickly show
+
+01:49.110 --> 01:50.640
+you how the vector is going to look like.
+
+01:50.640 --> 01:58.710
+So I'm going to say uh vector underscore one is equal to maybe embeddings uh dot embed query.
+
+01:59.220 --> 02:04.560
+And over here I'm going to say all splits because this is the one that has got all of the splits.
+
+02:04.560 --> 02:08.550
+I'm just going to take the first one from the split just zero.
+
+02:08.850 --> 02:12.000
+And I'm going to use the page content over here.
+
+02:12.000 --> 02:13.680
+So this is going to be the first vector.
+
+02:13.680 --> 02:16.650
+And I'm going to create a second vector.
+
+02:16.650 --> 02:20.770
+So vector two probably I'm going to say I'll split off one.
+
+02:20.770 --> 02:22.630
+So I mean the first split.
+
+02:22.630 --> 02:25.600
+So this zero is the first split one is the second split.
+
+02:25.600 --> 02:27.520
+I'm going to take that out over here.
+
+02:27.520 --> 02:30.070
+And I'm going to do a small assertion here.
+
+02:30.070 --> 02:37.360
+So I'm going to say assert of the length of the vector one is equal to length of the vector two.
+
+02:37.390 --> 02:38.530
+So look at that.
+
+02:38.530 --> 02:42.730
+Basically I'm just going to see if so what is going to be the length of both of them.
+
+02:42.850 --> 02:44.500
+Are they both are equal.
+
+02:44.500 --> 02:45.970
+So we're going to assert that.
+
+02:46.000 --> 02:52.510
+And then we are going to print the uh the generated uh vector lengths.
+
+02:52.510 --> 02:58.420
+So I'm going to say print uh length of the vector.
+
+02:58.960 --> 02:59.800
+Uh oops.
+
+02:59.830 --> 03:02.620
+Vector one over here.
+
+03:02.620 --> 03:03.970
+So let's see what's going to basically happen.
+
+03:03.970 --> 03:07.450
+So if I try to run this particular code over here look at that.
+
+03:07.450 --> 03:12.340
+Now this embedding is happening and the assertion has got passed as you can see over here.
+
+03:12.340 --> 03:16.540
+So both the vector has got same exact length.
+
+03:16.540 --> 03:21.130
+So this vector one has got the same length as opposed to uh the second vector.
+
+03:21.130 --> 03:25.930
+So that is how the vector splitting is going to happen using this embedding model that we have got.
+
+03:25.930 --> 03:31.710
+And you will notice that uh, we are also going to do, uh, the length and the length of the vector
+
+03:31.710 --> 03:32.610
+one is this one.
+
+03:32.610 --> 03:43.200
+And I'm also going to print the, uh, probably the length of vector one and length of vector two.
+
+03:43.230 --> 03:45.000
+I'm just going to put a comma there.
+
+03:45.120 --> 03:48.180
+And if I try to print it out look at that.
+
+03:48.180 --> 03:52.260
+The vector length of vector one and vector two are pretty much exactly the same.
+
+03:52.350 --> 03:55.740
+This is the reason why we need to use this embedding.
+
+03:55.740 --> 04:04.140
+And because once we do this embedding, we can then start using this vector for the, uh, for the storage
+
+04:04.140 --> 04:10.020
+in the vector stores and from vector stores, we can then retrieve the value, uh, along with the large
+
+04:10.020 --> 04:13.410
+language model to perform the sequence matchings and stuff.
+
+04:13.440 --> 04:15.270
+Those things we are going to be doing later on.
+
+04:15.270 --> 04:16.860
+So this is the embedding part.
+
+04:16.890 --> 04:20.220
+I know this is very straightforward because we are using the llama embedding.
+
+04:20.220 --> 04:25.200
+But there are some uh, cases where you will be using different sort of embedding for that matter.
+
+04:25.200 --> 04:30.810
+And I am trying to use the most simplest version while building the, uh, while building this particular
+
+04:30.810 --> 04:35.610
+rack application, but depends upon the nature and complexity of your application and use case.
+
+04:35.610 --> 04:38.820
+You may be using different embedding for that matter.

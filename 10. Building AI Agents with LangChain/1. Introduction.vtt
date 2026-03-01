@@ -1,0 +1,187 @@
+WEBVTT
+
+00:00.020 --> 00:01.970
+Welcome to the next section of our course.
+
+00:01.970 --> 00:04.970
+And in this section we are going to start building an agent.
+
+00:05.000 --> 00:08.360
+So what is this agent by themselves?
+
+00:08.360 --> 00:13.310
+The large language model can't take any actions, they just output the text.
+
+00:13.340 --> 00:18.620
+We already know that a big use case for Lang chain is creating an agents.
+
+00:18.620 --> 00:25.340
+So the agents are the system that uses the large language models as a reasoning engine to determine
+
+00:25.340 --> 00:31.940
+which action to take and output the inputs necessary to perform the action.
+
+00:31.940 --> 00:37.430
+So after executing the action, the results can be fed back to large language model to determine whether
+
+00:37.430 --> 00:40.850
+more actions are needed or whether it is okay to finish it off.
+
+00:40.850 --> 00:47.090
+This is often achieved via tool calling, and we already saw the tool callings as well in our last section
+
+00:47.090 --> 00:47.900
+of this course.
+
+00:47.900 --> 00:53.330
+That's the reason why I wanted to cover up this agents part right now, because now you have got all
+
+00:53.330 --> 00:56.180
+the nuts and bolts for building an agents.
+
+00:56.180 --> 00:59.330
+We have already discussed about LM, we have already talked about tool calling.
+
+00:59.330 --> 01:03.380
+The final piece of the puzzle is the agents that we are going to talk about.
+
+01:03.380 --> 01:09.630
+So agents, as you can see over here, is going to be helping us to perform some action based on the
+
+01:09.630 --> 01:13.230
+tools that we have got, and that is what we are going to be doing over here.
+
+01:13.230 --> 01:19.350
+I'm not going to talk about the already available agents, because if you have seen, uh, hugging face
+
+01:19.350 --> 01:22.230
+also has got an agent called as smiles agent.
+
+01:22.230 --> 01:27.330
+So if you just go and search for hugging face, uh, small, uh, small agents.
+
+01:27.510 --> 01:28.560
+Um, yeah.
+
+01:28.590 --> 01:29.430
+This one.
+
+01:29.610 --> 01:35.160
+Uh, so you see that this is an agent which is going to perform some action for you.
+
+01:35.160 --> 01:40.020
+So, uh, if you just go to Conceptual guide, what are the agents?
+
+01:40.020 --> 01:45.300
+So any efficient system using I will need to provide some kind of access to the real world.
+
+01:45.300 --> 01:50.850
+For instance, the possibility to call a search tool to get, uh, external information, like how we
+
+01:50.850 --> 01:57.270
+did in our last, uh, section where we give where we gave the LM, uh, the external, uh, real world
+
+01:57.270 --> 01:58.650
+access with Wikipedia.
+
+01:58.650 --> 02:01.110
+That's exactly what they are talking about over here.
+
+02:01.140 --> 02:07.260
+Or an act on certain program in order to solve a task, which is what we did in our last section, where
+
+02:07.260 --> 02:14.710
+we gave the ability for the agent to, uh, to perform addition, multiplication and subtraction operation
+
+02:14.710 --> 02:17.080
+with our custom program that we built.
+
+02:17.110 --> 02:25.210
+In other words, heirloom should have a agency which is nothing but the tools that we have.
+
+02:25.210 --> 02:30.880
+And the genetic programs are the gateway to the outside world of the Elm, which is amazing.
+
+02:30.880 --> 02:36.340
+That's what we have already did most of the time, and they have got some details of how the agents
+
+02:36.370 --> 02:40.570
+needs to be one of the things that you need to avoid, and they have got a lot of discussions and details
+
+02:40.570 --> 02:41.110
+over here.
+
+02:41.110 --> 02:46.780
+But most important thing that you need to understand with this particular LM agents is that they are
+
+02:46.780 --> 02:55.240
+going to think and do the action and then perform other action, or maybe calling other tools to complete
+
+02:55.270 --> 02:56.230
+a certain task.
+
+02:56.230 --> 03:05.260
+So the agents are going to be relentlessly work for you to get the most optimal output from the question
+
+03:05.260 --> 03:12.220
+that you have asked via all the available tools and the custom tools, and from the reasoning engine,
+
+03:12.220 --> 03:16.330
+which is the large language model, and get you the response that you are looking for, that is the
+
+03:16.330 --> 03:17.350
+power of the agents.
+
+03:17.380 --> 03:21.160
+Whereas if you just ask a query to your large language model.
+
+03:21.160 --> 03:22.780
+It's just going to output it immediately.
+
+03:22.780 --> 03:28.510
+Whereas with this tool calls, it is going to keep on calling quite a lot of different tools before
+
+03:28.510 --> 03:30.610
+it answers the correct questions.
+
+03:30.640 --> 03:33.160
+So you see that this is what the diagram is really.
+
+03:33.190 --> 03:35.170
+It is going to keep updating its memory.
+
+03:35.170 --> 03:39.520
+And then it is going to again call the tool call to to get the right output.
+
+03:39.520 --> 03:42.070
+And then it is going to give the response to you back.
+
+03:42.070 --> 03:44.170
+So the final answer is going to come up over here.
+
+03:44.170 --> 03:50.950
+So it is going to do a lot of different operation before it gets you the final output, which is amazing.
+
+03:50.950 --> 03:57.130
+And that is what we are going to be doing in this particular section of how we can make use of the agents
+
+03:57.130 --> 04:00.850
+in a long chain, but not for you to build the agents.
+
+04:00.850 --> 04:06.130
+We are going to start looking at the agents class, which is available in long chain, and we're going
+
+04:06.160 --> 04:06.670
+to do that.
+
+04:06.670 --> 04:12.610
+But the first use case that we are going to be doing in this particular section is going to be how we
+
+04:12.610 --> 04:21.550
+can replace our existing tool calling and selection logics that we wrote to execute the the tools with
+
+04:21.550 --> 04:23.440
+the agents.
+
+04:24.070 --> 04:26.050
+We'll be talking about that in our next lecture.

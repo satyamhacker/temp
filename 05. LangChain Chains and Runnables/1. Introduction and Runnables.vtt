@@ -1,0 +1,241 @@
+WEBVTT
+
+00:00.000 --> 00:02.070
+Welcome to the next section of our course.
+
+00:02.070 --> 00:08.550
+And in this section we are going to talk about understanding, chaining and runnables in Lange chain.
+
+00:08.550 --> 00:11.970
+So this is one of the most important concept that we need to understand.
+
+00:11.970 --> 00:14.670
+Because as you know this is a Lange chain.
+
+00:14.670 --> 00:16.830
+And there is a chain word there already.
+
+00:16.830 --> 00:19.080
+And that is the power of the Lange chain itself.
+
+00:19.080 --> 00:21.210
+And that is what we are going to be doing over here.
+
+00:21.210 --> 00:26.670
+The chaining mechanism and a runnable are also one of the most important concept that you need to understand.
+
+00:26.670 --> 00:30.600
+So let's see what we are going to talk about this runnables in first place.
+
+00:30.600 --> 00:35.520
+So if you remember in our last section while we were working with we had got this what is called as
+
+00:35.520 --> 00:37.650
+the Lange Smith Lange chain.
+
+00:37.650 --> 00:44.160
+And then there is a template and we were passing the chat prompt template with the role.
+
+00:44.160 --> 00:48.780
+And also we were passing it the message to the large language model in the local machine.
+
+00:48.960 --> 00:50.580
+And these are the things which are happening.
+
+00:50.610 --> 00:52.860
+And now I have added two gear symbol there.
+
+00:52.860 --> 00:58.170
+So this gear is nothing but runnables just assume it that that is what these two are.
+
+00:58.170 --> 01:05.360
+So this runnables what it does really is that they are responsible for executing an action.
+
+01:05.360 --> 01:11.750
+So in in this long chain, every single operation that you perform like prompt.
+
+01:11.750 --> 01:16.760
+For example, if you call an invoke methods, if you remember from the prompt we can call the invoke
+
+01:16.760 --> 01:17.270
+method.
+
+01:17.270 --> 01:18.680
+Then it is a runnable.
+
+01:18.680 --> 01:22.310
+And in the large language model we can also call the invoke method.
+
+01:22.310 --> 01:24.380
+So basically that is an runnable as well.
+
+01:24.380 --> 01:32.150
+And similarly if you're going to be creating probably an agent or a retriever or an output parser,
+
+01:32.180 --> 01:39.440
+any of these things that you create in the long chain, these are all considered as runnables.
+
+01:39.440 --> 01:43.040
+So just to get back to the details of the runnable.
+
+01:43.040 --> 01:48.890
+So in long chain runnable interface is the foundation of working with the long chain component.
+
+01:48.890 --> 01:55.250
+And it's implemented across many of them such as language models, output parsers, retrievers, compiled
+
+01:55.250 --> 01:57.560
+language, long chain graphs, and more.
+
+01:57.800 --> 02:00.710
+And this is the details that you have to cover.
+
+02:00.740 --> 02:02.720
+Or maybe you can just read through about it.
+
+02:02.720 --> 02:09.300
+But one thing that we have to even understand is the long chain expression language, or LCL.
+
+02:09.330 --> 02:13.080
+That is something that we will talk about while we talk about chaining mechanism.
+
+02:13.080 --> 02:18.450
+But over here on the Runnables, you will notice that this is the overview of the Runnables.
+
+02:18.480 --> 02:24.930
+The runnable way defines the standard interface that allows runnable components to invoke batch, stream
+
+02:24.930 --> 02:26.940
+and inspected composed.
+
+02:27.000 --> 02:32.520
+You remember in our last section of our course, the last lecture, we were talking about this what
+
+02:32.520 --> 02:34.830
+is called as a streaming operation.
+
+02:34.860 --> 02:39.300
+And we also did the invoke operation over here.
+
+02:39.300 --> 02:43.290
+We also did the invoke for the templates, which is the prompt templates.
+
+02:43.290 --> 02:49.230
+And we can also do the exact same thing for the string output or agents or whatever that we are creating.
+
+02:49.230 --> 02:50.220
+We can do the invoke.
+
+02:50.220 --> 02:57.570
+So whichever, whichever component that you can do an invoke or stream and bind, then those components
+
+02:57.570 --> 03:03.480
+are essentially a runnable component or runnable interfaces or implementing the runnable interfaces
+
+03:03.480 --> 03:04.650
+behind the scene.
+
+03:04.800 --> 03:08.400
+And that is what this particular thing is.
+
+03:08.400 --> 03:14.310
+You can run this particular runnable interface in parallel, as you can see over here with the batch
+
+03:14.340 --> 03:15.060
+operation.
+
+03:15.060 --> 03:18.690
+And you can also run the Runnables in asynchronous operation.
+
+03:18.690 --> 03:22.200
+You can also run the runnable in the streaming operation.
+
+03:22.230 --> 03:28.230
+And also you can do runnable with quite a lot of different input and output types, which essentially
+
+03:28.230 --> 03:36.510
+means that you can pass the Runnables as an input type to another runnable component, and then you
+
+03:36.510 --> 03:37.650
+can perform the operation.
+
+03:37.680 --> 03:39.690
+So let me tell you what I really mean about that.
+
+03:39.690 --> 03:47.670
+So if you go back to our diagram over here, this is this entire thing, maybe this this entire thing,
+
+03:48.900 --> 03:55.110
+we can convert it as a runnable, and then we can convert this runnable output.
+
+03:55.110 --> 03:59.640
+And we can pass it to another runnable as an input.
+
+03:59.640 --> 04:03.330
+So this can be an input to another runnable that we wanted to create.
+
+04:03.330 --> 04:05.070
+And then we can move on from there.
+
+04:05.070 --> 04:06.570
+And that is the concept of chaining.
+
+04:06.570 --> 04:08.850
+And that is the reason why I don't want to cover it over here.
+
+04:08.850 --> 04:16.170
+So basically this runnable input runnable output, you can pass it as an input to another runnable.
+
+04:16.170 --> 04:19.930
+And the same thing keeps on going from there on.
+
+04:19.930 --> 04:27.490
+So you can keep doing that any further section over here and then you can chain all these operations.
+
+04:27.850 --> 04:30.190
+And that is what is called as the chaining operation.
+
+04:30.190 --> 04:32.410
+So basically you can just do like this.
+
+04:32.410 --> 04:34.450
+So this is going to be one runnable.
+
+04:34.450 --> 04:39.670
+This is going to be another uh runnable over here.
+
+04:40.000 --> 04:41.650
+So this is a runnable one.
+
+04:41.890 --> 04:44.800
+And this is a runnable two something like that.
+
+04:44.860 --> 04:46.060
+Uh where is the text.
+
+04:46.060 --> 04:46.600
+There.
+
+04:46.630 --> 04:47.950
+Runnable one.
+
+04:47.950 --> 04:51.670
+And this is going to be runnable two.
+
+04:51.700 --> 04:58.000
+I mean, the entire thing I'm talking about and this can be a runnable three for that matter.
+
+04:58.000 --> 05:07.120
+So we can chain all of these, uh, in our actual execution with a chain.
+
+05:07.120 --> 05:11.380
+And we call this as chaining operation as well.
+
+05:11.410 --> 05:13.030
+I will talk about that later on.
+
+05:13.060 --> 05:18.550
+I don't want to confuse you there, but you got the idea of how the Runnables are really created and
+
+05:18.550 --> 05:22.150
+working in the actual Lang Chain library.

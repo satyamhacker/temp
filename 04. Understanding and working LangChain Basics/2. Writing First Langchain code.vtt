@@ -1,0 +1,379 @@
+WEBVTT
+
+00:00.020 --> 00:00.530
+All right.
+
+00:00.530 --> 00:04.310
+So now that we have the installation done, we're pretty good to go right now.
+
+00:04.310 --> 00:10.970
+And we can now start writing the code for interacting with our local large language model using this
+
+00:11.000 --> 00:12.320
+long chain library.
+
+00:12.320 --> 00:15.680
+So for doing that I'm gonna put a markdown over here.
+
+00:15.680 --> 00:23.570
+And I'm going to say, um, the first thing is going to be interacting with LM, and I'm going to hit
+
+00:23.600 --> 00:24.410
+okay.
+
+00:24.410 --> 00:25.850
+And I'm going to start writing the code.
+
+00:25.850 --> 00:30.350
+So this notebook is going to be very, very helpful for you to read through all the operations that
+
+00:30.350 --> 00:35.030
+we are doing, uh, from this particular section until the end of the particular section, so that you
+
+00:35.030 --> 00:40.160
+can have a full record of what is really happening in this particular notebook itself, which is going
+
+00:40.190 --> 00:45.590
+to be very, very helpful for you to even recall, like how that I am going to perform all these operations.
+
+00:45.590 --> 00:52.070
+So this notebook is quite useful, especially if you're going to be working or learning from the scratch
+
+00:52.100 --> 00:53.360
+for the long chain.
+
+00:53.690 --> 00:56.930
+As I said, I'm going to start working with the long chain olama.
+
+00:56.930 --> 01:03.040
+So you see that the moment I start typing the from and then l a n, then it's going to show me all the
+
+01:03.040 --> 01:08.200
+libraries which is available within my, uh, environment, which is the virtual environment that I
+
+01:08.200 --> 01:10.690
+have installed, the long chain olama, remember.
+
+01:10.690 --> 01:16.240
+So it's just coming up over here and then I'm going to say import, and I'm going to import a class
+
+01:16.240 --> 01:17.950
+called as chat Olama.
+
+01:17.950 --> 01:23.530
+So this is the class which is required for us to perform the chatting operation with the, with the
+
+01:23.530 --> 01:26.740
+olama running within my local machine, which is this guy you remember.
+
+01:26.740 --> 01:28.330
+So I'm going to do that.
+
+01:28.630 --> 01:35.200
+Uh, so I'm going to create a variable called as LM and I'm going to say chat Olama.
+
+01:35.320 --> 01:40.660
+And within this chat Olama I'm going to pass a series of, uh, parameters.
+
+01:40.660 --> 01:41.770
+So you see that within this chat.
+
+01:41.770 --> 01:42.190
+Olama.
+
+01:42.220 --> 01:48.370
+There are so many different parameters available like name cache, verbose, callback tag, meta.
+
+01:48.460 --> 01:56.050
+And they also have got a lot more, uh, of the details over here, but the one that I'm going to be
+
+01:56.050 --> 01:59.200
+very much interested in is, first of all, the base URL.
+
+01:59.200 --> 02:05.800
+So the base URL is nothing but the the way that you can communicate with the a large language model,
+
+02:05.800 --> 02:08.290
+which is nothing but the olama using the API.
+
+02:08.320 --> 02:11.920
+If you remember the one that we were talking about in the last section of our course, the same thing
+
+02:11.920 --> 02:19.900
+that I'm going to be showing you over here, which is nothing but the HTTP colon localhost of 11434.
+
+02:19.930 --> 02:24.310
+So this is the host, and this is the port number that we have to use.
+
+02:24.310 --> 02:26.770
+Pretty much what we did in our last section.
+
+02:26.830 --> 02:30.220
+And over here I need to specify the model that I'm going to be using.
+
+02:30.220 --> 02:36.490
+So the model which I'm going to be using is going to be the 12.5 latest model, the one that I have
+
+02:36.520 --> 02:37.750
+got over here.
+
+02:37.750 --> 02:44.890
+So if I just do, uh olama, uh, list, you can see that this is the model that I'm going to be using
+
+02:44.890 --> 02:50.770
+this time, the 12.5, uh, latest model, uh, over here.
+
+02:50.770 --> 02:59.050
+But you can also use the, uh, llama .1.3.2 with a lower version of the uh, billion parameter that
+
+02:59.070 --> 03:01.050
+you have got, which is also something that you can do.
+
+03:01.080 --> 03:05.100
+I mean, we can use any model that we want, but for now, I'm just going to use this particular model,
+
+03:05.280 --> 03:12.270
+and then I'm going to set the temperature for this particular model as 0.5, which is the standard way
+
+03:12.270 --> 03:13.860
+of setting the temperature.
+
+03:13.920 --> 03:25.140
+And I also set the max token uh, which is going to be max underscore token is equal to probably 250
+
+03:25.140 --> 03:29.250
+or something like that as the maximum token that it's going to be emitting for our operation.
+
+03:29.280 --> 03:34.800
+So now that we have set up all the different parameters required for the large language model to perform
+
+03:34.980 --> 03:41.370
+any operation, and now we are going to see how we can invoke this particular, um, large language
+
+03:41.370 --> 03:41.820
+model.
+
+03:41.850 --> 03:46.020
+If you remember, in our earlier section, while we were talking about the language introduction, we
+
+03:46.050 --> 03:51.660
+talked about there are different ways or different interfaces the language has got which can be used
+
+03:51.660 --> 03:55.560
+as a unified way to communicate with the large language model.
+
+03:55.590 --> 04:00.920
+The methods are like invoke method, stream method, batch method, and even further method that I was
+
+04:00.920 --> 04:01.610
+talking about.
+
+04:01.610 --> 04:04.700
+The same thing that we are going to be doing over here.
+
+04:04.700 --> 04:10.760
+So we are going to call this invoke method, which can be invoking the large language model just by
+
+04:10.760 --> 04:12.830
+using this particular method that you are seeing over here.
+
+04:12.830 --> 04:14.630
+So I will tell you what I really mean about that.
+
+04:14.630 --> 04:21.890
+So if I want to get any response of this particular model, then I can just say response.
+
+04:21.920 --> 04:24.620
+Um, maybe that's the variable that I'm creating.
+
+04:24.650 --> 04:28.730
+I'm going to say LM dot and you see that there is this method called as invoke method.
+
+04:28.730 --> 04:35.540
+This is going to transform a single input into an output overriding, uh, override to implement these
+
+04:35.540 --> 04:37.250
+many operations, as you can see over here.
+
+04:37.250 --> 04:39.560
+So I'm just going to call this invoke method.
+
+04:39.560 --> 04:43.220
+And over here I'm just going to say hello.
+
+04:43.430 --> 04:47.120
+How are you doing today.
+
+04:47.900 --> 04:48.290
+Look at that.
+
+04:48.290 --> 04:50.720
+This is how I'm going to interact with this large language model.
+
+04:50.720 --> 04:56.420
+Pretty much like how I did while I was trying to use the uh oh llama.
+
+04:56.600 --> 05:02.990
+And then I was doing the run of the Cuban 2.5 or whatever model that I wanted, and then I was trying
+
+05:02.990 --> 05:03.440
+to send.
+
+05:03.470 --> 05:04.340
+Hello.
+
+05:04.640 --> 05:07.130
+Um, maybe I'm just going to say same question.
+
+05:07.130 --> 05:07.850
+Probably.
+
+05:07.880 --> 05:11.060
+I'm going to copy this whole thing, paste it over here.
+
+05:11.060 --> 05:16.400
+And if I hit enter the the large language model is going to give me a response over here.
+
+05:16.400 --> 05:19.070
+The same thing I'm doing over here as well.
+
+05:19.070 --> 05:22.340
+So now if I want to print what is the response is going to coming up.
+
+05:22.340 --> 05:25.190
+So I'm just going to say print of the response.
+
+05:25.190 --> 05:31.340
+And now if I try to run this particular code block using this hit run button there.
+
+05:31.700 --> 05:32.330
+Look at that.
+
+05:32.330 --> 05:34.310
+That's the same response that you're getting.
+
+05:34.310 --> 05:35.570
+Hello I'm doing well.
+
+05:35.570 --> 05:36.590
+Thanks for asking.
+
+05:36.620 --> 05:37.670
+Blah blah blah.
+
+05:37.910 --> 05:40.460
+Uh, until how can I assist you today?
+
+05:40.490 --> 05:42.080
+Remember the same thing.
+
+05:42.080 --> 05:44.870
+This is this is what is really happening.
+
+05:44.870 --> 05:51.560
+That how we can communicate with the large language model using the long chain of the ulama, uh, using
+
+05:51.560 --> 05:52.940
+this particular piece of code.
+
+05:53.570 --> 05:55.220
+This is quite amazing, right?
+
+05:55.220 --> 05:57.050
+This is how we can actually do that.
+
+05:57.050 --> 06:01.930
+but there are even more contents really coming up beyond the content of the response.
+
+06:01.960 --> 06:07.300
+As you can see, this particular response had got has got something called as additional k w arguments
+
+06:07.300 --> 06:08.800
+and response metadata.
+
+06:08.860 --> 06:13.840
+It gives me it gives me the response metadata like model is being used as this one.
+
+06:13.840 --> 06:16.240
+And it is created at this time.
+
+06:16.270 --> 06:20.710
+And the done response is top total duration it took.
+
+06:20.740 --> 06:27.280
+And then what is the prompt level prompt eval count and evolve duration.
+
+06:27.400 --> 06:31.900
+And there is also something like a role as assistant.
+
+06:32.260 --> 06:35.290
+And there is a content as nothing and image is none.
+
+06:35.320 --> 06:37.000
+Tool call is none.
+
+06:37.000 --> 06:43.420
+And there is an ID usage metadata and how many tokens have been used and how many output tokens are
+
+06:43.420 --> 06:43.810
+being used.
+
+06:43.840 --> 06:47.620
+This is like input token and output token and total token is 57.
+
+06:47.710 --> 06:48.460
+Look at that.
+
+06:48.490 --> 06:51.370
+These are so many informations coming up over here.
+
+06:51.580 --> 06:56.200
+And every single time when you try to execute this, these are the things which is going to happen for
+
+06:56.200 --> 06:59.080
+you behind the scene and see the response has now changed.
+
+06:59.110 --> 07:02.500
+I'm a digital entity so I don't have feeling and emotion.
+
+07:02.500 --> 07:04.360
+It's not like what it is giving this time.
+
+07:04.390 --> 07:05.200
+It's going.
+
+07:05.230 --> 07:06.880
+It's giving something else this time.
+
+07:06.880 --> 07:09.820
+And the token has changed from 57 to 81.
+
+07:10.420 --> 07:17.500
+So every single time you do an execution using this long chains or lama with a large language model,
+
+07:17.500 --> 07:19.000
+the responses are going to change.
+
+07:19.000 --> 07:23.620
+The output tokens and input tokens are going to change and the metadata will remain same, but still
+
+07:23.620 --> 07:28.360
+the usage will keep on changing and also the content is going to keep changing.
+
+07:28.360 --> 07:35.740
+So how do you keep track of all these changes and how all these input tokens and output tokens and how
+
+07:35.740 --> 07:39.580
+you can and how you can see all these in a better way?
+
+07:39.610 --> 07:45.010
+You remember the one that I was talking about, something called as the Lang Smith.
+
+07:45.010 --> 07:47.260
+That's what we are going to be using in our next lecture.
+
+07:47.260 --> 07:52.390
+I will configure it and I will show you how every single thing that you are seeing over here can be
+
+07:52.390 --> 07:57.040
+viewed visually in a graphical user interface, in a much better fashion.

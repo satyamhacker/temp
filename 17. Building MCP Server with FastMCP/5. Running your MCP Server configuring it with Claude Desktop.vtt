@@ -1,0 +1,250 @@
+WEBVTT
+
+00:00.120 --> 00:00.560
+All right.
+
+00:00.560 --> 00:05.120
+So now that we have two links we have the server it's going to be running if we invoke it.
+
+00:05.120 --> 00:09.480
+Now how do we actually configure this with our cloud desktop.
+
+00:09.800 --> 00:13.080
+As I told you within the cloud desktop just go back over here.
+
+00:13.200 --> 00:14.920
+You have got the settings.
+
+00:14.960 --> 00:16.160
+Just go to the settings.
+
+00:16.160 --> 00:18.400
+Over here you have got the developers.
+
+00:18.440 --> 00:23.760
+Go to the edit configurations and then go to any one of the editor that you have over here.
+
+00:23.800 --> 00:27.040
+We're going to be invoking the simple calculator that we have.
+
+00:27.040 --> 00:31.080
+So the way I'm going to do it is pretty much exactly the same, like how I did over here.
+
+00:31.080 --> 00:35.800
+I'm going to say simple calculator, something like this.
+
+00:36.320 --> 00:38.840
+Um, you can name whatever you want it to.
+
+00:39.080 --> 00:39.720
+Intelligent.
+
+00:40.000 --> 00:42.000
+It tells me that I need to do this.
+
+00:42.040 --> 00:47.720
+See, um, you basically need to pass in a command something like that.
+
+00:47.760 --> 00:53.400
+And the command is going to be Python, because you remember when you run this particular MCP server
+
+00:53.440 --> 00:55.560
+over here, you just said Python.
+
+00:55.560 --> 01:00.480
+And then simple calculator is exactly what we have to say over here as well.
+
+01:00.480 --> 01:05.800
+So I'm not really deploying this MCP server to any node package or whatsoever.
+
+01:05.800 --> 01:12.370
+So it's going to be very, very straightforward to call from your local machine uh MCP server.
+
+01:12.410 --> 01:12.890
+Right.
+
+01:12.930 --> 01:16.650
+So I'm going to say command is going to be Python three.
+
+01:16.930 --> 01:20.410
+And the argument is going to be the calculator.
+
+01:20.410 --> 01:22.290
+I don't know where it's getting the path from.
+
+01:22.530 --> 01:25.930
+Uh so I'm going to get the full path.
+
+01:25.930 --> 01:36.010
+So let's go put on hyper terminal um and copy into here okay.
+
+01:36.050 --> 01:37.210
+So we get the path.
+
+01:37.250 --> 01:39.850
+So I'm going to copy this particular path.
+
+01:40.490 --> 01:41.770
+Um I'm going to close this.
+
+01:41.810 --> 01:42.690
+We don't need it.
+
+01:42.690 --> 01:47.050
+And I'm going to go here and paste the path.
+
+01:47.530 --> 01:47.730
+Right.
+
+01:47.730 --> 01:48.930
+The simple calculator Pi.
+
+01:48.970 --> 01:49.610
+That's all.
+
+01:50.050 --> 01:50.450
+That's it.
+
+01:50.450 --> 01:51.810
+This is the installation part.
+
+01:52.250 --> 01:54.890
+Once we're done, I'm going to go to the cloud desktop.
+
+01:54.890 --> 01:56.090
+We need to restart this.
+
+01:56.130 --> 01:59.890
+If not, the settings are not going to be reflected and the server is not going to be visible over here
+
+01:59.930 --> 02:00.930
+I'm going to close this.
+
+02:01.290 --> 02:04.410
+And now I'm going to start our client which is the cloud desktop.
+
+02:04.450 --> 02:10.050
+The moment we start this cloud desktop will go and look for all the configured, uh, servers.
+
+02:10.050 --> 02:13.090
+And then it's going to invoke that for you behind the scene.
+
+02:13.250 --> 02:15.450
+Now it's already running it for you magic.
+
+02:15.730 --> 02:21.050
+If I'm going to go and click this knob, you see that we have got our simple calculator with four tools.
+
+02:21.370 --> 02:25.590
+Add numbers, subtract numbers, multiply numbers, and divide numbers.
+
+02:25.910 --> 02:31.390
+You have successfully written an MCP server congratulation, which is amazing.
+
+02:31.870 --> 02:34.110
+And now I can actually ask the questions over here.
+
+02:34.110 --> 02:39.390
+I'm going to say how to add or maybe what's the.
+
+02:40.150 --> 02:41.390
+I got so bad.
+
+02:41.430 --> 02:46.350
+What's the sum of 20 and 90?
+
+02:46.790 --> 02:52.150
+If I do that, you will notice that the cloud desktop is going to invoke our server, which is the ad
+
+02:52.150 --> 02:56.750
+server, the simple calculator, and it's going to call the tools add numbers.
+
+02:57.270 --> 03:03.670
+This is pretty much exactly the same way how we saw with the long chain, where the AI agent was invoking
+
+03:03.670 --> 03:04.550
+things for us.
+
+03:04.590 --> 03:10.190
+The same thing over here, we are doing it with the cloud, and the model we are using is not the local
+
+03:10.190 --> 03:11.150
+large language model.
+
+03:11.150 --> 03:14.470
+Rather we are using the cloud sonnet for right.
+
+03:14.510 --> 03:15.910
+So I'm going to say always hello.
+
+03:15.910 --> 03:17.630
+So it's going to go and do this thing.
+
+03:17.630 --> 03:20.190
+It's going to pass the request automatically.
+
+03:20.190 --> 03:23.790
+And then it's going to give the response as 110 which is amazing.
+
+03:23.830 --> 03:37.010
+Now I'm going to say I wanted to see the difference between us Um, between 100 or 1008, 90, something
+
+03:37.010 --> 03:37.330
+like that.
+
+03:37.330 --> 03:39.610
+So this is basically going to be a subtraction, right?
+
+03:39.650 --> 03:42.890
+So it should call the uh subtract tool.
+
+03:42.890 --> 03:44.050
+So look at that.
+
+03:44.290 --> 03:47.250
+So it's the number is coming up always a low.
+
+03:47.490 --> 03:50.770
+And it is going to basically perform the subtract operation.
+
+03:50.770 --> 03:52.130
+And it's going to give you the result.
+
+03:52.810 --> 03:57.410
+So so yeah this is basically the way things are going to work.
+
+03:57.410 --> 04:02.650
+So this is how you actually create an MCP server in such an easier fashion.
+
+04:02.690 --> 04:04.490
+And this is the power of MCP.
+
+04:04.610 --> 04:08.810
+And you've seen how tremendously easy it is to write an MCP server.
+
+04:09.130 --> 04:12.690
+If you have got all these concepts digested so far.
+
+04:12.930 --> 04:18.490
+Starting our next lecture, we are going to create a bit more complex code, which is basically going
+
+04:18.530 --> 04:20.730
+to be a file reader code.
+
+04:20.730 --> 04:26.770
+So we are going to see how we can read a file and probably get the details out from it.
+
+04:26.770 --> 04:31.170
+So you're going to be basically building a, uh, not really a file reader, to be honest, but it's
+
+04:31.170 --> 04:36.170
+going to be pretty much like a directory reader and getting the file informations for you and things
+
+04:36.170 --> 04:36.730
+of that nature.
+
+04:36.730 --> 04:40.530
+So you can do all of these, uh, using the fast MCP.
+
+04:40.530 --> 04:43.730
+And I'm going to do that in our next lecture of this course.

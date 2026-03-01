@@ -1,0 +1,103 @@
+WEBVTT
+
+00:00.050 --> 00:00.590
+All right.
+
+00:00.590 --> 00:04.970
+So now we're going to explore this whole armor tool even further in this particular lecture.
+
+00:04.970 --> 00:06.830
+And we'll see how we can make use of them.
+
+00:06.830 --> 00:13.550
+So let me just say bye to this already running model, which is the deep sleek R1 model.
+
+00:13.550 --> 00:15.230
+We don't even need this anymore.
+
+00:15.230 --> 00:19.910
+And now if I want to see what are the things that I can do from this whole armor itself, you see that
+
+00:19.940 --> 00:24.650
+the moment I type all armor and space, it's going to show me all the different commands that I can
+
+00:24.650 --> 00:26.540
+run with this particular olama.
+
+00:26.540 --> 00:29.900
+So it's going to show me the RM to remove a model.
+
+00:29.900 --> 00:33.860
+So if you want to say if you want to remove a model like RM, and let's say if I want to remove this
+
+00:33.890 --> 00:38.630
+ACN 1.8 billion parameter, and if I hit enter, you see that the moment I do it, it is going to be
+
+00:38.630 --> 00:40.940
+deleted from my machine.
+
+00:40.940 --> 00:47.550
+So now if I just say Olama and list, it is going to not show that particular model, the Cuban 1.8
+
+00:47.550 --> 00:49.880
+billion parameter, because it's completely gone.
+
+00:49.880 --> 00:53.330
+And similarly, if I want to delete this particular model, I know this is completely useless.
+
+00:53.330 --> 01:01.970
+So I can just say Olama and then RM and I can just say this particular model to delete, it's gone.
+
+01:01.970 --> 01:06.980
+And now if I just say hola, my list, that particular model is not there anymore.
+
+01:06.980 --> 01:12.130
+And if I wanted to do something like, uh, gonna get some information on this particular model.
+
+01:12.130 --> 01:13.870
+I can also do that as well.
+
+01:13.870 --> 01:21.520
+So I can just say show and any one of the model, let's say this, uh, deep sea carbon model, you
+
+01:21.520 --> 01:28.840
+see that it's going to show me what architecture this model is and what is the parameter support and
+
+01:28.840 --> 01:35.230
+what is the context length and what is the embedding length, what is the quantization and also what
+
+01:35.230 --> 01:37.450
+are the parameters supports available over there.
+
+01:37.450 --> 01:40.780
+So all these informations are going to be shown for me over there.
+
+01:40.780 --> 01:44.830
+So these are the things that you can see that you can see using this Allama tool.
+
+01:44.830 --> 01:50.050
+And I mean this Allama is pretty much like how you can use like the Docker container.
+
+01:50.050 --> 01:51.310
+How do you manage the docker.
+
+01:51.310 --> 01:52.390
+How do you run the docker.
+
+01:52.390 --> 01:56.710
+Everything that you do in the Docker world, same thing you can do with the Allama.
+
+01:56.710 --> 02:00.760
+It's pretty much like the docker of the large language model.
+
+02:00.760 --> 02:04.660
+You can run everything from this particular Allama over here.
+
+02:04.690 --> 02:06.550
+That's about this Allama tool guys.
+
+02:06.550 --> 02:12.220
+And starting our next lecture, we're going to see how we can make use of this Allama large language
+
+02:12.220 --> 02:19.090
+model from our local machine and then use it with the Lang chain for building our large language model.

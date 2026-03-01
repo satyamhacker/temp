@@ -1,0 +1,334 @@
+WEBVTT
+
+00:00.000 --> 00:04.980
+So until our last section, we were discussing about how we can work with rags and how we can read from
+
+00:04.980 --> 00:06.060
+the external documents.
+
+00:06.060 --> 00:13.230
+And we also told, like using the Rag operation, we can give an additional knowledge to our large language
+
+00:13.230 --> 00:20.460
+model by extracting a PDF file, storing it into a vector stores, and also helping large language model
+
+00:20.490 --> 00:23.520
+to get the context that it doesn't know before.
+
+00:23.520 --> 00:26.280
+So that is what was the rag that we were talking about.
+
+00:26.310 --> 00:31.500
+And now we're going to add even more intelligence to large language model with the power of agents.
+
+00:31.500 --> 00:35.280
+So I'm going to go ahead and create a section over here.
+
+00:35.490 --> 00:39.630
+I'm going to call this as section six.
+
+00:39.630 --> 00:42.300
+And I'm going to call this as agents.
+
+00:42.450 --> 00:46.860
+And I'm going to create a new Jupyter notebook.
+
+00:46.860 --> 00:51.660
+And I'm going to save it I'm going to call this as agents.
+
+00:52.980 --> 00:56.100
+And over here I'm going to start writing the code.
+
+00:56.100 --> 01:02.550
+So the first thing which we're going to do as usual is going to be calling the dot import.
+
+01:02.780 --> 01:05.780
+as a dot env import for the env file.
+
+01:05.780 --> 01:07.400
+I'm going to do that over here.
+
+01:07.640 --> 01:12.860
+And I'm also going to call our uh chat olama.
+
+01:12.860 --> 01:14.810
+So I'm going to do that as well.
+
+01:14.810 --> 01:16.550
+So these are things which we always do.
+
+01:16.550 --> 01:18.650
+So I'm going to go ahead and do that.
+
+01:18.920 --> 01:21.170
+Um, let me get rid of this line.
+
+01:21.170 --> 01:22.100
+We don't even need it.
+
+01:22.100 --> 01:24.140
+And we also need to select the kernel.
+
+01:24.140 --> 01:27.410
+I'm going to go choose that and save it.
+
+01:27.410 --> 01:29.300
+And I'm going to run that.
+
+01:29.300 --> 01:33.110
+So I'm just running this very quickly because we have did this millions of time already.
+
+01:33.110 --> 01:37.190
+And now we are going to do a markdown over here.
+
+01:37.190 --> 01:40.100
+And I'm going to say we need to install a tool over there.
+
+01:40.130 --> 01:40.340
+Right.
+
+01:40.370 --> 01:43.760
+So installing a community tool.
+
+01:43.760 --> 01:49.400
+So we're going to just use the existing tool that's already available instead of us creating a new tool
+
+01:49.400 --> 01:50.090
+altogether.
+
+01:50.090 --> 01:56.420
+So this tool as I told you is going to be all the tools is listed over here, as you can see.
+
+01:56.420 --> 02:01.250
+And one of the popular tool probably I'm not going to go with the search tool or anything like that.
+
+02:01.280 --> 02:05.610
+I'm just thinking of using the, Um, uh, Wikipedia tool.
+
+02:05.760 --> 02:09.990
+It is going to be offering us quite a lot of latest information, because, you know, Wikipedia is
+
+02:09.990 --> 02:15.210
+going to keep on updating every single time, while there is going to be any of the new message coming
+
+02:15.210 --> 02:16.620
+up over the internet.
+
+02:16.800 --> 02:19.290
+Uh, so it's going to be community driven as well.
+
+02:19.290 --> 02:21.900
+So I'm thinking of using this Wikipedia over here.
+
+02:21.900 --> 02:25.140
+So we need to install this particular package, uh, which is also straightforward.
+
+02:25.140 --> 02:29.400
+As you can see we need to use this particular command uh, to do that.
+
+02:29.400 --> 02:35.070
+So I'm going to go over here and I'm going to put the markdown.
+
+02:35.070 --> 02:37.710
+So code um bang symbol.
+
+02:37.710 --> 02:41.070
+And I'm going to install the Wikipedia.
+
+02:41.250 --> 02:41.940
+Look at that.
+
+02:41.940 --> 02:44.130
+So that's the installation of the Wikipedia.
+
+02:44.130 --> 02:46.950
+We already have the community so we don't really need it.
+
+02:47.070 --> 02:49.170
+Uh, the long chain community.
+
+02:49.320 --> 02:58.110
+Uh, but now we need to call this Wikipedia tool by writing these two lines like this is the two library
+
+02:58.110 --> 02:59.160
+that I need to import.
+
+02:59.160 --> 03:01.350
+So let's start using it.
+
+03:01.380 --> 03:08.610
+So I'm going to say from long chain community dot tools import Wikipedia query run and utilities is
+
+03:08.610 --> 03:09.510
+going to be this one.
+
+03:09.510 --> 03:12.000
+So this is going to import these two libraries for me.
+
+03:12.330 --> 03:12.810
+There we go.
+
+03:12.840 --> 03:13.680
+That's done.
+
+03:13.770 --> 03:19.230
+And now we're going to start using this particular Wikipedia within our code.
+
+03:19.230 --> 03:21.420
+So let's see how we can use that particular tool.
+
+03:21.420 --> 03:24.840
+Well in order to use the tool it is very straightforward.
+
+03:24.840 --> 03:30.180
+All you have to do is let's say I'm going to call this as Wikipedia, uh, as a variable.
+
+03:30.180 --> 03:34.980
+And I'm going to call the Wikipedia query run over here.
+
+03:34.980 --> 03:37.530
+This is the class that I need to need it.
+
+03:37.590 --> 03:48.270
+And in this particular class file I'm just going to probably say API wrapper as the Wikipedia API wrapper.
+
+03:48.270 --> 03:53.580
+So this is the wrapper that I really need for my run operation to really happen.
+
+03:53.580 --> 03:55.500
+So this API wrapper is going to go in turn.
+
+03:55.500 --> 03:57.780
+And I'm going to call the API of the Wikipedia.
+
+03:57.780 --> 04:01.980
+And it's going to give the result that we are passing in as the query to it.
+
+04:01.980 --> 04:11.490
+So for instance, if I'm going to ask um, like the tool um response is equal to I'm going to say,
+
+04:11.520 --> 04:18.120
+uh, Wikipedia dot and there is this um, a batch is just like an asynchronous batch that you can pass
+
+04:18.120 --> 04:24.960
+in, or you can do a run with your question asking any one of the question that you're looking for.
+
+04:24.960 --> 04:34.170
+For instance, I'm going to ask that, uh, give me, um, sorry, details of avatar movie.
+
+04:34.560 --> 04:35.280
+Uh.
+
+04:37.560 --> 04:38.370
+Over here.
+
+04:38.370 --> 04:40.650
+And I'm going to print this particular response.
+
+04:40.650 --> 04:46.980
+So I'm going to say print off the, uh, tool response, something like that.
+
+04:46.980 --> 04:52.710
+And if I try to run this particular code, you will notice that it's going to go and search this detail
+
+04:52.710 --> 04:56.640
+that I have given in the, uh, Wikipedia.
+
+04:56.640 --> 04:58.980
+And you see that it's going to give me the result over here.
+
+04:59.010 --> 05:05.550
+So the page avatar franchise and it says avatar is an American epic science fiction movie, uh, media
+
+05:05.550 --> 05:09.030
+franchise created by James Cameron, blah, blah, blah.
+
+05:09.030 --> 05:12.150
+It's all going to come up and this is going to be the first flame over here.
+
+05:12.180 --> 05:18.060
+I mean, the context over here just ends because that is the total context that we have set, uh, to,
+
+05:18.060 --> 05:19.860
+uh, to return from this particular tool.
+
+05:19.890 --> 05:22.020
+I mean, we can increase this context anyways.
+
+05:22.020 --> 05:26.490
+Uh, depends on what question that we're really asking, but this is already quite a lot of different
+
+05:26.520 --> 05:27.390
+text there.
+
+05:27.390 --> 05:30.660
+And we have set the maximum token to use as well.
+
+05:30.900 --> 05:35.670
+And we have really not told anything to really use for this particular tool as well.
+
+05:35.670 --> 05:38.640
+So that's the reason why you're just getting this particular value there.
+
+05:38.640 --> 05:44.850
+So this is about how you use the tool, uh, which is already available in the community.
+
+05:44.850 --> 05:51.150
+So you can use all other tools pretty much how they have mentioned over here in the documentation.
+
+05:51.150 --> 05:52.800
+You can just use that tool as well.
+
+05:52.800 --> 05:58.500
+There is no harm if you're going to be using any one of the probably, uh, search tool, you could
+
+05:58.500 --> 05:59.670
+use that as well.
+
+05:59.670 --> 06:04.980
+For instance, uh, let's say another popular search tool which is very easy to use is like the duck
+
+06:05.010 --> 06:06.330
+duck go search.
+
+06:06.330 --> 06:12.970
+So you need to first of all install this duck, duck, uh, go search and then start using it over here.
+
+06:12.970 --> 06:18.970
+So I'm going to go put the code, put a bank symbol, install the DuckDuckGo search.
+
+06:18.970 --> 06:24.760
+And once this installation is done, I'll just copy this whole thing and try it out.
+
+06:24.790 --> 06:26.350
+It's just going to work over there.
+
+06:26.380 --> 06:29.650
+I mean, I saw there was some issue when I tried to run this.
+
+06:29.680 --> 06:31.960
+The DuckDuckGo search was saying me no good.
+
+06:31.990 --> 06:36.670
+DuckDuckGo search result was found for some reason, and that's the reason why I don't want it to show
+
+06:36.670 --> 06:39.730
+you this particular example.
+
+06:39.730 --> 06:45.460
+But yeah, I mean, as long as this particular thing just works, it is going to give you the response.
+
+06:45.460 --> 06:49.330
+But for some reason this is not, um, happening in my machine.
+
+06:49.390 --> 06:53.200
+And that's the reason why I don't want it to show you this particular example over there.
+
+06:53.200 --> 06:58.150
+But you got the idea, right, like how you use this particular tool within your machine.
+
+06:58.360 --> 07:07.180
+Um, and now the next operation that we're going to talk about is how we can write our own tool, like
+
+07:07.210 --> 07:13.030
+a custom tool to actually start build from the complete ground up.

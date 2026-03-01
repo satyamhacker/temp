@@ -1,0 +1,361 @@
+WEBVTT
+
+00:00.080 --> 00:08.750
+So in order for us to understand how we can retrieve the the information from our our large language
+
+00:08.750 --> 00:13.490
+model and from our document as the source, we're going to write a code something like this.
+
+00:13.490 --> 00:16.220
+So maybe I'm just going to put a markdown over here.
+
+00:16.400 --> 00:20.960
+Uh, and I'm going to say and I'm going to add the code over here.
+
+00:20.960 --> 00:22.580
+And then I'm going to start writing the code.
+
+00:22.580 --> 00:30.710
+So basically in order for doing that I'm going to say from uh, lang chain dot, that is a package called
+
+00:30.740 --> 00:31.490
+uh chains.
+
+00:31.490 --> 00:36.170
+And I'm going to import what is called as the retrieval QA over here.
+
+00:36.170 --> 00:38.570
+And this retrieval QA over here.
+
+00:38.750 --> 00:41.270
+I'm going to create a QA chain.
+
+00:42.950 --> 00:52.010
+And I'm going to say uh, retrieval QA dot from uh chain type.
+
+00:52.010 --> 00:53.960
+I don't know why there is no intellisense coming.
+
+00:53.960 --> 00:57.020
+And over here I need to pass three things.
+
+00:57.020 --> 01:05.250
+One is the LM, another one is the retriever, which is going to be the retriever that we have got.
+
+01:05.340 --> 01:10.080
+And finally, we need to return also the source document.
+
+01:10.080 --> 01:15.540
+I'm also going to show you the source document from where this information is really coming through.
+
+01:15.570 --> 01:18.930
+So I'm going to say source documents is equal to true.
+
+01:18.960 --> 01:21.150
+So I want to return that information as well.
+
+01:21.150 --> 01:27.810
+So this is some additional thing that I wanted to show you this time so that you can know what exactly,
+
+01:28.170 --> 01:32.580
+uh, we can bring to the table so that you can see where is the data really coming from.
+
+01:32.580 --> 01:39.300
+So I'm going to ask the question this time is what is training data and batching size.
+
+01:39.300 --> 01:40.380
+Something like that.
+
+01:41.670 --> 01:42.420
+Right.
+
+01:42.960 --> 01:49.680
+And I'm going to pass this to our obviously to our QA chain.
+
+01:49.680 --> 01:57.630
+So I'm going to say QA chain dot because this is going to be a runnable the QA chain I'm going to call
+
+01:57.630 --> 01:58.860
+this invoke method.
+
+01:58.860 --> 02:03.490
+And I'm going to pass the question that I have got right.
+
+02:03.490 --> 02:07.180
+And now I also wanted to print the source, as I told you.
+
+02:07.180 --> 02:08.320
+So I'm going to say sources.
+
+02:08.320 --> 02:10.630
+Maybe there can be multiple sources.
+
+02:10.630 --> 02:19.270
+So I'm just going to say source and I'm going to set to property dark dot metadata dot get.
+
+02:19.270 --> 02:21.550
+And I'm going to get the source.
+
+02:21.550 --> 02:26.200
+And if it is unknown then it's going to print the unknown for me.
+
+02:26.680 --> 02:32.050
+Uh, for dark in the response.
+
+02:34.720 --> 02:39.310
+Uh, of the source documents.
+
+02:39.400 --> 02:45.670
+So this is the documents that we are going to be getting as a response in output that we are going to
+
+02:45.670 --> 02:47.020
+get from this particular response.
+
+02:47.020 --> 02:47.650
+Really.
+
+02:47.860 --> 02:56.110
+Uh, and let's try to print the, uh, response and we will see the result, like how it is going to
+
+02:56.110 --> 02:56.830
+be coming from.
+
+02:56.830 --> 03:01.000
+And I'm also going to print the sources used.
+
+03:01.000 --> 03:07.930
+So slash n I'm also going to add and also print that out here.
+
+03:07.960 --> 03:11.440
+And I'm going to say sources used.
+
+03:11.890 --> 03:19.600
+And I'm going to say far source in sources.
+
+03:19.630 --> 03:25.090
+And I want to print the source over here.
+
+03:25.090 --> 03:30.760
+So I'm going to say source right.
+
+03:30.820 --> 03:32.710
+That's what I want to print this time.
+
+03:32.710 --> 03:33.520
+So look at that.
+
+03:33.520 --> 03:37.750
+So what I have done over here in this particular code is basically I'm using the retrieval shader from
+
+03:37.750 --> 03:39.100
+chain type method.
+
+03:39.310 --> 03:42.880
+And over here I'm passing the LLM and retriever.
+
+03:42.970 --> 03:48.790
+Uh, and also I'm going to set the return source document so that I want to show you the documents from
+
+03:48.790 --> 03:50.440
+where it has been printed.
+
+03:50.500 --> 03:58.570
+And now if I try to run this particular code, you'll notice that I'm getting an error here.
+
+03:58.810 --> 04:03.640
+And it is happening because it says that the written source documents.
+
+04:03.640 --> 04:05.500
+I guess it's documents.
+
+04:05.530 --> 04:06.520
+Oh my God.
+
+04:07.060 --> 04:09.190
+Not document, but documents.
+
+04:09.190 --> 04:11.800
+And now it should be fine.
+
+04:11.800 --> 04:16.060
+So if I try to run this particular code this time, look at that.
+
+04:16.060 --> 04:17.890
+It gets me this particular information.
+
+04:17.890 --> 04:22.090
+So when I ask what is training data and batching side, it says the content provided does not contain
+
+04:22.090 --> 04:26.410
+the information about training data and batching size, but these are typically important details for
+
+04:26.410 --> 04:27.640
+the machine learning models.
+
+04:27.730 --> 04:29.560
+Testing training process.
+
+04:29.560 --> 04:31.420
+But they were not mentioned in the given text.
+
+04:31.420 --> 04:34.930
+Therefore, I do not have enough information over here.
+
+04:34.960 --> 04:36.010
+Oh that's bad.
+
+04:36.010 --> 04:39.130
+So it is not really getting that particular information for some reason.
+
+04:39.310 --> 04:45.310
+And it's just giving like LM forgetting dot pdf file as like first source of information that it has
+
+04:45.310 --> 04:46.450
+got for some reason.
+
+04:46.450 --> 04:52.420
+But let's say I'm going to ask um, probably what is training data and batching.
+
+04:52.780 --> 04:58.600
+And if I try running it again, you will notice that it gives me that information over here.
+
+04:58.600 --> 05:05.040
+Training data refers to the collection of examples used to train the machine learning models, and these
+
+05:05.040 --> 05:08.190
+examples consist of input data and blah blah blah.
+
+05:08.190 --> 05:10.440
+So this is coming from our source.
+
+05:10.470 --> 05:13.260
+Attention is all you need which is amazing.
+
+05:13.260 --> 05:16.080
+So this is working as expected for us over here.
+
+05:16.080 --> 05:22.380
+And similarly if I'm going to ask the position feed forward network like how that works, um, I'm going
+
+05:22.380 --> 05:24.390
+to probably ask that question.
+
+05:24.390 --> 05:32.610
+And if I try running it over here, uh, one more time, you will notice that I'm going to get that
+
+05:32.610 --> 05:37.980
+particular response as well and is coming from the attention dot PDF file, which is amazing.
+
+05:38.010 --> 05:40.260
+So these things are there in this particular document.
+
+05:40.260 --> 05:43.410
+And that's the reason why these are all coming up for us over here.
+
+05:43.410 --> 05:45.270
+So maybe we can ask this question right.
+
+05:45.300 --> 05:47.100
+Testing of the factual correctness.
+
+05:47.250 --> 05:52.440
+So what exactly is testing after fitting uh, actual correctness of LM tells?
+
+05:52.440 --> 05:54.420
+Probably I'm just going to ask this question.
+
+05:54.420 --> 05:59.460
+So that way we can see if the LM can answer that question.
+
+06:00.090 --> 06:00.420
+Yeah.
+
+06:00.420 --> 06:00.750
+There we go.
+
+06:00.780 --> 06:05.700
+The testing of factual correctness of large language models involves assessing their ability to provide
+
+06:05.700 --> 06:08.370
+accurate information that blah, blah, blah.
+
+06:08.400 --> 06:10.020
+It's all coming up over here.
+
+06:10.020 --> 06:11.130
+So there we go.
+
+06:11.130 --> 06:14.340
+So that is also something coming up over here.
+
+06:14.340 --> 06:16.410
+So this is the retrieval QA for us.
+
+06:16.440 --> 06:21.870
+Like how we can use it I mean but most of the time we are going to be using this one, as you can see
+
+06:21.870 --> 06:27.420
+over here, because this is the correct way of us to, uh, perform any of the action.
+
+06:27.420 --> 06:37.110
+And if you need even more finer control over your your actual query, then you need to use the one that
+
+06:37.110 --> 06:41.610
+we have used, like using manually, uh, over here, which is this guy.
+
+06:41.640 --> 06:42.750
+So you are an assistant.
+
+06:42.750 --> 06:47.670
+Use the following and correctly answer just till the, uh, I don't know, over here.
+
+06:47.850 --> 06:50.880
+Um, the question, this is the answer.
+
+06:51.030 --> 06:56.640
+Uh, also, you can also say also summarize the results.
+
+06:56.790 --> 06:58.170
+Uh, summarize the.
+
+06:58.200 --> 07:05.190
+And now if I'm going to ask this question over here, the same question that I asked before, uh, to
+
+07:05.220 --> 07:08.670
+the retrieval QA and look at that.
+
+07:08.670 --> 07:11.700
+So it's giving me all the answers over here.
+
+07:11.790 --> 07:12.540
+Oh there we go.
+
+07:12.540 --> 07:15.300
+So this is the MD format as well.
+
+07:15.300 --> 07:17.220
+And we're going to get this particular response.
+
+07:17.220 --> 07:25.590
+So this is like higher uh, control or maybe finer control over how we can, uh, we can assess our
+
+07:25.590 --> 07:30.570
+large language model to have more information and we can get the responses back.
+
+07:30.570 --> 07:38.340
+And you can see that we are doing a rag operation, this time with our PDF file that we have stored
+
+07:38.340 --> 07:39.690
+in our vector stores.
+
+07:39.690 --> 07:42.750
+And then we are retrieving it from our large language model.
+
+07:42.750 --> 07:50.700
+So this is the power of how we can make use of the Rag to make our LLM even more intelligent and get
+
+07:50.700 --> 07:54.330
+more context while it tries to extract the information out.
+
+07:54.330 --> 07:59.760
+That's it guys, this is all about how we can create a rag for the PDF document.

@@ -1,0 +1,412 @@
+WEBVTT
+
+00:00.020 --> 00:01.730
+Welcome to the next section of our course.
+
+00:01.730 --> 00:08.300
+And in this section we are going to build a retrieval augmented generation or otherwise called as Rag
+
+00:08.300 --> 00:09.080
+applications.
+
+00:09.080 --> 00:15.800
+So basically one of the most powerful application enabled by the large language model is the sophisticated
+
+00:15.800 --> 00:17.720
+question and answering chatbots.
+
+00:17.960 --> 00:25.100
+So while we say sophisticated question and answering if you know that while you try to ask any of the
+
+00:25.100 --> 00:31.490
+questions to a large language model over here, you know that you are going to get the response based
+
+00:31.490 --> 00:37.280
+upon how this model is being trained by the large data set that it knows.
+
+00:37.580 --> 00:43.760
+But what if you are going to be asking a question which are specifically known to your company or your
+
+00:43.760 --> 00:50.840
+organization, and you are building a large language model application, especially for your company.
+
+00:50.840 --> 00:57.650
+So if you wanted to do these kind of operation, then you need to somehow feed the external source of
+
+00:57.650 --> 01:00.500
+data to the large language model.
+
+01:00.530 --> 01:08.450
+I mean, you can either fine tune the model and then you can make the data aware with that particular
+
+01:08.450 --> 01:09.590
+large language model.
+
+01:09.590 --> 01:18.020
+But instead of you doing this way, you can actually make use of the rag where you can supply the specific
+
+01:18.020 --> 01:21.860
+source of your information to your large language models.
+
+01:21.860 --> 01:25.790
+And that is what we are going to be doing in this particular section as well.
+
+01:25.790 --> 01:32.000
+We are going to be building a retrieval augmented generation application, which is going to read the
+
+01:32.000 --> 01:34.670
+PDF files or external files.
+
+01:34.670 --> 01:40.280
+And then it is going to enable your large language model with that information.
+
+01:40.280 --> 01:44.960
+So it is going to be adding more intelligence and context to your large language model.
+
+01:44.960 --> 01:48.680
+So that is what we are going to be discussing in this particular section.
+
+01:48.680 --> 01:54.290
+And you can see that this particular section we are going to discuss two most important part.
+
+01:54.320 --> 01:57.170
+The one is the extraction and indexing part.
+
+01:57.170 --> 02:00.540
+Another one is going to be the retrieval and generation part.
+
+02:00.570 --> 02:05.490
+So this is this both combined is called as actually a rag.
+
+02:05.490 --> 02:10.380
+But the one that we are going to be first doing is going to be on the extraction and indexing side.
+
+02:10.380 --> 02:17.730
+So you can notice that over here on the extraction and indexing part of it, we are going to be reading
+
+02:17.730 --> 02:19.470
+from some external files.
+
+02:19.470 --> 02:21.810
+And in this case it's going to be a PDF file.
+
+02:21.810 --> 02:27.720
+And then we are going to split these files into multiple chunks.
+
+02:27.750 --> 02:32.970
+Now you may ask like Karthik, why do we even need to split the files into multiple chunks?
+
+02:32.970 --> 02:33.990
+Well guess what?
+
+02:34.020 --> 02:42.450
+While we are going to have a quite a large set of data, we need to split the data into multiple chunks
+
+02:42.450 --> 02:48.540
+so that there will be a context window support for your large language model.
+
+02:48.540 --> 02:56.160
+And you may know that if you go to this particular link over here especially, it is about the lemma
+
+02:56.160 --> 02:57.810
+3.2 information.
+
+02:57.810 --> 03:07.100
+You can notice that this particular model can have a context length of around 128 K tokens, and this
+
+03:07.100 --> 03:10.340
+is the state of the art in their class on the device.
+
+03:10.370 --> 03:15.890
+It can use case can be used on the device like summarization, instruction following and other tasks.
+
+03:15.890 --> 03:21.290
+So these kinds of large language model itself supports 128 K of token.
+
+03:21.290 --> 03:28.730
+So if you're going to have a more sized data like large big size of data that you are going to be passing
+
+03:28.730 --> 03:36.500
+in as a question to these kind of models, then your model is going to struggle and it is going to have
+
+03:36.500 --> 03:38.900
+hard time finding the information that you're looking for.
+
+03:38.900 --> 03:41.660
+So maybe that information is not going to be even matching.
+
+03:41.660 --> 03:43.610
+What is your actual question?
+
+03:43.610 --> 03:52.010
+So if our document that we are trying to load has got a long length of data, then the context window
+
+03:52.040 --> 03:56.600
+will make the model to struggle to find the information for very long input.
+
+03:56.600 --> 04:03.490
+So because of this we need to split the files into smaller chunks, so that it can be easy for the large
+
+04:03.490 --> 04:08.770
+language model to find the similarities of the information that you are looking for.
+
+04:08.770 --> 04:14.530
+And once we split information into multiple chunks, which is the file data that we have got, we are
+
+04:14.530 --> 04:19.180
+then going to embed these data to vectors.
+
+04:19.180 --> 04:20.410
+As you can see over here.
+
+04:20.410 --> 04:23.530
+And this embedding part is one of the most important part as well.
+
+04:23.530 --> 04:29.560
+So this embedding can be done either by using your own technique or by using large language models.
+
+04:29.590 --> 04:34.570
+I mean, there are so many different large language models available which does the embedding part much,
+
+04:34.570 --> 04:35.260
+much easily.
+
+04:35.260 --> 04:40.480
+So we are going to be doing this embedding part, which is going to convert the text into vector dimension
+
+04:40.480 --> 04:42.220
+for that particular text.
+
+04:42.220 --> 04:45.340
+And then we are going to be storing into a database.
+
+04:45.340 --> 04:48.130
+And this database can be any of the database.
+
+04:48.130 --> 04:54.430
+It could be a vector based database like fires or chroma or even Azure Cosmos DB.
+
+04:54.490 --> 04:54.910
+There.
+
+04:54.940 --> 04:57.510
+There are so many database available for doing this operation.
+
+04:57.510 --> 05:00.390
+So we are going to be storing the data into this particular.
+
+05:00.510 --> 05:01.200
+Database.
+
+05:01.200 --> 05:07.080
+So I will also show you quickly like how this, uh, this embedding as well as this.
+
+05:07.110 --> 05:09.750
+Database that we are going to be using is going to be looking like.
+
+05:09.750 --> 05:10.380
+So if you're just going.
+
+05:10.410 --> 05:13.830
+To go to uh, the link chain.
+
+05:14.100 --> 05:17.190
+And if I'm going to search for, uh.
+
+05:19.350 --> 05:29.580
+F a I s or the files over here, you can see that this is the vector store available, uh, in the long
+
+05:29.610 --> 05:30.060
+chain.
+
+05:30.060 --> 05:37.710
+So if I stand for Facebook, AI similarity search is a library for efficient similarity search and clustering
+
+05:37.710 --> 05:39.090
+of dense vector.
+
+05:39.090 --> 05:44.340
+And it contains algorithm that search in a set of vectors of any size and up.
+
+05:44.370 --> 05:50.220
+One of the possibility does not fit in the Ram, and it includes supporting code evaluation and parameter
+
+05:50.220 --> 05:50.790
+tuning.
+
+05:50.790 --> 05:52.950
+That is what this file is all about.
+
+05:52.950 --> 05:57.060
+And if you go to this, uh, left hand side, you see that there are vector stores available.
+
+05:57.060 --> 06:00.570
+So you will notice that there are many different vector stores available.
+
+06:00.570 --> 06:08.040
+So it can be Astra DB, Vector Store, chroma Clickhouse or Databricks, Elastic Store, Search Firestore,
+
+06:08.070 --> 06:11.970
+In-memory Vector Store, Milvus and things of that nature.
+
+06:11.970 --> 06:13.020
+So there are so many of them.
+
+06:13.020 --> 06:16.530
+Even SQL server is also there to perform this operation.
+
+06:16.530 --> 06:19.350
+So that is what is the the offline version.
+
+06:19.350 --> 06:23.490
+And you can also use the cloud version of the same thing over here that I have got so many different
+
+06:23.490 --> 06:28.770
+providers for doing the same kind of operation, and we are going to be actually using what is called
+
+06:28.770 --> 06:34.740
+as chroma, because chroma seems to be like, uh, having all the support, like delta ID filtering,
+
+06:34.740 --> 06:38.190
+search by vector, search by score, async operation.
+
+06:38.190 --> 06:40.830
+I mean we are going to use all the potentials anyways.
+
+06:40.830 --> 06:43.320
+But but yeah, chroma seems to be a good fit.
+
+06:43.470 --> 06:48.420
+Uh, and if I just go and select this chroma, as you can see over here, the chroma is an AI native
+
+06:48.420 --> 06:53.700
+open source vector database focused on developer productivity and happiness, which is great.
+
+06:53.700 --> 06:59.780
+And chroma is licensed under Apache 2.0, so we can just use it for free without any cost incurred on
+
+06:59.810 --> 07:00.920
+that usage.
+
+07:01.580 --> 07:05.330
+And the way you can use this database is available over here.
+
+07:05.360 --> 07:06.950
+We'll talk about that once we get there.
+
+07:06.950 --> 07:08.300
+But you got the idea right.
+
+07:08.330 --> 07:12.800
+Like this is how things are going to work in the Chrome world.
+
+07:13.220 --> 07:17.240
+But as I said, we also need to talk about the embedding.
+
+07:17.240 --> 07:26.300
+So I'm going to search for the long chain long chain embedding over here.
+
+07:26.300 --> 07:30.710
+And you see that we have got some, uh, embedding models over here.
+
+07:30.710 --> 07:36.110
+So these are the different kinds of embedding models which are available in the long chain.
+
+07:36.110 --> 07:41.000
+And these embedding models will create a vector representation of a piece of text.
+
+07:41.030 --> 07:46.310
+Essentially as you can see over here, this document will have quite a lot of different text inside
+
+07:46.310 --> 07:46.460
+it.
+
+07:46.460 --> 07:50.420
+And we are going to be converting these text into vector representation.
+
+07:50.420 --> 07:53.930
+And that can be done easily using this embedding models.
+
+07:53.930 --> 07:56.510
+And there are different types of model available, as I told you.
+
+07:56.540 --> 08:05.030
+You can see that Azure, Google, AWS, Hugging Face, llama, cohere, Mistral AI and Nvidia Voyager
+
+08:05.060 --> 08:06.650
+fake IBM Watson.
+
+08:06.650 --> 08:12.320
+So yeah, these are the different providers available and there are different model supports that.
+
+08:12.320 --> 08:15.230
+So as I told you these are the providers.
+
+08:15.350 --> 08:20.510
+But the models you can also use llama 3.1 or 3.2 for that matter.
+
+08:20.510 --> 08:23.600
+It also supports embedding operation.
+
+08:23.600 --> 08:25.940
+So you can use that model as well if you wanted to.
+
+08:26.330 --> 08:30.650
+So yeah, that is what we are going to be doing in this particular section.
+
+08:30.650 --> 08:37.550
+And we'll see how we could able to achieve these operation for the extraction and indexing.
+
+08:37.550 --> 08:42.980
+And once we do all these extraction and indexing, once we store the data into the database, the next
+
+08:43.010 --> 08:46.370
+operation is going to be retrieval and generation.
+
+08:46.370 --> 08:49.280
+Because this is where our bread and butter is all about.
+
+08:49.280 --> 08:54.870
+We are going to be using this data that whatever we have stored into the database, and we are going
+
+08:54.900 --> 09:03.180
+to use it for our question and answering with the power of the stored data and along with our local
+
+09:03.180 --> 09:07.110
+large language model that we have got, which is running in the O Lama.
+
+09:07.110 --> 09:11.400
+So that's where the retrieval and generation is going to happen.
+
+09:11.400 --> 09:16.920
+So we will try to fit all the discussion in this particular section for the extraction and indexing
+
+09:16.920 --> 09:17.730
+in one section.
+
+09:17.730 --> 09:22.290
+And then we try to split it out the retrieval and generation in separate section.
+
+09:22.290 --> 09:26.400
+Or if we have more bandwidth we can fit it in the same section itself.
+
+09:26.400 --> 09:30.150
+So we'll see how that goes, how complex this particular section is going to be.
+
+09:30.150 --> 09:36.000
+And because I'm just creating this entire thing from the scratch, I don't even have the the idea of
+
+09:36.000 --> 09:38.310
+how long this particular section is going to be.
+
+09:38.310 --> 09:44.190
+So that's the reason why I'm saying that maybe we can split into multiple section, but for now, let's
+
+09:44.190 --> 09:44.910
+see how it goes.
+
+09:44.910 --> 09:51.210
+So let's get started with the extraction and indexing part, starting our next video where we are going
+
+09:51.240 --> 09:54.870
+to start extracting, uh, our PDF files.

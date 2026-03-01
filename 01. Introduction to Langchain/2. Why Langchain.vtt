@@ -1,0 +1,229 @@
+WEBVTT
+
+00:00.080 --> 00:01.850
+In this lecture, we'll understand why.
+
+00:01.880 --> 00:02.960
+Lang chain.
+
+00:04.130 --> 00:08.480
+Well, lang chain can help us do quite a lot of different operations.
+
+00:08.510 --> 00:12.830
+The main purpose of Lang Chain is it standardizes the component interfaces.
+
+00:12.950 --> 00:19.700
+As you know, there are growing number of models coming up every single day, like OpenAI's GPT model
+
+00:19.700 --> 00:24.650
+and cloud anthropic model, and Google's Gemini model and Microsoft's Pi model.
+
+00:24.650 --> 00:30.140
+And then there is suddenly Chinese deep sea model, and there is also Qnn model.
+
+00:30.140 --> 00:32.300
+And there are even more models coming up lately.
+
+00:32.300 --> 00:36.980
+This year, while there is going to be a new model from Russia and other countries are going to come
+
+00:36.980 --> 00:37.790
+up pretty soon.
+
+00:37.790 --> 00:42.320
+So you see that all these models are going to be keep on growing every single time.
+
+00:42.320 --> 00:47.840
+And the related components of the AI application has resulted in a wide variety of different APIs that
+
+00:47.840 --> 00:50.720
+the developer need to learn and use every single time.
+
+00:50.720 --> 00:56.420
+And this diversity can make it challenging for developers to switch between providers or combine components
+
+00:56.420 --> 01:02.400
+when building applications, and Lang Chain exposes a standard interface for key components, making
+
+01:02.400 --> 01:04.560
+it so easy to switch between these providers.
+
+01:04.590 --> 01:07.950
+So basically, this long chain is agnostic to any of the model.
+
+01:07.950 --> 01:13.140
+And it supports all these model by providing an interface for all of these models.
+
+01:13.140 --> 01:18.600
+And there is also this observability and evaluation pattern available in the long chain by default.
+
+01:18.600 --> 01:23.220
+So as an application becomes more and more complex, it becomes increasingly difficult to understand
+
+01:23.220 --> 01:28.800
+what is really happening within these applications and how these applications are going to be querying
+
+01:28.800 --> 01:30.690
+with these large language models.
+
+01:30.690 --> 01:34.740
+And now with the power of this language, Smith.
+
+01:35.310 --> 01:40.650
+The observability and the evaluation is just embedded inside the chain itself.
+
+01:40.650 --> 01:45.660
+And as it said, let's talk about the standardization of the component and interfaces even more.
+
+01:45.690 --> 01:51.570
+But as you see, long chain provides a consistent interface for working with with chat models from different
+
+01:51.570 --> 01:58.630
+providers like Anthropic Cloud, OpenAI, Alarma, Microsoft Azure, Google Vertex, and more, and
+
+01:58.630 --> 02:05.440
+using either long chains, message format or Openeye format, you can make a consistent messaging of
+
+02:05.440 --> 02:07.450
+the data from your application.
+
+02:07.450 --> 02:10.330
+And also there is a standard tool calling API.
+
+02:10.360 --> 02:16.660
+So basically the standard interface for binding tools to model access tool called request made by these
+
+02:16.660 --> 02:18.850
+model is going to be very, very easy.
+
+02:18.850 --> 02:24.430
+And also Lang Chain has got standard APIs for structured output, which can be helpful for you to get
+
+02:24.430 --> 02:30.970
+a structured response from the large language models, something like a JSON response or text response
+
+02:30.970 --> 02:32.740
+or a string response that you're looking for.
+
+02:32.770 --> 02:39.250
+And also Lang chain provides support for async programming, efficient batching, and a rich streaming
+
+02:39.250 --> 02:44.590
+API, so you can stream the response from the large language model much, much easily just by using
+
+02:44.590 --> 02:46.300
+the stream method which is available.
+
+02:46.300 --> 02:50.290
+It is so easy and I will show you how these things work, and I'm quite excited to show you how these
+
+02:50.290 --> 02:51.370
+things work, really.
+
+02:51.400 --> 02:56.230
+And finally, integration with Lang Smith for monitoring and debugging production grade application
+
+02:56.230 --> 03:01.660
+based on the large language model is also amazing, and this is something I keep on telling from last
+
+03:01.660 --> 03:02.170
+lecture.
+
+03:02.170 --> 03:08.200
+You will be seeing how amazing they are and as I said, the entire standard model integration is going
+
+03:08.200 --> 03:09.640
+to look something like this.
+
+03:09.640 --> 03:14.080
+And you can see that the long chain has got the integration with the long chain or lemma, or long chain
+
+03:14.110 --> 03:16.360
+OpenAI or long chain anthropic.
+
+03:16.360 --> 03:19.570
+And any model that is going to come up, they are going to be supported.
+
+03:19.570 --> 03:21.130
+Guys, this is so cool.
+
+03:21.130 --> 03:23.410
+So that is the power of the long chain itself.
+
+03:23.410 --> 03:28.390
+They are going to keep on building all these integration embedded inside their platform.
+
+03:28.390 --> 03:31.420
+That way it supports all these different models.
+
+03:31.420 --> 03:36.790
+Even the deep sea, which just came like couple of weeks before, is going to be supported or even supported
+
+03:36.790 --> 03:38.620
+already with the long chain.
+
+03:38.620 --> 03:45.100
+So you can just use that particular integration within your large language model based applications
+
+03:45.850 --> 03:47.830
+and finally interfaces.
+
+03:47.830 --> 03:51.670
+You see that long chain has got this standard interfaces as well.
+
+03:51.700 --> 03:55.940
+All you have to do in order to invoke a large language model, It's just called the method called as
+
+03:55.940 --> 03:56.870
+Invoke method.
+
+03:56.870 --> 04:00.710
+And if you want to stream the data from the large language model, you just have to call the stream
+
+04:00.710 --> 04:01.040
+method.
+
+04:01.040 --> 04:03.200
+It can be of any large language models.
+
+04:03.200 --> 04:08.240
+All these models are going to just comply with the long chain interfaces, which is going to make things
+
+04:08.240 --> 04:09.320
+more cleaner.
+
+04:09.350 --> 04:14.630
+And also there is a batch support and even more different supports available with this interfaces.
+
+04:14.930 --> 04:15.890
+That's amazing.
+
+04:15.890 --> 04:21.290
+And that is the reason why we need to go with the long chain while working with the large language model
+
+04:21.320 --> 04:23.060
+based application and beyond.
+
+04:23.060 --> 04:29.090
+That long chain also has support for standard input outputs, tool calling, standard output, formatting,
+
+04:29.120 --> 04:31.100
+observability, catching, and more.
+
+04:31.100 --> 04:36.500
+So you see that this thing is just keep on going to expand while the platform develops and while the
+
+04:36.500 --> 04:37.370
+library develops.
+
+04:37.370 --> 04:42.770
+All these standardization is going to happen for your large language model based application.
+
+04:43.040 --> 04:46.370
+That's the power of the long chain.
+
+04:46.370 --> 04:52.640
+And this and that is the reason why we should be going with the long chain while building large language
+
+04:52.640 --> 04:54.110
+model based applications.

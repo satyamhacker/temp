@@ -1,0 +1,736 @@
+WEBVTT
+
+00:00.050 --> 00:00.380
+All right.
+
+00:00.410 --> 00:06.680
+In our last section, we discussed how we can give the ability for the large language model with the
+
+00:06.680 --> 00:14.030
+tool bindings to have an external tools like Wikipedia or internal custom methods like addition, subtraction,
+
+00:14.030 --> 00:14.930
+multiplication.
+
+00:14.930 --> 00:17.300
+And it gave us the answer that we're looking for.
+
+00:17.330 --> 00:18.110
+Amazing.
+
+00:18.380 --> 00:27.320
+Uh, but we actually did a tool execution logic within our own custom code, because the LLM can anyways
+
+00:27.320 --> 00:33.560
+choose the correct tools and it selects that, but it doesn't have the ability to execute it unless
+
+00:33.560 --> 00:35.870
+until we create like a prompt.
+
+00:35.900 --> 00:39.740
+Remember that's what was really happening in our last section.
+
+00:39.740 --> 00:42.590
+So we ended up writing a tool execution logic.
+
+00:42.620 --> 00:47.930
+I mean, we created a prompt which has got the tool to be executed and the response from the tool invoke
+
+00:47.930 --> 00:48.380
+method.
+
+00:48.380 --> 00:54.410
+And then we bounded that in the message, and then we pass it as a prompt to the large language model,
+
+00:54.800 --> 00:57.920
+which can then give us the output which is looking for amazing.
+
+00:57.920 --> 01:04.670
+But now we're going to remove that logic from here, and we're going to bring that our, uh, agents
+
+01:04.670 --> 01:12.140
+to do that operation for us, because I agents has the ability to do the selection of the tools based
+
+01:12.140 --> 01:18.350
+on the tool binding and route the query to the right tool, which is amazing.
+
+01:18.350 --> 01:21.500
+It's not going to route, but it's also going to execute that for us.
+
+01:21.500 --> 01:26.690
+So the the number of lines of code that you're going to be writing over here is going to be tremendously
+
+01:26.690 --> 01:29.480
+less compared to what that we have wrote before.
+
+01:29.480 --> 01:34.280
+So you'll notice that now if I ask what is the sum of two and four and who is the current president
+
+01:34.280 --> 01:40.700
+of USA in 2025, then I'm asking two questions over here, and you will notice that the large language
+
+01:40.700 --> 01:44.180
+model is going to ask that to the agent.
+
+01:44.180 --> 01:50.330
+And the agent is going to take care of every single operation that you have, and it is going to call
+
+01:50.330 --> 01:56.270
+the the available tools that is been bound with this particular large language model.
+
+01:56.270 --> 02:01.400
+And it's going to execute them one by one, and it is going to create that response for you, and it
+
+02:01.400 --> 02:04.070
+is going to give you both the responses is like this.
+
+02:04.070 --> 02:05.720
+This is fabulous, right?
+
+02:05.720 --> 02:10.790
+Because you don't even have to write the logics like how you wrote before, and you actually are going
+
+02:10.820 --> 02:17.060
+to be relying on the agent, which is going to do all the heavy lifting for you to to do those operations.
+
+02:17.060 --> 02:17.660
+Already.
+
+02:17.660 --> 02:21.980
+Most of the heavy decision making operation is taken care by this reasoning.
+
+02:22.160 --> 02:23.840
+Large language model engine.
+
+02:23.840 --> 02:29.390
+And now we are going to use this AI agent on top of it, which is going to simplify our code even further.
+
+02:29.390 --> 02:31.400
+That is the power of agents, guys.
+
+02:31.430 --> 02:38.180
+And that is why I wanted you to understand this details before, so that we can cover the agents even
+
+02:38.180 --> 02:39.620
+further in a better fashion.
+
+02:39.620 --> 02:43.520
+So let's see how we can actually achieve the entire operation in this particular section.
+
+02:43.520 --> 02:46.820
+So the first thing is we are going to use our agents.
+
+02:46.820 --> 02:52.850
+So for doing that I'm going to create another folder here.
+
+02:52.850 --> 02:55.250
+I'm going to call this as section seven.
+
+02:55.760 --> 02:58.850
+Uh I'm going to call this as agents.
+
+02:59.180 --> 02:59.870
+Uh sorry.
+
+02:59.870 --> 03:05.050
+This uh section six could have been a tools rather agent itself because we have not really talked anything
+
+03:05.050 --> 03:06.760
+about the agents yet.
+
+03:07.330 --> 03:08.500
+This is called the tools.
+
+03:08.500 --> 03:11.470
+I don't know why I just gave it like agents there.
+
+03:11.860 --> 03:15.250
+Uh, I want to rename that to tools.
+
+03:15.250 --> 03:16.420
+Sorry about that.
+
+03:16.630 --> 03:20.230
+Uh, and over here I'm going to create an agent.
+
+03:20.230 --> 03:22.840
+So I'm going to create a new Jupyter node.
+
+03:22.990 --> 03:24.340
+I'm going to save this.
+
+03:24.340 --> 03:29.680
+And I'm going to call this as agents over here.
+
+03:30.100 --> 03:32.770
+Uh, and I'm going to start working from here on.
+
+03:32.770 --> 03:33.670
+But guess what.
+
+03:33.700 --> 03:39.970
+I'm going to copy paste some of the code as usual from here, uh, to this guy, select the kernel.
+
+03:40.270 --> 03:43.840
+Uh, and I also need to close this one.
+
+03:43.840 --> 03:44.980
+I don't need it.
+
+03:45.340 --> 03:47.560
+Uh, and look at that.
+
+03:47.560 --> 03:50.440
+These are all just failing because I need to select the kernel.
+
+03:50.470 --> 03:56.110
+So this is the existing, uh, section code that I'm trying to run over here, just in case.
+
+03:56.110 --> 04:04.960
+So that it all have all the response while you get the, uh, code from the source code repo from the
+
+04:04.960 --> 04:05.620
+course.
+
+04:05.670 --> 04:06.270
+Cool.
+
+04:06.270 --> 04:07.350
+It's all working.
+
+04:07.380 --> 04:11.340
+I'm gonna close this guy, and we are back to the agents over here.
+
+04:11.340 --> 04:13.560
+And if I execute this, this is just going to work.
+
+04:13.560 --> 04:14.010
+Fine.
+
+04:14.040 --> 04:14.910
+Amazing.
+
+04:15.090 --> 04:19.590
+So now what I'm going to do is I'm going to copy paste some of the code that I have already written
+
+04:19.590 --> 04:27.660
+from the tools anyways because that is required, which is the, uh, which is the Wikipedia as well
+
+04:27.660 --> 04:32.310
+as uh, the custom tools that we have built before.
+
+04:32.310 --> 04:36.960
+So I am going to need all of them from the previous section.
+
+04:36.960 --> 04:49.950
+So I'm going to say, uh, bringing uh, back the code from previous section for tools, uh, binding.
+
+04:49.950 --> 04:54.330
+Add the code, and I'm going to bring all the code that we have got.
+
+04:54.330 --> 04:59.640
+So this is required I'm going to bring the Wikipedia.
+
+04:59.700 --> 05:02.910
+And I also have built the custom tools.
+
+05:02.910 --> 05:05.430
+So I'm going to write that as well.
+
+05:05.460 --> 05:06.480
+In the same block.
+
+05:06.480 --> 05:10.890
+We don't have to create like a separate blog for that matter, just this one.
+
+05:11.700 --> 05:14.370
+And this is going to be here.
+
+05:14.370 --> 05:19.800
+So we have got the Wikipedia and all the tools that we have built.
+
+05:19.800 --> 05:22.740
+And I have mapped that with the tools array over here.
+
+05:22.740 --> 05:23.550
+Fine.
+
+05:23.790 --> 05:25.890
+This is the only code that I require.
+
+05:25.890 --> 05:32.400
+And then all these logics from thereon that we wrote is all not required, but we are going to be using
+
+05:32.400 --> 05:35.790
+the agents to do it for us over here.
+
+05:35.790 --> 05:37.680
+So let's see what change is going to happen.
+
+05:37.770 --> 05:43.230
+So I'm going to add a markdown I'm going to say agents code.
+
+05:44.430 --> 05:47.400
+Uh and over here I'm going to start writing the code.
+
+05:47.400 --> 05:53.790
+So for working with agents I'm going to call the Lang chain dot agents.
+
+05:53.790 --> 05:58.290
+And I'm going to import uh, two classes.
+
+05:58.290 --> 06:00.990
+Probably one is the initialize two methods.
+
+06:00.990 --> 06:02.370
+One is the initialize agent.
+
+06:02.370 --> 06:05.040
+And there is a class called as agent type.
+
+06:05.040 --> 06:07.170
+So we need both of them over here.
+
+06:07.530 --> 06:13.590
+Uh, and I need to create a variable as agent, and I'm going to call the initialize agent.
+
+06:13.590 --> 06:17.490
+And over here I need to supply a few things.
+
+06:17.520 --> 06:21.000
+So as you can see it needs a sequence of tools like base tools.
+
+06:21.000 --> 06:23.820
+So tools is nothing but our tools that we have got.
+
+06:23.820 --> 06:27.780
+So I'm just going to say tools as tool.
+
+06:28.110 --> 06:32.670
+Uh and then we also have got the LM.
+
+06:32.670 --> 06:37.290
+So I'm going to say LM is equal to the local LM that we have got.
+
+06:37.320 --> 06:42.510
+And the agent is going to be the agent type.
+
+06:42.510 --> 06:44.580
+So I need to pass an agent type here.
+
+06:44.580 --> 06:48.840
+And I need to pass the agent type as structured.
+
+06:49.500 --> 06:52.830
+Uh chat zero short react description.
+
+06:52.830 --> 07:02.070
+The reason why I'm choosing this one is because our methods that we have got is actually going to accept,
+
+07:02.370 --> 07:04.740
+uh, like, just like two integer over here.
+
+07:04.740 --> 07:13.070
+So we need to structure the calling of the tools before I pass the message to the tools itself.
+
+07:13.070 --> 07:15.950
+If not, our tool is just going to fail abruptly.
+
+07:15.950 --> 07:21.440
+So for instance, if I'm going to use like something called a zero shot react description, that the
+
+07:21.440 --> 07:27.110
+code is just going to fail because it is going to because our method, like the custom tools that we
+
+07:27.110 --> 07:31.550
+have written over here, expects these value as a structured input.
+
+07:31.550 --> 07:36.380
+So if there is not not a structured input comes in, then our agent is just going to fail.
+
+07:36.380 --> 07:38.900
+And because our tools will not support that.
+
+07:38.900 --> 07:44.240
+And that's why we need to have this structured chat zero react description.
+
+07:44.270 --> 07:44.870
+Right.
+
+07:44.930 --> 07:54.500
+And then I'm going to add a verbose here, uh, just in case so that I get the, the result, uh, in
+
+07:54.500 --> 07:56.090
+the verbose fashion.
+
+07:56.090 --> 08:00.380
+So you can see what's really happening with the, with the agent while it is executing them.
+
+08:00.800 --> 08:01.400
+Right.
+
+08:01.670 --> 08:06.650
+That's the agent declaration using the initialize agent method.
+
+08:06.800 --> 08:18.890
+And now fun part Query and I'm going to say, what's the sum of three and four, right.
+
+08:19.040 --> 08:20.480
+I'm going to ask this question.
+
+08:20.570 --> 08:28.400
+And remember last section we were actually if we try to call this query and if we pass it to the the
+
+08:28.400 --> 08:31.850
+the agent, it couldn't able to answer the question for us.
+
+08:31.850 --> 08:33.590
+But now look at that.
+
+08:33.590 --> 08:42.410
+I am not even bounding the large language model with the the tools that we have got using the bind tools
+
+08:42.410 --> 08:48.920
+method, like how I have did, uh, over here, like lm dot bind tools method.
+
+08:48.920 --> 08:55.520
+I'm not even doing that over here because the binding is really happening over here with the agents.
+
+08:55.520 --> 08:58.940
+I'm just going to pass the raw agent we have got.
+
+08:58.940 --> 09:03.560
+And this guy, the agent, is going to do all these heavy lifting for us.
+
+09:03.560 --> 09:04.580
+It's going to choose.
+
+09:04.580 --> 09:05.990
+It's going to bind the tools.
+
+09:05.990 --> 09:08.660
+And also it's going to call the right tool for us.
+
+09:08.660 --> 09:15.710
+And it's also going to Uh, invoke the right tool and execute it for us.
+
+09:15.740 --> 09:16.850
+So look at that.
+
+09:16.850 --> 09:22.940
+All the heavy lifting that we were doing before with our custom code is all going to be taken care by
+
+09:22.940 --> 09:24.470
+this agent code itself.
+
+09:24.470 --> 09:34.850
+And now I'm going to just say, uh, sorry, I'm just going to say the result is equal to I'm going
+
+09:34.880 --> 09:36.350
+to call the agent Dot.
+
+09:36.350 --> 09:40.820
+So you can call the invoke method or the run method doesn't matter whichever it is.
+
+09:40.850 --> 09:48.080
+And I'm going to pass the query over here and I'm going to print the result over here.
+
+09:48.470 --> 09:50.570
+Uh I'll save this.
+
+09:50.570 --> 09:54.320
+And now I'm going to run this code over here.
+
+09:54.320 --> 09:59.420
+But before I actually run that I just noticed that this is not tool, but this is tools that we need
+
+09:59.420 --> 10:00.200
+to call.
+
+10:00.200 --> 10:01.610
+Sorry about that.
+
+10:01.610 --> 10:04.790
+And now let's try to run this code.
+
+10:04.790 --> 10:09.590
+And you will notice that the moment I run this code it is just going to run fine.
+
+10:09.620 --> 10:10.130
+Look at that.
+
+10:10.130 --> 10:10.610
+It is.
+
+10:10.610 --> 10:16.510
+The agent is now calling the agent executor chain and it is running the action and it looks.
+
+10:16.540 --> 10:17.080
+Look at that.
+
+10:17.080 --> 10:21.160
+It has found the action the add numbers tool that it has to.
+
+10:21.190 --> 10:27.490
+Call and has passed the action input as A is three and B as four, and has the observation as seven.
+
+10:27.490 --> 10:31.900
+And then now this agent is thinking okay, I know what to respond.
+
+10:31.900 --> 10:36.610
+And then it is writing the final answer as the sum of three and four is seven.
+
+10:36.610 --> 10:41.530
+And then it has finished the chain, and it has given me the answer as the sum of three and four is
+
+10:41.530 --> 10:42.250
+seven.
+
+10:42.340 --> 10:43.300
+Look at that.
+
+10:43.300 --> 10:49.630
+The agent is doing all these operations for us over here magically, and we don't have to do anything
+
+10:49.630 --> 10:50.530
+over there.
+
+10:50.530 --> 10:54.700
+And now you have got the idea, like how this is working.
+
+10:54.700 --> 11:05.710
+And if I'm going to ask the question, uh, did Donald Trump won the 2024 presidential
+
+11:07.690 --> 11:08.710
+election?
+
+11:10.030 --> 11:16.510
+And now if I try executing it, you will notice that it is going to call the Wikipedia tool this time,
+
+11:16.510 --> 11:21.280
+and it is running the action there, and it has got the observation.
+
+11:21.280 --> 11:26.410
+So Donald Trump, who served 4,050% in 2017, includes implementation, blah blah, blah.
+
+11:26.410 --> 11:33.280
+And now it's again doing one more action because it looks like the answer was not what it is looking
+
+11:33.280 --> 11:33.640
+for.
+
+11:33.640 --> 11:34.570
+The agent is looking for.
+
+11:34.570 --> 11:40.060
+Now it's doing one more run and then it is giving me an answer.
+
+11:40.060 --> 11:44.320
+So therefore, Donald Trump was indeed the winner of 2024 presidential election.
+
+11:44.320 --> 11:45.310
+There we go.
+
+11:45.430 --> 11:46.870
+Look at that now.
+
+11:46.900 --> 11:49.660
+It has did a lot of observation in here.
+
+11:49.660 --> 11:57.250
+And finally, it could able to figure out that Donald Trump is actually a president of 2024 election.
+
+11:57.250 --> 12:00.280
+So he has won the election over there.
+
+12:00.280 --> 12:07.270
+So now if I go back to our Lang Smith over here and let's see what's really happening there.
+
+12:07.300 --> 12:08.140
+Look at that.
+
+12:08.170 --> 12:11.950
+We have got the agent executor comes in this time.
+
+12:12.310 --> 12:18.580
+And look at this such big gigantic output coming up from the agent executor.
+
+12:18.610 --> 12:24.910
+The agent executor is a structured chat zero shot react description and it is passing.
+
+12:24.940 --> 12:29.590
+We are passing this particular message and it is going to ask this particular um is going to get this
+
+12:29.800 --> 12:33.490
+output, but it is calling an LM chain behind the scene.
+
+12:33.880 --> 12:35.080
+And look at that.
+
+12:35.080 --> 12:40.930
+This chain has got uh, is calling this particular LM, uh, the chat.
+
+12:40.960 --> 12:46.330
+Uh olama LM and then it is going to get this particular response, and it's going to call the tool name,
+
+12:46.330 --> 12:49.600
+and the action is input, uh, over here.
+
+12:49.600 --> 12:57.820
+And it is also going to, uh, pass this particular action for the Wikipedia and is calling the Wikipedia
+
+12:57.850 --> 12:58.360
+tool.
+
+12:58.360 --> 13:03.280
+And then again, it is calling the chain or chat or llama to get the right answer because it thought
+
+13:03.310 --> 13:05.140
+it thought two times, if you remember.
+
+13:05.170 --> 13:07.780
+And then it is getting the answer they're looking for.
+
+13:07.810 --> 13:11.380
+Look at the how many number of tokens being spent this time 3830.
+
+13:11.410 --> 13:16.180
+Which is crazy because last time while we did it, it was a bit straightforward, if I'm remembering
+
+13:16.210 --> 13:20.050
+correctly, it was around how many tokens that we spent.
+
+13:20.890 --> 13:22.690
+Uh, yeah.
+
+13:22.720 --> 13:31.630
+I think for the Wikipedia, uh, we spent just 5.18 token and in total was 1000.
+
+13:31.660 --> 13:35.890
+Ah, yeah, it was 1355 tokens for these tools.
+
+13:35.890 --> 13:41.890
+But with the agent we are spending a lot of tokens there because it is doing quite a lot of different
+
+13:41.920 --> 13:42.580
+operation.
+
+13:42.610 --> 13:43.270
+Guess what?
+
+13:43.270 --> 13:45.970
+I'm going to change the question a bit this time as well.
+
+13:46.450 --> 13:57.070
+So I'm going to say, uh, what is the sum of uh, two and four?
+
+13:57.670 --> 14:06.940
+And did Donald Trump see, uh, and did Donald Trump win the won the 2024 presidential election?
+
+14:07.060 --> 14:16.120
+I'm going to say this and I'm going to say structure the response for me in JSON format.
+
+14:16.990 --> 14:21.600
+I'm asking so many things this time, and I'm gonna run this particular code.
+
+14:21.630 --> 14:22.110
+Look at that.
+
+14:22.110 --> 14:27.330
+Now the agent executed, chain executes again, and it calls the add numbers.
+
+14:27.330 --> 14:28.890
+There is an observation of six.
+
+14:28.890 --> 14:31.080
+And then it's going to call Wikipedia.
+
+14:31.140 --> 14:33.960
+And then it does that as well.
+
+14:33.960 --> 14:39.390
+And there is this final chain comes in and it is going to respond it for us over here.
+
+14:39.420 --> 14:44.340
+Unfortunately this is not in JSON format though, but it has given me both the answers.
+
+14:44.370 --> 14:48.750
+See that 24 the sum of two and four uh, four is six.
+
+14:48.750 --> 14:52.230
+As Donald Trump has not won 2024 presidential election.
+
+14:52.260 --> 14:53.010
+Crazy.
+
+14:53.040 --> 14:57.060
+He did win, but I don't know why this is giving the wrong answer there.
+
+14:57.300 --> 15:03.840
+Um, maybe I need to ask in a different way because, uh, Donald Trump won 24 presidential election,
+
+15:04.680 --> 15:10.830
+uh, and became a president, uh, in 2025.
+
+15:10.860 --> 15:14.790
+Probably not sure the agent was giving up so early this time.
+
+15:15.120 --> 15:16.770
+Let me try to run this again.
+
+15:18.590 --> 15:23.840
+So it's first calling the Wikipedia this time, instead of really calling that sum of two and four.
+
+15:24.560 --> 15:25.430
+Look at that.
+
+15:27.320 --> 15:27.650
+Ah.
+
+15:27.680 --> 15:29.540
+Why this is wrongly answering this question.
+
+15:29.540 --> 15:31.280
+I have no idea why this is happening.
+
+15:31.310 --> 15:36.800
+And he says Kamala Harris won in 2026 with 226 electoral vote.
+
+15:36.890 --> 15:38.330
+This is hallucination, guys.
+
+15:38.330 --> 15:42.530
+This is not how the the AI agent should respond.
+
+15:42.560 --> 15:50.480
+But now if I go to the AI agent over here, you will notice that this agent has got, uh, a lot of
+
+15:50.480 --> 15:51.380
+things over here.
+
+15:51.410 --> 15:51.950
+Look at that.
+
+15:51.950 --> 15:54.830
+It's just doing, uh, the calling of the ad number.
+
+15:54.860 --> 15:56.660
+It's also calling the Wikipedia.
+
+15:56.690 --> 15:57.560
+They're like two tools.
+
+15:57.560 --> 16:03.620
+It's been calling, uh, in one single time, and then it's responding in order to figure out this particular
+
+16:03.620 --> 16:11.120
+failing, uh, failing action there, we need to probably write a better chat prompt to get the answer
+
+16:11.120 --> 16:11.990
+for us over there.
+
+16:11.990 --> 16:14.390
+So which we are going to be doing in our next lecture.
+
+16:14.390 --> 16:21.020
+But you got the idea how this particular, uh, agent is really responding to us over here.

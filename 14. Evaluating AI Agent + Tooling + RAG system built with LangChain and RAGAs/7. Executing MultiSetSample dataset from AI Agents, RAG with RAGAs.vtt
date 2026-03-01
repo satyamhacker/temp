@@ -1,0 +1,223 @@
+WEBVTT
+
+00:00.110 --> 00:06.080
+I guess we have reached the final part of the ragas execution, which is the, uh, we have created
+
+00:06.080 --> 00:08.840
+the Multi-shot sample data set for ragas, which is great.
+
+00:08.870 --> 00:10.460
+We did the evaluation.
+
+00:10.460 --> 00:14.420
+The last one is to run this code and see how the result is going to come up.
+
+00:14.420 --> 00:14.900
+There we go.
+
+00:14.930 --> 00:16.400
+That is insane.
+
+00:16.400 --> 00:17.840
+We want to do that over here.
+
+00:17.840 --> 00:19.880
+So let's go do that.
+
+00:19.970 --> 00:23.870
+And I'm going to leave everything as it is because there is an evaluation data set.
+
+00:23.870 --> 00:24.020
+There.
+
+00:24.020 --> 00:25.940
+Is this all this context that we're going to verify.
+
+00:25.940 --> 00:27.620
+We have got all the metrics.
+
+00:27.830 --> 00:32.060
+And the model we're going to use is not uh, maybe GPT four is fine this time.
+
+00:32.090 --> 00:37.520
+I'm just going to use it over here, and we are going to see how the executions are going to happen.
+
+00:37.520 --> 00:41.900
+So it's just a lame copy paste that I have did over here.
+
+00:42.080 --> 00:50.540
+But the good thing is we are running it on the GPT four model, so things may be way faster than running
+
+00:50.540 --> 00:51.410
+it in my local machine.
+
+00:51.440 --> 00:51.830
+Look at that.
+
+00:51.830 --> 00:54.860
+It's already 42 percentage 58 percentage.
+
+00:59.120 --> 01:01.040
+And we got 100 percentage over here.
+
+01:01.070 --> 01:01.730
+Look at that.
+
+01:01.730 --> 01:07.370
+You can see that the amount of the result that we are getting out from this particular context.
+
+01:07.400 --> 01:11.000
+It's not quite great, like it's not as expected.
+
+01:11.000 --> 01:16.580
+The reason why is because the questions that I have asked is also not quite to the mark, like there's
+
+01:16.580 --> 01:17.990
+only five questions that I have asked.
+
+01:17.990 --> 01:24.410
+And also they are not quite exactly the same with that particular context, because you see that I'm
+
+01:24.410 --> 01:31.160
+asking the questions based on the the learnings that LM has did and stored into the vector data stores.
+
+01:31.310 --> 01:36.200
+We're using, just like few paragraphs of the text on the bias.
+
+01:36.200 --> 01:40.970
+So if you ask any questions on the potential bias for these kind of questions, the response that you're
+
+01:40.970 --> 01:43.790
+going to get is far lesser, which is quite expected.
+
+01:43.790 --> 01:49.190
+But the one thing which we can see is still it is a bit more relevant in terms of the factual correctness
+
+01:49.190 --> 01:50.360
+and answer relevance.
+
+01:50.360 --> 01:54.470
+As you can see here, they are they are pretty close to that particular value.
+
+01:54.470 --> 02:00.290
+So now if I try to see the results in in pandas over here.
+
+02:00.710 --> 02:07.010
+So you will notice the how the response is going to come through, we can see that this is the this
+
+02:07.010 --> 02:09.590
+is the thing that we are actually failing over there.
+
+02:09.590 --> 02:11.960
+I know this is a lot of data going on there guys.
+
+02:11.990 --> 02:15.650
+And but but still you can see that the response is not that bad.
+
+02:15.680 --> 02:20.540
+To be honest, I could see the relevance is is making me more promising this time.
+
+02:20.540 --> 02:21.770
+Just accept one.
+
+02:21.800 --> 02:23.510
+It is like zero completely.
+
+02:23.510 --> 02:24.740
+So it is completely failed.
+
+02:24.740 --> 02:28.490
+But the other things are not bad at all to be honest.
+
+02:28.610 --> 02:34.460
+Uh, but faithfulness has abruptly failure failed in all of them except one of them.
+
+02:34.700 --> 02:40.520
+So now let's go to the, uh, link chain over here for the ragas evaluation.
+
+02:40.970 --> 02:44.210
+You'll notice that we have used 60 000 tokens this time.
+
+02:44.510 --> 02:47.630
+Uh, and the time it took is like 43 seconds.
+
+02:47.630 --> 02:50.180
+And this is using GPT four zero model.
+
+02:50.180 --> 02:51.320
+And look at that.
+
+02:51.350 --> 02:58.340
+How many time it has really called the prompt behind the scene for every single execution to make sure
+
+02:58.340 --> 03:01.580
+that our executions are working as expected.
+
+03:02.000 --> 03:03.170
+This is pretty cool.
+
+03:03.170 --> 03:07.820
+So this is this is going way beyond our, uh, our thing.
+
+03:07.820 --> 03:11.570
+So like, first time it has got failed and second time and third time, see how many times it has got
+
+03:11.570 --> 03:12.110
+failed.
+
+03:12.110 --> 03:19.560
+And the agent keep retrying, retrying, retrying with the the operation Uh, until the chat, uh,
+
+03:19.560 --> 03:23.730
+OpenAI gave us a result, and we got an output over here.
+
+03:23.760 --> 03:24.420
+Look at that.
+
+03:24.450 --> 03:26.460
+Like this is the JSON value.
+
+03:26.490 --> 03:28.830
+We can now fine tune this even further.
+
+03:28.830 --> 03:30.120
+Like this is a statement.
+
+03:30.120 --> 03:34.950
+There is a reason, uh, and it's not giving us the verdict correctly.
+
+03:34.950 --> 03:40.200
+But if we try to fine tune our tool a bit and the way we write the prompt, these things can be even
+
+03:40.200 --> 03:41.040
+more better as well.
+
+03:41.040 --> 03:48.330
+But still, what we have achieved here is pretty close to how realistically you can test your rag as
+
+03:48.330 --> 03:49.530
+well as your agent.
+
+03:49.620 --> 03:50.730
+This is pretty cool guys.
+
+03:50.730 --> 03:58.050
+So this is how we can see that we could able to test our rag as well as an agent in much easier fashion
+
+03:58.050 --> 03:59.850
+using ragas.
+
+04:00.750 --> 04:05.310
+So this ends the complete advanced section of how you can test your agents and ragas.
+
+04:05.310 --> 04:10.590
+And we have been discussing about the testing of the ragas quite a bit, and I'm sure this is going
+
+04:10.620 --> 04:17.700
+to give you an idea of how you can test your large language model, application for agents for rags,
+
+04:17.700 --> 04:21.870
+and also how you can take this further in your job.
+
+04:21.900 --> 04:24.330
+Congratulations and you guys have a great day.

@@ -1,0 +1,343 @@
+WEBVTT
+
+00:00.080 --> 00:04.790
+So we now need to figure out how we can fix this particular problem that we have.
+
+00:04.850 --> 00:09.830
+We are actually facing in this particular test execution or the evaluation that we are doing at the
+
+00:09.830 --> 00:10.610
+moment over here.
+
+00:10.640 --> 00:12.020
+So how do we actually do that?
+
+00:12.020 --> 00:18.380
+So basically we now have to train our data that we have got within our application, uh, which can
+
+00:18.380 --> 00:23.930
+have or handle this kind of data that we are, uh, we are currently incurring with.
+
+00:23.960 --> 00:31.160
+So the way which I'm going to fix this particular issue is by supplying some more information for our,
+
+00:31.370 --> 00:33.440
+uh, for our document that we have got.
+
+00:33.440 --> 00:36.500
+So, uh, over here, the first failure is this one.
+
+00:36.500 --> 00:41.960
+So the failure is what is network interception in playwright then it gives us this particular response
+
+00:41.960 --> 00:42.530
+over here.
+
+00:42.530 --> 00:45.500
+But the expected output is something like this.
+
+00:45.500 --> 00:48.500
+Like it should be a bit more, uh, slightly smaller.
+
+00:48.500 --> 00:50.180
+I think this is fine for the context.
+
+00:50.210 --> 00:55.730
+11 so I'm just going to leave this guy as it is, because it's just about the way that it needs to change
+
+00:55.730 --> 00:56.810
+the threshold a bit.
+
+00:56.810 --> 00:58.970
+So I'm going to leave that guy over there.
+
+00:58.970 --> 00:59.840
+But this one.
+
+00:59.870 --> 01:01.670
+Does playwright have native test runner?
+
+01:01.700 --> 01:05.000
+We don't really have such information in our retrieved context.
+
+01:05.030 --> 01:06.320
+That's the reason why it's failing.
+
+01:06.320 --> 01:08.450
+So I need to add this retrieved context.
+
+01:08.450 --> 01:13.190
+So the way I'm going to do it is I'm just going to copy this expected output over here.
+
+01:13.190 --> 01:16.070
+Maybe I'm going to copy this document first of all.
+
+01:17.150 --> 01:19.790
+And I'm going to paste this document.
+
+01:20.120 --> 01:23.210
+And over here I'm just going to say copy this.
+
+01:23.240 --> 01:27.680
+And I'm just going to paste it something like this.
+
+01:27.680 --> 01:39.470
+I'm going to say uh playwright uh comes with native test runner called as playwright uh test uh runner
+
+01:39.500 --> 01:44.180
+which handles test uh creation and execution.
+
+01:44.480 --> 01:49.430
+Uh, unlike selenium which relies on JUnit unit X unit, uh, something like that.
+
+01:49.820 --> 01:53.690
+Maybe I don't even need to give this one, unlike selenium, blah blah blah.
+
+01:53.690 --> 01:55.310
+So I'm just going to leave this guy as it is.
+
+01:55.310 --> 01:59.920
+So I'm just going to say playwright comes with a native test runner called playwright test uh, runner,
+
+01:59.920 --> 02:02.440
+which handles the test creation and execution.
+
+02:02.470 --> 02:02.770
+Right.
+
+02:02.800 --> 02:08.830
+So this is the data that I'm adding in as an extra data, which is required for our Rag system to work
+
+02:08.830 --> 02:09.460
+correctly.
+
+02:09.460 --> 02:14.380
+And the next test case that is failing is this one that's created handles the, uh, debugging of web
+
+02:14.410 --> 02:15.280
+application.
+
+02:15.430 --> 02:19.060
+Uh, so I'm going to say playwright supports debugging through network tracing and stuff.
+
+02:19.060 --> 02:22.750
+So probably uh, I'm going to add that information as well.
+
+02:22.750 --> 02:30.730
+So I'm just going to say uh document of the page content is equal to this uh over here.
+
+02:30.730 --> 02:31.630
+And that's it.
+
+02:31.660 --> 02:33.310
+That's gonna do this.
+
+02:33.310 --> 02:34.630
+I'll put a comma there.
+
+02:35.020 --> 02:35.830
+Uh, cool.
+
+02:35.830 --> 02:40.000
+So I have fixed two test cases that I have which were failing before.
+
+02:40.000 --> 02:43.840
+And the third one, I just left it as it is because I think it's just about the answer.
+
+02:43.840 --> 02:44.170
+Relevant.
+
+02:44.170 --> 02:46.060
+So I'm just going to leave that guy as it is over there.
+
+02:46.090 --> 02:47.170
+I'm going to save this.
+
+02:47.170 --> 02:51.190
+And now this this data is going to be a bit more trained this time.
+
+02:51.190 --> 02:55.930
+So this time the evaluation should work fine as expected because our application is now trained with
+
+02:55.930 --> 02:58.480
+the with the relevant information this time.
+
+02:58.510 --> 03:01.330
+So we will try to run everything from the start.
+
+03:01.330 --> 03:03.070
+So I'm going to run all.
+
+03:03.520 --> 03:04.960
+I'm not going to upload anything.
+
+03:04.960 --> 03:10.240
+So I'm just going to say no for now and look at that.
+
+03:10.240 --> 03:13.840
+So it's just going to run all of these one more time.
+
+03:14.710 --> 03:20.020
+I think the place where it stops is especially on the yeah, this test case creation side, it took
+
+03:20.020 --> 03:24.520
+14 seconds last time and then 10s the time before.
+
+03:24.550 --> 03:26.080
+Yeah 14 seconds.
+
+03:26.080 --> 03:31.330
+And now the evaluation is running and we will see how the evaluation works.
+
+03:31.390 --> 03:32.410
+Yeah there we go.
+
+03:32.440 --> 03:36.340
+That's still the same set of failures which is happening which is fine.
+
+03:40.870 --> 03:41.860
+And there we go.
+
+03:41.860 --> 03:43.900
+You can see that the execution is completed this time.
+
+03:43.900 --> 03:50.350
+And as expected this time we only have one failure, which we know about the contextual relevance.
+
+03:50.350 --> 03:53.380
+As you remember, the same thing is happening over here.
+
+03:53.500 --> 03:59.770
+Um, but you can notice that we have all of the test cases got passed, which is amazing.
+
+03:59.770 --> 04:02.470
+And over here the test case three is a bit different.
+
+04:02.680 --> 04:06.220
+It says does the playwright has native selenium test runner like selenium.
+
+04:06.310 --> 04:07.870
+Uh, it says actual output.
+
+04:07.900 --> 04:11.170
+I don't know if playwright has native test runner like selenium.
+
+04:11.170 --> 04:16.330
+My previous context didn't provide the information, but specific test runner blah blah blah.
+
+04:16.330 --> 04:23.530
+But over here the context which is coming out is uh, is not quite right.
+
+04:23.560 --> 04:30.880
+Unfortunately, it says playwright is modern automation library for end to end testing.
+
+04:30.910 --> 04:34.240
+Looks like the context which is coming out is not quite right.
+
+04:34.240 --> 04:34.660
+It should.
+
+04:34.690 --> 04:35.380
+It should not be.
+
+04:35.380 --> 04:40.120
+This retrieved context should should have the information that we have passed in.
+
+04:40.120 --> 04:43.330
+But for some reason it has not got, which is crazy.
+
+04:43.330 --> 04:46.390
+So probably we need to rerun this again and see why this is happening.
+
+04:46.390 --> 04:51.430
+But you could see that we have got all of these tests passing this time.
+
+04:51.430 --> 04:58.520
+Like now we have 85.71% passing of the test cases, which was not the case earlier while we were doing
+
+04:58.520 --> 04:58.820
+so.
+
+04:58.820 --> 05:04.400
+If I just go back to the evaluation, you see that the entire test cases are now parsing for us over
+
+05:04.400 --> 05:04.730
+here.
+
+05:04.730 --> 05:07.580
+And this is where the graph comes very handy.
+
+05:07.580 --> 05:15.230
+You see that the we will now notice that our improvement of our large language model is slowly and steadily
+
+05:15.230 --> 05:19.190
+increasing, rather the trend going down as well.
+
+05:19.520 --> 05:26.510
+And you see that from 4 to 6 to 4 to 6 out of seven, we have improved the test cases execution.
+
+05:26.510 --> 05:32.720
+And we can see the entire test case, uh, happening for every single, uh, test over here.
+
+05:32.720 --> 05:37.400
+So this is the beauty of the deep evolve as compared to ragas, because you can see that in deep eval.
+
+05:37.430 --> 05:45.860
+You can see the entire operation, uh, in a, in an full overview, like how the executions are happening
+
+05:45.860 --> 05:47.570
+and how you can test them up.
+
+05:47.570 --> 05:52.190
+So that is the beauty of deep evolve as compared to ragas over here.
+
+05:52.280 --> 05:55.730
+And I could see that it is quite relevant as well.
+
+05:55.730 --> 06:04.080
+You can use the same concept to also fuse the the rag that we have built with our documents.
+
+06:04.140 --> 06:05.400
+Uh, extraction.
+
+06:05.550 --> 06:13.440
+Uh, over here, uh, the PDF files, we can do the exact same thing, and then we can pass the Excel
+
+06:13.440 --> 06:15.030
+sheet that we have got the data set.
+
+06:15.030 --> 06:20.130
+As you can see over here, the bias question that we were asking before, we can try to ask this question,
+
+06:20.130 --> 06:22.290
+you can create this as the data set.
+
+06:22.290 --> 06:24.420
+You can pass it to uh deep valve.
+
+06:24.420 --> 06:28.800
+And then you can ask the question from there, like how we did over here in this particular section.
+
+06:28.800 --> 06:32.850
+And then you can verify how the testing is, uh, testing can be done.
+
+06:32.850 --> 06:37.080
+Those things is like a homework for you to do it and see how you can achieve that.
+
+06:37.080 --> 06:38.880
+But that is going to be amazing as well.
+
+06:38.910 --> 06:44.640
+Guys, you can try to achieve all these operation, like how we are doing over here in this particular,
+
+06:44.640 --> 06:51.030
+uh, deep level, uh, for testing the Rag system and the AI agents that we have built in our earlier
+
+06:51.030 --> 06:52.650
+sections of this course.
+
+06:52.650 --> 06:55.050
+Once again, thank you so much for purchasing this course.
+
+06:55.050 --> 06:56.400
+And you guys have a great day.

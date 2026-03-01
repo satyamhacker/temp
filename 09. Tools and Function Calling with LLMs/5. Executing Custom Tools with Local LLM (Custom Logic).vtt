@@ -1,0 +1,457 @@
+WEBVTT
+
+00:00.050 --> 00:07.040
+So now that we have got a bit of understanding of how we came all the way from the model without having
+
+00:07.070 --> 00:16.550
+tool support and the model with having the bounded tool support, and also how we bounded the LM with
+
+00:16.550 --> 00:19.910
+a custom tools and how it actually calls those tools.
+
+00:19.910 --> 00:23.210
+But now we are going to see this logic.
+
+00:23.210 --> 00:24.440
+This is very important.
+
+00:24.440 --> 00:27.380
+This is something which we have to write a bit of code there.
+
+00:27.380 --> 00:33.410
+So you will notice that while the user asks the question like what is the sum of two and four?
+
+00:34.430 --> 00:38.570
+And this particular request goes to like a chain with a prompt template.
+
+00:38.570 --> 00:41.900
+And then we pass it to the model.
+
+00:41.900 --> 00:51.050
+And the model has got the tool binding for the addition, uh, custom tools, subtraction custom tools
+
+00:51.050 --> 00:56.450
+and Wikipedia custom tool, or maybe the custom built tool.
+
+00:56.750 --> 01:02.090
+And you will notice that because you are going to be asking two and four.
+
+01:02.120 --> 01:05.150
+Now there is going to be a tool calling happen.
+
+01:05.150 --> 01:12.080
+So there is this tool calling happens over here where this tool calling will now have should have a
+
+01:12.080 --> 01:16.910
+logic because we have seen until the tool calling because the Q1 model was actually rightly selecting
+
+01:16.910 --> 01:21.230
+the adhesion custom tool for this particular question.
+
+01:21.230 --> 01:28.010
+But now we need to write a logic over here to say you need to select this particular custom tool and
+
+01:28.010 --> 01:34.880
+also execute this particular custom tool for me and give me the response back like sum of two and four
+
+01:34.910 --> 01:35.750
+is six.
+
+01:36.950 --> 01:39.320
+This is something we have to do right now.
+
+01:39.320 --> 01:44.900
+So we have seen that the tool calling is happening and it is selecting the tools for us, the right
+
+01:44.930 --> 01:45.650
+tool for us.
+
+01:45.650 --> 01:50.180
+Based on the three boundary tool it has got four boundary tool it has got.
+
+01:50.180 --> 01:55.910
+But we haven't seen how the execution of this particular tool really happens.
+
+01:55.910 --> 01:59.140
+And for in order to see how this execution really happens.
+
+01:59.140 --> 02:06.400
+We need to write a bit of code, and for that, we also need to ensure that we write a bit of a prompt
+
+02:06.400 --> 02:07.150
+here.
+
+02:07.510 --> 02:13.150
+In such a way, we need to create a prompt template in such a way that this model can really understand.
+
+02:13.210 --> 02:19.930
+So what I really mean about that is that we are going to create a prompt message for the human message
+
+02:19.930 --> 02:28.180
+in such a way that it is going to have the query from the user, and also it is going to have the AI
+
+02:28.210 --> 02:35.620
+message which the AI is going to be giving for us, and also going to have a tool execution logic message
+
+02:35.620 --> 02:42.790
+so that the LLM can go and execute the tool or invoke the specific tool for us and get the response
+
+02:42.790 --> 02:44.410
+out from that tool.
+
+02:44.410 --> 02:51.100
+So we need to have all these three logics or all these three information in a single prompt, which
+
+02:51.100 --> 02:53.860
+the model can execute for us.
+
+02:53.860 --> 02:56.860
+And that is what we are going to do in this particular lecture.
+
+02:56.860 --> 02:59.620
+So let's see how we can actually achieve all of these.
+
+02:59.650 --> 03:01.090
+So I'm going to go here.
+
+03:01.120 --> 03:02.710
+I'm going to mark down here.
+
+03:02.710 --> 03:11.080
+And I'm going to say execute the custom tools uh from LM.
+
+03:12.190 --> 03:16.060
+And I'm going to take over here the code.
+
+03:16.060 --> 03:18.250
+And I'm going to start writing the code over here.
+
+03:18.940 --> 03:27.400
+So uh, I'm going to probably just create, uh, like a, uh, human message.
+
+03:27.400 --> 03:36.430
+I'm going to say, uh, from, uh, lang chain core dot messages, import human message.
+
+03:37.390 --> 03:43.720
+And over here I'm just going to say message is equal to human message, uh, which is probably going
+
+03:43.720 --> 03:47.650
+to be in an array, because I'm going to do quite a lot of appending right now.
+
+03:47.650 --> 03:51.970
+And I need to pass the, uh, the question over here.
+
+03:51.970 --> 03:57.720
+So probably I'm going to say, uh, query Is equal to.
+
+03:58.680 --> 04:08.160
+Or did Donald Trump win the 2024 presidential election?
+
+04:09.720 --> 04:17.250
+We know that surely our model has got no idea about this particular query that we are going to be asking.
+
+04:17.250 --> 04:25.080
+So now I wanted to see if our, uh, a large language model with the tools that we have got can actually
+
+04:25.110 --> 04:26.580
+answer that particular question.
+
+04:26.580 --> 04:29.490
+So I'm going to just say, uh, an I message.
+
+04:29.490 --> 04:36.000
+So I'm going to say this is the I message I'm going to get, uh, and I'm going to call our LLM with
+
+04:36.000 --> 04:38.910
+tools, uh Dot invoke.
+
+04:38.940 --> 04:42.900
+And over here I'm going to ask that query.
+
+04:42.930 --> 04:45.240
+I'm just going to pass that query over here.
+
+04:45.300 --> 04:49.740
+And we will see if the LLM can choose the right tool for us.
+
+04:49.770 --> 04:50.670
+Of course it does it.
+
+04:50.670 --> 04:51.030
+Right.
+
+04:51.030 --> 04:58.410
+So if I want to print the I message Dart our tool calls.
+
+04:58.410 --> 05:06.540
+And if I try to run this, you will notice that we are going to see that this is going to call or invoke
+
+05:06.570 --> 05:09.390
+the correct tool, Wikipedia, which is amazing.
+
+05:09.420 --> 05:16.920
+I wanted to append this AI message as well inside this particular messages, so that I'm just creating
+
+05:16.920 --> 05:21.840
+a prompt template right now with all the information which the LLM requires at the end to give me the
+
+05:21.840 --> 05:22.470
+right answer.
+
+05:22.470 --> 05:24.690
+So I'm going to say message dot append.
+
+05:25.260 --> 05:28.740
+And I'm going to add the AI message as well.
+
+05:28.740 --> 05:36.660
+So this is going to be my AI message which I wanted to append uh, for this particular uh, for, for
+
+05:36.660 --> 05:37.470
+this particular query.
+
+05:37.470 --> 05:45.390
+And now what I'm going to do is I need to execute the actual tool that it is going to select, but all
+
+05:45.390 --> 05:51.000
+the tools are actually sitting inside my AI message, which I'm going to be getting.
+
+05:51.030 --> 05:51.240
+Right.
+
+05:51.270 --> 05:56.630
+So let me just let me also show you the message before I actually come go further.
+
+05:56.630 --> 05:59.210
+So if I show you the message over here, look at that.
+
+05:59.210 --> 06:03.260
+The the human message has got this particular content.
+
+06:03.260 --> 06:06.200
+And there is this AI message which I just appended over here.
+
+06:06.230 --> 06:06.650
+Look at that.
+
+06:06.650 --> 06:08.660
+This human message and AI message.
+
+06:09.440 --> 06:15.080
+The last message I need is the tool message, which is the tool which I'm going to be executing.
+
+06:15.080 --> 06:17.510
+This is what I'm trying to build over here.
+
+06:17.510 --> 06:23.540
+But all these information like the AI messages, like which tool that it is going to choose, is coming
+
+06:23.540 --> 06:28.190
+from this AI message underscore, uh, AI message dot.
+
+06:28.220 --> 06:29.360
+The tool calls.
+
+06:29.390 --> 06:29.780
+Right.
+
+06:29.780 --> 06:36.290
+So I'm going to be essentially choosing which tool that I need to select and then execute.
+
+06:36.290 --> 06:40.310
+So for doing that I'm going to write a small for loop over here.
+
+06:40.610 --> 06:49.880
+Uh so I'm going to say tool call in AI underscore message dot tool calls.
+
+06:50.000 --> 06:52.220
+This is the for loop which I'm writing over here.
+
+06:52.220 --> 06:59.870
+And I'm going to say the tool name is going to be a tool call that is going to be in this particular
+
+06:59.870 --> 07:00.680
+variable.
+
+07:01.430 --> 07:03.500
+And I'm going to get the name.
+
+07:03.530 --> 07:10.970
+See that because you know that the tool uh, over here, the tool call if you just go here will have
+
+07:10.970 --> 07:13.820
+a name as a variable.
+
+07:13.820 --> 07:15.830
+So this gives me the name of the tool.
+
+07:16.190 --> 07:21.620
+Uh, and I'm just going to make it lower just in case, because maybe if the tool comes in capital letter
+
+07:21.620 --> 07:24.110
+from the, uh, LM, it could be a problem.
+
+07:24.110 --> 07:28.340
+So that's that's why I'm just for the sake of making it work.
+
+07:28.370 --> 07:29.090
+I'm just making it.
+
+07:29.090 --> 07:34.880
+I'm going to do that, and I'm going to do a method called as execute tool.
+
+07:34.880 --> 07:36.860
+So which tool I'm going to be executing.
+
+07:37.040 --> 07:42.380
+You remember the list of tools that we created on the top over here, which is going to give me all
+
+07:42.380 --> 07:45.470
+the tools with its name over here.
+
+07:45.500 --> 07:47.900
+That's what I'm going to be getting up as well.
+
+07:47.900 --> 07:52.660
+So I'm gonna get the list of the tools and I'm going to pass the tool name over here.
+
+07:52.660 --> 07:59.770
+So that's going to give me the tool which is already mapped inside my list of tools because it is marked
+
+07:59.770 --> 08:01.870
+with the name over here.
+
+08:01.870 --> 08:03.640
+So name colon and then the tool.
+
+08:03.640 --> 08:10.120
+So if I pass the tool name as a key then the value is going to be the tool itself like the actual tool
+
+08:10.120 --> 08:10.780
+itself.
+
+08:10.930 --> 08:15.400
+And now I can invoke that particular tool from the execute tool method.
+
+08:15.400 --> 08:18.280
+Isn't it because we can because this is a runnable type.
+
+08:18.280 --> 08:20.230
+So I can now invoke this tool.
+
+08:20.230 --> 08:29.560
+So I'm going to say tool invoke is equal to execute tool dot I can just call the invoke method.
+
+08:29.560 --> 08:40.030
+And I can invoke the tool with all the related details which is passed from the tool calls for me and
+
+08:40.420 --> 08:42.970
+that is the last thing I needed.
+
+08:42.970 --> 08:44.650
+And this one as well.
+
+08:44.650 --> 08:48.550
+I can append it in the message over here.
+
+08:48.550 --> 08:54.910
+And now if I try to print the message, you will notice that I will not only have the human and the
+
+08:54.910 --> 09:00.430
+AI message like how I had before, I will now also have the tool calls as well.
+
+09:00.460 --> 09:02.470
+Like the tools message as well over here.
+
+09:02.500 --> 09:03.190
+Look at that.
+
+09:04.300 --> 09:08.980
+So this is also going to be coming for me along with it.
+
+09:08.980 --> 09:14.860
+But actually instead of the tool calls which I have wrongly mapped over here, I need to I need to map
+
+09:14.860 --> 09:17.500
+the tool invoke because that is what I really need.
+
+09:17.530 --> 09:22.600
+I wanted to see like an AI message instead of the actual tool call itself.
+
+09:22.600 --> 09:25.750
+So I'm going to, uh, append the tool invoke message.
+
+09:25.780 --> 09:26.830
+Oh, look at that.
+
+09:27.070 --> 09:29.530
+Because I'm doing it for the second time.
+
+09:29.530 --> 09:32.530
+It's just, uh, making things messy here.
+
+09:32.860 --> 09:34.090
+Uh, probably.
+
+09:34.090 --> 09:35.440
+I need to now set.
+
+09:35.470 --> 09:38.320
+I need to just clear this message.
+
+09:38.470 --> 09:40.690
+So now it is actually correct.
+
+09:40.690 --> 09:43.300
+So we have the human message and the AI message.
+
+09:43.300 --> 09:46.180
+And I also need the tool message to be added.
+
+09:46.180 --> 09:54.240
+So now if I run this code over here, you should see the AI message, human message and the tool message.
+
+09:54.240 --> 10:01.620
+So we have three messages which is required for our AI to really execute things.
+
+10:01.650 --> 10:02.130
+Look at that.
+
+10:02.130 --> 10:03.150
+It's already this.
+
+10:03.180 --> 10:04.980
+This thing is being executed.
+
+10:04.980 --> 10:07.200
+Uh, because we did the invoke method.
+
+10:07.230 --> 10:08.220
+See that?
+
+10:08.310 --> 10:11.040
+Uh, the content of the Wikipedia is already coming up over here.
+
+10:11.040 --> 10:16.050
+So list of Donald Trump 2024 presidential election endorsement Summary A range of notable individuals,
+
+10:16.080 --> 10:23.340
+groups, organizations endorse Donald Trump for 24 US presidential election and 24 presidential election.
+
+10:23.370 --> 10:30.750
+The summary is blah, blah blah, and it has got all the details that is needed for the LLM to get the
+
+10:30.750 --> 10:34.380
+context to give me the answer that I'm going to be asking further.
+
+10:34.410 --> 10:41.340
+That is what or that is how you can actually create this particular message, which is required for
+
+10:41.340 --> 10:42.480
+the LLM to execute.
+
+10:42.510 --> 10:48.090
+In our next lecture, we will see how we can execute this whole entire message along with LLM so that
+
+10:48.090 --> 10:49.620
+it gives me the response back.

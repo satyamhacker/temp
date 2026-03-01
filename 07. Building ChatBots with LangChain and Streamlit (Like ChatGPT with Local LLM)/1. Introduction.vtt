@@ -1,0 +1,172 @@
+WEBVTT
+
+00:00.050 --> 00:02.090
+Welcome to the next section of our course.
+
+00:02.090 --> 00:08.180
+And in this section we are going to talk about how we can start building chatbots with our local large
+
+00:08.180 --> 00:10.940
+language models and olama.
+
+00:10.970 --> 00:15.500
+So we are going to see how we can achieve all these operations in this particular section.
+
+00:15.500 --> 00:20.960
+So you can see that basically we are going to be using the same knowledge that we have acquired in our
+
+00:20.960 --> 00:21.950
+last section.
+
+00:21.950 --> 00:28.700
+If you remember, we were doing this historical chat message history, which is going to store our history
+
+00:28.700 --> 00:30.200
+message of the chat information.
+
+00:30.200 --> 00:36.350
+And it's going to be passing it all the way to the large language model from the power of this long
+
+00:36.350 --> 00:37.010
+chain.
+
+00:37.010 --> 00:42.200
+So we are going to use the same knowledge that we have acquired in our last section.
+
+00:42.200 --> 00:49.250
+And now we are going to see how we can use this, uh, concept and implement a chatbot.
+
+00:49.490 --> 00:56.060
+But this time we are going to be implementing the chatbot using a tool or a library called a Streamlet,
+
+00:56.060 --> 00:57.860
+which is going to make that happen.
+
+00:57.860 --> 01:01.460
+And again, this particular application is going to look something like this.
+
+01:01.460 --> 01:06.480
+As you can see over here at the end of this particular section, you will have this particular source
+
+01:06.480 --> 01:07.470
+code up and running.
+
+01:07.470 --> 01:13.440
+So you will see that I have created a simple like super simple application over here where you have
+
+01:13.440 --> 01:14.550
+got your name here.
+
+01:14.550 --> 01:19.560
+This is mainly for the session ID, if you remember that we were passing in our last section of the
+
+01:19.560 --> 01:21.510
+course, the same idea is this.
+
+01:21.510 --> 01:23.250
+So this is the session name.
+
+01:23.400 --> 01:25.860
+And then we have got some options over here.
+
+01:25.860 --> 01:32.250
+So based on the expert level you are going to be getting the answer for your for your query that you're
+
+01:32.250 --> 01:33.210
+going to be asking.
+
+01:33.210 --> 01:40.500
+And over here you can see that we have got a small chat message or chat input from the Streamlit app
+
+01:40.500 --> 01:43.140
+where I'm going to be asking the question over here.
+
+01:43.140 --> 01:54.030
+So let's say I'm going to ask how to write a simple protein genetic or whatever.
+
+01:54.030 --> 01:56.250
+So I'm just going to ask this question.
+
+01:56.250 --> 01:59.880
+Uh, so we'll see how the bot is going to answer.
+
+01:59.880 --> 02:06.400
+You see that immediately this particular, uh, chatbot is going to answer the question pretty much
+
+02:06.400 --> 02:13.270
+like how it is doing with the actual ChatGPT that you can ask from the online, and you will notice
+
+02:13.270 --> 02:20.410
+that it is also having a logo for the user, like a user logo, and there is a bot logo for the response
+
+02:20.410 --> 02:22.090
+you're going to be getting in over here.
+
+02:22.120 --> 02:29.560
+And also notice that how it is neatly formatting all the, uh, all the genetic sequence for our question
+
+02:29.560 --> 02:32.890
+that we are asking, and it is also showing the details over there.
+
+02:32.920 --> 02:38.920
+The similar thing is going to happen if you want to ask for writing a simple, uh, selenium with,
+
+02:38.920 --> 02:42.940
+uh, Java code for google.com.
+
+02:42.970 --> 02:47.200
+And if I do that, you'll notice that it is going to write all the details.
+
+02:47.200 --> 02:54.010
+And again it is going to, uh, write the dependencies and it's going to write the Java code for the
+
+02:54.010 --> 02:57.640
+selenium code that we are going to be that we can use.
+
+02:57.670 --> 03:02.470
+And you will notice that all these are happening in our local large language model.
+
+03:02.470 --> 03:07.830
+And it is using the Lang chain and the historical information for us.
+
+03:07.830 --> 03:08.940
+And guess what?
+
+03:09.420 --> 03:17.220
+If I'm going to ask a follow up question for this particular question, uh, how to tweak, uh, the
+
+03:17.220 --> 03:23.340
+code, uh, with uh, playwright, uh, as well.
+
+03:23.340 --> 03:28.860
+So if I ask this question and you notice that it knows that there is a context that I need to write
+
+03:28.860 --> 03:34.230
+the code with the, uh, for the google.com website, and immediately it is now trying to set up the
+
+03:34.230 --> 03:38.850
+project for the playwright, and it's also writing the code for me for the google.com.
+
+03:38.850 --> 03:44.010
+And the reason why this is happening is because now this particular chatbot has got the context of the
+
+03:44.010 --> 03:46.020
+earlier question that we have asked.
+
+03:46.050 --> 03:51.750
+That's the reason why it could able to answer the question for the same kind of website, and then it
+
+03:51.750 --> 03:56.160
+is just replacing it with a different tool this time and the same language as you can see.
+
+03:56.160 --> 04:01.650
+So these are all happening because of all the chat message history that we have got with the runnable
+
+04:01.650 --> 04:03.210
+message history that we have got.
+
+04:03.210 --> 04:06.660
+So we're going to be using the same kind of technology in here as well.
+
+04:06.660 --> 04:10.350
+And we'll see how we can able to create this chatbot in this particular section.

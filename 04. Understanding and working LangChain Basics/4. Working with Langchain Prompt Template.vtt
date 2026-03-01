@@ -1,0 +1,535 @@
+WEBVTT
+
+00:00.050 --> 00:05.660
+So now, in our last lecture, if you remember the first lecture, we were talking about how we can
+
+00:05.660 --> 00:13.040
+communicate with the local large language model from Allama, from a user using the hyper terminal that
+
+00:13.040 --> 00:14.840
+we were doing over here like this.
+
+00:14.840 --> 00:15.050
+Right.
+
+00:15.080 --> 00:21.950
+Like so we just ran the Allama Cuban model, and then we sent a message like a user, like a chat message.
+
+00:21.950 --> 00:26.630
+And then it was responding as the details like this for us over here.
+
+00:26.630 --> 00:29.420
+So that is this particular block diagram that you are seeing over here.
+
+00:29.420 --> 00:36.530
+And in our last lecture we were trying to do this operation, which is this guy over here where we could
+
+00:36.560 --> 00:42.710
+able to communicate with the large language model using the chat olama from the long chain.
+
+00:42.710 --> 00:48.710
+And then we did an invoke and we sent the query and then it gave us the response back.
+
+00:48.710 --> 00:55.730
+And also with the connectivity of the Langschmidt, we could able to get the, uh, traceability and
+
+00:55.730 --> 01:00.080
+observability metrics into the Langschmidt portal.
+
+01:00.080 --> 01:02.490
+And that's going to look something like this for us over here.
+
+01:02.490 --> 01:04.410
+So user sends a request to the Lang chain.
+
+01:04.410 --> 01:11.910
+And Lang chain in turn sends the request to the local large language model using the chat or llama.
+
+01:11.910 --> 01:19.710
+And then we get the response back from the, uh, from the large language model to the Lang chain.
+
+01:19.710 --> 01:23.700
+And we also record the traceability in the Lang Smith.
+
+01:23.700 --> 01:25.470
+And then we get the response to the user.
+
+01:25.500 --> 01:25.680
+Right.
+
+01:25.710 --> 01:28.800
+So that is what is really happening all these days for us over here.
+
+01:28.800 --> 01:36.750
+But again, the response is just coming from the local large language model via Olama is exactly what
+
+01:36.750 --> 01:38.760
+is being printed for us over here.
+
+01:38.760 --> 01:45.960
+As you can see, along with some traceability details and some some more details, pretty much like
+
+01:45.960 --> 01:50.460
+the attributes, metadata and what are the things going on over there.
+
+01:50.460 --> 01:57.120
+But what if while you build a large language model, you need to get the responses like how you want
+
+01:57.120 --> 02:03.540
+it and also how you wanted to chat with the Lange chain over here in a better fashion.
+
+02:03.540 --> 02:05.040
+So that is what we are going to be discussing.
+
+02:05.040 --> 02:13.410
+So essentially, if you go back to the Lange chain or Lange Smith over here, sign up and let me just
+
+02:13.410 --> 02:16.320
+log in there, which is this one.
+
+02:16.320 --> 02:22.020
+And you will notice that we actually have an input of a human input.
+
+02:22.080 --> 02:25.680
+And also we have an output as an AI output over here.
+
+02:25.680 --> 02:30.210
+So basically human enters like hello, how are you doing today.
+
+02:30.210 --> 02:34.050
+And the AI is returning as this particular response over here.
+
+02:34.080 --> 02:34.710
+Right.
+
+02:34.710 --> 02:41.070
+So if we wanted to perform a chat operation like how we are doing over here, we have got quite a lot
+
+02:41.100 --> 02:46.560
+of different chat template to make this input and output more streamlined.
+
+02:47.460 --> 02:49.710
+And that is what we are going to be discussing in this particular lecture.
+
+02:49.710 --> 02:55.860
+Basically, we are going to discuss a different way to communicate with the with the large language
+
+02:55.860 --> 03:03.460
+model via Lang chain, with quite a lot of different chat templates or prompt templates to make it more
+
+03:03.460 --> 03:04.240
+streamlined.
+
+03:04.270 --> 03:06.250
+That is what we are going to be discussing over here.
+
+03:06.250 --> 03:13.270
+So I'm going to put a markdown over here and I'm going to say prompt and chat templates.
+
+03:13.270 --> 03:17.800
+So these are things that we have to discuss for a couple of lectures from now.
+
+03:18.070 --> 03:20.950
+And I'm going to put a code there.
+
+03:20.950 --> 03:28.300
+And now I'm going to say from a Lang chain core dot, you can see that there is something called as
+
+03:28.300 --> 03:29.320
+prompts.
+
+03:29.320 --> 03:32.860
+And I'm going to import what is called as prompt template.
+
+03:32.860 --> 03:38.860
+And this prompt template is the one which is responsible for creating the prompt as a user, like how
+
+03:38.860 --> 03:39.280
+we were doing.
+
+03:39.280 --> 03:41.470
+So this is the prompt that we have created over here.
+
+03:41.470 --> 03:48.430
+And now we are going to create a structured prompt like how in reality you can send it through and large
+
+03:48.430 --> 03:49.750
+language model application.
+
+03:49.750 --> 03:55.060
+So I'm going to say prompt template is equal to.
+
+03:55.090 --> 03:58.930
+And I'm going to call this prompt template class that I have imported.
+
+03:58.930 --> 04:02.530
+And there is this method called as from template over here.
+
+04:02.980 --> 04:08.770
+And this template I can now use to pass any of the message or the string message that I wanted to pass.
+
+04:08.770 --> 04:19.660
+So basically I'm going to say what is the advantage of running the, uh, LM in a local machine?
+
+04:19.780 --> 04:20.530
+Look at that.
+
+04:20.530 --> 04:24.730
+I can now pass this template over here like like the prompt over here.
+
+04:24.730 --> 04:31.240
+And now if I want to print how this prompt template is going to look like, you will notice that the
+
+04:31.240 --> 04:34.570
+prompt template has got quite a lot of different inputs there.
+
+04:34.600 --> 04:39.550
+It has got an input variable, input type partial variable.
+
+04:39.550 --> 04:41.590
+And then there is a template.
+
+04:42.910 --> 04:43.780
+What are these guys.
+
+04:43.780 --> 04:47.200
+You see that there is input variable input types partial variables.
+
+04:47.200 --> 04:49.150
+We have not even passed any of these.
+
+04:49.150 --> 04:54.130
+But the prompt template class has got these parameters there.
+
+04:54.880 --> 04:59.630
+And finally it has got the template of the prompt that we are trying to pass over there.
+
+04:59.630 --> 05:07.640
+And now this begs the question, how is this really working and how is how we can use this input variables
+
+05:07.640 --> 05:10.760
+and input types, and why do we even need it?
+
+05:10.760 --> 05:16.610
+So for instance, if I want to reuse this particular prompt where I'm going to say, what is the advantage
+
+05:16.610 --> 05:21.590
+of running the LLM in both local machine as well as the cloud machine.
+
+05:21.590 --> 05:23.810
+So I don't really have to create two prompts.
+
+05:23.810 --> 05:28.970
+Rather I can just create an input variable, something like this.
+
+05:28.970 --> 05:30.770
+So I'm just going to put an env there.
+
+05:30.770 --> 05:33.560
+So env I mean you can name it whatever that you want.
+
+05:33.710 --> 05:35.330
+Maybe you can just say machine.
+
+05:35.360 --> 05:41.450
+And so it can be a cloud machine or local machine or I'm just going to say environment or env for saying
+
+05:41.450 --> 05:43.250
+what environment I'm running really.
+
+05:43.250 --> 05:47.330
+So this is an variable that I'm creating over here.
+
+05:47.330 --> 05:54.140
+And now if I try to run this over here, you see that the input variable has got e and v there.
+
+05:54.980 --> 06:01.010
+So which means this is an input variable that I wanted to pass I can pass from this particular prompt
+
+06:01.040 --> 06:04.910
+template, which is what this prompt template is really expecting.
+
+06:05.180 --> 06:12.170
+And now how do I pass this env or the the input variable to the prompt template.
+
+06:12.200 --> 06:14.150
+Well I can do this.
+
+06:14.180 --> 06:18.800
+Let me just create a prompt like a proper prompt which I'm going to be passing in.
+
+06:18.800 --> 06:22.550
+And I'm going to write a, I'm going to call a method called as invoke.
+
+06:22.550 --> 06:26.240
+So this invoke method is going to be something that we have already used while we're calling the LM
+
+06:26.240 --> 06:27.020
+invoke.
+
+06:27.080 --> 06:29.300
+The same thing is what I'm calling over here.
+
+06:29.300 --> 06:34.940
+This is a common method or streamlined method which is used in lang chain, which can help you pass
+
+06:34.940 --> 06:38.750
+or invoke anything that you are trying to pass, or any runnables that you pass.
+
+06:38.780 --> 06:41.210
+Well, if I'm saying runnables, don't worry about it.
+
+06:41.240 --> 06:45.560
+We'll be talking about Runnables in more details in upcoming lectures of this course.
+
+06:45.560 --> 06:49.460
+But Runnables are very important concept that we are going to be talking about as well.
+
+06:49.700 --> 06:55.970
+And over here I can pass the input variables something like this.
+
+06:55.970 --> 07:04.620
+Basically I can pass as a dictionary of E and v and I'm going to say a local machine.
+
+07:04.620 --> 07:05.100
+Right.
+
+07:05.100 --> 07:07.770
+So this is going to be E and V.
+
+07:08.100 --> 07:11.220
+And the values I'm going to pass is going to be local machine.
+
+07:12.060 --> 07:13.050
+Look at that.
+
+07:13.080 --> 07:15.510
+Now that I have passed this over here.
+
+07:15.540 --> 07:22.710
+So this is how I pass the the variable input variable as a dictionary value.
+
+07:22.710 --> 07:28.650
+Because you can have multiple number of input variables in future because this is an array type.
+
+07:28.650 --> 07:32.610
+So if you want to pass a value to the array type you need to pass it as a dictionary.
+
+07:32.610 --> 07:35.280
+As you can see over here it has a key and value pair.
+
+07:35.280 --> 07:37.020
+So that is how you do it.
+
+07:37.020 --> 07:40.620
+And now if I want to print how the prompt look like.
+
+07:40.620 --> 07:48.330
+So if I print the prompt, you will notice that the prompt itself is of a type string prompt value where
+
+07:48.330 --> 07:49.680
+it has got a text.
+
+07:49.710 --> 07:56.100
+What is the advantage of running lm in and see that it has just made it as local machine?
+
+07:56.100 --> 08:01.060
+Basically the prompt now has got this value of local machine.
+
+08:01.060 --> 08:04.930
+Just add it to the existing template of the prompt value.
+
+08:04.930 --> 08:07.600
+And now that is how the things are going to be over here.
+
+08:07.630 --> 08:09.310
+Now it sounds interesting right.
+
+08:09.310 --> 08:15.580
+So if I want to print this particular prompt value, uh, if I just put print, if I just run it, you
+
+08:15.580 --> 08:20.950
+see that it has got the text as what is the advantage of the LLM running in the local machine.
+
+08:20.950 --> 08:26.350
+So that is what we are going to be passing in to our local large language model.
+
+08:26.350 --> 08:28.090
+So how do we actually do that.
+
+08:28.090 --> 08:34.510
+Well I'm going to just say LLM dot invoke see the same method.
+
+08:34.570 --> 08:40.090
+And over here I'm going to pass the prompt because that is what we were doing even before while we were
+
+08:40.090 --> 08:41.350
+trying to pass the text.
+
+08:41.380 --> 08:41.770
+Right.
+
+08:41.770 --> 08:44.590
+So instead of the text I'm going to pass the prompt.
+
+08:44.590 --> 08:50.470
+And if I now try to print this particular value.
+
+08:50.470 --> 08:55.690
+So you see that, uh, so now it is passing that value to the local large language model.
+
+08:55.690 --> 08:57.340
+And now it is sending that value.
+
+08:57.340 --> 08:59.560
+But we have to print the value out as well.
+
+08:59.560 --> 09:01.960
+So let me just wait for this to execute.
+
+09:01.990 --> 09:02.710
+Ah, there we go.
+
+09:02.710 --> 09:05.890
+So you see that we are getting an AI message.
+
+09:05.890 --> 09:10.480
+This is the same kind of AI message that we were seeing on the Lang Smith.
+
+09:10.810 --> 09:13.270
+And over here it says the content is running.
+
+09:13.270 --> 09:18.220
+The large language model in your local machine or on your local machine has several advantage, blah,
+
+09:18.220 --> 09:19.090
+blah, blah.
+
+09:19.090 --> 09:24.910
+And this is the response coming out from our local large language model.
+
+09:25.030 --> 09:32.320
+And now if I want to just print the content alone, I can just say, um, maybe the content is equal
+
+09:32.320 --> 09:32.470
+to.
+
+09:32.500 --> 09:34.960
+And then there is this property called as content.
+
+09:35.260 --> 09:40.780
+And then if I try to run this, it is going to store the content into the content for us.
+
+09:40.780 --> 09:44.890
+And while this is running, I'm also going to show you how the Lang Smith is going to look like.
+
+09:44.890 --> 09:47.590
+So if I try to refresh this look at that.
+
+09:47.590 --> 09:51.250
+So there is this chat alarm is already running behind the scene in my machine.
+
+09:51.250 --> 09:54.310
+So that is why this is keep running there.
+
+09:54.310 --> 10:01.170
+But in the meantime you can also see, because we have used the prompt template over here like local
+
+10:01.170 --> 10:01.800
+machine.
+
+10:01.800 --> 10:04.200
+So it is showing me local machine.
+
+10:04.230 --> 10:07.260
+And what is the text and what is this a string prompt value.
+
+10:07.680 --> 10:12.840
+And we were also passing to the chat Olama which is this one.
+
+10:12.840 --> 10:15.570
+So what is the advantage of running the LLM in the local machine.
+
+10:15.570 --> 10:19.020
+It has costed us around 396 token.
+
+10:19.020 --> 10:19.320
+Guys.
+
+10:19.320 --> 10:20.010
+Look at that.
+
+10:20.010 --> 10:24.120
+And then the output is just coming up over here as you can see.
+
+10:24.120 --> 10:28.140
+So this is an huge response coming from the AI.
+
+10:28.170 --> 10:30.180
+I think it has printed the value.
+
+10:30.180 --> 10:34.260
+So if I just go back yeah the content, we have not printed the content.
+
+10:34.260 --> 10:36.660
+So we can just print the content alone separately.
+
+10:36.660 --> 10:38.430
+So probably we just put a code there.
+
+10:38.430 --> 10:45.450
+And if I print the content and if I run it up, you see that we have got the content alone over here
+
+10:45.450 --> 10:46.500
+so we can print the content.
+
+10:46.500 --> 10:52.920
+If I wanted to say print the content and if I run this, look at that.
+
+10:53.820 --> 10:56.990
+So we get all the response is over here.
+
+10:57.020 --> 11:01.670
+That is what we are going to be getting out from the prompt template.
+
+11:01.700 --> 11:05.630
+And now you got the idea like how the prompt template is really used and why it is really used.
+
+11:05.630 --> 11:10.550
+Because while we build a large language model application, these kind of templates are really important
+
+11:10.550 --> 11:11.900
+while we pass the input.
+
+11:11.900 --> 11:18.140
+But now there begs the question, because we have got the human input and the output from the AI is
+
+11:18.140 --> 11:18.950
+something like this.
+
+11:18.980 --> 11:26.420
+What if I wanted to pass both the human input and I'm expecting an AI output in this fashion?
+
+11:26.420 --> 11:28.250
+So how can I actually do that?
+
+11:28.250 --> 11:31.790
+How can I pass a human input?
+
+11:31.820 --> 11:40.910
+And also, how can I instruct the AI to say that you are an expert in this domain as a system and then
+
+11:40.910 --> 11:42.080
+give me this particular response?
+
+11:42.080 --> 11:43.010
+How can I actually do that?
+
+11:43.010 --> 11:46.700
+Well, you can do that all using the chat prompt template.
+
+11:46.700 --> 11:53.480
+So you can set a role to your LLM so that it can respond it even more correctly.
+
+11:53.480 --> 11:56.120
+So that is what we are going to be discussing in our next lecture.

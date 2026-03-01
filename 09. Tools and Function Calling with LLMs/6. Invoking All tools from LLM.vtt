@@ -1,0 +1,184 @@
+WEBVTT
+
+00:00.050 --> 00:00.560
+All right.
+
+00:00.560 --> 00:07.460
+So now we are in the final state of executing the code from our large language model, because we already
+
+00:07.460 --> 00:10.520
+have the methods which is required for the LM to process.
+
+00:10.760 --> 00:17.180
+And because we have got all these messages, I'm sure our large language model can easily execute these
+
+00:17.180 --> 00:20.690
+details and get us the response back.
+
+00:20.720 --> 00:29.510
+So for doing that, I'm just going to go over here, uh, the code and I'm going to say, uh, maybe
+
+00:29.540 --> 00:38.300
+final output is equal to uh LM with tools dot invoke.
+
+00:38.570 --> 00:42.050
+So I'm going to invoke it and I'm going to pass the entire message.
+
+00:42.080 --> 00:45.170
+See this message that I'm going to pass in.
+
+00:45.260 --> 00:47.930
+And now this is going to print.
+
+00:48.050 --> 00:57.680
+So if I now print the final output dot content over here, you should see that content coming up for
+
+00:57.680 --> 00:57.890
+me.
+
+00:57.920 --> 01:03.440
+So for that question that you have asked now the LM is going to process and it's going to say based
+
+01:03.440 --> 01:08.610
+on the information provided from Wikipedia, Donald Trump did win the 2024 presidential election.
+
+01:08.640 --> 01:09.630
+Look at that.
+
+01:09.660 --> 01:18.660
+Now, our LM has got the capability to get me the answer based on the tool that we have that we have
+
+01:18.690 --> 01:19.260
+bounded.
+
+01:19.260 --> 01:26.220
+So our local large language model, which did not even have access to the internet before, has got
+
+01:26.220 --> 01:27.210
+the internet access.
+
+01:27.210 --> 01:32.070
+And it is getting the details from the tools that it has got, the Wikipedia tools.
+
+01:32.070 --> 01:33.270
+And now look at that.
+
+01:33.270 --> 01:36.360
+It is getting the response, giving the response to me.
+
+01:36.360 --> 01:45.180
+And if I go to Lamb-smith this time, uh, over here, chat Olama, you will notice that it has selected
+
+01:45.180 --> 01:51.780
+the Wikipedia and it is giving me the response over here, which is amazing.
+
+01:51.780 --> 01:55.530
+So that is what is really happening over here.
+
+01:55.950 --> 02:00.660
+So it has called the Wikipedia and it has got me the answer.
+
+02:00.660 --> 02:04.650
+So Wikipedia tool is executing over here and in the chat.
+
+02:04.650 --> 02:05.250
+Olama.
+
+02:05.670 --> 02:09.900
+Um, it has really got that particular answer as this one.
+
+02:09.900 --> 02:13.390
+So this is the output that it has given to me over there.
+
+02:13.660 --> 02:16.780
+This is fabulous.
+
+02:16.810 --> 02:27.430
+And now, if I want to change the question a bit, uh, what is the sum of two and 22, which is 24?
+
+02:27.430 --> 02:34.690
+And if I try executing it, executing it, and if I try executing this particular code, the sum of
+
+02:34.720 --> 02:36.580
+two and 22 is 24.
+
+02:36.610 --> 02:37.240
+Look at that.
+
+02:37.240 --> 02:38.380
+So that is also working.
+
+02:38.380 --> 02:43.180
+So the custom tool is also being called and invoked and executed.
+
+02:43.180 --> 02:46.540
+And it is giving me the response correctly over here.
+
+02:47.440 --> 02:54.130
+And if I want to ask another question what is the double of two.
+
+02:54.910 --> 02:56.710
+Execute this code block.
+
+02:56.740 --> 03:00.670
+Execute this code block and execute this code block.
+
+03:00.700 --> 03:02.590
+The double of two is four.
+
+03:02.590 --> 03:06.010
+So it has really called the multiply numbers.
+
+03:06.370 --> 03:10.270
+And it has given me the answer as four.
+
+03:11.080 --> 03:17.750
+So hope you got the idea of how the large language model can invoke the tools that we have built, the
+
+03:17.750 --> 03:23.690
+custom tools, and also the community built tools without any hesitations with the code that we have
+
+03:23.690 --> 03:24.530
+written over here.
+
+03:24.530 --> 03:34.760
+So this is the power of you building a tools and also enabling your local large language model to have
+
+03:34.760 --> 03:39.230
+the support of running the tools or binding the tools along with it.
+
+03:39.230 --> 03:45.170
+And make sure while you use all these functionality, your large language model has got the tooling
+
+03:45.170 --> 03:46.220
+support in it.
+
+03:46.340 --> 03:47.810
+That's the end of the tools guys.
+
+03:47.810 --> 03:49.040
+Hopefully you got the idea.
+
+03:49.040 --> 03:55.250
+There are so many things still need to cover, and I hope you already have the whole wide range of idea
+
+03:55.250 --> 03:57.230
+of how you can do everything yourself.
+
+03:57.230 --> 04:03.320
+Just go ahead and create your own templates, kind of, uh, tools, uh, like the structure tools,
+
+04:03.320 --> 04:09.140
+and also try to even invoke the custom tools from the prompt template that you're going to be creating.
+
+04:09.140 --> 04:11.810
+And then you call these tools from within.
+
+04:11.840 --> 04:14.630
+You're going to be doing a fabulous job there, I'm sure.
+
+04:14.630 --> 04:21.170
+But this has already given you a wide range of idea of how you can make use of the tools within your
+
+04:21.170 --> 04:22.850
+large language model application.

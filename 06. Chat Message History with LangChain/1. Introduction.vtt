@@ -1,0 +1,304 @@
+WEBVTT
+
+00:00.020 --> 00:02.030
+Welcome to the next section of our course.
+
+00:02.030 --> 00:05.150
+And in this section we are going to talk about message histories.
+
+00:05.150 --> 00:11.210
+So this is one of the most important concepts that we need to understand while working with the Lang
+
+00:11.210 --> 00:12.140
+chain itself.
+
+00:12.140 --> 00:19.490
+Because most of the time we as a user will not be able to perform any action if we don't really have
+
+00:19.490 --> 00:22.550
+any context of what we're going to be talking about.
+
+00:22.550 --> 00:29.060
+As a follow up question, for instance, if you go to the ChatGPT over here and if I'm going to ask
+
+00:29.060 --> 00:40.040
+a question here saying, uh, write a simple, uh, lang chain code, uh, for, uh, let's say a chat
+
+00:40.040 --> 00:42.440
+prompt over here.
+
+00:42.440 --> 00:49.220
+So you will notice that the ChatGPT is going to immediately write some code for me over here.
+
+00:49.220 --> 00:50.630
+So this is pretty cool.
+
+00:50.630 --> 00:58.550
+But now let's say if I want to add or ask a follow up question over here, uh, saying can you write
+
+00:58.550 --> 01:04.820
+the same with, uh, prompt, uh, template, uh, over here.
+
+01:04.820 --> 01:12.110
+And you will notice that now the ChatGPT can immediately change the code from the chat prompt template
+
+01:12.110 --> 01:14.030
+to prompt template over here.
+
+01:14.030 --> 01:20.900
+So the reason why this is modifying over here is because it now knows the context of my earlier question,
+
+01:20.900 --> 01:25.430
+and it is able to perform the additional operation in my second question.
+
+01:25.580 --> 01:27.890
+So it knows the context of the first question.
+
+01:27.890 --> 01:33.020
+That's the reason why the second question, even though I did not ask a lot of details, I could able
+
+01:33.020 --> 01:34.850
+to just ask like a follow up question.
+
+01:34.850 --> 01:40.910
+This is true for most of the operations that we do in the ChatGPT over here, and we wanted to implement
+
+01:40.910 --> 01:46.430
+this similar kind of operation with our, uh, our application as well.
+
+01:46.430 --> 01:49.550
+But if I wanted to do that, you can see that for now.
+
+01:49.550 --> 01:56.300
+While we as a user ask any question from Lang Chain by passing a chat prompt template, and then if
+
+01:56.300 --> 02:00.650
+you send it to the LM, it can able to respond for the first time.
+
+02:00.650 --> 02:07.580
+And if you try to ask a follow up question, the model will not understand who you are and there won't
+
+02:07.580 --> 02:11.990
+be any response, as the large language model has got no context on it.
+
+02:11.990 --> 02:19.130
+So in order to resolve this particular problem of the LM with no context, we need to have what is called
+
+02:19.130 --> 02:22.910
+as the message history or the chat message history.
+
+02:22.910 --> 02:30.560
+So how do we really implement the chat message history and how we can make that happen in the long chain?
+
+02:30.560 --> 02:35.780
+Well, if you can see this particular diagram it will make you more sense over here.
+
+02:35.780 --> 02:42.200
+So as you can see, this particular user will have a session ID of 1 to 3, which is pretty much like
+
+02:42.230 --> 02:44.240
+how I did in the ChatGPT just now.
+
+02:44.240 --> 02:50.300
+So I will be sending a message to Long Chain and then as a prompt template I will be sending a message
+
+02:50.300 --> 02:51.410
+to queue model.
+
+02:51.410 --> 02:53.720
+It is just going to respond as as usual.
+
+02:53.720 --> 02:56.530
+But now the same user the session ID one two, three.
+
+02:56.560 --> 03:02.020
+If is going to be asking a follow up question, you will notice that this time the chat prompt template
+
+03:02.020 --> 03:11.140
+will go to the message history before it performs any action of sending the message to the model directly.
+
+03:11.140 --> 03:17.740
+So you'll notice that every single time before it's going to send any message to the local large language
+
+03:17.740 --> 03:23.920
+model, it is going to first get the context or the history information, and then it is going to perform
+
+03:23.920 --> 03:24.550
+the operation.
+
+03:24.550 --> 03:31.510
+So this way you will know that this particular model will always have a history information before it
+
+03:31.510 --> 03:34.510
+gets to answer the next question.
+
+03:34.510 --> 03:37.330
+So it could be a follow up question, or it could be a new question altogether.
+
+03:37.330 --> 03:43.510
+It doesn't matter, but we will be every single time going to the message history to get what is really
+
+03:43.510 --> 03:46.990
+the earlier question was before answering the new question.
+
+03:46.990 --> 03:52.450
+So if it is a follow up question, then LM will have the context of the question because it will have
+
+03:52.450 --> 03:56.070
+access to the earlier questions in the message history over here.
+
+03:56.070 --> 04:03.630
+And that's the reason why the RLM could able to serve the answer for you as a follow up questions answer
+
+04:03.630 --> 04:06.180
+which was not something possible earlier.
+
+04:06.180 --> 04:08.820
+And now you could able to achieve that over here.
+
+04:08.820 --> 04:13.110
+And that is exactly what we are going to be doing in this particular section.
+
+04:13.110 --> 04:18.720
+So we are going to see how we could able to achieve the message history operation in this particular
+
+04:18.720 --> 04:19.260
+section.
+
+04:19.260 --> 04:25.830
+So in order to do that, I have already created a simple chat history section folder here, and also
+
+04:25.830 --> 04:30.210
+created the the Jupyter notebook here.
+
+04:30.210 --> 04:34.620
+And I have also loaded everything which is required like the dot env file.
+
+04:34.740 --> 04:39.630
+Um, and also the LM object is all ready for us to rock and roll.
+
+04:39.630 --> 04:45.570
+And now all we have to do it is start writing the code over here for the chat message history.
+
+04:45.570 --> 04:51.810
+So in order for me to work with the chat message history, we are going to be using pretty much exactly
+
+04:51.810 --> 04:56.970
+what we are doing in our last section with the Runnables.
+
+04:56.970 --> 05:02.430
+If you remember over here, we are going to be using the same runnables over here, but just that we
+
+05:02.430 --> 05:06.210
+are going to be using something called as runnable dot history.
+
+05:06.210 --> 05:11.790
+So you see that we were doing this long chain core dot runnables over here.
+
+05:11.790 --> 05:15.360
+We also have got something called as history as you can see over here.
+
+05:15.360 --> 05:19.170
+And this is what we are going to be using in this particular section.
+
+05:19.170 --> 05:21.960
+So I'll tell you what I really have to do over here.
+
+05:21.960 --> 05:26.160
+So the first thing which we need is going to be something we have already did over here.
+
+05:26.160 --> 05:31.260
+So probably I'm just going to copy all these things that we have did earlier, and I'll paste it over
+
+05:31.260 --> 05:33.690
+here to save some strokes.
+
+05:33.810 --> 05:39.240
+Uh, and then I'm going to be importing a couple of more libraries over here.
+
+05:39.240 --> 05:44.430
+So the first one is going to be the Lang chain core dot chat history.
+
+05:44.460 --> 05:45.750
+As you can see this one.
+
+05:45.750 --> 05:50.950
+And I'm going to import what is called as the base chat message History.
+
+05:50.980 --> 05:58.870
+And then I'm also going to import the long chain core dot Runnables dot history.
+
+05:58.870 --> 06:04.420
+And from here I'm going to import what is called as runnable with message history.
+
+06:05.650 --> 06:06.040
+Right.
+
+06:06.040 --> 06:13.870
+And finally I also need to import the long chain chat message history, which is going to be sitting
+
+06:13.870 --> 06:17.200
+from the long chain community.
+
+06:17.200 --> 06:21.340
+So I'm going to say long chain, uh, community.
+
+06:21.340 --> 06:27.520
+And you see that the long chain community is not there over here for me, which means we need to install
+
+06:27.520 --> 06:32.620
+this particular package for the very first time in this particular section.
+
+06:32.620 --> 06:35.170
+So I'm going to add a code over here.
+
+06:35.200 --> 06:45.160
+And I'm going to do pip install lang chain underscore community.
+
+06:46.990 --> 06:52.900
+And let me run this particular installation over here, and you will see that the long chain community
+
+06:52.900 --> 06:54.370
+is going to be installed for me.
+
+06:54.370 --> 07:00.880
+So make sure that you do install it for the first time, because without that it is not going to work.
+
+07:00.880 --> 07:05.110
+And once you have it, you can then do long chain community.
+
+07:05.110 --> 07:08.170
+And you see that we have got a new package like long chain community.
+
+07:08.200 --> 07:16.240
+And over here we have got something called as the chat um, message histories, which is also required
+
+07:16.240 --> 07:20.440
+for our historical operation that we are going to be doing, like the message history operation that
+
+07:20.440 --> 07:21.220
+we are going to do.
+
+07:21.250 --> 07:24.460
+So I'm going to say import and chat message history.
+
+07:24.460 --> 07:30.370
+So these are the libraries which are really required for us to do the first few operation in the chat
+
+07:30.370 --> 07:31.870
+message operation.
+
+07:32.050 --> 07:34.060
+Well we have all these libraries now.
+
+07:34.060 --> 07:40.390
+We are pretty much ready to write the first code, but make sure that you first install all these libraries
+
+07:40.390 --> 07:42.430
+before we can start writing the code.
+
+07:42.460 --> 07:47.860
+Catch you in the next lecture where we are going to be starting to write the code for the message history
+
+07:47.890 --> 07:48.460
+itself.

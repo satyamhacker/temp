@@ -1,0 +1,217 @@
+WEBVTT
+
+00:00.020 --> 00:00.530
+All right.
+
+00:00.530 --> 00:06.200
+So now we are going to see how we can build this entire thing that you are seeing over here in the code
+
+00:06.230 --> 00:06.620
+base.
+
+00:06.620 --> 00:10.910
+So overall, the functionality that you are going to be seeing over here are something we have already
+
+00:10.910 --> 00:14.570
+discussed in our earlier sections of this particular course.
+
+00:14.570 --> 00:18.710
+So all the details that we are going to be talking are going to be something that we are going to be
+
+00:18.710 --> 00:22.160
+extracting the informations from here that we have already discussed.
+
+00:22.160 --> 00:27.740
+So I'm just going to probably just copy paste some of the code or like most of the code, except that
+
+00:27.740 --> 00:30.470
+I'm going to create a tool for this particular rag alone.
+
+00:30.470 --> 00:35.630
+And then we'll see how we can fuse them all together and make use of the code that we have already written.
+
+00:35.630 --> 00:38.690
+So it's going to be just like a copy paste code for this particular section.
+
+00:38.690 --> 00:43.160
+I'm not really going to write a lot of code this time, so please refer to the earlier section, because
+
+00:43.160 --> 00:46.790
+if you don't really watch the earlier section, and if you jump directly in this particular section,
+
+00:46.790 --> 00:48.530
+this section is not going to make any sense.
+
+00:48.530 --> 00:54.830
+So I would recommend you please go and watch there first before watching this particular section.
+
+00:54.950 --> 01:01.840
+Well that's it said I'm going to go to my Visual Studio Code and I have already created A notebook file
+
+01:01.840 --> 01:02.440
+over here.
+
+01:02.440 --> 01:10.330
+And I've also imported the, uh, the env file, uh, and the, uh, the model over here.
+
+01:10.330 --> 01:10.990
+Amazing.
+
+01:10.990 --> 01:17.530
+And now, as I told you, we have already, uh, did quite a lot of different operation over here.
+
+01:17.530 --> 01:21.400
+So I'm just going to copy paste the code one by one.
+
+01:21.400 --> 01:28.360
+So maybe the first tool that I wanted to import is going to be, uh, probably uh, yeah.
+
+01:28.390 --> 01:29.170
+This guy.
+
+01:29.170 --> 01:38.140
+So I'm going to go copy this entire thing and I'm going to go ahead and paste it.
+
+01:38.170 --> 01:44.260
+Maybe we don't require the, uh, uh, the Wikipedia and the custom tool this time just for the simplicity
+
+01:44.260 --> 01:44.770
+purpose.
+
+01:44.770 --> 01:51.490
+I'll just keep it simple to use the playwright tool instead of these, uh, code that we have got.
+
+01:51.640 --> 01:58.750
+Uh, so for the playwright code, maybe I'm going to go here and I'm going to go and copy these things,
+
+01:58.750 --> 02:10.020
+and I'm going to add the probably markdown here playwright tool code, which is going to be these definitely
+
+02:10.020 --> 02:10.800
+we need them.
+
+02:10.800 --> 02:14.790
+And we also need the tool information from the playwright.
+
+02:14.790 --> 02:18.990
+So I'm going to go copy that and I'm going to paste it over here.
+
+02:19.020 --> 02:19.890
+I'm going to run this.
+
+02:19.890 --> 02:23.160
+This is going to bring all the tools that the playwright tool has got.
+
+02:23.190 --> 02:25.800
+We don't really need to run this part and this part.
+
+02:26.070 --> 02:29.430
+And also we are going to invoke the agent at the last stage.
+
+02:29.430 --> 02:31.740
+So we don't need that particular piece of code as well.
+
+02:31.770 --> 02:32.520
+Cool.
+
+02:32.550 --> 02:39.570
+And once we have the playwright tool we are then going to bring our rag information which is this guy,
+
+02:39.600 --> 02:44.160
+the tool which is going to hold the Rag information.
+
+02:44.160 --> 02:50.100
+So for doing the Rag operation, you remember we need to uh, we need to do embedding.
+
+02:50.100 --> 02:54.390
+And we also need to do, uh, quite a lot of different operations.
+
+02:54.390 --> 02:57.300
+So just go back to the rag file over here.
+
+02:57.300 --> 03:03.350
+As you can see, we need to do the extraction of the PDF and we need to do the text splitting.
+
+03:03.350 --> 03:06.380
+And then we need to do the embedding and then vector stores.
+
+03:06.380 --> 03:07.610
+But guess what.
+
+03:07.640 --> 03:14.360
+Instead of us doing this extraction of the PDF and just splitting it all together, if you remember,
+
+03:14.390 --> 03:24.050
+we already actually stored the, uh, the, the database of the extracted, uh, database and splitted,
+
+03:24.050 --> 03:30.260
+uh, data into the chroma underscore Langston DB, which is this guy, right?
+
+03:30.290 --> 03:32.720
+So this is the database which has got all the different information.
+
+03:32.720 --> 03:38.960
+So why not we just call this particular database directly instead of, again, uh, doing all these
+
+03:38.960 --> 03:43.490
+different operations one by one because this is not going to be worth it if we're going to do it again.
+
+03:43.490 --> 03:50.660
+So what I'm going to do is I'm probably not going to do the extracting the PDF file and doing the text
+
+03:50.690 --> 03:51.470
+splitting.
+
+03:51.740 --> 03:59.180
+Rather, we can just use the existing the Chrome chroma underscore lang database, which can make more
+
+03:59.180 --> 03:59.810
+sense right.
+
+03:59.840 --> 04:01.240
+So we can just probably do that.
+
+04:01.240 --> 04:04.360
+So we also need this embedding part.
+
+04:04.360 --> 04:09.940
+So we uh so I'm going to just copy this code, uh, that you are seeing over here because we're going
+
+04:09.970 --> 04:14.170
+to use the same olama embedding with the model of lemma 3.2 latest model.
+
+04:14.170 --> 04:15.370
+So I'm going to do that.
+
+04:15.370 --> 04:17.680
+So I'm going to add the markdown over here.
+
+04:17.740 --> 04:28.150
+And I'm going to say uh initialize uh vector and a retriever with uh embedding.
+
+04:28.540 --> 04:32.230
+So this is the important part that we're going to do.
+
+04:32.230 --> 04:37.600
+And we're going to add the embedding as the first thing this time.
+
+04:37.600 --> 04:39.670
+And I'm going to add the code over here.
+
+04:39.670 --> 04:40.900
+So this is the embedding part.
+
+04:40.930 --> 04:42.490
+So I'm going to run that over here.
+
+04:42.490 --> 04:48.040
+And once we have the embedding part the next part is going to be adding the uh chroma database.
+
+04:48.160 --> 04:54.250
+And we also need to add a vector data store which is going to store the particular data from the chroma
+
+04:54.250 --> 04:56.770
+database, which we'll be doing in our next lecture.
+
+04:56.770 --> 05:01.240
+But hope you got the idea of how we are going to go around in this particular journey.

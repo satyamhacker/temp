@@ -1,0 +1,157 @@
+WEBVTT
+
+00:00.020 --> 00:00.530
+All right.
+
+00:00.530 --> 00:06.710
+So now that we have the golden data set, we need to just see how we can create the test case um, which
+
+00:06.710 --> 00:10.970
+is the LM test case format, which we did in our last section of the course as well, which is this
+
+00:10.970 --> 00:14.900
+guy uploading the golden data set to evolve and doing all sorts of things.
+
+00:14.900 --> 00:17.150
+So let me just do the exact same thing.
+
+00:17.150 --> 00:18.230
+No change in here.
+
+00:18.230 --> 00:21.590
+So I'm going to do the markdown and I'm going to say upload.
+
+00:21.830 --> 00:31.760
+Uh the golden data set in uh two deep evolve like that.
+
+00:31.760 --> 00:35.660
+And I'm going to copy I've already copied the code.
+
+00:35.660 --> 00:37.340
+So I'm just going to paste that over here.
+
+00:37.340 --> 00:42.200
+And we are going to push the code as well.
+
+00:42.680 --> 00:44.900
+So I'm going to say dataset dot push.
+
+00:44.900 --> 00:52.100
+This is going to be the uh testing uh tool calls something like that.
+
+00:52.100 --> 00:54.830
+And I'm going to push the change over there.
+
+00:55.370 --> 00:58.580
+Um, oh I guess what.
+
+00:58.580 --> 01:02.150
+We forgot to actually include this guy.
+
+01:02.180 --> 01:05.000
+So now I remember we need this one.
+
+01:05.690 --> 01:14.090
+Uh, and, and and, and I'm going to go to this because without logging in, we can't really push the,
+
+01:14.090 --> 01:17.540
+the data into the Cloud.
+
+01:18.110 --> 01:23.150
+So yeah, that was something which was a miss in our last lecture.
+
+01:23.270 --> 01:24.260
+There we go.
+
+01:24.260 --> 01:26.990
+And you can see that this is going to go to the confident eye.
+
+01:26.990 --> 01:31.820
+And it's going to put the data there pretty much like how we saw in our last section of this course.
+
+01:31.850 --> 01:36.800
+I mean we don't really have to worry about this confident eye portal itself right now, as I told you,
+
+01:36.800 --> 01:42.170
+because all we have to do is we are not going to use the evaluate feature at the moment.
+
+01:42.170 --> 01:48.710
+And that's the reason why this thing that we are going to pushing into the, into the portal itself
+
+01:48.710 --> 01:51.620
+is of not of any use, to be honest.
+
+01:51.620 --> 01:53.210
+But guess what?
+
+01:53.330 --> 01:57.680
+The the way that we do this evaluate data set over here has got a reason.
+
+01:57.680 --> 02:00.680
+Because if you just see this data at the moment.
+
+02:00.680 --> 02:06.740
+So if I just going to say, uh, that data set and if I try to run this data set, you will see that
+
+02:06.740 --> 02:09.080
+the test case is kind of empty at the moment.
+
+02:09.080 --> 02:18.680
+But the moment you do the data set dot pull and then you put this, uh, test case tool calling over
+
+02:18.680 --> 02:19.100
+here.
+
+02:19.100 --> 02:25.790
+And if you run this, it is going to pull the data from the, uh, from the cloud.
+
+02:25.790 --> 02:34.340
+And if you just go and check the data set right now, it is the same data set that we have got.
+
+02:34.370 --> 02:39.890
+If I run this, you'll see that you will have the, uh, test cases with the LM test case over here.
+
+02:39.890 --> 02:46.490
+And this is coming only because while you do a push, and then if you do a pull from the deep data set,
+
+02:46.520 --> 02:49.940
+the test cases will get populated for you over here.
+
+02:49.940 --> 02:56.840
+This is the main reason why we need to do a do a push to the cloud and then pull to a cloud.
+
+02:56.900 --> 02:58.190
+Pull from a cloud.
+
+02:58.850 --> 03:01.430
+Yeah, that's the only reason why I am doing this way.
+
+03:01.430 --> 03:05.510
+There may be some other way of doing this in a better way, but I think this is the what this is the
+
+03:05.510 --> 03:07.220
+detail, what they have given in the documentation.
+
+03:07.220 --> 03:11.210
+So I'm just following exactly what they have mentioned in the documentation as well.
+
+03:11.210 --> 03:15.410
+So yeah, this is how you actually create the golden data set.
+
+03:15.410 --> 03:18.620
+And then you push the golden data set to the deep eval.
+
+03:18.620 --> 03:23.840
+And then you pull the data set and have your test case being populated for you over here.
+
+03:23.870 --> 03:32.150
+And the next quest that we have is to actually call our AI agent and also create our, uh, our test
+
+03:32.150 --> 03:38.930
+case with all the LM test case format, which has got, uh, which is going to have the, uh, the tool
+
+03:38.930 --> 03:44.300
+calls and the actual output and all those details, like how we did in our last section of the course
+
+03:44.300 --> 03:49.040
+for the RAC, the same thing we are going to be doing in our next lecture of this course.

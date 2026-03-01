@@ -1,0 +1,451 @@
+WEBVTT
+
+00:00.020 --> 00:05.930
+So now we are going to start doing some more operation with our chatbot that we have got over here.
+
+00:05.930 --> 00:10.880
+So the first thing is I'm going to be performing a series of operation in here.
+
+00:10.910 --> 00:11.120
+Right.
+
+00:11.270 --> 00:17.480
+So we have to say like uh, hi, uh, chatbot, uh, how are you doing?
+
+00:17.480 --> 00:21.800
+So for instance, if a user is going to ask this question and if you're going to send a message over
+
+00:21.800 --> 00:24.890
+here, then you need to see a user message.
+
+00:24.890 --> 00:29.570
+And then you also need to get the response from the AI chatbot.
+
+00:29.810 --> 00:32.270
+And you need to see that particular message as well.
+
+00:32.270 --> 00:38.750
+And all these information needs to be stored in a, in a session, like a historical session, so that
+
+00:38.750 --> 00:44.810
+you can keep chatting with each other like you and chatbot can, uh, chat with each other so that you
+
+00:44.810 --> 00:46.340
+get the response that you're looking for.
+
+00:46.370 --> 00:46.760
+Right.
+
+00:46.760 --> 00:53.000
+So we already have those kind of operation in our earlier section of the course while we were doing
+
+00:53.000 --> 00:59.750
+the, uh, the runnable, uh, with message history where we store all the historical information.
+
+00:59.760 --> 01:05.460
+But but again, in order for us to make use of that with a chatbot, it is going to be a bit tricky.
+
+01:05.460 --> 01:08.310
+So we have to do quite a lot of code change over here as well.
+
+01:08.310 --> 01:13.170
+So let's see all of these one by one in this particular uh section.
+
+01:13.170 --> 01:17.910
+So the first lecture, the first thing that we are going to be doing in this particular lecture is I'm
+
+01:17.910 --> 01:26.970
+going to say, okay, if there is a prompt message coming up right, then just give a response now because
+
+01:26.970 --> 01:28.770
+you got a prompt message.
+
+01:28.770 --> 01:32.610
+Let's first get the historical message and the chat information.
+
+01:32.610 --> 01:38.820
+So I'm going to get this history um dot invoke I'm going to call this particular method.
+
+01:39.480 --> 01:43.050
+And again this is the same thing that we did in our last section as well.
+
+01:43.050 --> 01:49.860
+So I'm going to probably copy this uh c dot c dot invoke over here I'm going to pass the prompt.
+
+01:50.250 --> 01:52.230
+Uh like what is the distance between the sun and moon.
+
+01:52.230 --> 01:57.900
+But we don't want to pass the hard coded value because we're going to get the prompt message from the
+
+01:57.900 --> 01:59.470
+chat input that we are passing in.
+
+01:59.470 --> 02:02.470
+So I'm going to say prompt over here.
+
+02:02.890 --> 02:05.740
+And then the config is going to remain exactly the same.
+
+02:05.740 --> 02:09.280
+So config is equal to configurable of session id as session id.
+
+02:09.280 --> 02:12.070
+So at the moment I'm hardcoding the session id as well.
+
+02:12.070 --> 02:17.200
+But we are going to get the session ID eventually from the user during the runtime.
+
+02:17.320 --> 02:17.710
+Right.
+
+02:17.740 --> 02:19.990
+So that is the first thing that we have to do.
+
+02:20.170 --> 02:28.210
+And now I need to store this this information in the, in the street, which is the Streamlit as well,
+
+02:28.630 --> 02:30.820
+because that is where the session is maintained.
+
+02:30.820 --> 02:32.110
+So that you can see that in the UI.
+
+02:32.140 --> 02:33.340
+So how do I do that?
+
+02:33.340 --> 02:42.220
+There is a session state in the street or Streamlit where you can store all the session state in one
+
+02:42.220 --> 02:46.750
+of the array, and I'm just going to call that as the chat history.
+
+02:46.780 --> 02:47.410
+Right.
+
+02:47.410 --> 02:54.220
+And this chat history is one of the history that I am maintaining to store all my chat information.
+
+02:54.220 --> 03:01.240
+So because I have created this chat history over here, I also need to initialize this particular chat
+
+03:01.270 --> 03:02.320
+history somewhere.
+
+03:02.320 --> 03:04.540
+So how do I actually do that?
+
+03:04.570 --> 03:18.880
+I can probably just say st dot session state dot chat underscore history is equal to an empty array.
+
+03:18.910 --> 03:19.210
+Right.
+
+03:19.240 --> 03:25.000
+So this is the initialization that I'm going to be doing so that I can now start using this particular
+
+03:25.000 --> 03:31.000
+array to append with the value that I'm looking for.
+
+03:31.000 --> 03:38.470
+So basically what I'm going to be appending this time is I'm going to append the um two keys in here.
+
+03:38.470 --> 03:46.120
+The first one is the role where I'm going to say the role is going to be user, and I'm going to pass
+
+03:46.120 --> 03:52.780
+the content, which is going to be the prompt message, which I'm going to be passing in as a user.
+
+03:52.780 --> 03:59.600
+So essentially this is the first session history that you are going to be appending because you as a
+
+03:59.600 --> 04:04.910
+user are going to ask a question in here like, hi, how are you doing?
+
+04:04.910 --> 04:07.640
+So now this is a user prompt, right?
+
+04:07.670 --> 04:11.090
+This is a user question that you need to add in the history, so that the first thing that is going
+
+04:11.120 --> 04:13.940
+to appear on this particular UI is going to be the user.
+
+04:13.940 --> 04:15.800
+So the role in here is user.
+
+04:15.800 --> 04:19.610
+The content is going to be the prompt that you as a user is going to ask.
+
+04:19.760 --> 04:29.510
+And then we need to have another start session state dot uh probably chat history.
+
+04:29.810 --> 04:40.910
+Uh dot append over here I'm going to be appending the uh, probably the role as assistant or AI or whatever
+
+04:40.940 --> 04:41.720
+that you want to use.
+
+04:41.720 --> 04:50.180
+So I'm going to say the role as assistant, because this is going to come all the way from the, uh,
+
+04:50.210 --> 04:51.410
+from the AI.
+
+04:51.440 --> 04:51.980
+Right.
+
+04:52.010 --> 04:54.920
+So that's going to be another array.
+
+04:55.190 --> 04:58.200
+And we also need to pass the content there.
+
+04:58.200 --> 05:02.850
+So what is the content really which is going to be this particular response.
+
+05:02.880 --> 05:03.120
+Right.
+
+05:03.150 --> 05:05.580
+This is the content that I need to print over here.
+
+05:05.580 --> 05:09.120
+So I'm going to say content oops.
+
+05:12.750 --> 05:21.420
+Which is going to be the response that I'm going to be getting out from the large language model that
+
+05:21.420 --> 05:22.770
+we are getting in from here.
+
+05:22.800 --> 05:23.220
+Right.
+
+05:23.250 --> 05:25.950
+So that is what I'm going to be printing over here.
+
+05:25.950 --> 05:33.960
+So now that we have did some code change, uh, save this code over here and let's try to run this and
+
+05:33.960 --> 05:35.130
+see what's going to happen.
+
+05:35.280 --> 05:38.820
+And looks like we have did something wrong.
+
+05:38.850 --> 05:41.370
+Oh, we did not close the array.
+
+05:41.460 --> 05:42.960
+Sorry about that.
+
+05:43.410 --> 05:45.630
+Um, let me run it again.
+
+05:45.990 --> 05:49.020
+And you should see the same usual UI.
+
+05:49.020 --> 05:53.040
+I'm going to say hi, how are you doing?
+
+05:53.040 --> 05:58.510
+And if I hit enter, you will notice that we are really not seeing anything at the moment.
+
+05:58.510 --> 06:05.530
+The reason why is because we have to show this, this message, which is going to be coming up from
+
+06:05.530 --> 06:13.660
+our, uh, from our prompt as well as our response in the Streamlit app.
+
+06:13.660 --> 06:14.320
+Right.
+
+06:14.620 --> 06:20.290
+We have only stored these messages in the Streamlit session history, but we have not really printed
+
+06:20.290 --> 06:22.870
+that value in the Streamlit in the UI.
+
+06:22.900 --> 06:24.820
+Like how we do that, like Street Dot, right.
+
+06:24.820 --> 06:31.300
+Probably where you can just say, uh, probably prompt, uh, which is the user is going to ask and
+
+06:31.300 --> 06:35.950
+then once this is uh, getting the response, then you can just say Dot, right.
+
+06:36.130 --> 06:41.290
+And you're going to say maybe response something like that, but it's going to be very ugly if you do
+
+06:41.290 --> 06:43.690
+it this way, I'll tell you how it looks like.
+
+06:43.690 --> 06:46.060
+So just try to run this.
+
+06:46.390 --> 06:48.430
+Um, and I'm going to say hi.
+
+06:48.460 --> 06:52.630
+How are you doing?
+
+06:53.740 --> 06:54.290
+Uh, Um.
+
+06:54.350 --> 06:55.160
+Look at that.
+
+06:55.190 --> 06:55.910
+See?
+
+06:55.940 --> 06:56.480
+Hi.
+
+06:56.510 --> 06:57.110
+How are you doing?
+
+06:57.140 --> 06:58.610
+And then there is a response coming.
+
+06:58.760 --> 06:59.150
+Hello.
+
+06:59.180 --> 07:02.120
+I am an AI assistant created by Alibaba Cloud.
+
+07:02.120 --> 07:05.090
+So I don't have personal feelings or experience, but I'm here to.
+
+07:05.090 --> 07:05.630
+Really.
+
+07:05.690 --> 07:08.330
+I'm here ready to help you with this information.
+
+07:08.330 --> 07:09.290
+What are you looking for?
+
+07:09.560 --> 07:10.340
+Pretty cool.
+
+07:10.340 --> 07:11.840
+So now that we have written something.
+
+07:11.840 --> 07:13.970
+But it's not very intuitive, right?
+
+07:14.000 --> 07:14.390
+Like this.
+
+07:14.390 --> 07:16.070
+This, this is not like a chat message.
+
+07:16.070 --> 07:19.040
+Probably because it looks like a text summary.
+
+07:20.030 --> 07:26.660
+So there is no difference between the person asking like the user is asking the question and the AI
+
+07:26.690 --> 07:27.590
+agent is responding.
+
+07:27.590 --> 07:29.900
+So it's not really differentiating between both of them.
+
+07:29.900 --> 07:36.320
+So in order to beautify that in this, what is called as the Streamlit app, we have got this what is
+
+07:36.320 --> 07:39.950
+called as uh, the
+
+07:41.870 --> 07:47.060
+markdowns where you can actually create a markdown, something like this.
+
+07:47.060 --> 07:52.190
+So I'm going to say start chat message that we have got.
+
+07:52.190 --> 08:01.670
+And if it is a user message, then do a markdown for the prompt.
+
+08:01.700 --> 08:05.330
+Same thing that I'm trying to print over here, and then I need to do the same thing for the response
+
+08:05.330 --> 08:05.990
+as well.
+
+08:06.380 --> 08:07.310
+So I'm going to say.
+
+08:09.380 --> 08:14.660
+With st dot chat message of maybe assistant.
+
+08:14.990 --> 08:18.770
+See we have got the option over here in the Streamlit.
+
+08:18.770 --> 08:24.890
+And I'm going to say C dot markdown of the response that you are going to be printing to me.
+
+08:25.880 --> 08:34.790
+And now if I try to run this code I'm going to say hi, how are you doing?
+
+08:35.330 --> 08:36.200
+And look at that.
+
+08:36.200 --> 08:40.070
+This time we're going to have our intuitive UI a bit right.
+
+08:40.100 --> 08:41.510
+Like there is this user query.
+
+08:41.510 --> 08:43.460
+And we also got a response.
+
+08:43.460 --> 08:45.590
+So there is this bit of a shade in here.
+
+08:45.590 --> 08:51.590
+And also there is this logo or maybe icon for the user and for the assistant which is amazing.
+
+08:51.590 --> 08:57.480
+So we have built maybe an working bot question.
+
+08:57.480 --> 09:07.980
+So I'm going to ask like how is the um, weather today in California?
+
+09:12.060 --> 09:12.900
+Something like that.
+
+09:12.990 --> 09:14.430
+Um, look at that.
+
+09:14.640 --> 09:21.570
+Ah, it just overridden the existing question and then it is writing it over there as the answer.
+
+09:21.570 --> 09:25.980
+But there is no like it's not really like a chat message that it is doing over here.
+
+09:25.980 --> 09:27.390
+So we have to do that as well.
+
+09:27.390 --> 09:30.060
+So these are the things that we have to improve in our code.
+
+09:30.060 --> 09:38.220
+And also if I want to start all new, uh, query instead of just, uh, using the same session because
+
+09:38.220 --> 09:42.570
+you know that the session is currently being embedded, the session ID is not something that you can
+
+09:42.570 --> 09:45.090
+enter the session ID somewhere from this UI.
+
+09:45.120 --> 09:46.590
+So we need to do that as well.
+
+09:46.590 --> 09:50.160
+So those are the improvements that we have to do on this particular chatbot.
+
+09:50.340 --> 09:52.290
+So we'll be doing that in our next lecture.

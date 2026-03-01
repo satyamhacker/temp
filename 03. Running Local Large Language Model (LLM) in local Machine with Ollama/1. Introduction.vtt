@@ -1,0 +1,181 @@
+WEBVTT
+
+00:00.140 --> 00:01.820
+Welcome to the next section of our course.
+
+00:01.820 --> 00:08.270
+And in this section we are going to talk about Olama and how we can make use of this Olama for building
+
+00:08.300 --> 00:13.310
+a large language model based application using our local large language model.
+
+00:13.310 --> 00:21.020
+So we are going to use this Olama as the as the medium to build our large language model based application
+
+00:21.020 --> 00:24.950
+using long chain with the local large language model.
+
+00:24.950 --> 00:27.680
+So this is what is the power of this olama itself.
+
+00:27.680 --> 00:30.800
+And I'm going to quickly show you how these things are going to work behind the scene.
+
+00:30.800 --> 00:38.210
+So if you just go to the Olama comm website over here, this is the page which I'm talking about, or
+
+00:38.210 --> 00:42.620
+this is the application that I'm talking about, which is going to be helpful for you to run the large
+
+00:42.620 --> 00:45.620
+language models locally within your own machine.
+
+00:45.620 --> 00:51.350
+So if you have a mac OS or Linux or Windows, you can just go ahead and download this particular application
+
+00:51.350 --> 00:55.550
+within your machine, and then you can start using all the models within your machine.
+
+00:55.550 --> 00:56.960
+That is amazing, right?
+
+00:56.960 --> 01:04.540
+You don't really have to sign up with the OpenAI's API to call an API for accessing the large language
+
+01:04.540 --> 01:09.310
+models, like how you usually do by paying so much of money, those things are not even required.
+
+01:09.310 --> 01:15.040
+So if you just go to the Openai.com and if you just go to their API platform over here, you see that
+
+01:15.040 --> 01:16.720
+there is this API login comes in.
+
+01:16.720 --> 01:22.780
+So if you just go and hit this API login, I have already signed up for this particular OpenAI login
+
+01:22.780 --> 01:23.440
+over here.
+
+01:23.470 --> 01:25.540
+I mean you can see there are some pricings available.
+
+01:25.540 --> 01:32.590
+So for every single, uh, model that you use with their signed up, uh, models API, you're going
+
+01:32.620 --> 01:38.380
+to be paying this much money for these many input that you're going to be entering, like for 1 million
+
+01:38.380 --> 01:38.890
+tokens.
+
+01:38.890 --> 01:44.200
+These are things that these are the money that you have to pay for these particular large language models
+
+01:44.200 --> 01:50.170
+while you're going to use that, if it is hosted in their own platform like OpenAI platform or Cloud
+
+01:50.170 --> 01:52.510
+Anthropic Platform or Google Gemini platform.
+
+01:52.510 --> 01:55.540
+So you have to sign up and you have to pay money to them.
+
+01:55.540 --> 01:59.800
+But if you're going to be building a large language model application, and if you don't want to spend
+
+01:59.800 --> 02:06.870
+these many money, then you can just host, or maybe just can run your large language model within your
+
+02:06.870 --> 02:08.490
+local machine itself.
+
+02:08.490 --> 02:12.990
+And that is the power of this particular olama, because it will let you do that for you.
+
+02:12.990 --> 02:18.150
+So I have already downloaded the Olama within my local machine in my Mac operating system.
+
+02:18.150 --> 02:21.570
+So it is very, very easy for me to just start using it.
+
+02:21.870 --> 02:23.310
+I mean, it's very straightforward.
+
+02:23.310 --> 02:26.070
+Just go ahead and click this download based on your operating system.
+
+02:26.070 --> 02:27.780
+The download is going to happen for you.
+
+02:27.780 --> 02:30.690
+And because I am using Mac OS, I can go and click this one.
+
+02:30.720 --> 02:34.800
+If you're going to use Linux or Windows, just go ahead and select the relevant operating system and
+
+02:34.800 --> 02:36.780
+download the tools that you're looking for.
+
+02:37.020 --> 02:38.910
+And finally the models.
+
+02:38.910 --> 02:41.160
+This is the most important part over here.
+
+02:41.160 --> 02:46.470
+If you just go to the models over there, this particular models that you are seeing over here are all
+
+02:46.470 --> 02:51.870
+the models, like the full blown models available within the Olama site itself.
+
+02:51.870 --> 03:03.290
+So you can use a deep seek R1 or llama three dot 3 or 4, or llama three R2 and Mistral Q1 Q1 2.5.
+
+03:03.320 --> 03:07.220
+You see that all the models that you name it, it's available over here.
+
+03:07.220 --> 03:13.250
+And most importantly, you can also see that there are options where you can just select specific model
+
+03:13.250 --> 03:17.510
+which has specific for embedding or vision or even tool support.
+
+03:17.510 --> 03:22.820
+So if you have any of the agents that you're going to be building, and then if you wanted to use the
+
+03:22.820 --> 03:25.250
+model for tool support, you can use that as well.
+
+03:25.280 --> 03:31.250
+Guys, you see that 3.3 70 billion parameter has got the tool support model over here which is amazing.
+
+03:31.280 --> 03:32.540
+You can use that as well.
+
+03:32.540 --> 03:39.080
+And if I'm going to use this deep one, the most popular model to date is going to be very, very straightforward
+
+03:39.080 --> 03:39.380
+as well.
+
+03:39.380 --> 03:42.590
+You can choose a specific billion parameter.
+
+03:42.590 --> 03:45.950
+And then you can start working with this particular model as well.
+
+03:45.950 --> 03:50.570
+If you're going to be using this model for building your local large language model applications.
+
+03:51.710 --> 03:53.810
+So that is about the Obama for you.
+
+03:53.810 --> 03:56.660
+And I have already downloaded it and I have already installed it.
+
+03:56.660 --> 04:01.340
+So please go ahead and install it before our next lecture because we are going to start using it from
+
+04:01.340 --> 04:02.450
+our next lecture.

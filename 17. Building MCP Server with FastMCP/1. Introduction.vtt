@@ -1,0 +1,412 @@
+WEBVTT
+
+00:00.160 --> 00:02.200
+Welcome to the next section of our course.
+
+00:02.200 --> 00:07.720
+And in this section we are going to talk about how we can start building model Context Protocol server,
+
+00:07.760 --> 00:11.280
+otherwise called as the MCP server within our code.
+
+00:12.280 --> 00:16.640
+So what is Model Context protocol and what is MCP server in first place?
+
+00:16.880 --> 00:22.720
+We already discussed about MCP server briefly in our earlier sections of the course, like how we can
+
+00:22.760 --> 00:30.960
+invoke the MCP server as an agent, which can act like an bridge between your large language model and
+
+00:30.960 --> 00:32.760
+your local systems.
+
+00:32.760 --> 00:34.200
+That's exactly what is MCP.
+
+00:34.200 --> 00:40.120
+So basically, MCP is an open protocol that standardizes how application provides context to the large
+
+00:40.120 --> 00:41.000
+language model.
+
+00:41.400 --> 00:45.560
+Think of MCP is like an a USB-C port for an AI application.
+
+00:45.560 --> 00:52.800
+Just as an a USB-C port provides a standardized way to connect your devices to various peripherals and
+
+00:52.800 --> 01:00.480
+accessories, MCP provides a standardized way to connect AI models to different data sources and Toolings,
+
+01:00.960 --> 01:07.680
+and MCP enables you to build agents and complex workflows on the top of LMS and connect your models
+
+01:07.680 --> 01:08.760
+with the world.
+
+01:09.040 --> 01:11.800
+While they say with the world, it's like everything.
+
+01:11.800 --> 01:17.280
+So MCP, you can just think of that, like you can connect with whatever that you wanted to using the
+
+01:17.280 --> 01:19.200
+power of this open protocol.
+
+01:19.200 --> 01:25.200
+And LM gets access to almost everything, like how we did in our earlier sections of the course, using
+
+01:25.360 --> 01:31.360
+like long chain, like how we're able to connect with multiple different sources of our data.
+
+01:31.400 --> 01:35.560
+That's exactly what we're going to be doing in this particular MCP as well.
+
+01:36.240 --> 01:43.840
+So MCP follows a client server architecture where an MCP host an application like cloud code or cloud
+
+01:43.840 --> 01:50.960
+Desktop, or even cursor IDE or Visual Studio Code, GitHub Copilot or windsurf, whatever that you
+
+01:51.000 --> 01:59.520
+name it, any supported IDE or any supported systems which supports MCP Can act as an MCP host, which
+
+01:59.560 --> 02:02.840
+establishes connections to one or more MCP servers.
+
+02:02.840 --> 02:06.000
+So you don't have to just rely on only one MCP server.
+
+02:06.000 --> 02:12.880
+You can have multiple different MCP server while working with it, and the MCP host accomplishes this
+
+02:12.880 --> 02:17.400
+by creating one MCP client for each MCP server.
+
+02:17.400 --> 02:25.160
+And each MCP client maintains a dedicated one on one connection with its corresponding MCP server.
+
+02:25.200 --> 02:26.800
+That's how it really works over here.
+
+02:26.800 --> 02:31.160
+You see that how the connectivity happens with MCP host with multiple different clients, and once they
+
+02:31.200 --> 02:33.240
+are connected, they can just talk with each other.
+
+02:33.240 --> 02:34.200
+That's how they really work.
+
+02:34.200 --> 02:37.200
+That's the MCP server architecture.
+
+02:38.240 --> 02:42.480
+And we already discussed about the same thing even before in our earlier sections, like how MCP really
+
+02:42.480 --> 02:42.720
+works.
+
+02:42.720 --> 02:45.320
+So MCP has introduce act like a universal bridge.
+
+02:45.320 --> 02:47.560
+It has a client and server architecture.
+
+02:47.560 --> 02:51.000
+So in here the cloud desktop is the MCP server.
+
+02:51.000 --> 02:58.240
+And we're going to connect with multiple different local systems using the MCP servers via the MCP protocols,
+
+02:58.240 --> 03:03.960
+so there can be an MCP server which can access your local machines or GitHub so you can have one server
+
+03:03.960 --> 03:04.720
+or something like that.
+
+03:04.760 --> 03:08.160
+You can also have a server which is going to be connecting with your file systems.
+
+03:08.160 --> 03:12.640
+You can also have a MCP server which is going to connect with your Slack or Google Drive.
+
+03:12.840 --> 03:19.480
+Or you can also have a MCP server, which is going to act as an automation testing tools like playwright
+
+03:19.480 --> 03:20.440
+for that matter.
+
+03:20.680 --> 03:23.720
+Or so that's how this MCP server is going to really work.
+
+03:23.720 --> 03:26.240
+And that's the client server architecture in place.
+
+03:27.040 --> 03:33.600
+So we are going to build an MCP server in this particular course in this particular session, to be
+
+03:33.600 --> 03:33.960
+honest.
+
+03:33.960 --> 03:35.200
+So how are we actually going to do that.
+
+03:35.200 --> 03:36.160
+There are two ways to do it.
+
+03:36.160 --> 03:43.880
+One is official MCP server library, which is going to be for JavaScript and Python and C, something
+
+03:43.880 --> 03:44.320
+like that.
+
+03:44.600 --> 03:48.880
+And there is a fast MCP 2.0 which is very, very specific to Python.
+
+03:48.880 --> 03:56.000
+And we are going to be focusing on fast MCP 2.0 because we know that the python is our language of choice
+
+03:56.000 --> 04:00.760
+and we are going to build everything with fast MCP 2.0 approach, which is really, really fast.
+
+04:00.760 --> 04:06.720
+And I'm telling you, the way that you build this MCP server over here with the other toolings that
+
+04:06.720 --> 04:13.920
+we have built in earlier in our long chain approach by just noting, like add tools, pretty much same
+
+04:13.960 --> 04:19.800
+approach that we're going to be doing over here as well in the MCP to create an MCP server.
+
+04:19.840 --> 04:20.760
+This is really good.
+
+04:20.760 --> 04:22.440
+The fast MCP is really awesome.
+
+04:22.440 --> 04:27.720
+If you're going to be using the node version of MCP, you know how hard it is because I already built
+
+04:27.720 --> 04:33.120
+myself the playwright MCP server as well as the database MCP server using the node.
+
+04:33.160 --> 04:37.840
+It is really, really terrible because the code starts becoming very, very complex in due course of
+
+04:37.840 --> 04:38.440
+time.
+
+04:38.440 --> 04:42.120
+But if you're going to be using this fast MCP 2.0, it's really going to be amazing.
+
+04:43.280 --> 04:43.760
+So fast.
+
+04:43.760 --> 04:48.080
+MCP makes building MCP server and client simple and intuitive.
+
+04:48.120 --> 04:55.920
+It creates tools, exposes resources, defines prompts and more with clear pythonic code and fast.
+
+04:55.960 --> 05:01.920
+Mcpp is a standard framework for working with MCPs, which is Model Context, protocol and fast.
+
+05:01.920 --> 05:10.920
+MCP 1.0 was incorporated into the official MCP Python SDK in 2024, so it is already an official integration
+
+05:10.920 --> 05:11.880
+happen over there.
+
+05:11.880 --> 05:16.960
+So it's just going to work with the uh with the official MCP Python SDK already so fast.
+
+05:17.000 --> 05:18.560
+MCP is is pretty good.
+
+05:18.600 --> 05:20.520
+They have already seen the benefits.
+
+05:20.520 --> 05:26.800
+So the model context protocol library or SDK has already incorporated fast MCP in there.
+
+05:26.800 --> 05:28.720
+So that's what we are going to be using in as well.
+
+05:29.040 --> 05:30.880
+So how the code is really going to look like.
+
+05:30.880 --> 05:36.200
+Well, I keep telling that the MCP coding is really really easier if you have already watched all the
+
+05:36.200 --> 05:40.960
+sections before, if you have already tried out everything so far that we have discussed, you should
+
+05:40.960 --> 05:43.200
+see the code looks very, very simple.
+
+05:43.200 --> 05:49.520
+All we have to do while using this fast MCP server is to follow these steps over here.
+
+05:49.520 --> 05:52.920
+So first of all, in the past MCP server we need to create a basic server.
+
+05:52.920 --> 05:58.080
+So this is going to be the server which is going to act like a bridge to talk with your desktop which
+
+05:58.080 --> 06:06.800
+is the cloud desktop or the Ides like the GitHub copilot agent or the cursor IDE or windsurf.
+
+06:07.000 --> 06:10.680
+So you need to talk your your client needs to talk with the servers.
+
+06:10.680 --> 06:12.360
+That's why you need to have a server.
+
+06:12.360 --> 06:14.120
+That is the first thing that you need to create.
+
+06:14.120 --> 06:18.120
+And then you need to have all the toolings pretty much like how we did in our lab earlier.
+
+06:18.120 --> 06:20.040
+So that's what we'll be doing over here.
+
+06:20.240 --> 06:23.480
+And then we'll be exposing the data with resources.
+
+06:23.480 --> 06:29.880
+So this is something we really require because that's what the, uh, the large language model really
+
+06:29.880 --> 06:31.080
+requires by then.
+
+06:31.120 --> 06:34.600
+And then you're going to generate the dynamic content with a resource template.
+
+06:34.600 --> 06:35.880
+So this is something more advanced.
+
+06:35.880 --> 06:39.400
+We are not going to touch about the resource template and things over here.
+
+06:39.400 --> 06:41.080
+But but yeah that's what you have to doing.
+
+06:41.280 --> 06:43.080
+And then finally you need to run the server.
+
+06:43.080 --> 06:47.200
+So once you have everything over here like everything's been wired up into the server.
+
+06:47.240 --> 06:49.080
+Then just have to run the server, that's all.
+
+06:49.160 --> 06:51.680
+That's how you need to start the MCP server.
+
+06:51.680 --> 06:52.920
+It's really, really easier.
+
+06:52.960 --> 06:55.960
+I've just I'm just going to use a one, two and three and five.
+
+06:56.000 --> 06:56.960
+Not even the four.
+
+06:57.240 --> 06:59.960
+Um but it's going to be very straightforward.
+
+06:59.960 --> 07:02.360
+And the code if you I'm going to show you the code now.
+
+07:02.400 --> 07:04.320
+You just mind blown how easy it is.
+
+07:04.320 --> 07:05.200
+So this is the code.
+
+07:05.240 --> 07:10.560
+To be honest, this is a simple calculator program like how we built even earlier in our sections to
+
+07:10.600 --> 07:12.640
+add numbers, subtract the number.
+
+07:12.640 --> 07:16.360
+This is the same code I just copy pasted from there and I've just built it.
+
+07:16.400 --> 07:21.320
+See I'm just importing the MCP server dot MCP uh over here.
+
+07:21.320 --> 07:22.960
+And then I'm creating a server.
+
+07:22.960 --> 07:26.520
+This is the way that you create a simple calculator.
+
+07:26.680 --> 07:28.480
+Uh, MCP server, that's all.
+
+07:28.480 --> 07:30.480
+Once you create it, you add all the toolings.
+
+07:30.480 --> 07:35.280
+I'm not even adding any resources here because it doesn't really require for this particular, uh,
+
+07:35.280 --> 07:38.080
+MCP server and then running the server.
+
+07:38.600 --> 07:39.800
+So that's all.
+
+07:39.800 --> 07:42.440
+Once you do that, you have an MCP server.
+
+07:42.440 --> 07:44.840
+You can now run this MCP server right away.
+
+07:45.080 --> 07:49.320
+You can wire this up with your cloud desktop and we can quickly see how this works.
+
+07:49.640 --> 07:50.600
+This is amazing.
+
+07:50.640 --> 07:55.520
+I will quickly show you all of these in this particular section, but in the next lecture we're going
+
+07:55.560 --> 07:58.280
+to see how we can start installing everything.
+
+07:58.280 --> 08:03.800
+And for the first time in this particular course, we're going to be deviating from using our existing
+
+08:03.800 --> 08:09.480
+code repository that we have been building in Visual Studio Code so far into a new project.
+
+08:09.480 --> 08:10.680
+So I'm going to create a new project.
+
+08:10.680 --> 08:13.520
+I don't want to mix them up in the same project.
+
+08:13.520 --> 08:19.080
+I'm going to be creating a new folder structures everything so that I can just start everything from
+
+08:19.080 --> 08:21.960
+the scratch, and I can show you how the MVP servers can be built.
+
+08:22.000 --> 08:28.160
+And again, MVP server cannot be always matched with the long chain that we have built because long
+
+08:28.200 --> 08:29.520
+chain is even more powerful.
+
+08:29.520 --> 08:35.040
+But if you want to create a quick solution, uh, like an agent which can talk with a large language
+
+08:35.040 --> 08:40.400
+model and all the capabilities, MVP server is really, really helpful and it's very fast to build it.
+
+08:40.400 --> 08:43.920
+That's the reason why I have added this particular section as well.

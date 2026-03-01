@@ -1,0 +1,304 @@
+WEBVTT
+
+00:00.080 --> 00:00.500
+All right.
+
+00:00.530 --> 00:02.690
+So now we'll try to invoke this history.
+
+00:02.690 --> 00:07.700
+But before that, as I told you, we also need to do pass the session ID.
+
+00:07.790 --> 00:09.200
+So let's do this.
+
+00:09.230 --> 00:12.890
+I'm going to create a session ID for that matter.
+
+00:12.890 --> 00:17.930
+So I'm going to say session ID is equal to probably Karthik over here.
+
+00:18.320 --> 00:24.470
+And now I'm going to say response is equal to history.
+
+00:24.710 --> 00:29.570
+And I'm going to do an invoke over here I think guess what.
+
+00:29.570 --> 00:33.260
+This this intellisense is not all coming over here for me.
+
+00:33.290 --> 00:34.130
+There we go.
+
+00:34.820 --> 00:39.800
+Uh, and for some reason none of the intellisense is really working for me over here.
+
+00:39.800 --> 00:41.510
+I don't know what's really going on there.
+
+00:41.810 --> 00:45.980
+Uh, and I'm going to pass the prompt message here.
+
+00:45.980 --> 00:57.410
+So I'm going to say the prompt as, uh, what's the benefit of running LM in local machine?
+
+00:57.410 --> 01:02.180
+So this is the same question that we have been asking from the start of the course, which I am asking
+
+01:02.180 --> 01:03.640
+once again over here.
+
+01:03.880 --> 01:05.320
+And guess what?
+
+01:05.350 --> 01:12.160
+Now, not only the prompt we need, we also need to pass what is called as a config.
+
+01:12.160 --> 01:21.130
+And over here on the config I'm going to say over here as configurable.
+
+01:21.130 --> 01:25.390
+So this is a configurable um key that I need to pass.
+
+01:25.390 --> 01:30.880
+And over here on the configurable I need to pass the session ID.
+
+01:32.920 --> 01:37.390
+As the session ID that I created over here, which is this guy.
+
+01:38.140 --> 01:38.650
+Right.
+
+01:38.650 --> 01:46.300
+So this is something I need to pass for every single chat message that I'm going to be doing.
+
+01:46.300 --> 01:52.930
+So only then the LLM will have an idea of which user is talking to him.
+
+01:53.380 --> 01:53.890
+Right?
+
+01:53.890 --> 01:56.650
+And now guess what?
+
+01:56.650 --> 02:00.760
+In the response two over here I'm just going to create another response.
+
+02:00.760 --> 02:01.930
+So this is response one.
+
+02:01.960 --> 02:03.220
+This is response two.
+
+02:03.250 --> 02:06.470
+I'm going to say we have asked the benefits here right?
+
+02:06.500 --> 02:09.710
+I'm just going to say how about for cloud?
+
+02:09.710 --> 02:11.540
+You see that this is like a follow up question.
+
+02:11.540 --> 02:16.700
+I'm not even giving any context of what it is, but I'm just asking how about for cloud?
+
+02:17.810 --> 02:21.380
+Which means now this is going to be like a follow up question for me over here.
+
+02:21.740 --> 02:27.980
+So this way LLM will answer based on the first context and the second context.
+
+02:28.010 --> 02:28.640
+Look at that.
+
+02:28.640 --> 02:29.930
+This is pretty cool.
+
+02:29.930 --> 02:35.390
+And now let's try to print this particular responses like what is really going to come up.
+
+02:35.390 --> 02:37.640
+So I'm going to say response one.
+
+02:37.640 --> 02:42.380
+And I'm going to print probably and slash n.
+
+02:42.380 --> 02:48.770
+And then I'm going to print again the response to okay this one.
+
+02:48.770 --> 02:50.990
+And I'm going to save this code.
+
+02:50.990 --> 02:52.970
+And now let's try to run this particular code.
+
+02:53.120 --> 02:55.220
+Looks like there is some error coming up over here.
+
+02:55.220 --> 03:01.070
+It says that the from message uh attribute is not there.
+
+03:01.160 --> 03:04.250
+It looks like it's not from message but it is from messages.
+
+03:04.280 --> 03:05.210
+I'm sorry about that.
+
+03:05.210 --> 03:06.920
+I just from message.
+
+03:06.950 --> 03:10.300
+That's the problem with the intelligence not really coming up over there.
+
+03:10.300 --> 03:12.700
+And we have got this bigger problem.
+
+03:13.150 --> 03:13.750
+There we go.
+
+03:13.750 --> 03:16.540
+So now the code is actually working for us over here.
+
+03:16.540 --> 03:21.220
+So you will notice that this random message this time is going to pass the chain information.
+
+03:21.340 --> 03:26.860
+And it is also going to go and check the session history every single time before it's going to answer
+
+03:26.860 --> 03:28.300
+the question as I told you.
+
+03:28.330 --> 03:29.410
+Look at that.
+
+03:29.440 --> 03:33.970
+So for for the first time, it is going to give us this particular answer over here.
+
+03:34.240 --> 03:38.980
+And for the second question, you will notice that for a more practical purpose, especially in one
+
+03:38.980 --> 03:45.760
+large dataset, the complex model using cloud services offer more feasible due to their scalable infrastructure.
+
+03:45.970 --> 03:46.960
+Look at that.
+
+03:46.990 --> 03:52.330
+It now knows there is a context for both of these particular questions.
+
+03:52.330 --> 03:53.770
+Maybe I know this.
+
+03:53.770 --> 03:57.460
+Maybe it's not quite clear for you over here.
+
+03:57.460 --> 04:00.160
+So let's say I'm going to ask a question.
+
+04:00.610 --> 04:07.450
+What is the distance between Earth and Sun?
+
+04:07.810 --> 04:14.600
+And the next follow up question I'm going to ask is How about moon so that see that this is like a follow
+
+04:14.630 --> 04:15.230
+up question.
+
+04:15.230 --> 04:18.800
+And now the LM should answer both of these for us.
+
+04:18.830 --> 04:20.840
+Let's see what's going to really happen over here.
+
+04:20.840 --> 04:25.260
+So you will see that it says that the average distance between the Earth and sun is approximately 93
+
+04:25.260 --> 04:28.310
+million miles over here, which is great.
+
+04:28.310 --> 04:35.720
+And also over here, it shows that the average distance between the moon and sun, uh, is approximately
+
+04:36.020 --> 04:37.940
+93 million miles.
+
+04:37.940 --> 04:40.970
+So, I mean, it just says between moon and sun.
+
+04:40.970 --> 04:47.780
+So it has somehow, uh, got the context that it's between the sun and moon, so Earth and sun, and
+
+04:47.780 --> 04:50.660
+then we have the LM things that is from sun and moon.
+
+04:50.660 --> 04:52.730
+So that is what it is really doing over here.
+
+04:52.730 --> 04:55.580
+And even that one is 93 million miles.
+
+04:55.700 --> 04:57.020
+I'm not pretty sure about that.
+
+04:57.020 --> 04:59.660
+But that's what this is telling me over here.
+
+04:59.900 --> 05:04.250
+Uh, but but yeah, you can see that this is how things are like.
+
+05:04.280 --> 05:10.160
+You could do a follow up question with a history message over here, and this is how you can do it.
+
+05:10.160 --> 05:16.910
+And you can also do some more things like you can also do a cleanup of the history message if you wanted
+
+05:16.910 --> 05:17.540
+to do it.
+
+05:17.630 --> 05:24.230
+So for instance, if I want to do get session history of the session ID, and if you wanted to do a
+
+05:24.260 --> 05:28.640
+clear, probably you can do the clear operation as well.
+
+05:29.330 --> 05:33.320
+So the session will be cleared every single time before the execution really happens.
+
+05:33.500 --> 05:37.310
+And then you will have like a correct answer every single time.
+
+05:37.340 --> 05:37.940
+So look at that.
+
+05:38.030 --> 05:38.870
+Now this is correct.
+
+05:38.870 --> 05:43.340
+So the first time it says the average distance between Earth and sun is this one.
+
+05:43.340 --> 05:47.780
+And then the average distance between Earth and the moon is approximately 200.
+
+05:47.810 --> 05:47.960
+Yeah.
+
+05:47.990 --> 05:48.740
+This is correct.
+
+05:48.740 --> 05:55.190
+So this this this guy this is very important because for some reason it has the old historical information
+
+05:55.190 --> 05:56.390
+before it start running it.
+
+05:56.390 --> 06:01.370
+So make sure that you always clear the session before you start the new conversation.
+
+06:01.370 --> 06:04.070
+So that is how you can keep on asking the questions.
+
+06:04.070 --> 06:12.080
+And this is how we can actually make the historical operation happens with the chat message history,
+
+06:12.140 --> 06:15.800
+uh, which is available in the community of the.

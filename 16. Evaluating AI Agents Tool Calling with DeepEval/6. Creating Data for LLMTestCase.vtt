@@ -1,0 +1,325 @@
+WEBVTT
+
+00:00.080 --> 00:06.500
+So now that we have got our, uh, intermediate results from the tools, which is going to give us the
+
+00:06.500 --> 00:13.250
+multiply numbers, and this is the tool name and the tool input parameters, we can now try to formulate
+
+00:13.250 --> 00:18.920
+this kind of structure with our actual test cases that we are looking for.
+
+00:18.920 --> 00:20.420
+So how do we actually do that.
+
+00:20.420 --> 00:28.070
+So what I'm going to do is I'm going to write the the method over here, uh, in a bit of uh, the customized
+
+00:28.070 --> 00:29.090
+fashion over here.
+
+00:29.090 --> 00:37.370
+So I'm going to say intermediate result is equal to basically that's going to be the response of the
+
+00:37.370 --> 00:40.730
+intermediate result, as you know, which is going to be this one.
+
+00:40.760 --> 00:42.710
+I'm going to go copy paste that.
+
+00:43.280 --> 00:44.750
+So it's not intermediate result.
+
+00:44.750 --> 00:49.520
+It's intermediate steps I guess maybe we can just name this as intermediate steps as well.
+
+00:49.520 --> 00:56.540
+And now with this intermediate steps that we have got, we can get the uh the actual results like how
+
+00:56.540 --> 00:58.880
+we actually did over here, as you can see.
+
+00:58.880 --> 01:04.760
+So if you just go, uh, way further, which is this one.
+
+01:04.760 --> 01:05.650
+So intermediate steps.
+
+01:05.650 --> 01:07.210
+We got this particular thing over here.
+
+01:07.210 --> 01:14.530
+So if I just say zero it is going to give me the the first ten elements is going to be this one.
+
+01:14.530 --> 01:20.770
+And over here my idea is I wanted to write pretty much like a written as, like a tuples over here.
+
+01:20.800 --> 01:22.840
+What I'm going to say agent action.
+
+01:22.840 --> 01:25.630
+And the result is equal to this one.
+
+01:25.630 --> 01:27.490
+So this is basically going to be a tuple.
+
+01:27.490 --> 01:35.140
+And I can now get the uh agent action which is the the actual agent name that we're looking for.
+
+01:35.140 --> 01:40.660
+So for that I'm going to say uh tool uh maybe.
+
+01:40.990 --> 01:41.350
+Yeah.
+
+01:41.380 --> 01:49.150
+Tool which is going to be the tool name that I'm looking for so I can get it from the agent action,
+
+01:49.480 --> 01:54.130
+uh, of dot uh, tool that's going to give me the tool name.
+
+01:54.130 --> 01:59.530
+And if I want to get the, uh, tool input, which is going to be this one, then I can just say tool
+
+01:59.560 --> 02:05.590
+underscore input, which is equal to, uh, agent action dot tool underscore input.
+
+02:05.590 --> 02:10.310
+So basically this is going to return me a tuple in Python.
+
+02:10.400 --> 02:13.100
+I'm just going to store in the in the agent action.
+
+02:13.100 --> 02:18.020
+And the result and this agent action is going to be these value that we're going to be getting over
+
+02:18.020 --> 02:18.290
+here.
+
+02:18.290 --> 02:18.890
+The tool.
+
+02:18.890 --> 02:21.470
+So you can just get the tool over here.
+
+02:21.470 --> 02:27.050
+And now if we're just going to print the tool and the tool input, if I try to run this thing over here,
+
+02:27.050 --> 02:29.540
+you see that the tool name is going to be the multiply number.
+
+02:29.540 --> 02:34.970
+And the tool input is going to be a of two comma two and b as two.
+
+02:35.390 --> 02:36.680
+So hope you got the idea right.
+
+02:36.680 --> 02:39.470
+This is basically I'm creating from this particular array.
+
+02:39.500 --> 02:43.310
+I'm just creating the entire tuples over here even further.
+
+02:43.310 --> 02:48.440
+If you want to go even further to go even more crazy about this entire stuff, because we also have
+
+02:48.470 --> 02:52.250
+got the result of four in here, which is the output.
+
+02:52.280 --> 02:55.730
+You can also get that information as well, for instance.
+
+02:55.730 --> 03:04.370
+So if I just say tool output, uh, like that is equal to this one half one, which means that it's
+
+03:04.370 --> 03:05.690
+going to give you the tool output.
+
+03:05.690 --> 03:11.540
+So now if you're just going to say print the tool output over here, let's try running it.
+
+03:12.050 --> 03:14.760
+Um it looks like I messed up with the result over here.
+
+03:14.790 --> 03:15.030
+See that?
+
+03:15.030 --> 03:18.030
+This is the same name I'm actually using, which is crazy.
+
+03:18.030 --> 03:20.730
+I've just wrongly used that name two times.
+
+03:20.730 --> 03:22.560
+So let me just try to run this again.
+
+03:23.400 --> 03:25.410
+And maybe this name should be different.
+
+03:25.440 --> 03:27.960
+It should be like a results or anything like that.
+
+03:27.990 --> 03:28.740
+Yeah.
+
+03:28.770 --> 03:29.850
+Results.
+
+03:29.970 --> 03:31.590
+If I run this one over here look at that.
+
+03:31.590 --> 03:35.490
+So you get the multiply numbers, the input parameters and the output.
+
+03:35.490 --> 03:36.570
+As for the tool output.
+
+03:36.570 --> 03:37.230
+As for.
+
+03:37.230 --> 03:42.360
+So all of these are required for me while I create the LM test case.
+
+03:42.360 --> 03:46.830
+And these are the things which is required for the input over here.
+
+03:46.830 --> 03:48.570
+As you can see the tool called.
+
+03:48.570 --> 03:53.670
+And of course they have not really added any documentation for input parameters and the output details
+
+03:53.670 --> 03:56.190
+which we are going to be doing over here.
+
+03:56.190 --> 04:02.550
+But hope you got the idea, like how you can massage your intermediate steps that you are getting and
+
+04:02.550 --> 04:06.690
+create the tool name, tool input and the tool output that you're looking for.
+
+04:06.690 --> 04:07.320
+Something like this.
+
+04:07.320 --> 04:10.680
+Now this structure, just hold this thought over here.
+
+04:10.680 --> 04:14.520
+Just this structure is going to be used for your tool calls.
+
+04:14.520 --> 04:16.800
+As you can see over here, the expected tools.
+
+04:16.800 --> 04:19.430
+You see that the multiply numbers multiply numbers.
+
+04:19.460 --> 04:22.850
+The input parameter is, which is going to be the a as this and b is this.
+
+04:23.000 --> 04:26.360
+Look at that and the output is going to be four for this one.
+
+04:26.360 --> 04:27.920
+And the output is over here.
+
+04:27.920 --> 04:34.310
+So we can now compare this expected tools with the actual tools that we have got over here.
+
+04:34.820 --> 04:35.360
+Right.
+
+04:35.360 --> 04:39.230
+And now let's going back to our our code over here.
+
+04:39.230 --> 04:43.190
+And just like try to implement the exact same thing that we have written over here, I'm going to copy
+
+04:43.190 --> 04:46.340
+this whole thing, uh, which is this one.
+
+04:46.340 --> 04:53.120
+And I'm going to go paste into the method that we have created over here.
+
+04:53.510 --> 04:57.560
+Uh, just this one, uh, something like that.
+
+04:57.590 --> 05:02.750
+We can just say the indentation is important in Python, so I'm going to just do the indentation over
+
+05:02.750 --> 05:03.410
+here.
+
+05:03.770 --> 05:06.050
+Um, and what else we have got.
+
+05:06.050 --> 05:09.200
+So we have got the intermediate steps and that intermediate steps.
+
+05:09.200 --> 05:16.520
+We are going to pass it over here, uh, which is going to be this intermediate steps of zero.
+
+05:16.550 --> 05:17.330
+Right.
+
+05:17.420 --> 05:20.690
+Uh, that is going to get me the agent action and the results.
+
+05:20.690 --> 05:24.580
+And then we have got the, uh, Tool output as well.
+
+05:24.580 --> 05:26.140
+So we get the tools and tool input.
+
+05:26.170 --> 05:30.940
+Now I'm going to return all of these to the color method.
+
+05:30.970 --> 05:34.420
+Color of this particular method is going to be I'm going to return the tool.
+
+05:35.050 --> 05:36.730
+I'm going to return the tool input.
+
+05:36.730 --> 05:42.820
+And I'm also going to return the tool output so that all of these can be returned to the color.
+
+05:42.820 --> 05:47.110
+So at any time if I'm going to pass any question to this one, it's going to invoke the AI agent is
+
+05:47.110 --> 05:48.640
+going to get you the response.
+
+05:48.880 --> 05:54.220
+And it's also going to get you the intermediate steps, um, which is going to have the details that
+
+05:54.220 --> 05:55.390
+you're looking for over here.
+
+05:55.390 --> 05:59.050
+If you want to get the response as well, you can get the response as well, because we're not really
+
+05:59.050 --> 06:00.250
+returning the response.
+
+06:00.250 --> 06:02.830
+Um, probably return the response as well if you wanted to.
+
+06:02.860 --> 06:07.690
+I mean, it depends if you really wanted to return the response, you can do that as well, because
+
+06:07.690 --> 06:13.510
+this response is something that you can use as an, uh, as the response that you are giving to the,
+
+06:13.540 --> 06:14.230
+to the caller.
+
+06:14.230 --> 06:16.180
+But I don't think we really need the response.
+
+06:16.180 --> 06:19.180
+So I'm just going to limit from here on.
+
+06:19.750 --> 06:26.440
+So this is how you can, you can uh, you can create this particular method with all the input that
+
+06:26.440 --> 06:28.720
+is required for your LM test case.

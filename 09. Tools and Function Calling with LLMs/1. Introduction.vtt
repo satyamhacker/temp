@@ -1,0 +1,370 @@
+WEBVTT
+
+00:00.050 --> 00:01.730
+Welcome to the next section of our course.
+
+00:01.730 --> 00:06.620
+And in this section we are going to talk about understanding toolings in large language models.
+
+00:07.040 --> 00:13.730
+So tooling is another great concept of the large language model, which can help your large language
+
+00:13.730 --> 00:19.460
+model to use external tools and libraries while it performs any action.
+
+00:20.000 --> 00:26.300
+I know it sounds crazy that LM is going to use some other external tools to perform an operation, but
+
+00:26.300 --> 00:28.610
+the tools are going to be very, very essential.
+
+00:28.610 --> 00:37.460
+While you are going to give your LM an extra leverage or mileage to go and search for external data,
+
+00:37.490 --> 00:43.280
+probably, or even going to go and perform an action which your large language model is not trained
+
+00:43.280 --> 00:43.790
+for.
+
+00:43.820 --> 00:45.740
+That is what is this tooling is all about.
+
+00:45.740 --> 00:49.130
+So for instance this is a simple example that you can see here.
+
+00:49.160 --> 00:54.350
+I'm going to ask like did Donald Trump won the 2024 presidential election.
+
+00:54.470 --> 01:00.470
+And if I'm going to pass this via Lang chain with our prompt, and if you're going to ask it to the
+
+01:00.860 --> 01:09.310
+model, your model is not going to be responding unless until it has trained with 2024 data in it.
+
+01:09.310 --> 01:15.790
+I'm sure most of the models today in 2020 5th February, none of the model has actually been trained
+
+01:15.790 --> 01:17.350
+with 2024 data.
+
+01:17.350 --> 01:22.390
+So you are going to get a response saying, nope, I don't have the context of your 24 due to the cutoff
+
+01:22.390 --> 01:23.680
+of the trained data.
+
+01:24.190 --> 01:27.760
+That is what you are going to be getting up from the model.
+
+01:27.760 --> 01:30.130
+So let's try this and see if that is the case.
+
+01:30.130 --> 01:34.030
+So I'm going to go to my hyper terminal over here.
+
+01:34.030 --> 01:37.840
+And I'm going to say uh oh llama.
+
+01:37.840 --> 01:40.150
+And I'm going to run the model.
+
+01:40.150 --> 01:43.930
+And I'm going to ask the exact same question that I have asked over here.
+
+01:44.320 --> 01:46.630
+Copy that, paste it over here.
+
+01:46.660 --> 01:48.400
+And I'm going to hit enter.
+
+01:48.400 --> 01:49.540
+So let's see what it's going to.
+
+01:49.570 --> 01:50.500
+So look at that.
+
+01:50.500 --> 01:58.240
+So as of my last update on October 2024, 2023, there has been no official result of the 2024 US presidential
+
+01:58.240 --> 02:01.870
+election as it hasn't taken place yet.
+
+02:01.900 --> 02:06.100
+That is what you're going to be getting with the Q1 2.5 model.
+
+02:06.100 --> 02:11.230
+We're going to be using the same exact model right now for all our discussion, as you know.
+
+02:11.260 --> 02:18.700
+But once we start using the tooling operation, you are going to get this response.
+
+02:18.700 --> 02:20.290
+So this is what I'm talking about.
+
+02:20.290 --> 02:24.670
+You're going to get the actual response like the same question, but it's going to say yes, Donald
+
+02:24.700 --> 02:27.880
+Trump won the election in 2024, but how is that happening?
+
+02:27.970 --> 02:34.210
+You'll notice that we have included a tool binding with a Wikipedia tool.
+
+02:35.350 --> 02:37.570
+So that is what is tooling support guys.
+
+02:37.570 --> 02:38.620
+Now you got the idea right.
+
+02:38.620 --> 02:45.160
+So there is something called as a Wikipedia tool or Bing search tool or maybe Google search tool, whatever
+
+02:45.160 --> 02:47.650
+tool that you wanted to fuse if they have got one.
+
+02:47.650 --> 02:55.360
+Or you can also make your own, and then you can integrate this Wikipedia tool along with your tool
+
+02:55.390 --> 02:58.420
+binding for your large language model.
+
+02:58.420 --> 03:05.800
+And the moment you do it, you are going to start getting the responses from your large language model.
+
+03:05.800 --> 03:06.970
+And it's going to say yes.
+
+03:06.970 --> 03:09.070
+Donald Trump won the election in 2024.
+
+03:09.310 --> 03:13.480
+Based on the prompt, how you have written over here, the answer is going to be summarized and it's
+
+03:13.480 --> 03:15.580
+going to give an up to you over here.
+
+03:15.610 --> 03:17.670
+And that is what is the tooling support guys.
+
+03:17.700 --> 03:19.020
+And now you got the idea right.
+
+03:19.050 --> 03:24.300
+This this is going to give an extra mileage to your large language model with the details that you're
+
+03:24.300 --> 03:29.640
+looking for, which is something not your large language model is already trained with.
+
+03:29.670 --> 03:34.380
+If your large language model has got no context of that particular question that you're asking, then
+
+03:34.380 --> 03:41.580
+this model is going to go and search for the available tool it has got, and then it is going to generate
+
+03:41.580 --> 03:44.190
+the answer for you, and it's going to give it to you back.
+
+03:44.220 --> 03:46.470
+And that is the power of the tooling support.
+
+03:46.500 --> 03:53.160
+So about this tooling we just go to Lang Chain.com website over here and see that under the tools,
+
+03:53.160 --> 03:54.720
+the components of the tools.
+
+03:54.930 --> 03:57.060
+Uh, there is this tools over here.
+
+03:57.060 --> 04:00.630
+So tools are the utilities designed to be called by the model.
+
+04:01.350 --> 04:04.500
+Their inputs are designed to be generated by models.
+
+04:04.500 --> 04:08.100
+And their outputs are designed to be passed back to the models.
+
+04:08.130 --> 04:12.150
+And the toolkit is a collection of tools meant to be used together.
+
+04:12.300 --> 04:18.120
+And if you write your own tools, see how to you you would like to contribute to the integration.
+
+04:18.180 --> 04:19.380
+See the contribution integration.
+
+04:19.380 --> 04:22.530
+So you can write your own tools as well.
+
+04:22.560 --> 04:26.120
+I mean we'll talk about that in a in this particular section anyways.
+
+04:26.120 --> 04:29.870
+But for now just see the existing tools is already available.
+
+04:29.900 --> 04:30.320
+Look at that.
+
+04:30.320 --> 04:33.860
+The Bing search tool brave search tool DuckDuckGo search.
+
+04:33.860 --> 04:39.710
+So these are the tool which is going to be helpful just for the search operation and see the return
+
+04:39.710 --> 04:40.280
+datas.
+
+04:40.310 --> 04:45.380
+If you're going to search with this Bing search tool with its API, probably you are going to get the
+
+04:45.380 --> 04:49.700
+URL of the uh, of the search term that you are looking for in a website.
+
+04:49.700 --> 04:54.320
+It's going to give you the snippet of that particular search item, and it's also going to return you
+
+04:54.320 --> 04:55.280
+the title.
+
+04:55.370 --> 04:58.640
+Same thing will happen for the brave search DuckDuckGo.
+
+04:58.640 --> 05:03.380
+And there are some more search engines which are also going to return you what is called as an images
+
+05:03.380 --> 05:05.930
+that you're looking for, like a tabular search.
+
+05:06.110 --> 05:11.930
+Uh, and there are many plans available like how to use these tools.
+
+05:11.930 --> 05:17.630
+But if you go any one of the tool, for instance, the brave search tool, it is just like an yet another
+
+05:17.630 --> 05:22.130
+library that you have to install after you install the long chain community, which we already did in
+
+05:22.130 --> 05:23.780
+our earlier sections of this course.
+
+05:23.780 --> 05:29.830
+And once you install the brave search over here, then you have to supply the API keys.
+
+05:29.830 --> 05:34.270
+And then once you have the API key, you can then integrate this particular tool.
+
+05:34.270 --> 05:37.540
+Or maybe you can just run this tool by using this value.
+
+05:37.540 --> 05:38.800
+And it's going to get you the response.
+
+05:38.800 --> 05:40.720
+And now you can use this tool.
+
+05:40.720 --> 05:44.380
+You can bind this particular tool with your large language model.
+
+05:44.380 --> 05:50.590
+And your large language model is going to start responding to that particular question that you're looking
+
+05:50.590 --> 05:50.890
+for.
+
+05:50.920 --> 05:54.880
+You can actually see all these details that we are talking about over here in the language, like how
+
+05:54.880 --> 05:56.140
+we were doing before.
+
+05:56.590 --> 05:58.240
+That's going to happen as well.
+
+05:58.240 --> 06:03.730
+You will see all the different observability, traceability, and you can also monitor what's going
+
+06:03.730 --> 06:07.660
+on behind the scene with these kinds of operations that we are doing.
+
+06:07.660 --> 06:10.330
+So that is the tool for you over here.
+
+06:10.810 --> 06:13.720
+And you can also see more tools like not just the search tool.
+
+06:13.720 --> 06:18.760
+You can also see there is a code interpreter tool, which is going to be interpreting the code that
+
+06:18.760 --> 06:19.660
+you're going to use.
+
+06:19.660 --> 06:25.300
+And then it's going to give you the the code result, pretty much like how you can interpret with the
+
+06:25.330 --> 06:26.500
+coding that you're looking for.
+
+06:26.530 --> 06:29.650
+It supports languages like Python, JavaScript and Ruby.
+
+06:29.680 --> 06:30.610
+Just amazing.
+
+06:30.640 --> 06:31.480
+You can use that.
+
+06:31.510 --> 06:36.910
+There are some productivity tools available as well over here like GitHub toolkit, GitLab toolkit,
+
+06:36.910 --> 06:38.620
+Gmail Toolkit, and more.
+
+06:38.620 --> 06:42.130
+And one of the most important thing that we are going to be talking about in our next section.
+
+06:42.130 --> 06:48.130
+When we talk about the agents, we are going to be also using this playwright browser toolkit, which
+
+06:48.130 --> 06:53.290
+is also going to be helpful for you to write the UI test using playwright.
+
+06:53.320 --> 06:58.720
+I mean, not exactly UI test, but you can also use this playwright tool to do web extraction.
+
+06:58.720 --> 07:04.750
+Get the responses from a website, and you can also see every single thing is used by your AI agent
+
+07:04.750 --> 07:05.650
+as well.
+
+07:05.680 --> 07:07.030
+While it's going to take action.
+
+07:07.030 --> 07:08.890
+So those things, we can do it as well.
+
+07:08.920 --> 07:14.350
+Similarly, there are supports for the databases and there are multiple different tools that still keep
+
+07:14.350 --> 07:16.240
+on evolving and emerging.
+
+07:16.270 --> 07:18.790
+And you can also write your own custom tool, as I told you.
+
+07:18.820 --> 07:24.430
+And that is also going to be helpful for your large language model to perform an action while you ask
+
+07:24.430 --> 07:29.410
+the question, if large language model doesn't really know what exactly to do with that particular question.
+
+07:29.770 --> 07:33.160
+So that is the tool for you guys, and this is what we are going to be discussing in this particular
+
+07:33.160 --> 07:33.760
+section.
+
+07:33.760 --> 07:40.480
+And it is going to be quite exciting to see how large language model decides to use a tool.

@@ -1,0 +1,187 @@
+WEBVTT
+
+00:00.020 --> 00:06.110
+In this last lecture of this section, we are going to talk about a chain decorator that we can use
+
+00:06.110 --> 00:09.680
+for our chaining mechanism that we are doing.
+
+00:09.740 --> 00:11.390
+I mean the runnable that we are really creating.
+
+00:11.390 --> 00:17.750
+So essentially this runnable lambda that we are creating over here is to create this particular method
+
+00:17.750 --> 00:21.230
+that choose LM method as a runnable.
+
+00:21.260 --> 00:21.530
+Right.
+
+00:21.560 --> 00:27.380
+We're just converting this custom method that we have got as a runnable, so that this can be executed
+
+00:27.380 --> 00:30.440
+in the chain over here.
+
+00:30.440 --> 00:31.100
+Right.
+
+00:31.130 --> 00:35.210
+That is what this runnable lambda method is really doing in a nutshell.
+
+00:35.210 --> 00:44.150
+But if I wanted to decorate this particular or make this particular choose LM as a as a chain which
+
+00:44.150 --> 00:50.900
+can be used as a runnable instead of using the runnable lambda method over here, I can use the chain
+
+00:50.900 --> 00:52.250
+decorator as well.
+
+00:52.250 --> 00:53.630
+So I'll tell you what I really mean about that.
+
+00:53.630 --> 00:56.900
+So let me just copy this entire code over here.
+
+00:57.020 --> 00:58.700
+Just wanted to keep them separate.
+
+00:58.700 --> 01:06.730
+So I'm going to say Uh, using a custom or maybe using add chain decorator.
+
+01:06.730 --> 01:09.700
+So this is the thing that I'm going to be doing over here.
+
+01:09.730 --> 01:16.450
+And the code, I'm just going to be pasting the exact same code, but just that, uh, instead of this
+
+01:16.450 --> 01:21.820
+runnable lambda that we are using, I'm going to be using the chain class over here.
+
+01:21.820 --> 01:26.980
+And now I can get rid of this particular runnable lambda, but instead of runnable lambda over here
+
+01:26.980 --> 01:32.020
+for this particular method that we are using making as a runnable lambda, I'm just going to write a
+
+01:32.020 --> 01:35.080
+shorthand of add chain over here.
+
+01:35.080 --> 01:35.680
+That's all.
+
+01:35.680 --> 01:38.050
+That is what I'm going to be doing over here.
+
+01:38.050 --> 01:41.440
+So what I say add a decorator.
+
+01:41.470 --> 01:42.160
+Uh, sorry.
+
+01:42.190 --> 01:44.050
+Somehow it's not correct.
+
+01:44.080 --> 01:46.270
+Add chain.
+
+01:46.300 --> 01:46.990
+Yeah.
+
+01:47.410 --> 01:51.490
+So because I was writing in this line, actually, that's why, uh, that's it.
+
+01:51.490 --> 02:00.760
+You see that now this choose, um, becomes a runnable, uh, for our chain operation that we are doing
+
+02:00.760 --> 02:01.480
+over here.
+
+02:01.510 --> 02:02.410
+Let's choose LM.
+
+02:02.410 --> 02:05.110
+So you see that this is what I am passing in over here as well.
+
+02:05.140 --> 02:12.070
+For this particular method, um, and now if I try to run this particular code, you should see that
+
+02:12.070 --> 02:17.230
+the response is going to be pretty much exactly the same, like how we were doing earlier.
+
+02:17.320 --> 02:22.390
+Uh, because this is now a run over this choose LM method is now a runnable.
+
+02:22.390 --> 02:25.330
+So it is just going to work fine as expected over here.
+
+02:25.330 --> 02:33.310
+So instead of using you, the, uh, the runnable lambda to perform this operation with the LM selector,
+
+02:33.370 --> 02:39.010
+uh, this time I'm just going to be using the choose LM method directly so that I can able to perform
+
+02:39.010 --> 02:40.180
+the operation there.
+
+02:40.210 --> 02:40.660
+Right.
+
+02:40.690 --> 02:48.700
+That is the major difference between using the runnable lambda uh, method versus the shorthand, uh,
+
+02:48.700 --> 02:50.710
+at chain annotation.
+
+02:50.710 --> 02:54.640
+So that is how you can actually do that in this particular code.
+
+02:54.640 --> 02:55.870
+But yeah, that's all guys.
+
+02:55.870 --> 02:59.110
+So we have discussed quite a lot of details over here.
+
+02:59.110 --> 03:06.250
+Uh, For the chaining mechanism and how we can work with the the long chain, the renewables and also
+
+03:06.250 --> 03:12.700
+string parsing and how we can parse the string parsing in the in the chain, and how we can work with
+
+03:12.700 --> 03:18.670
+multiple chains, how we can run the chains in parallel, and also how we can run the chain with the
+
+03:18.670 --> 03:20.560
+runnable lambdas.
+
+03:20.950 --> 03:26.980
+And finally, with the add chain decorator, we still have few more things, especially the runnable
+
+03:27.100 --> 03:31.420
+with memory, which is one of the most important thing that we are going to be talking later on in this
+
+03:31.420 --> 03:32.230
+particular course.
+
+03:32.230 --> 03:36.700
+So just see this runnable with message history.
+
+03:36.730 --> 03:37.840
+This is amazing.
+
+03:37.840 --> 03:40.840
+This is one thing which we are going to be using while we are building the chatbots.
+
+03:40.840 --> 03:45.670
+So we are going to be talking about that as well in the upcoming section of this course.
+
+03:45.670 --> 03:50.650
+But at least as of now for the basic getting started, this is more than enough for you to get going.
+
+03:50.680 --> 03:55.930
+So please try it out all of these yourself and use this notebook while you have access to.
+
+03:55.960 --> 04:00.430
+And then you can start working with the same thing that we have discussed over here.

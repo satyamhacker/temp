@@ -1,0 +1,208 @@
+WEBVTT
+
+00:00.120 --> 00:00.760
+All right.
+
+00:00.760 --> 00:07.640
+So now that we saw a demo of how we can create our own custom toolings that we wrote and also how we
+
+00:07.640 --> 00:11.360
+can access them from the cloud desktop, which is amazing.
+
+00:11.360 --> 00:15.720
+So it's already an working success that we have seen, and this is quite awesome.
+
+00:15.920 --> 00:21.200
+The next thing which I wanted to write as a tool, uh, is basically that was something which I was
+
+00:21.200 --> 00:28.040
+doing it while I was also building it with the playwright MCP server is how we can, uh, actually,
+
+00:28.480 --> 00:36.960
+uh, perform a JavaScript execution while the MCP server struggles to find some things because the tool
+
+00:36.960 --> 00:43.120
+that we have given is very, very lesser, and it may not be enough for doing all the operation and
+
+00:43.120 --> 00:46.480
+see that we have given to perform a login data entry.
+
+00:46.720 --> 00:51.920
+Uh, but it couldn't able to do that because, uh, it says that, uh, however, I noticed that you
+
+00:51.920 --> 00:56.920
+mentioned, uh, wanting to enter the username and password, but it didn't provide the specific credentials
+
+00:56.920 --> 01:01.080
+you would like to use, blah, blah, blah, and it couldn't able to fill up the details as well.
+
+01:01.120 --> 01:07.860
+Of course, even if you give it to the, uh, the tool, uh, with the username and password, it is
+
+01:07.860 --> 01:11.260
+not going to fill it up for you because there is no relevant tool to do that.
+
+01:11.260 --> 01:16.180
+So we are going to see how we can avoid all these problems over here.
+
+01:16.300 --> 01:24.260
+So if you are me, what I will do is I'll first start off with the very, very low hanging fruit, which
+
+01:24.260 --> 01:26.860
+is the fill operation.
+
+01:26.860 --> 01:27.020
+Right.
+
+01:27.060 --> 01:35.380
+So I'm going to say fill which is going to basically do a filling of the uh, data, uh, over there.
+
+01:35.660 --> 01:42.420
+Uh, and it's going to have a value, obviously, uh, which is going to be a string, I'm going to
+
+01:42.420 --> 01:54.420
+say fill and input field, uh, with a text, uh, on the page.
+
+01:55.300 --> 01:55.860
+Right.
+
+01:56.100 --> 01:57.300
+Uh, there we go.
+
+01:57.540 --> 01:58.540
+That's what it's going to do.
+
+01:58.540 --> 02:03.380
+So I'm going to say fill, um, which is going to take the selector, and then it's going to also take
+
+02:03.380 --> 02:04.300
+the value.
+
+02:04.700 --> 02:06.540
+So that's something that I need to pass.
+
+02:06.540 --> 02:10.980
+And I'm going to say a filled the element uh, with.
+
+02:12.300 --> 02:18.570
+And then I'm going to say the value, which is going to be this particular value that we're talking
+
+02:18.570 --> 02:19.090
+about.
+
+02:19.130 --> 02:25.090
+And then error of, uh, the element.
+
+02:25.090 --> 02:26.130
+I think this is fine.
+
+02:26.130 --> 02:26.370
+Right.
+
+02:26.410 --> 02:28.490
+This is the fill operation that I'm going to do.
+
+02:28.490 --> 02:29.770
+So that's what I was talking about, right.
+
+02:29.810 --> 02:34.490
+So once you write one tool, the rest of the tools are so easy because it's just going to follow the
+
+02:34.490 --> 02:36.690
+same pattern over and over again.
+
+02:36.690 --> 02:38.930
+And things are going to be very, very straightforward.
+
+02:38.930 --> 02:41.090
+So that's going to be the fill operation which I'm going to do.
+
+02:41.290 --> 02:47.930
+Uh, and then I'm also going to uh, do a uh, evaluate JS for that matter.
+
+02:47.930 --> 02:54.170
+So I'm going to say evaluate, uh, JS just basically the JavaScript uh, evaluation, which I'm going
+
+02:54.210 --> 02:54.930
+to be doing.
+
+02:54.930 --> 02:57.370
+So you don't require a value over here.
+
+02:57.370 --> 03:01.450
+So I'm gonna just get rid of, uh, that, uh, over here.
+
+03:01.610 --> 03:07.410
+And I'm going to say, uh, execute a JavaScript on the current page, something like that.
+
+03:07.450 --> 03:07.730
+Right.
+
+03:07.730 --> 03:08.530
+Something like this.
+
+03:08.530 --> 03:12.530
+And I'm going to say evaluate, uh, over here.
+
+03:12.930 --> 03:15.130
+And this is not script to be select.
+
+03:15.370 --> 03:16.730
+This is going to be script.
+
+03:17.050 --> 03:24.390
+So I'm going to just pass this script over here, in the evaluate I'm going to say JavaScript result,
+
+03:25.870 --> 03:35.630
+JavaScript result, which is going to be the result which is been, uh, coming out from the execution,
+
+03:36.430 --> 03:37.430
+something like that.
+
+03:38.510 --> 03:38.990
+Right.
+
+03:39.030 --> 03:41.750
+So I'm going to pass this result over here.
+
+03:42.470 --> 03:43.070
+That's all.
+
+03:43.550 --> 03:47.950
+And I'm going to say error executing of course JavaScript.
+
+03:48.870 --> 03:51.710
+And then I'm going to pass the script that we have got.
+
+03:51.950 --> 03:55.270
+Uh, or maybe you can just pass the exception.
+
+03:55.590 --> 03:56.190
+Right.
+
+03:56.270 --> 03:58.550
+So that's something that I'm going to do over here.
+
+03:59.230 --> 04:00.910
+So this is the other tool that I want.
+
+04:00.950 --> 04:04.750
+So the fill tool and the execute JavaScript tool.
+
+04:05.190 --> 04:10.670
+And once we have all of these in place I need to add a couple more tools before I wind up this particular
+
+04:10.990 --> 04:13.750
+session with all the playwright implementation.
+
+04:13.790 --> 04:20.190
+I'll talk to you how we can do a few more implementations, like getting a page title or closing the
+
+04:20.190 --> 04:21.150
+browsers and things.
+
+04:21.190 --> 04:25.870
+In our next lecture, which is going to give you even more context, like how you can improve these
+
+04:25.870 --> 04:27.270
+tools even further.

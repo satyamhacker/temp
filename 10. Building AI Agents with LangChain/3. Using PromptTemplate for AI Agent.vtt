@@ -1,0 +1,181 @@
+WEBVTT
+
+00:00.050 --> 00:00.560
+All right.
+
+00:00.560 --> 00:06.320
+So now we saw how in our last lecture, there was some craziness going on with the, uh, with the question
+
+00:06.320 --> 00:11.240
+of the Donald Trump won the 2024 presidential election, it says Kamala Harris has won it, which is
+
+00:11.240 --> 00:12.110
+completely wrong.
+
+00:12.110 --> 00:17.090
+So what I have tried is like, I'm just trying to create a prompt template here.
+
+00:17.090 --> 00:22.190
+So the prompt template is going to actually serve as the question.
+
+00:22.460 --> 00:24.020
+Uh, pretty much like this.
+
+00:24.050 --> 00:28.700
+Like this is exactly the same kind of prompt template, this chat prompt template I'm passing in here.
+
+00:28.700 --> 00:33.320
+I'm asking that you are an expert in math and latest news across the globe.
+
+00:33.530 --> 00:38.660
+Uh, and then the user is asking, what is the sum of 22 and five?
+
+00:38.660 --> 00:42.410
+And Donald Trump won the presidential election of USA in 2024.
+
+00:42.470 --> 00:44.900
+And give me both the answers in JSON format.
+
+00:44.900 --> 00:49.160
+So this is the this is the total prompt that I have got over here.
+
+00:49.460 --> 00:52.580
+And now I'm going to use this prompt.
+
+00:52.580 --> 00:55.400
+I'm going to ask the question to agent.
+
+00:55.400 --> 00:59.750
+And we'll see if agent can answer that particular uh, question for me.
+
+01:00.020 --> 01:01.790
+Uh I have seen there is some anomaly.
+
+01:01.820 --> 01:06.200
+Sometimes it doesn't work really, but we will see if that is the case still.
+
+01:06.200 --> 01:10.700
+So I'm going to say uh, result and put it over here.
+
+01:10.730 --> 01:15.880
+But this time I'm going to use prompt template instead of the query that I was passing in before, and
+
+01:15.880 --> 01:18.100
+now I'm going to execute this particular code.
+
+01:18.100 --> 01:19.300
+So we'll see what can happen.
+
+01:19.300 --> 01:20.110
+So look at that.
+
+01:20.110 --> 01:22.480
+I need to provide two separate response.
+
+01:22.480 --> 01:26.410
+One for the math problem and another one for the historical fact.
+
+01:26.440 --> 01:32.650
+I will use the tool to first do that, first the question and then Wikipedia for the second look at
+
+01:32.650 --> 01:33.070
+that.
+
+01:33.100 --> 01:37.870
+It can able to think about this one first like like how the thinking model works.
+
+01:37.870 --> 01:42.160
+And then it is going to go with the add number function.
+
+01:42.160 --> 01:46.000
+And then it is going to give me the response as seven which is two plus five is seven.
+
+01:46.000 --> 01:50.560
+And then it is going to go with the uh, with the Donald Trump question.
+
+01:50.590 --> 01:53.290
+And again, unfortunately I don't know why is it always saying it's.
+
+01:53.290 --> 02:00.100
+No, because because President Donald Trump is the president of 2025 and he won the election in 2024.
+
+02:00.100 --> 02:01.750
+Uh, for some reason, it is not giving me.
+
+02:01.750 --> 02:02.410
+That's what I was saying.
+
+02:02.440 --> 02:03.430
+It's still going crazy.
+
+02:03.460 --> 02:04.990
+Just let's ignore about this question.
+
+02:04.990 --> 02:17.650
+Let's ask about what is the, uh, latest movie, uh, of Tom cruise, uh, hitting, uh, theater in
+
+02:17.650 --> 02:23.710
+2025, uh, which is Mission Impossible, uh, final recon, I guess.
+
+02:23.950 --> 02:27.070
+Uh, so let's see if we get the correct answer there.
+
+02:27.730 --> 02:29.830
+So the first answer is correct.
+
+02:29.830 --> 02:31.780
+The math problem just amazing.
+
+02:31.780 --> 02:33.520
+And Top Gun Maverick.
+
+02:33.550 --> 02:35.530
+To be honest, that's not the right one.
+
+02:35.860 --> 02:38.650
+We'll see what's going to happen with Wikipedia.
+
+02:39.370 --> 02:40.990
+Oh, look at that.
+
+02:40.990 --> 02:42.280
+It's still not correct.
+
+02:42.280 --> 02:43.270
+For some reason.
+
+02:43.270 --> 02:48.880
+It's not bringing me the right answer, even though I'm actually calling the correct tools in here.
+
+02:48.910 --> 02:49.540
+Look at that.
+
+02:49.570 --> 02:52.480
+This is going to the agent executor.
+
+02:52.750 --> 03:00.580
+Uh, it's calling, uh, the chat llama with the add numbers, and it's going to go to the Wikipedia
+
+03:00.610 --> 03:01.270
+as well.
+
+03:01.300 --> 03:08.950
+I don't know, for some reason it thinks Maverick is the latest movie, uh, of top of the Tom cruise.
+
+03:09.070 --> 03:14.980
+Uh, but you got the idea, like, how we can actually call how our agents can actually invoke two tools
+
+03:14.980 --> 03:17.860
+while we call that particular when we ask that question.
+
+03:17.860 --> 03:23.080
+And we can also see both of them, uh, how many times it's been called.
+
+03:23.080 --> 03:26.740
+It is all showing up over here in the agent executor.
+
+03:26.740 --> 03:33.910
+In our next lecture, we'll talk about another tools, which is the playwright tool that we can use
+
+03:33.910 --> 03:41.830
+with our agent to grab or extract the page from a web page and then give the response to us back.

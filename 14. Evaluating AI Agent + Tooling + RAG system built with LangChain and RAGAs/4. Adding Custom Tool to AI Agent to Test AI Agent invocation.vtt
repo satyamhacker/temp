@@ -1,0 +1,184 @@
+WEBVTT
+
+00:00.080 --> 00:00.650
+All right.
+
+00:00.650 --> 00:07.400
+So now we are going to see how we can actually start invoking our LM agent over here.
+
+00:07.400 --> 00:16.970
+So I'm going to say uh, invoking, uh, LM agents, uh, the AI agents that we have already built.
+
+00:16.970 --> 00:22.610
+So the agent is nothing but our GUI that we have already discussed, uh, over here, this particular
+
+00:22.610 --> 00:23.030
+agent.
+
+00:23.060 --> 00:25.160
+So this is the agent that we need to invoke.
+
+00:25.430 --> 00:28.760
+Uh, so I'm going to probably just copy this entire thing.
+
+00:29.120 --> 00:29.480
+Look at that.
+
+00:29.480 --> 00:31.910
+Just copy pasting again and paste it over here.
+
+00:31.910 --> 00:33.380
+So we need the tools.
+
+00:33.410 --> 00:37.190
+We don't have the tools binding yet because this is the tool that we created in our last lecture.
+
+00:37.220 --> 00:38.780
+We need to import that as well.
+
+00:38.780 --> 00:40.070
+So let's do that.
+
+00:40.100 --> 00:40.640
+Oops.
+
+00:41.630 --> 00:44.840
+Uh over here I'm going to say our tools.
+
+00:44.840 --> 00:47.060
+It's actually a tool not even a tool.
+
+00:47.060 --> 00:52.730
+So I'm just going to say um, the only one tool which we have got is the bias detection tool.
+
+00:52.730 --> 00:56.330
+And I'm going to pass this particular tool over here, that's all.
+
+00:56.330 --> 00:57.770
+This is the only tool that we have got.
+
+00:57.800 --> 01:05.050
+I'm going to keep everything as it is, and I'm not going to run the extract and the page and check
+
+01:05.080 --> 01:06.130
+if there's a bias in the article.
+
+01:06.160 --> 01:07.330
+No, no, no, we're not going to do that.
+
+01:07.360 --> 01:10.750
+We're not going to check using playwright for doing that operation.
+
+01:10.750 --> 01:13.930
+So I'm just going to leave that guy as it is over here.
+
+01:13.930 --> 01:19.540
+I don't even need to run the agent this time as well, because that is not over here required.
+
+01:19.540 --> 01:21.940
+I just want to create an agent over here.
+
+01:21.970 --> 01:25.090
+I want to set the LM, uh, which is fine.
+
+01:25.240 --> 01:26.170
+Okay.
+
+01:26.800 --> 01:31.090
+But there is one change which I wanted to actually make is the LM over here.
+
+01:31.120 --> 01:33.910
+See, because I'm using the LM for a bias detection.
+
+01:33.910 --> 01:37.600
+The tool is also using an LM, which is the same LM that we have got.
+
+01:37.600 --> 01:43.180
+And there is another LM which is also the same LM for the agent operation.
+
+01:43.180 --> 01:48.100
+So two things which is going to be performed for the tool as well as for the agent is going to be the
+
+01:48.100 --> 01:48.340
+same.
+
+01:48.520 --> 01:49.420
+I'm just going to perform.
+
+01:49.420 --> 01:52.330
+And my local LM, I don't think it's going to handle that pretty well.
+
+01:52.330 --> 01:58.890
+So instead of doing that, I'm just thinking, what if I use the OpenAI's LM this time for the operation.
+
+01:58.890 --> 02:01.740
+I like how we did over here, which was pretty responsive.
+
+02:01.740 --> 02:07.980
+So I'm going to use a chat OpenAI LLM this time, which is this one.
+
+02:08.280 --> 02:15.030
+And over here we just used the chat OpenAI LLM model.
+
+02:15.030 --> 02:23.070
+So I'm just going to probably use that instead of the llms that we have got over there.
+
+02:23.070 --> 02:25.920
+So I'm just going to say chat OpenAI.
+
+02:26.010 --> 02:35.940
+So LLM two is equal to chat OpenAI LLM which is this one I'm going to pass this LLM to over here.
+
+02:35.970 --> 02:43.380
+I think that should be way better as well in order to save some money for the GPT four model is a bit
+
+02:43.380 --> 02:43.800
+costly.
+
+02:43.800 --> 02:54.420
+So I'm just thinking I'm going to go to the, uh, OpenAI API over here, go to the API platform, uh,
+
+02:54.420 --> 02:59.840
+API login, I think I already have logged in there and I'm going to choose the models.
+
+02:59.840 --> 03:06.380
+If I go to the pricing over here, you can see that the GPT four is a bit more costly $2.5 if I use
+
+03:06.380 --> 03:10.850
+the GPT four mini, probably this is way cheaper, as you can see over here.
+
+03:10.850 --> 03:14.240
+So for our operation, GPT four or mini is far enough.
+
+03:14.240 --> 03:17.030
+So I'm going to go choose that particular model.
+
+03:17.090 --> 03:20.180
+I'm going to paste it over here, which is great.
+
+03:20.180 --> 03:26.420
+And now I'm going to run this particular agent with a LM two model over here.
+
+03:26.420 --> 03:29.870
+I think that should be fine for the agent operation, which I'm going to be doing.
+
+03:29.900 --> 03:30.800
+Amazing.
+
+03:30.800 --> 03:33.320
+So this agent is already done over here.
+
+03:33.320 --> 03:39.740
+The final operation, which we need to do is to create the the entire data set.
+
+03:39.740 --> 03:47.090
+With all these operations, you remember the data set, which needs to be in the structure of what the
+
+03:47.090 --> 03:53.870
+ragas can actually handle, which is this kind of data set that we created in our last lecture for all
+
+03:53.870 --> 03:54.410
+the documents.
+
+03:54.410 --> 03:57.170
+And the question, we'll be doing that in our next lecture.

@@ -1,0 +1,325 @@
+WEBVTT
+
+00:00.050 --> 00:07.430
+In our last lecture, we saw how the execution of the evaluation has resulted into very, very less
+
+00:07.430 --> 00:11.360
+score on all the evaluation of the ragas.
+
+00:11.360 --> 00:12.620
+So we are going to do this.
+
+00:12.650 --> 00:17.630
+We are going to not use this particular LM, which is the Lambda 3.1 70 billion parameter.
+
+00:17.630 --> 00:18.440
+This time.
+
+00:18.620 --> 00:24.170
+Rather, I'm just going to probably just leave this guy as it is and I'm going to run from the open
+
+00:24.170 --> 00:24.860
+I this time.
+
+00:24.860 --> 00:31.010
+So in order to use the open I you can see that we can just use this uh lang chain open I import chat
+
+00:31.010 --> 00:38.330
+open I and then we can use the, uh, lang chain LM wrapper as chat open I and the model that we can
+
+00:38.330 --> 00:39.440
+specify over here.
+
+00:39.440 --> 00:43.940
+So I'm going to just do the exact same thing this time to see how it's going to improve the performance
+
+00:43.940 --> 00:46.160
+of our execution.
+
+00:46.160 --> 00:50.900
+So for doing that I'm going to go all the way to the execution that we were doing before.
+
+00:51.080 --> 00:55.640
+And over here I'm just going to import the chat open.
+
+00:55.640 --> 01:00.740
+I and we also need to use the, um, the open I embedding.
+
+01:00.740 --> 01:05.290
+But I think the open I embedding is not required because the one that we have is fine.
+
+01:05.500 --> 01:06.760
+We can just leave it as it is.
+
+01:06.760 --> 01:09.370
+So I'm going to use this evaluator this time.
+
+01:09.370 --> 01:15.640
+The evaluator from the, uh, LM, which is the OpenAI LM.
+
+01:15.640 --> 01:19.600
+And once again, we need to set the, uh, OpenAI uh, key.
+
+01:19.600 --> 01:22.090
+And I have already set it in my env file.
+
+01:22.090 --> 01:24.160
+So I'm just going to use that guy over here.
+
+01:24.160 --> 01:32.170
+So this is the evaluator that we are going to be using, which is the, uh, evaluator, uh, open AI.
+
+01:33.010 --> 01:38.380
+Uh, LM so maybe open AI, lm like this one.
+
+01:38.380 --> 01:42.820
+So I'm going to replace the evaluation LM to OpenAI LM over here.
+
+01:42.820 --> 01:46.870
+I'm also going to include the answer relevance this time because we're going to use the OpenAI LM.
+
+01:46.870 --> 01:49.360
+So we'll see if the answer relevance work as well.
+
+01:49.390 --> 01:49.720
+Right.
+
+01:49.750 --> 01:53.320
+So all these things I have set over here, we don't need this evaluator.
+
+01:53.320 --> 01:54.760
+So I'm gonna get rid of that.
+
+01:54.850 --> 01:55.600
+I'm going to save it.
+
+01:55.600 --> 02:01.030
+And because I'm going to be loading the env file one more time, I'm going to restart everything, uh,
+
+02:01.030 --> 02:04.900
+from the scratch and let me run one by one the blocks.
+
+02:04.900 --> 02:08.990
+So this block we do require, uh, We also require the embedding.
+
+02:08.990 --> 02:10.340
+So I'm going to use that embedding.
+
+02:10.340 --> 02:15.140
+And I'm also going to load the document in the vector store one more time.
+
+02:15.140 --> 02:18.260
+And I'm going to set the retriever.
+
+02:18.290 --> 02:19.490
+So let's run.
+
+02:19.520 --> 02:21.110
+Let's run the retriever as well.
+
+02:21.110 --> 02:26.420
+And we're going to create the multi shot sample data set for ragas.
+
+02:26.450 --> 02:32.990
+And it's going to take a bit of a time and let's that to complete over here.
+
+02:33.140 --> 02:33.830
+All right.
+
+02:33.830 --> 02:38.780
+And now we're just going to go all the way to the ragas evaluation.
+
+02:38.780 --> 02:46.490
+And finally we're going to do this evaluation with chat OpenAI and GPT four auto model.
+
+02:46.970 --> 02:54.440
+So for executing this one you can see that you need to have the GPT, uh, the OpenAI API key access.
+
+02:54.440 --> 02:58.970
+So if you don't really have the OpenAI key access, then you can't execute like how I'm doing at the
+
+02:58.970 --> 02:59.390
+moment.
+
+02:59.390 --> 03:03.110
+And because we are using the OpenAI key, look at that so fast.
+
+03:03.110 --> 03:06.590
+The execution is like it's all cloud based and it's so fast.
+
+03:06.590 --> 03:12.700
+And I really think that this could be the way forward to go with instead of using the local LM, at
+
+03:12.730 --> 03:18.970
+least for the ragas metric evaluation because it looks like the ragas is fine tuned or optimized for
+
+03:18.970 --> 03:22.510
+the GPT four model, rather the local LM.
+
+03:22.510 --> 03:24.670
+So let's just wait and see the result.
+
+03:24.700 --> 03:29.710
+Like what result that we are going to get out from this particular evaluation.
+
+03:30.130 --> 03:35.110
+So it's 89 percentage and we're going to complete 93 percentage.
+
+03:35.380 --> 03:36.220
+There we go.
+
+03:36.220 --> 03:38.530
+And you can see that there is no time out whatsoever.
+
+03:38.530 --> 03:42.070
+Because if we were running the local machine we had a lot of timeouts.
+
+03:42.070 --> 03:45.910
+But this time we got zero time out there, which is amazing.
+
+03:45.910 --> 03:48.820
+So it's just working pretty much as expected.
+
+03:48.850 --> 03:50.380
+Look at the faithfulness.
+
+03:50.410 --> 03:51.790
+The recall is 0.85.
+
+03:51.790 --> 03:56.620
+Faithfulness is 0.57, factual is 0.5729 as well.
+
+03:56.620 --> 03:58.210
+And relevance is look at that.
+
+03:58.210 --> 04:00.850
+So correct 0.9794.
+
+04:00.850 --> 04:06.370
+So this proves the point that with local LM, maybe we have got the latency issue and the model is not
+
+04:06.370 --> 04:07.570
+going to perform pretty well.
+
+04:07.570 --> 04:10.330
+So the evaluator is just not going to work pretty fine.
+
+04:10.330 --> 04:14.620
+But if we use the OpenAI LM it is just going to work fine as expected.
+
+04:14.620 --> 04:21.100
+So if he goes to the, uh, to the lamb-smith over here, uh, which is this one?
+
+04:21.100 --> 04:24.730
+As you can see, you can see that we have used 76,000 open token.
+
+04:24.730 --> 04:26.590
+I think I'm going to lose a lot of money there.
+
+04:26.710 --> 04:29.560
+Uh, and you can see the chat open.
+
+04:29.560 --> 04:34.600
+AI is being used, uh, which is going to use the GPT four model, as you can see here.
+
+04:34.600 --> 04:36.550
+And none of them has got failed.
+
+04:36.550 --> 04:38.740
+All of these execution has got passed.
+
+04:38.740 --> 04:44.920
+So this all evaluation, you can see it from here, which is looking pretty cool.
+
+04:44.920 --> 04:50.230
+So this is the result that we actually get by using the OpenAI's LLM.
+
+04:50.230 --> 04:56.950
+And one more thing that we can do is we can just see the result and we can change it to pandas.
+
+04:57.010 --> 05:03.190
+Uh, and if we try to print this, um, this response over here, you can see that this is a user input
+
+05:03.190 --> 05:04.780
+and this is the retrieved context.
+
+05:04.810 --> 05:06.910
+This is the response and this is the reference.
+
+05:06.940 --> 05:07.690
+And look at that.
+
+05:07.690 --> 05:11.110
+The recall is 1.1 which means it is correct.
+
+05:11.800 --> 05:13.840
+And faithfulness is one which is amazing.
+
+05:13.840 --> 05:15.430
+And the factual is one as well.
+
+05:15.460 --> 05:16.480
+And the relevance is one.
+
+05:16.480 --> 05:20.320
+So based on this user input, this response it looks correct.
+
+05:20.320 --> 05:21.640
+And what has gone wrong.
+
+05:21.640 --> 05:27.160
+So if you just go here and see like why the response has gone wrong here, what is the Cyprus and how
+
+05:27.160 --> 05:30.190
+it is different then it is actually looking like?
+
+05:30.190 --> 05:36.130
+The response which has got from the retrieved context is not matching to the Cyprus related, but it
+
+05:36.130 --> 05:38.530
+is giving you the selenium WebDriver related.
+
+05:38.530 --> 05:45.040
+And that's the reason why the context recall has got zero and the faithfulness is 0.076, which is quite
+
+05:45.040 --> 05:45.460
+less.
+
+05:45.730 --> 05:48.310
+And also factual correctness is also less.
+
+05:48.310 --> 05:52.540
+But answer relevance is bit straightforward because it is talking about automation anyways.
+
+05:52.540 --> 05:55.780
+So that is why it is uh, it is making that way.
+
+05:55.780 --> 05:58.960
+And look at this one, the playwright and this, this is the answer.
+
+05:58.960 --> 05:59.320
+Relevance.
+
+05:59.320 --> 06:00.490
+So it's all looking correct.
+
+06:00.490 --> 06:02.860
+So you get all these things over here.
+
+06:02.860 --> 06:08.110
+So this shows the point that we can run the ragas uh, in the open AI.
+
+06:08.110 --> 06:09.970
+And this is going to be very, very fast.
+
+06:09.970 --> 06:12.820
+And we can verify the faithfulness factual correctness.
+
+06:12.820 --> 06:14.320
+Uh answer relevance and context.
+
+06:14.350 --> 06:18.040
+Recall everything using ragas without any problem.
+
+06:18.040 --> 06:21.070
+And it is also much, much faster way of running it.

@@ -1,0 +1,373 @@
+WEBVTT
+
+00:00.020 --> 00:00.470
+All right.
+
+00:00.470 --> 00:06.110
+So now we are in the phase of creating the LM test case, which is mentioned in the documentation,
+
+00:06.110 --> 00:07.370
+as you can see over here.
+
+00:07.370 --> 00:10.100
+So this is the same thing which I'm going to write probably.
+
+00:10.100 --> 00:14.600
+So I think I'm going to copy this code and I'm going to paste it over here.
+
+00:14.600 --> 00:26.420
+So I'm going to say creating LM test case uh required for the deep uh a valve evaluation purpose.
+
+00:26.420 --> 00:26.750
+Right.
+
+00:26.750 --> 00:30.920
+So I'm going to do that over here and I'm going to paste this particular piece of code.
+
+00:30.920 --> 00:37.280
+So it looks like it requires an LM test case which actually comes from another library.
+
+00:37.280 --> 00:38.870
+So I'm going to import that over here.
+
+00:38.870 --> 00:47.120
+So I'm going to say from our deep eval dot data set uh import golden.
+
+00:47.420 --> 00:50.510
+We do require the golden uh over there.
+
+00:50.510 --> 00:59.150
+And I also require from deep eval dot our test case which is going to import the, uh, LM test case,
+
+00:59.150 --> 00:59.900
+as you can see over here.
+
+00:59.900 --> 01:02.990
+So these are the two libraries which is required for this code to be executed.
+
+01:02.990 --> 01:04.890
+And we also have got a list.
+
+01:04.890 --> 01:07.890
+So I think it's coming from the typings.
+
+01:08.010 --> 01:11.250
+So I'm going to import the list over here.
+
+01:11.250 --> 01:13.800
+So these are the libraries required for us over here.
+
+01:13.800 --> 01:20.460
+And now as you can see um in this copy pasted code, these guys tell us that the LM test case has got
+
+01:20.460 --> 01:23.100
+the input as golden dot input.
+
+01:23.160 --> 01:29.400
+And they have got an actual output, which is going to be coming from an hypothetical, uh, chat,
+
+01:29.430 --> 01:30.780
+which is like the query.
+
+01:30.810 --> 01:35.160
+See this this actual output is not something that we can actually pass it, something like this.
+
+01:35.160 --> 01:40.350
+So this is something we are going to be parsing it from our code that we have written, which is this
+
+01:40.350 --> 01:41.850
+guy, the query with the context.
+
+01:41.880 --> 01:42.150
+Right.
+
+01:42.180 --> 01:44.670
+This method actually does that for us over here.
+
+01:44.670 --> 01:47.400
+And the context is also not something that we're looking for.
+
+01:47.400 --> 01:52.920
+We are going to be creating what is called as the retrieval context, uh, which is this one.
+
+01:52.920 --> 01:55.320
+That is what we are going to be passing it over here.
+
+01:55.320 --> 01:58.590
+And this is also not coming from the golden context for us.
+
+01:58.620 --> 02:02.700
+So you know how the golden is actually right, because we saw that earlier as well.
+
+02:02.700 --> 02:11.000
+So if I try to run this particular, um, data set, you can see that the data set has got Goldens and
+
+02:11.000 --> 02:12.680
+the Goldens has got input.
+
+02:12.950 --> 02:15.470
+It has got the actual outputs, that's all.
+
+02:15.470 --> 02:19.160
+And it has got sorry inputs and actual output is a null.
+
+02:19.160 --> 02:24.980
+And the expected output is the thing that we have got over there, but we don't really have the the
+
+02:24.980 --> 02:30.290
+actual output as well as the retrieval context as you can see over here.
+
+02:30.290 --> 02:37.910
+So the retrieval context, uh, if I just go see that little context is none, uh, and the context
+
+02:37.910 --> 02:39.710
+is none, all of these are none.
+
+02:39.710 --> 02:43.250
+So only two values are there in this particular golden, as you can see.
+
+02:43.250 --> 02:46.670
+So now I need to fill these details over here.
+
+02:46.760 --> 02:48.680
+Uh, so how do I actually do that.
+
+02:48.680 --> 02:51.800
+Well remember this method that we created the query with the context.
+
+02:51.800 --> 02:54.950
+This will give you the retrieval context and the response.
+
+02:55.220 --> 03:05.780
+Uh, so I think what we can do is I'm going to, uh, do something like context, uh, comma the rags,
+
+03:05.810 --> 03:12.000
+uh, response, which is going to be from this particular method, uh, And I'm over here, I'm going
+
+03:12.030 --> 03:13.890
+to pass the golden dot input.
+
+03:13.890 --> 03:19.440
+This golden dot input is going to be the question that I'm passing in to this particular method, which
+
+03:19.440 --> 03:21.990
+is going to give me the context and the rag response.
+
+03:21.990 --> 03:27.240
+So the rag response is going to go over here, because that is the response that I'm trying to verify
+
+03:27.270 --> 03:28.950
+from the actual output.
+
+03:28.950 --> 03:36.780
+And the context is the retrieval context that I'm going to pass in for the, for the LLM test case over
+
+03:36.780 --> 03:37.380
+here.
+
+03:37.410 --> 03:38.070
+That's it.
+
+03:38.070 --> 03:40.590
+This is going to create the test case for me.
+
+03:40.890 --> 03:50.610
+And now if I try to uh, probably uh, run this code and see how that actually looks like, which I
+
+03:50.610 --> 03:51.900
+can actually do something like this.
+
+03:51.900 --> 03:55.920
+So there is something called as, uh, convert uh, golden to test case.
+
+03:55.920 --> 03:57.390
+I'm going to call this particular method.
+
+03:57.420 --> 03:59.580
+I'm going to store that to the data.
+
+03:59.580 --> 04:06.450
+And I'm going to pass this particular data set that we have got which is this data set uh, that we
+
+04:06.450 --> 04:08.280
+have uh, created.
+
+04:08.280 --> 04:10.800
+So I think the data set we have already pushed there.
+
+04:10.800 --> 04:14.450
+We can also pull the data set, uh, to see how that actually works.
+
+04:14.690 --> 04:19.310
+The pulling mechanism is also something that I can show you, but I think the data set already has got
+
+04:19.310 --> 04:20.090
+the data.
+
+04:20.120 --> 04:25.130
+So if I just go and see the data set, uh, over here, you see that we have got the data set with the
+
+04:25.130 --> 04:25.790
+data there.
+
+04:25.790 --> 04:31.460
+But I also wanted to see the test execution to really happen over here.
+
+04:31.490 --> 04:36.080
+Like every time when I try to run this particular code, you should see that the code actually works
+
+04:36.080 --> 04:41.360
+as expected for the test case, because you need to trigger our rag to perform the operation and is
+
+04:41.360 --> 04:42.470
+currently not happening.
+
+04:42.470 --> 04:48.710
+And the reason why this is not happening is because if you go to this data set, uh, over here at the
+
+04:48.710 --> 04:51.530
+moment, uh, so that's why I have printed it over here.
+
+04:51.560 --> 04:52.100
+Data set.
+
+04:52.100 --> 04:54.980
+You can see that the data set has got the evaluation data set.
+
+04:54.980 --> 04:56.660
+But there is no test case over here.
+
+04:56.690 --> 04:58.640
+Like all the test cases are currently empty.
+
+04:58.790 --> 05:02.000
+But it only has got the goldens, as you can see over here.
+
+05:02.000 --> 05:08.240
+So how do I actually get the test cases that I actually need for the evaluation data set?
+
+05:08.270 --> 05:15.620
+Remember the test cases are something that is there in the, uh, data set that we have, uh, uploaded
+
+05:15.830 --> 05:19.470
+in our deep a valve over here.
+
+05:19.470 --> 05:21.750
+As you can see this one testing tools data set.
+
+05:21.780 --> 05:27.780
+We need to import this data set so that we can use this data set for our evaluation purpose.
+
+05:27.780 --> 05:32.550
+So the way you can import it is you just have to do this and call the pull method.
+
+05:32.550 --> 05:41.040
+And over here on the pull method we can give our name of the data set which is going to be the testing
+
+05:41.070 --> 05:48.090
+tool data set, which is this one that's going to pull the data set for us from the cloud, which is
+
+05:48.090 --> 05:50.910
+from the confident AI.
+
+05:50.910 --> 05:57.240
+And now if you just go see the data set that you have got, you will notice that the data set will also
+
+05:57.240 --> 06:01.020
+have got a test case for the execution.
+
+06:01.050 --> 06:04.200
+See that there is the test case for the LM, uh test case.
+
+06:04.230 --> 06:10.380
+And it has got the input uh, and it will have the actual output and the expected output.
+
+06:10.380 --> 06:16.560
+So it's not only going to have the golden, but it will also have got the test cases.
+
+06:16.590 --> 06:22.400
+This is something that we really need For our method over here.
+
+06:22.430 --> 06:28.310
+The convert golden to test case this guy because we are looking for the golden dot input.
+
+06:28.310 --> 06:33.290
+And also we are passing the golden dot expected like golden dot input for our query context.
+
+06:33.320 --> 06:39.140
+Because this is the only, uh, code which is going to trigger our Rag operation to happen in this particular
+
+06:39.140 --> 06:40.310
+method over here.
+
+06:40.310 --> 06:44.120
+So we definitely need to pass the, uh, the actual value.
+
+06:44.120 --> 06:46.850
+And this is now passed over here.
+
+06:46.880 --> 06:53.090
+See that now the Goldens are converted into our test cases over here for us.
+
+06:53.090 --> 06:58.190
+And this is happening because of the pull method that we did from the data set over here.
+
+06:58.190 --> 07:03.980
+So this is like a way that you are having you need to do because you have pushed the data set on the
+
+07:03.980 --> 07:04.700
+cloud.
+
+07:05.000 --> 07:06.980
+So that is what you should be doing over here.
+
+07:07.010 --> 07:12.050
+I know this is a bit of a tricky which is not there in the raga, uh, but uh, over here, we do have
+
+07:12.050 --> 07:13.160
+to do that this way.
+
+07:13.460 --> 07:13.880
+All right.
+
+07:13.880 --> 07:19.130
+So now if I try to run this particular code over here, you should see that the execution is right now
+
+07:19.130 --> 07:19.640
+happening.
+
+07:19.640 --> 07:28.290
+So basically now the actual, method is being triggered, and it's also triggering our Rag operation
+
+07:28.410 --> 07:35.640
+to work to get the relevant um, like the retrieved uh context as well as the responses from the relevant
+
+07:35.640 --> 07:38.580
+documents and stuff, because that is when things are going to happen.
+
+07:38.580 --> 07:45.150
+And now if I just go and see the data, like how it is actually looking like, so if I'm going to put
+
+07:45.150 --> 07:52.350
+the data there and if I try to execute it, you should see that we have got the, the, the input,
+
+07:52.350 --> 07:57.270
+the actual outputs, and we have got the expected output, as you can see.
+
+07:57.270 --> 08:01.230
+And we also have got the retrieved context as you can see over here.
+
+08:01.230 --> 08:07.020
+So all of these are currently sitting for us over here which is quite amazing.
+
+08:07.020 --> 08:09.600
+So everything is created for us over here.
+
+08:09.600 --> 08:14.190
+So now with this particular data we can start doing the evaluation.
+
+08:14.190 --> 08:24.360
+So now we have created the actual, uh, actual LM test case, which is used for the evaluation of our
+
+08:24.360 --> 08:26.970
+deep eval, which we will be discussing in our next lecture.

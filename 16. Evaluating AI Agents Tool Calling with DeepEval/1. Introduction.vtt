@@ -1,0 +1,211 @@
+WEBVTT
+
+00:00.110 --> 00:01.760
+Welcome to the next section of our course.
+
+00:01.760 --> 00:06.890
+And in this section we are going to talk about how we can test the AI agent tool callings.
+
+00:06.890 --> 00:12.590
+So tool calling is another important feature that we saw in our earlier sections of this course, where
+
+00:12.590 --> 00:19.610
+we were talking about how we can do use the tooling support that we have got over here that we have
+
+00:19.640 --> 00:23.030
+built, and we can fuse that with our AI agents.
+
+00:23.030 --> 00:28.310
+And the decision engine in this case is going to be our large language model.
+
+00:28.310 --> 00:33.530
+But still the tool is the one which is responsible for invoking the appropriate tool for us, for instance,
+
+00:33.530 --> 00:39.020
+the Wikipedia tool or the subtract custom tool or addition tool or playwright tool that we have built.
+
+00:39.050 --> 00:44.240
+So all these tools, it's going to be invoked by the AI agent for us.
+
+00:44.240 --> 00:47.150
+And these are the tools which are going to be invoked for us.
+
+00:47.150 --> 00:52.430
+And just consider this like we have got our organization with more than hundreds and thousands of tools,
+
+00:52.430 --> 00:59.120
+and we need to test how these tools are correctly being invoked based on a given input parameter.
+
+00:59.120 --> 01:04.340
+So in order for making that happen, we need to ensure that the AI agent calls the exact tool.
+
+01:04.340 --> 01:11.060
+And in order to measure this, we are going to be using our deep eval feature with tool correctness
+
+01:11.110 --> 01:12.370
+evaluation metrics.
+
+01:12.370 --> 01:17.050
+So this is the feature where it is going to be helping us to perform the same kind of operation that
+
+01:17.050 --> 01:18.040
+you are seeing over here.
+
+01:18.040 --> 01:21.880
+We are going to be passing the same kind of data to our deep valve.
+
+01:21.880 --> 01:30.040
+But just that over here we are going to verify whether the invoked tool coming from the actual tool
+
+01:30.040 --> 01:34.270
+is matching to the expected tool invocation that we have got.
+
+01:34.300 --> 01:39.670
+And the way that we can do it is using the tool correctness metrics available in deep eval, as you
+
+01:39.670 --> 01:40.570
+can see over here.
+
+01:40.570 --> 01:47.380
+So this tool correctness metric is an a generic LM metrics that assess your large language models agents
+
+01:47.380 --> 01:49.360
+function tool calling ability.
+
+01:49.360 --> 01:57.010
+And it calculated by comparing whether every tool that is expected to be used was intended as called
+
+01:57.010 --> 01:57.880
+there or not.
+
+01:57.910 --> 02:01.000
+And you can see that they have got some required arguments.
+
+02:01.000 --> 02:04.840
+You need to pass the input actual output tool called an expected tool.
+
+02:04.840 --> 02:09.040
+So these are the only thing which is as a required argument for this tool correctness metrics.
+
+02:09.040 --> 02:11.590
+And they have given a simple example over here.
+
+02:11.590 --> 02:17.290
+And most importantly you can notice that this particular tool metrics the tool correctness metrics.
+
+02:17.290 --> 02:25.110
+You can't really use it with the confident I portal so you can see that they don't really have an evaluate
+
+02:25.110 --> 02:28.020
+method like deep eval dot evaluate method.
+
+02:28.020 --> 02:29.370
+You can't really use it over here.
+
+02:29.370 --> 02:35.550
+So if you just go to the contextual relevance metrics over here, you can see that you can evaluate
+
+02:35.550 --> 02:38.700
+in bulk using this evaluate method.
+
+02:38.700 --> 02:44.940
+And this evaluate method is the one which is going to call the confident AI's portal.
+
+02:44.940 --> 02:48.780
+And it's going to show you the graph and all those things that we were doing in our last lecture section
+
+02:48.780 --> 02:49.620
+of this course.
+
+02:49.620 --> 02:56.370
+But over here, uh, in this particular tool, correctness, you can't see that there is going to be
+
+02:56.370 --> 02:58.200
+an evaluate method supported.
+
+02:58.200 --> 03:03.780
+So evaluate method is not supported to perform this operation at the moment during the time of recording.
+
+03:03.780 --> 03:05.190
+So maybe in future they will.
+
+03:05.220 --> 03:10.830
+But at the moment they don't really have the way to do a comparison of the tool correctness and things
+
+03:10.830 --> 03:11.580
+of that nature.
+
+03:11.580 --> 03:18.990
+So you don't see those information in your, uh, confident AI portal that we were discussing in our
+
+03:18.990 --> 03:20.340
+last section of the course.
+
+03:20.340 --> 03:23.490
+So you don't see that fancy, uh, you know, graphs and stuff.
+
+03:23.490 --> 03:25.800
+But over here it is very straightforward.
+
+03:25.800 --> 03:30.150
+All you have to do is you need to just prepare the data for the LM test case, like how we did in our
+
+03:30.150 --> 03:31.350
+earlier section of the course.
+
+03:31.410 --> 03:34.350
+And the only thing is you need to just call the tool correctness metrics.
+
+03:34.350 --> 03:35.910
+And then you can do a measure.
+
+03:35.910 --> 03:37.770
+And that is going to do the measurement for you.
+
+03:37.770 --> 03:43.470
+And they have got a lot of different parameters that you can pass in, uh, to ensure that the tool
+
+03:43.470 --> 03:45.150
+correctness mechanism works fine or not.
+
+03:45.150 --> 03:50.760
+And the way it is calculated is basically tool correctness is the number of correctly used tool, which
+
+03:50.760 --> 03:54.600
+is from the input and output parameter and the total number of tools being called.
+
+03:54.630 --> 03:58.830
+Based on that, it is going to give you the average of the tool correctness over here.
+
+03:59.610 --> 04:06.360
+And you will also notice that for the tool called parameter we need to have, we need to call a class
+
+04:06.360 --> 04:07.440
+called as tool call.
+
+04:07.440 --> 04:09.540
+And you need to pass the name of the tool.
+
+04:09.540 --> 04:15.480
+And you can also pass not just the tool call, but you can also pass the input parameter output parameter
+
+04:15.660 --> 04:19.110
+in this particular tool called so that it will become even more realistic.
+
+04:19.110 --> 04:23.940
+Because every tool that we build, we will have an input parameter and an output parameter, or maybe
+
+04:23.940 --> 04:26.880
+an output itself for from that particular tool.
+
+04:26.880 --> 04:29.220
+So we can pass those informations as well.
+
+04:29.310 --> 04:33.690
+So we will see how we can make all of these happen in this particular section.
+
+04:33.690 --> 04:41.880
+And we can ensure that we can also test the AI agents tool calling feature from within our tool Correctness
+
+04:41.880 --> 04:42.660
+metrics.

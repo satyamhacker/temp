@@ -1,0 +1,226 @@
+WEBVTT
+
+00:00.140 --> 00:05.870
+Welcome to the next section of our course building and testing AI agents, rags and chatbots using Lang
+
+00:05.870 --> 00:09.500
+chain with Olama and local large language models.
+
+00:09.530 --> 00:15.710
+And in this section we'll be talking about testing, also known as evaluation of our large language
+
+00:15.710 --> 00:16.460
+models.
+
+00:16.460 --> 00:21.470
+So we are going to understand how we can actually perform that evaluation of large language model in
+
+00:21.470 --> 00:22.250
+this particular section.
+
+00:22.250 --> 00:29.090
+So Llms are typically evaluated using standardized set of data sets designed to assess their performance
+
+00:29.090 --> 00:35.570
+across a diverse range of tasks, such as text summarization or open book question answering or code
+
+00:35.570 --> 00:42.140
+generation and language understanding, and these data sets serves as a benchmark to provide a fair
+
+00:42.140 --> 00:48.650
+and competitive analysis of different models, helping researchers and developers gauge their effectiveness
+
+00:48.680 --> 00:50.870
+in handling real world scenarios.
+
+00:50.870 --> 00:54.140
+So that is how we can really assess a large language model.
+
+00:54.140 --> 01:01.070
+It's not something like a normal software code that you write in a Python, and then you assess it,
+
+01:01.070 --> 01:06.130
+that whatever that we have written in the Lang chain and then verify some unit test and write it with
+
+01:06.130 --> 01:07.210
+some end to end test.
+
+01:07.240 --> 01:12.310
+Now those things, we can't do it because we are really accessing an large language model in here in
+
+01:12.310 --> 01:13.480
+order for us to test them.
+
+01:13.480 --> 01:16.960
+These are the things that we have to do to make this happen.
+
+01:18.160 --> 01:24.880
+And in the large language model, evaluation metrics used in the benchmarking LMS vary depending on
+
+01:24.880 --> 01:26.650
+the type of task being assessed.
+
+01:26.680 --> 01:29.830
+Most tasks are evaluated using traditional LNP metrics.
+
+01:29.830 --> 01:31.360
+Some of these metrics are.
+
+01:31.360 --> 01:36.580
+The traditional metrics are like exact match, which measures whether the model generates the answer
+
+01:36.790 --> 01:40.000
+is an exact word to word match with the ground truth.
+
+01:40.030 --> 01:45.820
+And there are other common metrics includes the blue or bilingual evaluation, understudy for machine
+
+01:45.820 --> 01:52.990
+translation, and there is also called as rogue or otherwise called as recall oriented understudy for
+
+01:53.170 --> 01:54.070
+gisting evaluation.
+
+01:54.070 --> 01:57.340
+So these are the things that is already there to validate it.
+
+01:57.340 --> 02:02.230
+And the final one is the F1 score for the classification and information retrieval task.
+
+02:02.230 --> 02:08.140
+So you can see that these are the traditional way of testing the large language models.
+
+02:08.140 --> 02:15.530
+So if you have really got my other course in Udemy on understanding, test and fine tuning the AI models
+
+02:15.530 --> 02:16.550
+with hugging face.
+
+02:16.580 --> 02:22.670
+In this particular course, I have also talked about how we can do functional testing of the AI models
+
+02:22.670 --> 02:28.160
+using temperature testing, repeatability testing, question answering, named entity recognition and
+
+02:28.160 --> 02:28.610
+stuff.
+
+02:28.610 --> 02:36.380
+And I have also talked about the evaluation of the AI model using the unseen data as question and answering
+
+02:36.380 --> 02:43.670
+models using NLP libraries, and also how we can do the fuzzy match logic and also the bias fairness
+
+02:43.670 --> 02:45.260
+and testing of the AI models.
+
+02:45.260 --> 02:49.490
+So these are things that you can see that most of these testing that we are doing in this particular
+
+02:49.490 --> 02:57.410
+course are exclusively for testing the large language models in such a way that they actually respond
+
+02:57.410 --> 03:00.530
+as based on the ground truth that we have got.
+
+03:00.530 --> 03:05.690
+And the same thing happens over here as well with the exact match.
+
+03:05.690 --> 03:14.360
+Blue, rogue and F1 score for the classification and the LM evaluation metrics fall into two broad categories.
+
+03:14.360 --> 03:17.200
+One is the traditional and non-traditional, as I just told you.
+
+03:17.200 --> 03:20.800
+So traditional we just saw in our last slide.
+
+03:20.800 --> 03:26.290
+And the non-traditional metrics leverages the semantic understanding and the model's own capability
+
+03:26.290 --> 03:27.970
+to assess generated text.
+
+03:27.970 --> 03:34.870
+And this can work with or without reference text using techniques like embedding similarities, perplexity,
+
+03:34.870 --> 03:36.970
+and LM based scoring.
+
+03:37.030 --> 03:45.100
+You might have seen these things like embedding similarities and perplexity in our earlier lectures
+
+03:45.100 --> 03:49.690
+of this course or earlier sections of this course where we are doing embedding, while we are doing
+
+03:49.690 --> 03:52.840
+the vector database to store the data.
+
+03:52.840 --> 03:59.290
+And we needed the embedding models to do the embedding of the conversion of the text to vectors.
+
+03:59.290 --> 04:01.420
+So we were using an embedding models.
+
+04:01.420 --> 04:03.790
+So embedding is a technique to do that.
+
+04:03.790 --> 04:05.440
+And uh similarities.
+
+04:05.440 --> 04:12.340
+We also saw the similarities score for the vector database while we were trying to pass a text.
+
+04:12.340 --> 04:14.080
+And it was giving us a response.
+
+04:14.080 --> 04:16.420
+And we were doing the embedding similarities over there.
+
+04:16.420 --> 04:20.630
+So those things we have already seen even in our earlier sections of this course.
+
+04:20.630 --> 04:26.510
+And that's exactly what they're talking about over here, as well as one of the non-traditional metrics
+
+04:26.510 --> 04:30.710
+that you can use to evaluate how your LLM really behaves.
+
+04:31.100 --> 04:37.370
+And we'll talk about the another most important part of the evaluation is the bird score.
+
+04:37.370 --> 04:40.040
+So this is a bidirectional encoding based approach.
+
+04:40.040 --> 04:46.340
+That is candidates text and reference text are fed into the DL model separately to obtain embeddings.
+
+04:46.340 --> 04:52.310
+And the token level embeddings are then used to calculate the pairwise cosine similarity matrix over
+
+04:52.310 --> 04:52.850
+here.
+
+04:52.850 --> 04:58.730
+So this is the way that you can use the embedding uh, to perform the similarities of the text.
+
+04:59.330 --> 05:05.600
+So you can see that these are the different ways that we can use the techniques to perform the testing,
+
+05:05.600 --> 05:07.430
+uh, in the large language models.
+
+05:07.430 --> 05:12.170
+But because we are not going to be focusing just on the large language model, but we are focusing on
+
+05:12.170 --> 05:19.730
+how we can test the application, which is built with lang chain like AI agents or Rag based applications
+
+05:19.730 --> 05:21.500
+or even the chatbots.
+
+05:21.500 --> 05:23.540
+How do we actually perform these operations?
+
+05:23.540 --> 05:26.270
+We are going to talk about that in our next lecture.

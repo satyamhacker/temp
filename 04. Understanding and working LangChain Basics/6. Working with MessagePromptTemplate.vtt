@@ -1,0 +1,253 @@
+WEBVTT
+
+00:00.620 --> 00:02.480
+Well before you wind up this particular section.
+
+00:02.480 --> 00:08.420
+I also wanted to cover one more thing that I've missed covering, which is the message placeholders.
+
+00:08.420 --> 00:14.660
+So inside this particular chat prompt template, we can also use what is called as the message prompts
+
+00:14.660 --> 00:15.560
+if I wanted to.
+
+00:15.590 --> 00:18.830
+So let's say I'm just going to cover this entire thing here.
+
+00:18.920 --> 00:27.350
+And I'm going to put a markdown and I'm going to say a message placeholder.
+
+00:27.830 --> 00:29.840
+Uh, that is what I'm going to be covering here.
+
+00:29.840 --> 00:32.570
+So I'm going to put the code and paste this guy.
+
+00:33.080 --> 00:39.530
+And for the message placeholder we just have to import this, uh, message placeholder.
+
+00:39.920 --> 00:44.660
+And let me get rid of this, uh, human message and the chat prompt template, because I'm not going
+
+00:44.690 --> 00:50.810
+to use, uh, this one, but I'm going to be using this way because it is straightforward.
+
+00:51.050 --> 00:53.300
+Uh, here we go.
+
+00:53.570 --> 00:53.930
+Yeah.
+
+00:53.960 --> 00:55.820
+The code looks better this time.
+
+00:55.820 --> 00:58.880
+We don't even have to print the prompt template code.
+
+00:58.880 --> 01:02.120
+So over here in the Chat prompt template class.
+
+01:02.120 --> 01:05.870
+So we have passed this system message and the user message.
+
+01:05.870 --> 01:11.030
+We can also pass what is called as a placeholder.
+
+01:11.030 --> 01:14.450
+So the placeholder we can pass it something like this.
+
+01:14.450 --> 01:19.970
+For instance, instead of us passing as a user message over here, like what is the advantage of running
+
+01:20.270 --> 01:22.820
+the AI model like a user?
+
+01:22.820 --> 01:29.060
+We can now pass this entire thing as the message placeholder itself.
+
+01:29.090 --> 01:33.140
+So I'm going to just say, uh, message placeholder.
+
+01:33.140 --> 01:36.890
+And over here I'm just going to say the entire message.
+
+01:36.890 --> 01:41.750
+It's not just about the environment that we are passing in, but the entire message that I'm going to
+
+01:41.750 --> 01:43.430
+be passing in over here.
+
+01:43.610 --> 01:54.260
+And now I can just say in the prompt template of the invoke over here, I'm going to say message, and
+
+01:54.260 --> 01:56.210
+I'm going to pass the entire message.
+
+01:56.210 --> 02:00.910
+But this time I'm going to be passing it as a human message.
+
+02:00.910 --> 02:07.570
+So for human messages, there is another import that we have to do which is going to be, uh, in court,
+
+02:07.570 --> 02:13.510
+uh, messages, uh, import something called as human message.
+
+02:13.510 --> 02:17.410
+And this human message, I can pass it over here like human message.
+
+02:17.410 --> 02:18.460
+Maybe it's an array.
+
+02:18.490 --> 02:20.200
+So I'm going to say human message.
+
+02:20.470 --> 02:31.240
+Um, and I'm going to pass what is the advantage of running LLM in local machine.
+
+02:31.240 --> 02:38.350
+And this way you are essentially replacing the prompt template with all the methods that you have got
+
+02:38.350 --> 02:41.320
+with just this particular value over here.
+
+02:41.320 --> 02:48.430
+So you have the power of, uh, setting the value from outside of this particular chat prompt template
+
+02:48.520 --> 02:51.820
+from this particular, uh, message placeholder.
+
+02:51.820 --> 02:57.220
+So this message placeholder is going to act as a placeholder for you to pass an entire message from
+
+02:57.220 --> 03:03.460
+outside so that you don't have to rely on hard coded value in the chat prompt template all the time,
+
+03:03.460 --> 03:05.350
+so that is something you can do it as well.
+
+03:05.350 --> 03:11.020
+And because we have got this message placeholder over here, you also have got a shorthand way of parsing
+
+03:11.020 --> 03:11.380
+it.
+
+03:11.680 --> 03:17.740
+A shorthand way is nothing, but you can just say a placeholder and then you can just say message.
+
+03:18.040 --> 03:21.400
+And this message is going to be sorry on the bracket.
+
+03:21.400 --> 03:24.100
+And now you can just say message.
+
+03:24.160 --> 03:27.040
+And then you can just pass the same thing over here.
+
+03:27.040 --> 03:30.490
+And if you try to run this it's just going to work as well.
+
+03:30.490 --> 03:34.990
+So that is how you do it from this particular chat prompt template.
+
+03:34.990 --> 03:38.920
+So you don't really have to include this message prompt template for that matter.
+
+03:38.920 --> 03:42.040
+You can just use the normal way of doing it as well.
+
+03:42.040 --> 03:50.410
+So this is another way of you using the message placeholder for your chat prompt template while you
+
+03:50.410 --> 03:50.980
+invoke it.
+
+03:50.980 --> 03:57.340
+And there is one more thing which I also wanted to cover is this instead of you doing an invoke over
+
+03:57.340 --> 04:01.330
+here because you see that every single time I tried to run this particular code, it is actually going
+
+04:01.330 --> 04:07.330
+to take so much of time to get the response out of the large language model.
+
+04:07.330 --> 04:12.520
+The reason why is because we are actually using what is called as an invoke method, because this invoke
+
+04:12.520 --> 04:16.690
+method is going to print all the value in one single shot, like like this.
+
+04:16.690 --> 04:17.980
+As you can see over here.
+
+04:18.010 --> 04:23.200
+Instead, if I want to print the value every single time while the generation of the text is going to
+
+04:23.200 --> 04:30.070
+happen, then we can stream the output out from this particular, um, output, which is coming from
+
+04:30.070 --> 04:31.060
+the large language model.
+
+04:31.060 --> 04:34.450
+So the way I can do it is I can just put a stream there.
+
+04:34.450 --> 04:40.540
+So there is this method called a stream, which is going to stream the output which is coming up from
+
+04:40.540 --> 04:43.540
+this particular, uh, particular response.
+
+04:43.540 --> 04:48.250
+So but because this is going to be a stream, I need to do a for loop for that matter.
+
+04:48.250 --> 05:00.390
+So I'm going to say for uh streamed uh, or maybe for stream, uh, in this particular stream that we
+
+05:00.390 --> 05:04.920
+have got, and I wanted to print the entire stream, for that matter.
+
+05:04.920 --> 05:13.050
+So I'm just going to say print, uh, str dot and because we need to print the content, I'm just going
+
+05:13.080 --> 05:14.580
+to print the content over here.
+
+05:14.580 --> 05:17.040
+So now what's going to happen if I try to run this code.
+
+05:17.040 --> 05:20.010
+You will notice that it is going to print all the value for me.
+
+05:20.010 --> 05:20.610
+Look at that.
+
+05:20.610 --> 05:21.930
+The text generation is going to happen.
+
+05:21.960 --> 05:27.930
+So if I go to the text editor you will notice that it is going to print generate all the text instantly
+
+05:27.930 --> 05:30.270
+for me, like how the ChatGPT does.
+
+05:30.300 --> 05:33.270
+And then it's going to print the value for me over there.
+
+05:33.270 --> 05:38.430
+I know that the text is not quite aligned like how it is doing over here, but yeah, but you got the
+
+05:38.430 --> 05:41.610
+idea right, like how you can actually stream the value out as well.
+
+05:41.610 --> 05:45.300
+So these are the things that is required while we build the chatbot, because we are going to stream
+
+05:45.300 --> 05:48.810
+the output instead of really invoking the output out from it.
+
+05:48.840 --> 05:50.910
+That is how we do it over there.
+
+05:51.330 --> 05:57.540
+So this is how we can work with the message placeholder and stream method of the Lang chain.

@@ -1,0 +1,169 @@
+WEBVTT
+
+00:00.110 --> 00:05.150
+So let's get back to the documentation one more time to see what they have told us to do it.
+
+00:05.150 --> 00:07.910
+So this is what they have told us over here.
+
+00:07.910 --> 00:11.780
+So from Lang chain chroma import chroma and there is this vector store.
+
+00:11.810 --> 00:15.650
+I'll probably copy this code and I'm going to paste it over here.
+
+00:15.800 --> 00:19.850
+Uh so chroma and you see that I'm going to be using this chroma.
+
+00:19.850 --> 00:26.660
+And then the collection name and the embedding function and the persist directory which is going to
+
+00:26.660 --> 00:29.570
+be chroma lang chain DB.
+
+00:30.140 --> 00:30.860
+Uh, which is great.
+
+00:30.890 --> 00:35.270
+I mean, I don't have any problem with using any of the name, so I'm just going to go with that.
+
+00:35.270 --> 00:41.570
+But the only thing which I don't think is going to be fitting in our requirement is going to be the
+
+00:41.570 --> 00:42.830
+collection name over here.
+
+00:42.830 --> 00:47.540
+So instead of this collection name, I'm going to give what is called as documents.
+
+00:47.540 --> 00:54.200
+And the documents which I'm going to be giving over here is going to be all splits.
+
+00:54.200 --> 01:01.990
+So the one that we have splitted into multiple chunks, which is this guy over here is what we are going
+
+01:02.020 --> 01:03.610
+to be giving over here.
+
+01:03.610 --> 01:10.780
+And the embedding function is the embedding function that we have created over here in the step three.
+
+01:10.810 --> 01:13.030
+So that is what I have put over here.
+
+01:13.060 --> 01:13.960
+This is step two.
+
+01:13.990 --> 01:15.010
+This is step three.
+
+01:15.010 --> 01:20.050
+And we also are going to store the data into this particular chroma lang DB.
+
+01:20.080 --> 01:23.080
+So that's going to be this particular case over here right.
+
+01:23.110 --> 01:25.840
+So that is going to be the vector store for us guys.
+
+01:25.870 --> 01:29.230
+And we'll see how the vector store is going to store the data.
+
+01:29.260 --> 01:31.900
+This process is going to take a long time.
+
+01:31.900 --> 01:40.210
+And it is also going to blow my Max fan for the first time, because it does require quite a lot of
+
+01:40.210 --> 01:42.790
+different operation to be taken care.
+
+01:43.390 --> 01:49.810
+And look at that while I try to run this particular code over here, it says that the documents of all
+
+01:49.810 --> 01:57.460
+store, all splits cannot be done because the because the keyword documents is unexpected.
+
+01:57.460 --> 02:00.520
+So we can't really pass the documents over here.
+
+02:00.520 --> 02:03.520
+So what is the solution for this particular problem?
+
+02:03.520 --> 02:09.130
+Well we need to use this from documents method which does that exact same operation.
+
+02:09.130 --> 02:16.630
+So we saw this from documents is the one method which can help us do uh loading the data from the particular
+
+02:16.630 --> 02:17.080
+document.
+
+02:17.080 --> 02:23.170
+So even though we try to use the directly from here, it's only specifically used for the collection.
+
+02:23.170 --> 02:27.370
+But if you're going to be using for the documents then this from document method is what you need to
+
+02:27.370 --> 02:28.150
+be using.
+
+02:28.270 --> 02:34.390
+And you can see that even this also shows us an error like from documents over here.
+
+02:34.390 --> 02:41.290
+And the reason why this is happening is because we actually need to use not the embedding function here,
+
+02:41.290 --> 02:46.330
+but we have to use what is called as embedding, uh, to make this code to work.
+
+02:46.330 --> 02:48.310
+Uh, yeah, that is the problem, I guess.
+
+02:48.310 --> 02:52.000
+And now if I try to run this, you will notice that the code is just going to work.
+
+02:52.000 --> 02:57.790
+And you'll also immediately notice that we have got a, uh, chroma lang chain DB.
+
+02:58.230 --> 03:01.020
+Uh, like one created over there.
+
+03:01.020 --> 03:08.790
+And this is going to store all the documents for us in the vector format, and it is going to create
+
+03:09.180 --> 03:11.700
+a file for me over here.
+
+03:11.700 --> 03:15.210
+So it's going to take a bit of a time for me to save this particular data.
+
+03:15.210 --> 03:23.640
+But now you got the idea of how we can store the data from the splitted data after embedding into a
+
+03:23.640 --> 03:27.900
+persistent storage, which is using the chroma vector stores.
+
+03:27.900 --> 03:35.640
+So this is the process of how we can do this entire extraction and indexing operation while building
+
+03:35.640 --> 03:37.860
+the rack operation with PDF files.
+
+03:37.860 --> 03:43.500
+And the next operation we need to do is to retrieve this data from this particular rack operation,
+
+03:43.500 --> 03:47.040
+which is the stored data from the vector stores.
+
+03:47.040 --> 03:50.640
+We are going to be retrieving the data from the vector stores by.
+
+03:50.670 --> 03:52.980
+And also we're going to use large language models.
+
+03:52.980 --> 03:55.650
+And then we can ask the question and we're going to get the answer.
+
+03:55.650 --> 03:58.860
+So we'll see how we can do that from our next lecture.

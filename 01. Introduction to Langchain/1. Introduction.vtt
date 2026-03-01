@@ -1,0 +1,289 @@
+WEBVTT
+
+00:00.110 --> 00:06.320
+Welcome to the first section of our course building and testing AI agents, rags and chatbots using
+
+00:06.320 --> 00:11.180
+Lang chain with Olama and local large language models.
+
+00:11.210 --> 00:16.970
+I know the heading of this course is quite big, but as the heading suggests, the entire course itself
+
+00:16.970 --> 00:22.520
+is going to be so deep, and we are going to be talking about a lot of details about how we can build
+
+00:22.550 --> 00:27.470
+AI agents, rags and chatbots in much, much detailed fashion.
+
+00:27.500 --> 00:33.530
+We'll also be seeing how we can test these using the testing techniques, which are available to ensure
+
+00:33.530 --> 00:39.410
+that these agents, or rags and chatbots, does not hallucinate and gives the precise answer that we're
+
+00:39.410 --> 00:40.220
+looking for.
+
+00:40.640 --> 00:45.230
+But before we get into all these details, let's first understand what is this Lang chain?
+
+00:45.710 --> 00:52.220
+Well, Lang chain is a framework for developing applications powered by large language models.
+
+00:52.640 --> 00:56.420
+And you can see that this is the architecture of this Lang chain itself.
+
+00:56.420 --> 01:00.630
+And don't worry about the architecture right now because we're just starting up over here.
+
+01:00.630 --> 01:04.380
+But you will see that these are things that we are going to be commonly using.
+
+01:04.380 --> 01:07.590
+While we talk about the link chain in this entire course.
+
+01:07.590 --> 01:10.680
+One is the link chain itself, which is the library.
+
+01:10.680 --> 01:17.940
+And then it's going to be a link graph, which is going to be helpful for you to use it with the agents
+
+01:17.940 --> 01:19.260
+and powering the agents.
+
+01:19.260 --> 01:23.670
+And that is going to be a lot of integration components which is used by the link chain.
+
+01:23.700 --> 01:28.830
+These components are going to be something that we'll be talking in our upcoming lectures of this section.
+
+01:28.830 --> 01:32.910
+And there are going to be long chain platforms which are going commercial platform, which are mainly
+
+01:32.910 --> 01:37.710
+used for deployment purpose, which you can use to deploy your large language model application and
+
+01:37.710 --> 01:39.930
+can be widely used by the consumers.
+
+01:39.930 --> 01:45.240
+And there is one of the most important thing which is going to be common for all these components like
+
+01:45.270 --> 01:48.540
+architecture components and deployment is going to be the Lang Smith.
+
+01:48.540 --> 01:54.090
+And this Lang Smith is very, very important because this is going to be helpful for debugging playground
+
+01:54.120 --> 01:58.470
+prompt management annotation testing and monitoring purpose.
+
+01:58.470 --> 02:04.340
+And this also commercial, as you can see over here, but you can use the free version for our development
+
+02:04.340 --> 02:06.560
+that we are going to be doing in this particular course.
+
+02:06.560 --> 02:09.020
+So this is the complete framework of the link chain.
+
+02:09.020 --> 02:14.030
+I know it is very, very high level by now, but once we get into this link chain more deeper, you'll
+
+02:14.030 --> 02:17.240
+understand these components slowly and steadily.
+
+02:17.240 --> 02:21.650
+But first of all, let's understand what are the things that we are going to be using this link chain
+
+02:21.650 --> 02:22.130
+for.
+
+02:22.130 --> 02:28.790
+Well, using this link chain we can build chatbots like ChatGPT, frequently asked questions, customer
+
+02:28.790 --> 02:29.750
+support applications.
+
+02:29.750 --> 02:33.710
+So all these things we can build using this link chain.
+
+02:33.740 --> 02:40.820
+We can also build a rag which is nothing but retrieval augmented generation which will extend the large
+
+02:40.820 --> 02:46.580
+language models knowledge with external data source like documents and knowledge sources.
+
+02:46.580 --> 02:49.940
+And we can also use this link chain for building AI agents.
+
+02:49.940 --> 02:54.740
+So the agents that can plan, reason and execute the action that you're looking for.
+
+02:54.770 --> 02:59.700
+And you can also use the link chain for AI powered search, which is like an intelligent search using
+
+02:59.700 --> 03:04.050
+the natural language, which will be using embedding and vector database to make this happen.
+
+03:04.080 --> 03:09.600
+It can be used for text summarization and content generation as it names data extraction and processing,
+
+03:09.600 --> 03:11.970
+and also for AI powered code generation.
+
+03:11.970 --> 03:18.180
+So we can write automated tests using the playwright or selenium, or for that matter, using this lang
+
+03:18.210 --> 03:18.720
+chain.
+
+03:18.720 --> 03:21.270
+So you see that this is very, very powerful.
+
+03:21.270 --> 03:25.770
+All these applications that you're going to be building are going to be powered by this Lang chain.
+
+03:25.770 --> 03:32.730
+Even browser use one of the application, which is mainly used for performing web data extraction,
+
+03:32.730 --> 03:34.260
+uses Lang chain a lot.
+
+03:34.260 --> 03:37.080
+And we talked about something called as Lang Smith over here.
+
+03:37.080 --> 03:42.030
+As I told you, this is one of the most important key component of this entire journey that we are going
+
+03:42.060 --> 03:43.170
+to be doing in this course.
+
+03:43.170 --> 03:50.010
+So Lang Smith is an evaluation and debugging platform for large language model applications built by
+
+03:50.010 --> 03:51.300
+the Lang Chain team itself.
+
+03:51.300 --> 03:57.540
+So it helps developers test, optimize, and monitor their AI application by providing powerful tools
+
+03:57.560 --> 04:03.080
+for tracing, logging, debugging and benchmarking different large language model components.
+
+04:03.080 --> 04:07.160
+And we are going to be using this language with quite a lot in this course, as I told you before.
+
+04:07.700 --> 04:12.590
+So in this course, as you can see over here, we are going to be doing all these operations.
+
+04:12.620 --> 04:16.310
+We are going to first understand the basic building blocks of long chain.
+
+04:16.310 --> 04:20.660
+This is going to take a couple of sections to understand how things will work, and then how we can
+
+04:20.660 --> 04:27.170
+create our own long chain chains and how we can use with the large language models run the chains.
+
+04:27.170 --> 04:33.380
+And also we can use these syntax that we have learned over here, the concepts that we have learned
+
+04:33.380 --> 04:34.340
+from here.
+
+04:34.340 --> 04:41.660
+And then we'll implement these to build the chatbots, build rags or retrieval augmented generations.
+
+04:41.690 --> 04:45.410
+We can also be building agents or the AI agents.
+
+04:45.410 --> 04:49.940
+And then finally we'll be testing all these things that we have built over here.
+
+04:50.120 --> 04:54.620
+And you will see that all these components that we are going to be doing over here are going to be done
+
+04:54.620 --> 05:01.530
+with the all Arma and local large language models, and the local large language models can be llama
+
+05:01.530 --> 05:05.250
+three R2 or Dbsk R1 or Qn 2.5 model.
+
+05:05.250 --> 05:13.290
+It can be of anything as long as your machine can execute or support running these large language models
+
+05:13.290 --> 05:19.200
+within your local machine, you can use any number of parameters, so you can see that you can use 8
+
+05:19.200 --> 05:22.350
+billion parameter or 2 billion parameter, or 6 billion parameter.
+
+05:22.350 --> 05:24.870
+It depends upon how your machine can handle those.
+
+05:24.870 --> 05:27.780
+And we are going to be using that in this particular course.
+
+05:27.780 --> 05:32.400
+I'm going to be prevalently using the llama 3.28 billion parameter mostly.
+
+05:32.400 --> 05:36.270
+If your machine can handle more than that, you are very happy to use them.
+
+05:36.270 --> 05:37.710
+And guess what?
+
+05:37.710 --> 05:44.550
+The more and more billion parameters your large language model supports, the better your language applications
+
+05:44.550 --> 05:47.940
+response is going to be and more accurate the response is going to be.
+
+05:47.940 --> 05:51.780
+And as I said, let's talk about the prerequisite of this course.
+
+05:51.960 --> 05:55.020
+We are going to be using Windows or Mac operating system.
+
+05:55.020 --> 06:00.440
+So I'm going to be mostly using Mac operating system because I run everything in my Mac OS as well as
+
+06:00.440 --> 06:05.870
+I have Mac, Apple M1 machine, so I will be using that as a host machine for all the execution.
+
+06:05.900 --> 06:10.490
+And we also need to have Python for execution, because the entire operation that we are going to be
+
+06:10.490 --> 06:12.950
+using in the long chain is going to be Python.
+
+06:12.950 --> 06:17.240
+Long chain also has JavaScript version, but we are going to be using the Python version here.
+
+06:17.240 --> 06:20.000
+And then you need to have a good machine configuration.
+
+06:20.030 --> 06:28.310
+Of course it can be M1 or higher, or maybe windows with a GPU like 208 0 or 3 080, or even 4090 for
+
+06:28.340 --> 06:28.850
+that matter.
+
+06:28.850 --> 06:33.950
+If you have any of these GPU, which is amazing, you will have a very good inferencing time and it
+
+06:33.950 --> 06:36.170
+should be very, very faster when you execute them.
+
+06:36.200 --> 06:41.150
+You also need to have Visual Studio Code, of course, and Olama, because Olama is the one that we
+
+06:41.150 --> 06:46.520
+are going to be using as a platform to run the local large language models.
+
+06:46.520 --> 06:50.450
+So these are the precursor of this course guys, and I'm quite excited with this course for you.
+
+06:50.450 --> 06:55.820
+So talk to you in our next lecture where we are going to be talking about why lamb-smith in first place.

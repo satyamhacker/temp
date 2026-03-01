@@ -1,0 +1,412 @@
+WEBVTT
+
+00:00.040 --> 00:00.360
+All right.
+
+00:00.400 --> 00:04.440
+So now that we are going to start writing the code for the playwright MCP server.
+
+00:04.600 --> 00:09.400
+So before we start beginning with the playwright MCP server, the first concept that we need to understand
+
+00:09.440 --> 00:15.520
+the playwright itself is if you have ever worked with playwright before, if you're a developer, and
+
+00:15.520 --> 00:18.200
+if you are wanting to see what exactly is this playwright?
+
+00:18.240 --> 00:19.640
+Playwright is very, very simple.
+
+00:19.680 --> 00:23.240
+So just go to the playwright.dev website.
+
+00:23.800 --> 00:27.960
+This is like the official website of the playwright I'm talking about over here.
+
+00:28.200 --> 00:33.040
+And if you go to the Python version, for example, because we're going to be using Python, and then
+
+00:33.040 --> 00:37.240
+if you just go to the documentation, the installation part is very straightforward.
+
+00:37.280 --> 00:42.880
+This is the Python install we remember we already did that in our earlier sections of this course.
+
+00:43.280 --> 00:50.600
+And in order to run this playwright uh with the python you have to write the test.
+
+00:50.640 --> 00:56.200
+So if you just go to the write test over here, you can see that there is this option called as playwright
+
+00:56.240 --> 00:57.160
+async API.
+
+00:57.520 --> 01:01.780
+We'll be working with the playwright async, then you can use the playwright async API.
+
+01:01.820 --> 01:04.500
+We're going to be using the async API for this demonstration.
+
+01:05.060 --> 01:10.580
+And for every playwright it comes up with the page a browser.
+
+01:10.860 --> 01:13.980
+Um, and also it has got a lot of different capabilities.
+
+01:13.980 --> 01:18.940
+So browser is like the, this kind of browser, the entire browser, and the page is the one that you're
+
+01:18.940 --> 01:19.740
+seeing over here.
+
+01:19.740 --> 01:24.540
+Inside that within the page you can perform all the operations like you can get by roles.
+
+01:24.940 --> 01:31.940
+You can perform a click operation, uh, and then you can perform an hover fill focus, press set input
+
+01:31.940 --> 01:33.460
+files, select options.
+
+01:33.460 --> 01:40.380
+So you can do a lot of different operation with the page uh element which is this page dot this element.
+
+01:40.380 --> 01:41.940
+And this is going to return you the locators.
+
+01:41.940 --> 01:43.020
+And then the locator.
+
+01:43.020 --> 01:44.660
+You can perform all these operation.
+
+01:44.860 --> 01:45.380
+Right.
+
+01:45.420 --> 01:48.020
+So that's how uh in playwright things works.
+
+01:48.020 --> 01:55.340
+So basically in order for you to work with a playwright, you need to have a playwright instance.
+
+01:55.340 --> 02:00.440
+You also need to have a browser invocation instance, you need to have a page instance in order to work
+
+02:00.440 --> 02:07.640
+with the page, and then you perform the operation on the element or the locators with the click or
+
+02:07.680 --> 02:10.400
+send or drag and drop operation.
+
+02:10.400 --> 02:14.200
+Because in a page we always do, uh, do this right.
+
+02:14.240 --> 02:15.480
+We go and click that operation.
+
+02:15.480 --> 02:18.240
+We also go and do the typing operation over here.
+
+02:18.560 --> 02:21.560
+And then we get the element out from the page to see how things work.
+
+02:21.560 --> 02:25.640
+So all of these things we are going to be basically doing with our toolings capability that we're going
+
+02:25.640 --> 02:26.400
+to be writing.
+
+02:26.400 --> 02:28.920
+So we're going to see how we can write some tools.
+
+02:28.960 --> 02:29.440
+Right.
+
+02:29.480 --> 02:36.880
+So the first thing which we're going to do for building our playwright MCP server with Python is name
+
+02:36.880 --> 02:41.880
+it, of course, playwright MCP Dot Pi.
+
+02:43.400 --> 02:45.400
+And we're going to write the MCP server.
+
+02:45.400 --> 02:50.320
+So again this is going to look pretty much exactly similar to what we have over here.
+
+02:50.320 --> 02:53.160
+I'm going to go copy paste that over here.
+
+02:53.600 --> 03:02.420
+Uh we are going to probably not use the OS, I think, but we are going to use the path and then we
+
+03:02.420 --> 03:05.820
+are also going to import a couple of things.
+
+03:05.820 --> 03:13.060
+So we're going to import probably the async IO because this playwright itself is async server.
+
+03:13.060 --> 03:15.140
+So we're going to use the async operation.
+
+03:15.420 --> 03:16.900
+So it's just pretty cool.
+
+03:17.300 --> 03:22.100
+And then we also are going to import the base64 which is required.
+
+03:22.100 --> 03:23.860
+And I will tell you when it is required.
+
+03:23.860 --> 03:27.660
+And then we also need to have a playwright.
+
+03:27.660 --> 03:30.180
+So this is this is something that we're going to write right.
+
+03:30.460 --> 03:33.900
+And we're going to use the async API, not the sync API.
+
+03:33.940 --> 03:36.340
+Like how there was a demonstration in the documentation.
+
+03:37.460 --> 03:43.500
+And I'm going to import uh from the async playwright.
+
+03:43.540 --> 03:48.020
+We're also going to import uh, what is called as browser.
+
+03:48.060 --> 03:49.380
+See that this is important.
+
+03:49.420 --> 03:50.900
+I'm going to get the browser.
+
+03:50.900 --> 03:55.160
+If I just do control space it's going to show all the different classes we have.
+
+03:55.600 --> 03:58.240
+I also need the page because we're going to work with the page.
+
+03:58.240 --> 04:04.480
+But if you're going to extend this library to do some other operations like dialogues and downloads
+
+04:04.480 --> 04:10.440
+and browser context API testing that you want to be extending this with, you can also call this API
+
+04:10.440 --> 04:11.040
+request.
+
+04:11.400 --> 04:12.560
+I'm not going to go that far.
+
+04:12.560 --> 04:17.400
+I'm not going to really build a complete tool which I have already built, which is available in the
+
+04:17.720 --> 04:22.000
+GitHub repository, but I'm just going to leave that as it is, right?
+
+04:22.400 --> 04:22.800
+Um.
+
+04:22.960 --> 04:23.600
+Pretty cool.
+
+04:24.120 --> 04:28.960
+And now once we have all of these, I'm then going to create our MVP server.
+
+04:28.960 --> 04:31.560
+You know that how it's going to be easier right.
+
+04:31.600 --> 04:33.120
+MCP fast MVP.
+
+04:33.680 --> 04:43.120
+And I'm going to say playwright uh MCP server right.
+
+04:43.280 --> 04:43.960
+That's the thing.
+
+04:44.360 --> 04:44.840
+Cool.
+
+04:45.240 --> 04:46.360
+We have defined it.
+
+04:46.840 --> 04:49.040
+And then we're going to start this MCP server.
+
+04:49.080 --> 04:50.480
+Obviously you know how to do that.
+
+04:50.910 --> 04:54.870
+But we need to define the toolings over here.
+
+04:55.230 --> 04:57.630
+The tool is going to be to.
+
+04:58.670 --> 05:03.110
+The first thing is that you open the browser, which is this kind of browser.
+
+05:03.150 --> 05:05.950
+We not to perform any operation on the UI to open the browser.
+
+05:06.350 --> 05:14.390
+And then you need to enter the URL which is basically a navigate operation in playwright.
+
+05:14.430 --> 05:22.390
+So if you're just going to navigate over here you see that you just do page dot go to operation to navigate
+
+05:22.390 --> 05:24.390
+to that particular page.
+
+05:24.590 --> 05:29.510
+But we need to get the page instance in order to perform this operation.
+
+05:29.550 --> 05:35.070
+For doing that in playwright you need to do use some playwright code to do that operation.
+
+05:35.070 --> 05:44.670
+So you need to call the start method of the async playwright that you have got, which is this playwright
+
+05:44.670 --> 05:45.430
+class file.
+
+05:45.790 --> 05:50.570
+And then you can launch the browser which is chromium browser in our case.
+
+05:50.690 --> 05:52.010
+And then you create a new page.
+
+05:52.010 --> 05:54.330
+That's when you get the instance of this particular page.
+
+05:54.370 --> 05:59.010
+I know it's a lot of thing to digest, but yeah, that's the first thing that we need to set up.
+
+05:59.170 --> 06:02.370
+So for that I'm going to first create a simple method.
+
+06:02.370 --> 06:05.690
+I'm going to call this as a private method to be handled.
+
+06:05.690 --> 06:13.330
+So I'm going to say underscore uh ensure uh maybe ensure browser not ensure playwright but ensure browser
+
+06:14.290 --> 06:15.290
+write this method.
+
+06:15.650 --> 06:18.330
+So I'm going to say it's writing everything for me automatically.
+
+06:18.330 --> 06:19.050
+Look at that.
+
+06:19.250 --> 06:20.090
+It's magic.
+
+06:20.810 --> 06:29.530
+Um but now what I'm going to I'm going to say ensure the browser and page are initialized.
+
+06:30.690 --> 06:33.450
+This is what this particular method is basically going to do.
+
+06:33.970 --> 06:46.730
+And over here, um, I'm going to set the global variables of browser page and the playwright instance
+
+06:46.730 --> 06:47.530
+over here.
+
+06:47.710 --> 06:55.150
+And because I'm going to set this to the global over here, I also need to define this outside like
+
+06:55.190 --> 06:59.550
+browser as the browser, which is going to be none.
+
+07:00.110 --> 07:01.350
+I'll just set it up.
+
+07:01.390 --> 07:02.910
+Similarly, the page I have to set it.
+
+07:02.910 --> 07:09.070
+So I'm going to say page as the page which is equal to none as well.
+
+07:10.310 --> 07:16.430
+And I need to set the playwright instance uh is equal to none right.
+
+07:16.470 --> 07:17.830
+I have to set all of these.
+
+07:17.870 --> 07:19.270
+This is very important.
+
+07:21.190 --> 07:24.350
+And once I set this now I can set all the values to it.
+
+07:24.350 --> 07:29.430
+So I'm going to say if for the first time maybe what if the browser is already open.
+
+07:29.430 --> 07:31.870
+So you need to verify if the browser is not none.
+
+07:32.350 --> 07:32.550
+Right.
+
+07:32.590 --> 07:34.510
+So if the browser is none.
+
+07:34.510 --> 07:37.190
+So if it is none, which means it is not initialized.
+
+07:37.630 --> 07:41.350
+And if the page is none, which means the page itself is not initialized.
+
+07:41.350 --> 07:46.810
+So if both of these are not initialized, which means it is a new instance we're trying to work with.
+
+07:47.250 --> 07:53.170
+So I'm going to call the playwright instance is equal to await of the await playwright dot start.
+
+07:53.450 --> 07:55.730
+Thanks to I Wrote things for me.
+
+07:56.050 --> 08:02.890
+And then we need to set the browser over here which is going to be await playwright instance, which
+
+08:02.890 --> 08:08.650
+is this one that we are creating dot chromium dot launch and headless as I'm going to set this to false
+
+08:08.650 --> 08:10.850
+because I want the browser to be displayed.
+
+08:11.490 --> 08:15.130
+And then I'm going to set the page equal to await browser.
+
+08:15.170 --> 08:15.810
+New page.
+
+08:16.130 --> 08:16.770
+Amazing.
+
+08:17.050 --> 08:17.610
+That's it.
+
+08:17.890 --> 08:24.810
+This is going to ensure if the browser is opened or not, if the page is initialized or not.
+
+08:24.850 --> 08:30.210
+And then if there is nothing then it's going to go and create a new page and new browser for me.
+
+08:30.250 --> 08:33.170
+So this is the place where the browsers are going to be launched for us.
+
+08:33.530 --> 08:37.850
+This is the first non tooling method that I have to write.
+
+08:37.890 --> 08:43.290
+And once we have this we can then use this method in all the toolings that we are going to be building
+
+08:43.290 --> 08:44.810
+in our next lecture of this course.

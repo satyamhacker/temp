@@ -1,0 +1,205 @@
+WEBVTT
+
+00:00.020 --> 00:00.350
+All right.
+
+00:00.350 --> 00:11.030
+So now that I'm going to do the, uh, the evaluation and testing, so evaluation of a data set with
+
+00:11.030 --> 00:17.270
+ragas and make sure that we have got all these bells and whistles ready this time.
+
+00:17.270 --> 00:21.230
+So in order for the testing we just have to run this guy over here.
+
+00:21.230 --> 00:25.640
+So I'm going to go put the code block and I'm going to run this up over here.
+
+00:25.670 --> 00:29.000
+Oops we got an error here I think what's really going on.
+
+00:29.000 --> 00:35.240
+So it looks like the input should be a valid result of type list type without considering the input
+
+00:35.240 --> 00:35.870
+value.
+
+00:35.930 --> 00:37.490
+Ah look at that.
+
+00:37.640 --> 00:40.940
+I think we have missed one of the important part while doing copy pasting.
+
+00:40.940 --> 00:42.950
+So this guy the retrieval context.
+
+00:42.950 --> 00:46.010
+The relevant document should be of a type of an array.
+
+00:46.010 --> 00:48.080
+But what we're getting is not an array type.
+
+00:48.080 --> 00:52.310
+But it is like like a full, uh, full blown string type.
+
+00:52.310 --> 00:54.860
+So we need to make it like an array type over there.
+
+00:54.860 --> 00:59.780
+So that's the reason why I guess this is just getting us the particular response over there.
+
+00:59.780 --> 01:02.510
+Like it's just failing to have the particular value.
+
+01:02.540 --> 01:08.910
+There are two way to resolve this instead of you just giving zero of the page content, you can probably
+
+01:08.910 --> 01:12.690
+just remove this entirety over here and you can just invoke.
+
+01:12.720 --> 01:19.110
+I think this retrieval is anyways going to give you a vector store with an array for that matter.
+
+01:19.110 --> 01:21.450
+So let's see what is going to happen this time.
+
+01:22.590 --> 01:26.550
+And then we need to pass a particular relevant documents over here.
+
+01:26.550 --> 01:29.400
+So let's see what is going to happen this time.
+
+01:29.400 --> 01:31.710
+I know it's going to take a bit of a time again.
+
+01:36.930 --> 01:37.410
+All right.
+
+01:37.410 --> 01:38.850
+We got our response over here.
+
+01:38.850 --> 01:43.410
+So let's try to use this particular record uh over here for the evaluation.
+
+01:43.410 --> 01:44.940
+And you see that even this is going to fail.
+
+01:44.940 --> 01:48.750
+I just wanted to make a point here to show you, like, why this is going to fail.
+
+01:48.780 --> 01:49.440
+Look at that.
+
+01:49.440 --> 01:55.980
+The the actual retrieval context had got a document structure, but not the structure that we can actually
+
+01:55.980 --> 01:56.370
+use.
+
+01:56.370 --> 02:00.030
+So we actually need the page content, not the document structure itself.
+
+02:00.030 --> 02:00.510
+Right.
+
+02:00.510 --> 02:09.040
+So we need to somehow get the page content out from that particular document Structure that we have
+
+02:09.070 --> 02:09.490
+got.
+
+02:09.520 --> 02:14.470
+Only then we can actually use it to retrieve things for us over there.
+
+02:14.470 --> 02:17.740
+So how do we actually, uh, make that happen?
+
+02:17.950 --> 02:22.900
+Uh, is we can just go over here in this particular context.
+
+02:22.930 --> 02:29.170
+See, we have got the, uh, retrieved, uh, context over here, like, we invoke it.
+
+02:29.200 --> 02:29.410
+Right?
+
+02:29.440 --> 02:38.770
+So what we can do probably, uh, is we can just put this guy, uh, and we also written a if you remember
+
+02:39.340 --> 02:46.990
+the code for the joining of the context, I can just take this joining of the code context over here,
+
+02:46.990 --> 02:49.990
+which is going to be the relevant docs.
+
+02:50.140 --> 02:54.250
+This is going to join the entire thing in the context for us over here.
+
+02:54.250 --> 03:00.160
+And now we can pass this context, but in an array type something like this.
+
+03:00.160 --> 03:04.150
+So this way it is going to make things more easier.
+
+03:04.210 --> 03:06.370
+So now this thing is quite right.
+
+03:06.370 --> 03:13.630
+So this is what is being expected from the ragas for the retrieved context, even in our earlier section
+
+03:13.630 --> 03:18.010
+of this course, we tried to create the data structure with a relevant document in the same fashion
+
+03:18.010 --> 03:19.090
+as you can see over here.
+
+03:19.090 --> 03:23.680
+So I'm going to do the exact same thing in this fashion as well.
+
+03:23.680 --> 03:27.460
+And now if I try to run this data set look at that.
+
+03:27.490 --> 03:31.330
+It is going to start running things for me, uh, over here.
+
+03:31.330 --> 03:35.920
+And then it's going to store the context by joining every single details.
+
+03:35.920 --> 03:38.260
+And then it is going to pass it as an array.
+
+03:41.860 --> 03:42.700
+All right.
+
+03:42.700 --> 03:45.220
+So now look at that retrieve context is an array type.
+
+03:45.220 --> 03:47.230
+And it has got all the values you're looking for.
+
+03:47.230 --> 03:51.250
+And it's also joined together is one gigantic text.
+
+03:51.250 --> 03:53.800
+As you can see over here I think this is pretty cool.
+
+03:53.800 --> 03:56.410
+So now we have got everything.
+
+03:56.410 --> 04:00.850
+So if I try to run the evaluate data set, you can see that it is just going to work fine.
+
+04:00.850 --> 04:02.680
+So this is this is pretty cool.
+
+04:02.680 --> 04:08.080
+So now this is the only change that we have to do over here uh to make this happen.
+
+04:08.080 --> 04:10.360
+So the data set is all ready.
+
+04:10.360 --> 04:14.650
+The final operation is to execute the code and see how it actually works.
+
+04:14.650 --> 04:16.480
+We're talking about that in our next lecture.

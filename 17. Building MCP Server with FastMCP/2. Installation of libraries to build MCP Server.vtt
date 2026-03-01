@@ -1,0 +1,169 @@
+WEBVTT
+
+00:00.080 --> 00:06.280
+So now we're going to do the installation of the fast MCP within our code.
+
+00:06.280 --> 00:08.280
+So this is the folder that I've just created.
+
+00:08.320 --> 00:12.280
+Instead of just usual project that we used to create holding all the sections.
+
+00:12.280 --> 00:17.000
+This is going to be entirely separate from the rest of the code base that I wanted to just have them
+
+00:17.000 --> 00:20.440
+completely separate so that you can have more focused on the MCP side.
+
+00:20.440 --> 00:24.000
+The reason why I did this is because we're not going to use the Jupyter notebook or whatever, because
+
+00:24.000 --> 00:28.280
+we're just going to write the code right away, right in here, because the code itself is very, very
+
+00:28.280 --> 00:29.440
+straightforward and simple.
+
+00:29.480 --> 00:34.760
+And also we need to run this server, uh, in a uh, from the cloud desktop.
+
+00:34.760 --> 00:36.720
+So we need to have that as a separate way as well.
+
+00:36.760 --> 00:37.280
+Right.
+
+00:37.320 --> 00:42.440
+So well, as that said, I'm going to do the first uh, part is the installation of the fast MCP.
+
+00:42.440 --> 00:47.240
+So first I'm going to go to the fast MCP over here in the Google search.
+
+00:47.240 --> 00:50.560
+So you can see that this is the fast MCP website.
+
+00:50.560 --> 00:55.080
+And you can see that we have, uh, got the details like how we can work with the fast MCP.
+
+00:55.080 --> 01:00.840
+So basically the fast MCP is a uh, is a pythonic way to build an MCP server and client.
+
+01:00.840 --> 01:01.870
+That's what they do.
+
+01:01.910 --> 01:05.190
+And we are going to just build the servers, not the client over here.
+
+01:05.190 --> 01:06.590
+So it's going to be very, very straightforward.
+
+01:06.590 --> 01:09.510
+And you can learn the details from this particular documentation.
+
+01:09.510 --> 01:16.230
+They have got the details like how you can install the uh the fast MCP if you just go to the Pip version,
+
+01:16.630 --> 01:20.750
+which is what we're going to be doing, just have to pip install fast MCP and then you're done.
+
+01:20.750 --> 01:23.310
+That's the installation part, uh, to be honest.
+
+01:23.350 --> 01:25.310
+And once you have it, then you can start working with it.
+
+01:25.310 --> 01:26.470
+It's very straightforward.
+
+01:26.710 --> 01:29.910
+So I'm going to be in the Visual Studio Code over here.
+
+01:30.150 --> 01:35.990
+And I'm just going to open the terminal this time instead of we always do with the Jupyter notebook.
+
+01:35.990 --> 01:43.390
+This time I'm just going to do everything from here and I'm going to create a virtual, uh, environment.
+
+01:43.390 --> 01:49.150
+So I'm going to say Python three hyphen m and then v and v of dot v and v.
+
+01:49.150 --> 01:51.070
+So that's what I'm going to be doing over here.
+
+01:51.110 --> 01:53.270
+This is going to create the virtual environment for me.
+
+01:53.430 --> 01:57.830
+And then I'm going to source the V environment the virtual environment over here.
+
+01:57.830 --> 01:59.510
+And then we're going to start working from here.
+
+01:59.510 --> 02:04.930
+So I'm going to go and paste this pip install fast MCP, which is going to install the fast MCP for
+
+02:04.930 --> 02:07.610
+us in the virtual environment that we have got.
+
+02:07.650 --> 02:08.130
+Look at that.
+
+02:08.130 --> 02:09.450
+It's just going to be installed.
+
+02:09.730 --> 02:14.570
+And because we are also going to be working with a playwright, we're going to build our own playwright
+
+02:14.610 --> 02:15.450
+MCP server.
+
+02:15.490 --> 02:20.530
+So I'm going to say pip install playwright over here.
+
+02:21.050 --> 02:22.130
+And I'm going to hit enter.
+
+02:22.170 --> 02:23.770
+This is going to install the playwright.
+
+02:23.770 --> 02:26.690
+And maybe from the playwright we need to install Chrome and things.
+
+02:26.690 --> 02:29.210
+So I'm just going to say playwright install chromium.
+
+02:29.210 --> 02:32.210
+This is going to install the chromium for us over here.
+
+02:32.250 --> 02:33.610
+And we're going to be working with Firefox.
+
+02:33.610 --> 02:35.130
+You can also do that right.
+
+02:35.170 --> 02:37.250
+That's the entire installation process.
+
+02:37.250 --> 02:40.730
+The first thing is we need to install the fast MCP.
+
+02:41.050 --> 02:42.930
+And then we need to install the playwright.
+
+02:42.970 --> 02:47.490
+And then finally, because we'll be using some browsers, I'm going to install the chromium as well.
+
+02:47.490 --> 02:48.010
+That's all.
+
+02:48.010 --> 02:50.570
+That's the entire thing that we have over here.
+
+02:50.690 --> 02:55.370
+And once we have this, then we can start building everything from the fast MCP.
+
+02:55.810 --> 02:59.650
+And this is the entire installation process.
+
+02:59.650 --> 03:03.810
+And now we're going to start working with the actual code, starting our next lecture.

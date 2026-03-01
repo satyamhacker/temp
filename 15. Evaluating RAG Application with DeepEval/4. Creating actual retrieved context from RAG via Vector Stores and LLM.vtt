@@ -1,0 +1,310 @@
+WEBVTT
+
+00:00.020 --> 00:00.440
+All right.
+
+00:00.470 --> 00:05.150
+In this lecture we're going to talk about how we can test our, uh, rag application.
+
+00:05.150 --> 00:09.770
+So for that Rag application, I'm not going to use our actual Rag and the AI agent application that
+
+00:09.770 --> 00:10.760
+we built before.
+
+00:10.790 --> 00:17.060
+You remember, we were testing this Rag application, which was using a static document that we created,
+
+00:17.060 --> 00:20.180
+uh, while we were testing the application using the ragas.
+
+00:20.180 --> 00:22.610
+So the same thing I'm going to do over here as well.
+
+00:22.610 --> 00:29.420
+So I'm going to use the same document store and the same embedding and also the retriever, the same
+
+00:29.420 --> 00:35.750
+idea that I'm going to be doing from here for the evaluation, uh, using the deep eval this time.
+
+00:35.750 --> 00:38.390
+And we'll see how we could able to achieve that over here.
+
+00:38.390 --> 00:49.610
+So so basically I'm going to call this a rag, uh, application, uh, which is uh, without external
+
+00:50.060 --> 00:58.730
+data, but uh, internal data set with an array of data that we have got.
+
+00:58.730 --> 01:02.540
+So the same thing that I'm going to be doing over here as well this time.
+
+01:02.560 --> 01:10.780
+So the first thing is I'm going to have the embedding, as you know, and we also need to have these
+
+01:10.870 --> 01:11.650
+documents.
+
+01:11.650 --> 01:14.980
+So I'm going to go copy these documents.
+
+01:14.980 --> 01:16.900
+I'm going to paste that over here.
+
+01:16.930 --> 01:18.580
+Let me try running it.
+
+01:19.060 --> 01:19.930
+Pretty cool.
+
+01:19.930 --> 01:21.460
+So that runs.
+
+01:21.460 --> 01:24.520
+And we also need the retriever QA.
+
+01:24.550 --> 01:27.730
+So I'm going to go probably just copy the entire thing.
+
+01:28.090 --> 01:35.320
+Um and I'm going to put them over here and that becomes my retriever as well.
+
+01:35.350 --> 01:37.810
+You see that all of these are really, really required.
+
+01:37.810 --> 01:40.150
+So these things are just working fine.
+
+01:40.150 --> 01:43.840
+I've just copy pasted blindly without doing anything over here.
+
+01:43.840 --> 01:50.080
+But we were creating the multi shot sample data set for ragas earlier right.
+
+01:50.110 --> 02:00.760
+Similarly in this case we actually need to create the evaluation data set for our deep eval as well.
+
+02:00.760 --> 02:05.650
+So how do we create this particular data set over here.
+
+02:05.710 --> 02:10.000
+Uh, in the, uh, in the eval deep eval.
+
+02:10.000 --> 02:15.280
+So in order for me to create a data set, something like this, as you can see over here, uh, even
+
+02:15.280 --> 02:18.670
+in deep eval, just go to the documentation.
+
+02:18.700 --> 02:20.200
+See using data set.
+
+02:20.440 --> 02:23.590
+Uh, and they have got a structure as well.
+
+02:23.590 --> 02:24.340
+Look at that.
+
+02:24.340 --> 02:30.910
+They have got this class called as LM test case class which accepts this input as we saw before.
+
+02:30.910 --> 02:34.240
+And there's an actual output expected outputs and the context.
+
+02:34.240 --> 02:41.500
+If you remember we have injected the input before in our data set over here which has got input and
+
+02:41.500 --> 02:43.300
+we have got the expected output.
+
+02:43.300 --> 02:46.240
+But we need to know what is the actual output.
+
+02:46.240 --> 02:53.950
+And we also need to know the relevant context so that we can ensure that the evaluation of our large
+
+02:53.950 --> 02:57.070
+language model can be done based on these inputs.
+
+02:57.730 --> 03:04.720
+So for this evaluation of the, uh, of the data sets using this deep eval.
+
+03:04.750 --> 03:08.190
+We need to have the actual outputs and the context.
+
+03:08.190 --> 03:09.960
+So how do we get these two.
+
+03:09.960 --> 03:14.970
+And this is the quest that we are about to get into in this particular lecture.
+
+03:14.970 --> 03:20.190
+So in order for me to get the uh get those details.
+
+03:20.340 --> 03:26.190
+So the first thing is, as you can see over here within, probably we just copy paste all the code,
+
+03:26.220 --> 03:32.820
+as you can see over here, in order for me to get the relevant documents, which was the context and
+
+03:32.820 --> 03:38.490
+the response, which was actually the response over here, I did the code something like this over here,
+
+03:38.490 --> 03:41.580
+I'm going to do pretty much exactly the same thing in this as well.
+
+03:41.580 --> 03:48.270
+So I'm going to pass the question and I'm going to get all the relevant, uh, documents over here or
+
+03:48.270 --> 03:53.760
+the relevant, uh, context that I need from the Rag application.
+
+03:53.760 --> 03:56.160
+So I'll show you how actually I can do that.
+
+03:56.160 --> 04:01.560
+So I'm going to say probably I'm just going to delete this one, add a markdown, and I'm going to say
+
+04:01.800 --> 04:16.430
+add the um, the or query the Relevant context and actual output from LM.
+
+04:16.430 --> 04:18.980
+So those two things that I need to actually do from here.
+
+04:18.980 --> 04:20.750
+So how do I actually do that?
+
+04:20.750 --> 04:22.250
+It's very, very simple.
+
+04:22.400 --> 04:28.130
+All I'm going to do it is I'm going to say from a deep valve, I'm just going to add something called
+
+04:28.160 --> 04:34.100
+as a test case import LM test case.
+
+04:36.290 --> 04:37.490
+So I'm going to do so.
+
+04:37.490 --> 04:40.550
+All I'm going to do over here is I'm going to write a method over here.
+
+04:40.550 --> 04:49.250
+And I'm going to say query uh with context maybe query for context as well as whatever it is.
+
+04:49.520 --> 04:55.280
+Um, and this particular method, I'm going to say I'm going to have the uh retrieved.
+
+04:57.350 --> 04:59.510
+A context, right.
+
+04:59.540 --> 05:01.370
+Or maybe retrieve docs, whatever.
+
+05:02.120 --> 05:08.360
+Pretty much like how we did in our earlier, uh, section of this course, like how we get the, uh,
+
+05:08.360 --> 05:11.740
+retrieved documents Like this.
+
+05:11.770 --> 05:12.850
+Like how we did it.
+
+05:12.850 --> 05:15.940
+The same thing I'm going to be doing over here as well.
+
+05:15.940 --> 05:22.150
+So in order for me to get the, uh, retrieved document, this retrieved document, I just do this particular
+
+05:22.150 --> 05:22.720
+code right.
+
+05:22.750 --> 05:24.340
+So I'm going to copy this code.
+
+05:24.370 --> 05:29.980
+I'm going to say retrieve dot get relevant document will give me that uh, document is the question.
+
+05:30.010 --> 05:31.300
+Maybe I'll just pass the question.
+
+05:31.300 --> 05:36.850
+This will give me the relevant document that I'm looking for, and then I'm going to get the context
+
+05:36.880 --> 05:37.330
+out of it.
+
+05:37.330 --> 05:42.160
+So I'm going to say retrieved contexts is equal to.
+
+05:42.190 --> 05:46.390
+And the contexts are going to be this guy.
+
+05:46.570 --> 05:49.690
+This is going to be remaining the exactly the same.
+
+05:49.690 --> 05:54.610
+So I'm going to copy this whole code and I'm going to paste that over here.
+
+05:54.610 --> 05:58.840
+So it's going to be the document of the page content which is required from the relevant document.
+
+05:59.170 --> 06:01.360
+And I'm going to get all the details.
+
+06:01.360 --> 06:03.340
+And then I'm going to paste it over here.
+
+06:03.370 --> 06:04.090
+Right.
+
+06:04.240 --> 06:09.070
+And because this relevant document has got those details, I don't really need to iterate through the
+
+06:09.070 --> 06:09.760
+relevant documents.
+
+06:09.760 --> 06:16.150
+Once again I can just pass like, um, retrieved documents that will give me the document that I'm looking
+
+06:16.150 --> 06:16.240
+for.
+
+06:16.270 --> 06:19.300
+That is the that is the retrieved context that I have got.
+
+06:19.690 --> 06:27.940
+And then I need to also have what is called as a response from the large language model, which I can
+
+06:27.940 --> 06:30.850
+get it from the QA chain that I have got, which is this one.
+
+06:30.850 --> 06:35.200
+So these things I am just running a bit faster because we have discussed this millions of times in our
+
+06:35.200 --> 06:37.060
+earlier sections of this course.
+
+06:37.060 --> 06:40.810
+So I'm just going to do the exact same thing over here as well.
+
+06:40.810 --> 06:43.240
+So see that it's pretty much exactly the same thing.
+
+06:43.240 --> 06:47.740
+And I'm going to return the, uh, retrieved contexts.
+
+06:47.920 --> 06:53.350
+And also the response I'm going to return to, um, two of them from this particular method.
+
+06:53.380 --> 06:58.420
+This is what is basically going to happen over here in this particular method.
+
+06:59.020 --> 07:02.410
+So so yeah, I'm going to call this particular method in our next lecture.
+
+07:02.410 --> 07:11.740
+And I will show you how you can actually create the entire test case or the LM test case, uh, required
+
+07:11.740 --> 07:15.910
+for the deep eval, which we can use for the evaluation purpose.

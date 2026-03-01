@@ -1,0 +1,292 @@
+WEBVTT
+
+00:00.110 --> 00:05.600
+So in order for retrieving the data, if I just go to the long chain over here, you will see that there
+
+00:05.600 --> 00:07.940
+are many different retrievers available.
+
+00:07.970 --> 00:09.800
+I mean, yeah, this is the new thing as well.
+
+00:09.800 --> 00:16.280
+We have to learn about retriever is an interface that returns a document given any unstructured query.
+
+00:16.790 --> 00:17.780
+That's how it does.
+
+00:17.810 --> 00:21.410
+And it is more general than a vector store.
+
+00:21.440 --> 00:28.700
+A retriever does not need to be able to, uh, store a document only returns them and retrievers can
+
+00:28.700 --> 00:35.540
+create can be created from vector store, but are also broad enough to include a Wikipedia search and
+
+00:35.570 --> 00:37.310
+Amazon Kendra for that matter.
+
+00:37.310 --> 00:42.290
+And retrievers accept string query as an input and returns a list of document as an output.
+
+00:42.320 --> 00:43.010
+Look at that.
+
+00:43.010 --> 00:48.350
+This retriever is what we really need for our operation, because we store our data in the vector data
+
+00:48.380 --> 00:48.800
+store.
+
+00:48.800 --> 00:55.100
+And now we are going to use this retriever as a streamlined interface to retrieve the data from our
+
+00:55.100 --> 00:55.790
+data store.
+
+00:55.910 --> 01:02.880
+When I say streamlined way of retrieving the data from the data store, because today we are using the
+
+01:03.090 --> 01:08.580
+Chrome data store and tomorrow we may use fires, or tomorrow we may be using some other data stores.
+
+01:08.580 --> 01:13.560
+So we wanted to still make sure that our existing code that we are trying to retrieve from the data
+
+01:13.590 --> 01:18.510
+store still works, even though the the document store changes.
+
+01:18.510 --> 01:24.870
+So that's the reason why we need to use this retriever, because retriever will let us retrieve the
+
+01:24.870 --> 01:28.230
+data regardless of whatever vector stores that we use.
+
+01:28.230 --> 01:34.740
+The retriever is going to work with the same way, like how it used to work, because all the data store
+
+01:34.770 --> 01:41.370
+implements this retriever interface, and it will ensure that there is a smooth transitioning of our
+
+01:41.370 --> 01:42.690
+data retrieval process.
+
+01:42.690 --> 01:45.750
+And that is why this retriever is so important.
+
+01:45.750 --> 01:51.120
+And you can see that there are many different, uh, documents available.
+
+01:51.120 --> 01:55.980
+Again, they have given some details over here, like some Amazon Knowledge Base retriever, Azure AI
+
+01:56.010 --> 01:58.440
+search retriever, Elasticsearch Retrievers.
+
+01:58.440 --> 02:04.800
+These are something which is also available over here, but we are going to use the retriever that we
+
+02:04.800 --> 02:11.310
+are going to, um, need to for retrieving our database data as well.
+
+02:11.310 --> 02:13.230
+So let's see how we could able to achieve that.
+
+02:13.230 --> 02:14.700
+It's very straightforward as well.
+
+02:14.700 --> 02:17.910
+So I'm going to go here and I'm going to go to the markdown.
+
+02:18.000 --> 02:20.430
+And over here I'm just going to say eight.
+
+02:20.580 --> 02:22.260
+Um is it 8 or 7.
+
+02:22.290 --> 02:25.680
+Just see uh this is five.
+
+02:25.680 --> 02:27.360
+So maybe this is six I'm sorry.
+
+02:27.900 --> 02:35.610
+Uh, six and retrievers, uh, in uh, long chain.
+
+02:36.960 --> 02:45.720
+And I'm going to hit like that and put the code over here, and I'm going to write the retriever.
+
+02:46.770 --> 02:51.090
+Uh, so retriever is going to be I'm going to use our vector store.
+
+02:51.090 --> 02:55.590
+And within this vector store we have got this method called as as retriever.
+
+02:55.620 --> 02:56.500
+Look at that.
+
+02:57.010 --> 02:57.850
+This is pretty cool.
+
+02:57.880 --> 03:03.880
+And now with this we are going to change our vector store to retrieve the data using this retrieval
+
+03:03.880 --> 03:04.480
+format.
+
+03:04.600 --> 03:09.190
+And I'm going to set two properties in here.
+
+03:09.190 --> 03:15.220
+One is the search type which is going to be similarity.
+
+03:15.430 --> 03:24.550
+And the next one we're going to set is the search keyword, which is the arguments that we have to pass
+
+03:24.550 --> 03:25.540
+a args.
+
+03:25.720 --> 03:34.780
+And I'm going to set the keywords as k which is equal to 1 or 3 or whatever that you wanted to do.
+
+03:34.990 --> 03:36.580
+We can do that over here.
+
+03:36.670 --> 03:41.920
+So yeah, whichever is the thing that we wanted to go with I can do that over here.
+
+03:41.920 --> 03:46.390
+So let me just set one for now, because I can just show you how the response is going to look like.
+
+03:46.390 --> 03:50.470
+So this is pretty much exactly the same thing that we did over here.
+
+03:50.470 --> 03:51.640
+As you can see.
+
+03:51.670 --> 03:52.960
+Like k is equal three.
+
+03:52.990 --> 03:54.790
+And this is the similarity search.
+
+03:55.010 --> 03:58.910
+This is the same thing that I'm doing, but I'm setting it in the retriever this time.
+
+03:58.910 --> 04:02.480
+And now I can just say retriever dot.
+
+04:02.480 --> 04:13.130
+And there is this, a batch method where we can get all the documents in one single shot.
+
+04:13.130 --> 04:17.090
+So this is, as I told you, the retriever is going to retrieve the data from the vector database.
+
+04:17.210 --> 04:18.110
+We are going to use this.
+
+04:18.110 --> 04:22.310
+So I'm going to say what is the bias measurement.
+
+04:22.340 --> 04:22.850
+Look at that.
+
+04:22.850 --> 04:24.290
+I'm just going to ask this question.
+
+04:24.530 --> 04:28.640
+And I'm also going to say how to test human safety against LM.
+
+04:28.640 --> 04:32.900
+So how to test human safety.
+
+04:33.140 --> 04:36.980
+Uh, against uh LM.
+
+04:37.160 --> 04:45.890
+And I'm also going to ask probably um, maybe just this testing and evaluation, uh, document.
+
+04:46.550 --> 04:54.150
+Sorry, not the LM forgetting how LM forgets the context.
+
+04:54.180 --> 04:56.640
+So I'm going to ask three types of question over here.
+
+04:56.880 --> 05:01.680
+And I'm going to run this retriever logic over here.
+
+05:01.830 --> 05:06.120
+So let's see what is going to happen while we get this particular response over here.
+
+05:06.120 --> 05:11.220
+So because I'm setting like one as the k is equal to one, you will notice that I'm going to get the
+
+05:11.220 --> 05:12.540
+response over here.
+
+05:12.540 --> 05:13.590
+And look at that.
+
+05:13.830 --> 05:15.780
+It says LM forgetting dot pdf.
+
+05:15.780 --> 05:21.120
+I think the first one is going to be um, this this particular answer is going to be from LM forgetting
+
+05:21.120 --> 05:26.130
+that PDF over here, and it's going to give you some response for that.
+
+05:26.130 --> 05:34.350
+And then there is this how to test a human safety, which is coming from our, uh, from our, our testing
+
+05:34.350 --> 05:36.990
+and evaluation lm, pdf, uh document.
+
+05:36.990 --> 05:42.120
+And there is this testing and evaluation PDF document for these third one as well.
+
+05:42.150 --> 05:43.230
+And the second one as well.
+
+05:43.230 --> 05:49.500
+So, so yeah, these are all just being retrieved based on the questions that we are asking.
+
+05:49.500 --> 05:52.470
+So it is working as expected which is pretty cool.
+
+05:52.500 --> 05:59.040
+This is how we can see that not only just by using the vector store or similarity search, or using
+
+05:59.040 --> 06:05.220
+the similarity search value that you are going to be using over here can get the data, but retrieval
+
+06:05.220 --> 06:13.410
+is the actual interface, which is going to be used by all the different, uh, data stores or vector
+
+06:13.440 --> 06:14.370
+data stores.
+
+06:15.210 --> 06:19.320
+We need to use this retriever for our retrieval operation.
+
+06:19.320 --> 06:24.960
+And that is exactly what we are going to be doing in our next lecture while we are trying to use, uh,
+
+06:24.960 --> 06:33.000
+what is called as a manual retrieval of the data from this particular retriever.
+
+06:33.000 --> 06:38.520
+And once again, in order for us to retrieve the data, we are going to be using two approaches, and
+
+06:38.520 --> 06:42.960
+I will show you what those approaches are in our upcoming lectures, but you'll understand how awesome
+
+06:42.960 --> 06:43.380
+it is.
+
+06:43.380 --> 06:49.530
+Now we are going to start querying our large language model with the context of information that we
+
+06:49.530 --> 06:50.790
+have got in the vector store.

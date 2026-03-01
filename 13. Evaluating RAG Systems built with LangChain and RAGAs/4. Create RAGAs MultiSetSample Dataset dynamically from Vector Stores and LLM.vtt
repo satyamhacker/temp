@@ -1,0 +1,373 @@
+WEBVTT
+
+00:00.050 --> 00:00.590
+All right.
+
+00:00.590 --> 00:05.240
+So now we are going to start creating the data set for the ragas.
+
+00:05.240 --> 00:13.730
+So when I say data set for ragas let's go and search in the ragas.io over here the documentation.
+
+00:13.730 --> 00:19.940
+And if I go to the documentation and if you just go search the core concept.
+
+00:20.390 --> 00:26.420
+And I think there was somewhere it was mentioned that evaluation data sets, as you can see over here
+
+00:26.420 --> 00:33.140
+for the singleton samples as well as for the uh, maybe multi set sample loading from hugging face,
+
+00:33.170 --> 00:33.800
+whatever.
+
+00:33.830 --> 00:39.980
+You will notice that this is the sample for creating the individual sample uh, which has got something
+
+00:39.980 --> 00:44.120
+like user inputs retrieved context response and reference.
+
+00:44.120 --> 00:49.820
+So this is what is exactly the singleton sample really looks for and for multi multi-turn sample.
+
+00:49.850 --> 00:56.180
+Basically in the ragas you need to have multiple sets of the same data, but that's what you're going
+
+00:56.180 --> 00:58.790
+to be passing in the multi term samples.
+
+00:58.850 --> 01:02.990
+Because we are working with multi term samples for injecting multiple datas.
+
+01:03.020 --> 01:05.110
+We need to create this kind of sample.
+
+01:05.110 --> 01:06.640
+But how do we actually create this?
+
+01:06.760 --> 01:08.620
+This user inputs is very familiar.
+
+01:08.620 --> 01:11.290
+This is our query that we have got over here right.
+
+01:11.320 --> 01:15.100
+That's the the query that we have to pass which is this one.
+
+01:15.100 --> 01:22.270
+And then the retrieved context is the one which is going to be coming up from our vector stores, which
+
+01:22.270 --> 01:26.770
+is, uh, just from the vector store that we have got over here.
+
+01:26.800 --> 01:27.220
+Right.
+
+01:27.220 --> 01:33.490
+So the, the relevant documents, probably this guy, this is the, uh, this is going to be the retrieved
+
+01:33.490 --> 01:34.180
+context.
+
+01:34.180 --> 01:39.640
+And the response is going to be the one, this one which is coming from our QA chain, from our large
+
+01:39.640 --> 01:44.920
+language model, while we pass the large language model and the retriever, if we just give these two
+
+01:44.950 --> 01:48.910
+information, the retriever QA is going to give us that particular information.
+
+01:48.910 --> 01:50.950
+So that is going to be the response from our LLM.
+
+01:50.950 --> 01:52.390
+So we're going to store that as well.
+
+01:52.390 --> 02:00.700
+And the reference is going to be the page content which is nothing but the docs page content.
+
+02:00.700 --> 02:03.040
+So I'm just going to say doc dot page content.
+
+02:03.040 --> 02:05.620
+So for this question this is the reference that we have got.
+
+02:05.620 --> 02:12.000
+So we are explicitly passing that as well, because this is the one which is used by the ragas to evaluate
+
+02:12.000 --> 02:14.850
+how close the reality is.
+
+02:14.850 --> 02:21.660
+The ground truth is based on the answer that is being generated from the vector store, as well as from
+
+02:21.660 --> 02:22.890
+the QA chain.
+
+02:22.890 --> 02:29.550
+So that is what we are going to evaluate in this particular, um, ragas over here.
+
+02:29.550 --> 02:35.100
+That's the reason why we need to have for the single term sample, or maybe any sample for that matter.
+
+02:35.100 --> 02:40.980
+You need to have this for properties user input, retrieved context, um, and then response and a reference.
+
+02:40.980 --> 02:47.010
+So we're going to do all these four things like you have to create all these things for our data set.
+
+02:47.010 --> 02:54.960
+And because we have got multi shot sample data set and we need to pass all these datas along with the
+
+02:54.960 --> 02:57.210
+response as well as the retrieved document.
+
+02:57.210 --> 02:59.160
+We have to create a structure this time.
+
+02:59.190 --> 03:00.270
+So let's see how we can do it.
+
+03:00.270 --> 03:11.960
+So I'm going to put a markdown over here I'm going to say creating multi shot Sample data set for ragas.
+
+03:12.290 --> 03:16.130
+I'm gonna take their, uh, for data.
+
+03:16.250 --> 03:20.210
+I'm just interested in adding this kind of stuff's their data.
+
+03:20.480 --> 03:21.560
+Uh, look at that.
+
+03:21.590 --> 03:22.430
+Cool.
+
+03:23.270 --> 03:25.610
+You can have a visual, uh, clue.
+
+03:25.640 --> 03:26.990
+Like what's really happening there?
+
+03:27.020 --> 03:27.320
+All right.
+
+03:27.350 --> 03:27.650
+Cool.
+
+03:27.680 --> 03:31.250
+So I'm going to say data set is equal to an array.
+
+03:31.280 --> 03:32.900
+So I'm gonna create an empty data set here.
+
+03:32.900 --> 03:35.810
+And I'm going to say I'm just going to turn off this thing.
+
+03:35.840 --> 03:43.190
+So it's annoying, uh, to get this kind of response from our copilot.
+
+03:44.300 --> 03:44.840
+All right.
+
+03:44.840 --> 03:45.500
+It's disabled.
+
+03:45.500 --> 03:49.550
+And now over here, I'm going to say probably we're just gonna hide this one.
+
+03:49.550 --> 03:50.480
+We don't need that.
+
+03:50.480 --> 04:01.910
+And I'm going to say here, uh, for question, and I'm going to add the doc in zip of both the questions
+
+04:01.910 --> 04:10.690
+and the docs that we have created before the questions and doc, which are these one, the questions
+
+04:10.690 --> 04:12.040
+and the docs.
+
+04:12.040 --> 04:15.400
+I'm just going to add, uh, on the array over here.
+
+04:15.400 --> 04:17.380
+I'm going to loop both of them together.
+
+04:17.380 --> 04:24.850
+And I'm going to say here and I'm going to say relevant, uh, docs over here.
+
+04:24.850 --> 04:30.640
+We know that the relevant documents that we have got is going to be the document that we are getting
+
+04:30.640 --> 04:33.130
+from here, which are these one, as you know.
+
+04:33.130 --> 04:37.870
+So I need to iterate through these documents as well, because you know that we have got like three
+
+04:37.870 --> 04:40.840
+documents for every relevant documents.
+
+04:40.840 --> 04:47.800
+I need to iterate through all the documents, and then I need to, uh, store them all, uh, in the,
+
+04:48.070 --> 04:50.440
+uh, in the array for the relevant documents.
+
+04:50.440 --> 04:57.700
+So I'm just going to say I'm going to iterate through all the documents in the, uh, retriever dot,
+
+04:57.730 --> 05:00.280
+get relevant documents.
+
+05:00.640 --> 05:03.190
+And I'm going to say question.
+
+05:03.190 --> 05:07.840
+So I'm going to iterate through and I'm going to get all the relevant documents based on the question
+
+05:07.840 --> 05:08.620
+that I'm passing in.
+
+05:08.620 --> 05:10.180
+So these are the relevant documents.
+
+05:10.180 --> 05:13.430
+And I'm going to create a response over here.
+
+05:13.430 --> 05:19.490
+And the response is going to be the QA chain dot run of the question.
+
+05:19.880 --> 05:22.850
+The exact same thing that we were doing before this guy.
+
+05:23.120 --> 05:23.630
+Right.
+
+05:23.660 --> 05:26.330
+So that's been added over here.
+
+05:26.330 --> 05:31.670
+And now I need to create the structure like how we have got over here like these.
+
+05:31.670 --> 05:36.140
+So the user input retrieved context response and reference.
+
+05:36.140 --> 05:41.570
+So for doing that I'm going to say dataset dot append the array that I have created over here.
+
+05:42.140 --> 05:51.590
+And in this array I'm going to say the first one is going to be the user input, which is going to be
+
+05:51.590 --> 06:05.120
+the question and the retrieved contexts, which is going to be the relevant docs.
+
+06:05.840 --> 06:13.160
+And the response is going to be the response obviously is this one.
+
+06:13.460 --> 06:22.240
+And finally we need to have the reference for the ragas to do a reference of where this documents are
+
+06:22.240 --> 06:22.810
+going to come from.
+
+06:22.810 --> 06:26.050
+So I'm going to say dot dot page content, right?
+
+06:26.050 --> 06:30.280
+So I'm going to have all these details over here has been appended.
+
+06:30.280 --> 06:32.530
+And now I'm going to say data set.
+
+06:33.220 --> 06:39.250
+So let's try to print this value and see how the data is going to look like over here after this execution.
+
+06:39.250 --> 06:46.240
+So if I run this over here you will notice that, uh, the for the first time it is going to grab all
+
+06:46.240 --> 06:46.810
+the information.
+
+06:46.810 --> 06:52.660
+It's also going to do a QA chain because it is going to call the LM, and it's going to get the processed
+
+06:52.660 --> 06:56.200
+response for us over here, like how it has done this side.
+
+06:56.200 --> 06:58.720
+So it is running quite a lot over here.
+
+06:58.720 --> 07:01.120
+So it's using our LM, it's using the vector.
+
+07:01.120 --> 07:04.330
+And also it is appending that in the data set.
+
+07:04.330 --> 07:07.570
+So it's going to take a bit of a time like 21 seconds in my machine.
+
+07:07.660 --> 07:10.390
+And you'll notice that we have got this user input.
+
+07:10.420 --> 07:14.950
+Like what is the playwright and what browser does it support.
+
+07:14.980 --> 07:21.480
+The retrieval context for this question is going to be this from the LM from the vector data store.
+
+07:21.570 --> 07:23.820
+Uh, these are three things which is coming up.
+
+07:23.820 --> 07:27.150
+And the response from the LM is going to be this one, as you can see.
+
+07:27.660 --> 07:34.860
+And the reference is going to be the reference from the, uh, from the docs that we have got.
+
+07:34.890 --> 07:39.420
+See the reference and the response from the LM is pretty close to them.
+
+07:39.450 --> 07:41.250
+Like they are matching pretty close to that.
+
+07:41.250 --> 07:46.770
+That's the reason why maybe this test is going to just pass while it does the evaluation with the ragas.
+
+07:47.220 --> 07:47.850
+That's all guys.
+
+07:47.850 --> 07:50.580
+This is how we create the data set over here.
+
+07:50.580 --> 07:55.650
+And now this data set is pretty much exactly the same kind of data set that you're seeing over here
+
+07:55.680 --> 07:57.060
+with the simple term sample.
+
+07:57.060 --> 08:01.380
+But here because this is a multi term samples over here we have got a lot of datas.
+
+08:01.380 --> 08:02.490
+And you can go to the text editor.
+
+08:02.490 --> 08:06.030
+And you can see that how many datas have been created which is amazing.
+
+08:06.030 --> 08:08.010
+So we have all of these over here.
+
+08:08.010 --> 08:14.130
+And now we are going to run this with our ragas in our next lecture.
+
+08:14.130 --> 08:15.660
+And I will show you how it's going to work.
+
+08:15.660 --> 08:16.380
+And guess what?
+
+08:16.380 --> 08:21.000
+We can also see the entire operation with Lange Smith as well.

@@ -1,0 +1,250 @@
+WEBVTT
+
+00:00.020 --> 00:03.710
+So now I'm in the Visual Studio Code and I'm going to start writing the code.
+
+00:03.710 --> 00:07.970
+And in this section is going to be like an extension of our last section itself.
+
+00:07.970 --> 00:12.680
+So if you have watched our earlier section order code that I'm going to be writing over here is going
+
+00:12.710 --> 00:15.590
+to be pretty much exactly the same like our last section.
+
+00:15.590 --> 00:21.230
+So I would recommend you to please go and watch our earlier section where we were talking about how
+
+00:21.230 --> 00:24.200
+we can do RAC testing with deep eval.
+
+00:24.230 --> 00:29.510
+The same idea is going to be used over here, but just that it's going to be a different metrics altogether.
+
+00:29.510 --> 00:33.200
+And we are going to be using AI agent instead of RAC over here.
+
+00:33.200 --> 00:36.350
+And the coding is going to remain exactly the same for the deep level.
+
+00:36.380 --> 00:37.730
+It's not going to be much of a change.
+
+00:37.730 --> 00:43.700
+So this section is going to be very small compared to our last section, because we have discussed even
+
+00:43.700 --> 00:47.450
+the portal in our last section, like the confident AI portal.
+
+00:47.450 --> 00:53.450
+And here there is no confident AI portal itself because of the way this tool correction metrics really
+
+00:53.450 --> 00:53.840
+works.
+
+00:53.840 --> 00:56.270
+So we don't really need to go through that as well.
+
+00:56.270 --> 00:59.360
+So it's going to be just like a straightforward verification over here.
+
+00:59.360 --> 01:03.530
+So all the code that we are going to be seeing over here are going to remain exactly the same.
+
+01:03.540 --> 01:05.880
+and it is going to be very, very straightforward.
+
+01:05.880 --> 01:09.270
+So I'm going to copy paste all the codes which is sitting over here.
+
+01:09.270 --> 01:11.640
+And I'm going to start writing the code.
+
+01:11.640 --> 01:17.250
+So most of the code that you're going to be seeing is going to be just reused from here, from the existing
+
+01:17.340 --> 01:18.750
+section that we have discussed.
+
+01:18.750 --> 01:25.110
+So I'm going to go and even we don't even require this confident AI API key this time because guess
+
+01:25.110 --> 01:25.530
+what?
+
+01:25.560 --> 01:30.120
+We are not even going to pass any of the key information over there.
+
+01:30.120 --> 01:32.640
+So I'm just going to leave that guy as it is.
+
+01:32.730 --> 01:37.560
+And then we are going to start creating our tool that we are going to be working with.
+
+01:37.560 --> 01:45.360
+So the first thing that we are going to do is, I'm going to say creating the tools to pass in our AI
+
+01:45.390 --> 01:48.120
+agent, and I'm going to hit tick.
+
+01:48.150 --> 01:53.160
+And the tools, you remember the custom tools that we were building in our earlier sections of the course?
+
+01:53.160 --> 01:56.970
+I'm just going to use the exactly the same idea from the long chain.
+
+01:56.970 --> 02:04.020
+I'm going to get all the tools, and I'm going to go paste those tools over here.
+
+02:04.050 --> 02:05.040
+I'm going to run that.
+
+02:05.040 --> 02:08.860
+And we need to create the list of the tools like how we do before.
+
+02:08.860 --> 02:13.390
+So I'm going to do the list of the tools and I'm going to paste it over here.
+
+02:13.390 --> 02:15.760
+We don't even have the Wikipedia, so I'm just going to leave that.
+
+02:15.760 --> 02:21.580
+I'm just going to take the custom tools this time just for the demonstration purpose, and I'm going
+
+02:21.580 --> 02:27.610
+to create that tool, and then we're going to call our AI agent to perform the operation.
+
+02:27.610 --> 02:33.340
+And remember the agent discussion we were doing in our section seven of this folder structure, not
+
+02:33.340 --> 02:36.550
+the actual section seven of the Udemy course that you have got.
+
+02:36.580 --> 02:44.020
+But the section over here in the the structure of our Visual Studio Code.
+
+02:44.020 --> 02:51.400
+So over here you can see that this is the agent code that we wrote, which is going to invoke our custom
+
+02:51.430 --> 02:52.600
+tools that we have built.
+
+02:52.600 --> 03:01.960
+So I'm going to put a markdown over here and I'm going to say the AI agent code to invoke our custom
+
+03:01.960 --> 03:04.390
+Toolings something like that.
+
+03:04.390 --> 03:07.090
+And I'm going to add the code over here.
+
+03:07.090 --> 03:09.800
+So the tools is the tools that we just created over here.
+
+03:09.800 --> 03:13.190
+I have copy pasted that and we are going to start running it.
+
+03:13.580 --> 03:14.930
+This is just going to work fine.
+
+03:14.930 --> 03:18.020
+So if I let's say remove this guy from here.
+
+03:18.410 --> 03:19.850
+So what is the sum of two and four.
+
+03:19.850 --> 03:23.960
+So if I execute it this is going to run uh the agent executor chain.
+
+03:23.960 --> 03:29.120
+And you know what is going to happen because this is going to call our custom tool like add number tools,
+
+03:29.150 --> 03:31.910
+which we have defined over here.
+
+03:32.000 --> 03:36.860
+And then the LM is going to respond it like the sum of two and four is six.
+
+03:37.010 --> 03:38.750
+So that it is very straightforward.
+
+03:38.750 --> 03:40.790
+So basically this is what is really happening.
+
+03:40.790 --> 03:43.160
+So if you give what is the sum of two and four.
+
+03:43.190 --> 03:48.560
+And then this the agent is going to choose appropriately the add numbers tool.
+
+03:48.560 --> 03:49.970
+And then it is going to give us the answer.
+
+03:49.970 --> 03:56.540
+So if I am going to ask the question uh, what is the uh double of two, which is going to be the multiplication
+
+03:56.540 --> 03:57.260
+in this case.
+
+03:57.260 --> 04:01.580
+And what I tried to run this, it is going to solve this by multiplying the two number.
+
+04:01.580 --> 04:04.190
+You can see that the thought is coming from the large language model.
+
+04:04.190 --> 04:08.150
+But in turn, the AI agent is going to invoke the multiply numbers tool.
+
+04:08.150 --> 04:09.500
+And then it is going to run them.
+
+04:09.500 --> 04:11.450
+And it's going to give us the answer as four.
+
+04:12.080 --> 04:14.790
+And the same thing is going to happen if you try to do a subtraction.
+
+04:14.790 --> 04:21.270
+So these are the operations that we have got from our AI agent and our custom tools that we have built.
+
+04:21.270 --> 04:29.340
+And now the question is, how do we test whether the AI agent correctly invokes the tool that we have
+
+04:29.370 --> 04:30.270
+built on the top?
+
+04:30.750 --> 04:31.770
+That is the quest, right?
+
+04:31.800 --> 04:35.160
+This is the thing that we are going to be discussing in this particular section.
+
+04:35.160 --> 04:43.800
+So in order to do that, we are first going to create our data set, which is the golden data set as
+
+04:43.800 --> 04:49.500
+we discussed in our last section of the course, which is this golden data set that we're talking about.
+
+04:49.500 --> 04:53.580
+But over here the questions are going to be a bit different comparatively, which is going to be the
+
+04:53.580 --> 04:56.220
+question like what is the sum of two and four?
+
+04:56.280 --> 05:01.020
+And then the answer is going to be the sum of two and four is maybe six.
+
+05:01.020 --> 05:02.940
+And similarly what is the double of two.
+
+05:02.970 --> 05:05.640
+Then the answer is going to be the double of two is four or something like that.
+
+05:05.640 --> 05:07.770
+So I'm going to write all of these over here.
+
+05:08.010 --> 05:11.970
+And then I'm also going to add the tool columns as well.
+
+05:11.970 --> 05:16.200
+So all of these things that we're going to be discussing in our next lecture of this course.

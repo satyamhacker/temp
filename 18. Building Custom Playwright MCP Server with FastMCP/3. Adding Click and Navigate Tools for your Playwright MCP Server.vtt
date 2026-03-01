@@ -1,0 +1,391 @@
+WEBVTT
+
+00:00.120 --> 00:06.440
+All right, so now that we have completed writing our ensure browser method in our last lecture, but
+
+00:06.440 --> 00:13.480
+now we are going to see how we can build our first two links for our playwright MCP server that we are
+
+00:13.480 --> 00:15.520
+starting to build from our last lecture.
+
+00:15.520 --> 00:22.680
+So the first thing which we have to do is to write a method which is going to perform a navigation operation.
+
+00:22.680 --> 00:31.680
+So basically, as we talked in our last lecture, we have to navigate to a page before we actually perform
+
+00:31.680 --> 00:32.680
+any operation.
+
+00:32.680 --> 00:39.360
+So basically we need to just go to a page uh, and from by opening a browser.
+
+00:39.360 --> 00:41.600
+And then we need to navigate to that particular page.
+
+00:41.800 --> 00:47.680
+And then we can perform a click operation or fill operation on any control after the locator is been
+
+00:47.680 --> 00:48.160
+found.
+
+00:48.160 --> 00:51.160
+And then we perform any of the operation that we are looking for.
+
+00:51.200 --> 00:51.600
+Right.
+
+00:51.640 --> 00:58.680
+So in order to do all of these operation, we need to have the tooling capabilities to our MCP server.
+
+00:58.680 --> 01:00.720
+If not, that operation is never going to happen.
+
+01:00.720 --> 01:04.040
+So we have already seen that in our earlier sections of this course.
+
+01:04.040 --> 01:06.790
+It's that's exactly what we're going to be doing over here as well.
+
+01:06.790 --> 01:11.470
+So the first tool that I'm going to build right now is going to be the navigate tool.
+
+01:11.470 --> 01:15.030
+But before I actually do that I'm going to first write it as a method.
+
+01:15.030 --> 01:15.550
+Right.
+
+01:15.590 --> 01:20.750
+So this is exactly the same way like how we did even in our earlier sections of this course.
+
+01:20.990 --> 01:23.590
+Uh, first of all, we always write a method.
+
+01:23.590 --> 01:28.390
+And then from the method we just decorate that method as a tool.
+
+01:28.430 --> 01:28.710
+Right.
+
+01:28.710 --> 01:31.430
+That's exactly what I'm going to be doing over here as well.
+
+01:31.430 --> 01:33.470
+So I'm going to say navigate.
+
+01:33.790 --> 01:37.710
+And this is going to be the URL which I'm going to be giving in.
+
+01:37.710 --> 01:41.430
+And I'm going to return something out after this method has been doing right.
+
+01:41.590 --> 01:44.190
+So I'm going to say navigate to the URL.
+
+01:44.190 --> 01:46.190
+And uh yeah.
+
+01:46.230 --> 01:52.950
+Just going to say navigate to the URL to the given URL, the given URL, something like that.
+
+01:52.950 --> 01:55.590
+This is what I wanted to really do over here.
+
+01:55.950 --> 02:03.990
+And in order for me to navigate over here I'm going to say await underscore ensure browser.
+
+02:03.990 --> 02:08.430
+So this is going to be the first thing which I need to call every single time.
+
+02:08.430 --> 02:15.830
+The reason why I need to do it is because I need to have the browser instance like the playwright instance,
+
+02:15.830 --> 02:18.950
+the browser instance, and the page instance in first place.
+
+02:19.190 --> 02:23.110
+If I don't have these, then it is not really going to work, right?
+
+02:23.150 --> 02:25.870
+Because it's going to be giving us null pointer exception.
+
+02:25.870 --> 02:29.950
+So we have to ensure that the objects are being set.
+
+02:30.750 --> 02:37.070
+That's the reason why this is the first and most important tool that needs to be invoked for the first
+
+02:37.070 --> 02:37.510
+time.
+
+02:37.710 --> 02:45.030
+And once we have this, I'm then going to say, uh, wait, uh, over here, uh, and I'm going to say
+
+02:45.390 --> 02:46.430
+this page.
+
+02:46.750 --> 02:51.430
+See this page, uh, in playwright, if you have already worked in playwright, you know what I really
+
+02:51.430 --> 02:52.230
+mean about that.
+
+02:52.230 --> 02:56.510
+So in order to navigate, you need to use the go to method.
+
+02:56.550 --> 02:58.310
+See that this method just comes in.
+
+02:58.310 --> 02:58.910
+Right.
+
+02:58.910 --> 03:03.350
+So in this method I need to pass the URL that I'm going to navigate.
+
+03:03.350 --> 03:04.550
+So I'm going to say URL.
+
+03:05.510 --> 03:08.710
+And if you want to also have a waiting mechanism you can also do that.
+
+03:08.710 --> 03:14.460
+So you can just say wait until is equal to a Dom content loaded, right?
+
+03:14.460 --> 03:19.620
+You can also do that over here just to ensure that the the weighting is already happening there or not.
+
+03:19.660 --> 03:20.020
+Right.
+
+03:20.060 --> 03:21.740
+That is an additional thing that you can do.
+
+03:21.980 --> 03:28.580
+And one more additional thing that you can do it is you can give a feedback loop to the to the user
+
+03:28.580 --> 03:33.660
+in the cloud desktop to say that you have navigated to this particular page so you can get the title
+
+03:33.820 --> 03:36.180
+and then you can return that information as well.
+
+03:36.180 --> 03:39.900
+So I'm going to say return, and I'm just going to do a bit of a formatting.
+
+03:39.940 --> 03:43.260
+I'm going to say navigating or navigated.
+
+03:45.740 --> 03:54.780
+To and I'm going to say the URL uh, and a page title, which is going to be.
+
+03:57.020 --> 03:58.420
+This title for that matter.
+
+03:59.420 --> 03:59.860
+Right.
+
+03:59.900 --> 04:06.140
+So that's what I'm going to be returning back to the, uh, to the client, which is the cloud desktop
+
+04:06.140 --> 04:06.740
+over here.
+
+04:07.020 --> 04:10.260
+And we can also actually add a try catch block as well.
+
+04:10.260 --> 04:15.700
+So I'm just going to say try uh over here, uh, and let's try.
+
+04:16.380 --> 04:19.780
+I'm just going to do an indentation because this this is Python.
+
+04:19.940 --> 04:22.420
+So everything is indentation over here.
+
+04:22.780 --> 04:28.300
+And I'm going to say exception as E over here.
+
+04:28.700 --> 04:31.340
+And I'm going to say error navigating to the URL.
+
+04:31.740 --> 04:33.300
+Yeah I like this code right.
+
+04:33.340 --> 04:35.620
+So this is going to be the navigate method that we have.
+
+04:35.660 --> 04:41.540
+And now you may ask Karthik how can I actually decorate this method as a tool.
+
+04:41.700 --> 04:42.740
+Well guess what.
+
+04:42.780 --> 04:43.860
+It's so easy.
+
+04:43.900 --> 04:47.740
+Remember in our earlier sections of this course when we were talking about the link chain, in order
+
+04:47.740 --> 04:51.540
+to make a method as a tool, we use the tool method.
+
+04:51.540 --> 04:55.420
+In order to do the decoration over here we have to use.
+
+04:55.460 --> 05:01.260
+At MCP dot there is something called as tool method.
+
+05:01.260 --> 05:01.820
+That's all.
+
+05:01.820 --> 05:03.740
+This is the only thing that we have to do.
+
+05:03.860 --> 05:12.100
+The moment you do this, this method will now turns out to be a tool of your AI agent that you are building,
+
+05:12.740 --> 05:14.460
+which is mind blowing, right?
+
+05:14.660 --> 05:19.730
+That is the first thing that we have to do in order to make this as a tooling and the same way, a similar
+
+05:19.730 --> 05:20.090
+way.
+
+05:20.130 --> 05:26.450
+I'm going to write one more capability this time, which is going to be uh, maybe the click operation.
+
+05:26.450 --> 05:27.610
+So I'm going to say copy.
+
+05:27.610 --> 05:28.850
+I don't know what I just did.
+
+05:29.090 --> 05:29.770
+Clear.
+
+05:30.050 --> 05:36.810
+And over here I'm just going to say copy paste and the next tool which I'm going to build this this
+
+05:36.810 --> 05:38.690
+time is going to be the click operation.
+
+05:38.690 --> 05:39.810
+So I'm going to say click.
+
+05:40.210 --> 05:43.970
+And for the click we are not going to pass the URL.
+
+05:44.170 --> 05:49.210
+Rather we're going to use the selector to perform any of the operations.
+
+05:49.210 --> 05:50.490
+So I'll just say string.
+
+05:50.890 --> 06:03.250
+And over here I'm going to say click an element on the page probably click and element on the page.
+
+06:04.010 --> 06:06.890
+Uh and in order to do the click operation I'm just going to say click.
+
+06:08.170 --> 06:10.210
+We don't need the URL, blah blah blah.
+
+06:10.450 --> 06:14.210
+Rather just the selector over here I need to pass in.
+
+06:14.650 --> 06:19.130
+Um, and we don't need the title as well I'm going to say.
+
+06:21.250 --> 06:29.770
+Clicked the element and I can just give the element which is nothing but the vector.
+
+06:30.250 --> 06:32.770
+I'll get rid of these from here.
+
+06:33.050 --> 06:38.050
+And if there is any exception happen I can say error clicking uh element.
+
+06:38.890 --> 06:40.930
+And then I'm going to just say select R.
+
+06:41.170 --> 06:45.730
+And then I can also say E for the exceptions if that happens any.
+
+06:46.210 --> 06:46.850
+Right.
+
+06:46.890 --> 06:47.970
+So this is pretty cool.
+
+06:48.490 --> 06:55.130
+So this is how you can actually build these two tools over here which is amazing.
+
+06:55.330 --> 07:01.970
+The last thing which I wanted to do it is to call these, uh, these, uh, toolings capabilities.
+
+07:02.010 --> 07:02.530
+Right.
+
+07:02.570 --> 07:13.050
+So the way I can do it is I just need to, uh, put this if underscore name is equal to, uh, main,
+
+07:14.850 --> 07:15.770
+something like that.
+
+07:16.130 --> 07:20.050
+If it is going to be main, then I'm going to write a try catch block over here.
+
+07:20.090 --> 07:21.650
+I'm going to say MCP run.
+
+07:22.130 --> 07:23.960
+And on the Like.
+
+07:24.200 --> 07:27.240
+Finally, I'm also going to do a bit of a clean up.
+
+07:27.240 --> 07:27.920
+This time.
+
+07:28.040 --> 07:37.280
+I'm going to say if the browser, uh, which is going to be running already, just do a close for me
+
+07:37.280 --> 07:38.000
+over here.
+
+07:38.240 --> 07:47.120
+And if there is this, uh, playwright, uh, instance which is open as well, then try to stop it as
+
+07:47.120 --> 07:47.840
+well for me.
+
+07:47.880 --> 07:57.920
+And once you have done that, uh, you can just print that the, uh, playwright MCP server is running
+
+07:58.480 --> 08:01.440
+and resources are cleaned up.
+
+08:01.480 --> 08:02.000
+Right.
+
+08:02.000 --> 08:04.720
+So this is what we have to do over here.
+
+08:05.040 --> 08:05.640
+That's it.
+
+08:06.000 --> 08:14.600
+So this way we are going to have two tools this time, which are going to perform the navigation operation
+
+08:14.600 --> 08:16.520
+and click operation for me.
+
+08:16.800 --> 08:24.400
+Uh, and then if we call this entire uh code right now, this is just going to work, I'll quickly show
+
+08:24.400 --> 08:28.760
+you how this is going to work in our next lecture.

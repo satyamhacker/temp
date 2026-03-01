@@ -1,0 +1,280 @@
+WEBVTT
+
+00:00.120 --> 00:00.800
+All right.
+
+00:00.800 --> 00:05.400
+So now that we are going to start writing the Toolings capability for our MCP server.
+
+00:05.400 --> 00:07.800
+So I'm going to go to the code over here.
+
+00:07.840 --> 00:09.200
+Let me stop this entire thing.
+
+00:09.240 --> 00:11.880
+And over here I'm going to add the tooling.
+
+00:11.880 --> 00:12.960
+So how can I actually do that.
+
+00:13.000 --> 00:20.000
+Remember we wrote the methods earlier to perform an add numbers like we just did.
+
+00:20.320 --> 00:22.280
+Uh, pass the numbers over here.
+
+00:22.520 --> 00:30.720
+Uh, is a parameter like int uh for a and then it's int and the return type is going to be an integer
+
+00:30.720 --> 00:31.320
+over here.
+
+00:31.360 --> 00:40.640
+And then we said that uh adding two numbers and return the result over here.
+
+00:40.920 --> 00:52.200
+Uh, and then we just said return int of a sorry a plus int of B, which is basically going to perform
+
+00:52.200 --> 00:53.720
+an addition operation.
+
+00:53.760 --> 00:54.240
+Right.
+
+00:54.280 --> 01:00.800
+And we did the exact same thing for the rest of the tools as well in our earlier sections of this course.
+
+01:00.960 --> 01:05.560
+And we call this as number, something like that.
+
+01:05.560 --> 01:10.000
+And then instead of adding two numbers I'm going to say subtract two numbers.
+
+01:10.000 --> 01:11.680
+And this is going to be minus.
+
+01:12.080 --> 01:14.400
+And then this is going to be multiply two number.
+
+01:14.400 --> 01:17.960
+So I'm going to say multiply multi.
+
+01:20.200 --> 01:20.920
+Uh numbers.
+
+01:20.920 --> 01:25.280
+And this is going to be multiply two numbers.
+
+01:25.280 --> 01:27.760
+And I'm going to say like that.
+
+01:27.800 --> 01:32.480
+You can also create one more tool which we have not done before like say divide numbers.
+
+01:32.480 --> 01:35.760
+So I'm going to say divide numbers.
+
+01:35.760 --> 01:38.640
+And this is going to be divide two numbers.
+
+01:38.640 --> 01:38.840
+Right.
+
+01:38.840 --> 01:41.320
+These are the tools that these are the method that I have written right now.
+
+01:41.360 --> 01:45.320
+And I need to decorate this as a tool in the long chain.
+
+01:45.320 --> 01:49.880
+What we used to do is we just put like add tools attribute uh on annotation.
+
+01:49.880 --> 01:52.800
+And then we call these tools uh in an array.
+
+01:52.800 --> 01:54.680
+And then we pass it to the AI agent.
+
+01:54.720 --> 01:56.240
+We have to do nothing in here.
+
+01:56.280 --> 01:57.560
+Nothing to be honest.
+
+01:57.560 --> 01:59.400
+It's so easy with fast MCP.
+
+01:59.680 --> 02:06.520
+All you have to do over here just say add mcp, mcp, dot.
+
+02:06.560 --> 02:07.880
+That is something called as tool.
+
+02:08.840 --> 02:10.240
+This is the method that you have to invoke.
+
+02:10.280 --> 02:10.960
+That's all.
+
+02:11.840 --> 02:19.560
+With this you're already defining your method as a tool.
+
+02:22.160 --> 02:24.680
+This is, to be honest, very, very powerful.
+
+02:25.080 --> 02:35.160
+And once you're done, your MCP server is now already capable of having all the toolings in here, right?
+
+02:35.200 --> 02:35.880
+You don't believe me?
+
+02:35.880 --> 02:36.880
+But it is real.
+
+02:37.120 --> 02:41.000
+So I'm going to copy the same code and I'll tell you what I what is going to happen if I'm going to
+
+02:41.000 --> 02:42.800
+do the same with the NodeJS version?
+
+02:42.800 --> 02:44.640
+That's where things are going to be more spicy.
+
+02:44.960 --> 02:52.520
+Can you write this code with node JS version of MCC server.
+
+02:52.960 --> 02:54.160
+And I'm going to paste this code.
+
+02:54.200 --> 02:55.120
+I'm going to hit enter.
+
+02:55.120 --> 03:01.160
+And you will notice that how this code is going to be transformed into a node JS version and how complex
+
+03:01.160 --> 03:01.600
+they are.
+
+03:01.800 --> 03:08.360
+See in the node JS version, you actually need to create a request handler, and in the request handler
+
+03:08.360 --> 03:11.080
+you have to do this tool slash list.
+
+03:11.080 --> 03:16.280
+And then you have to define the structure or the schema of how the tools should be.
+
+03:16.320 --> 03:18.080
+So this is the name like add numbers.
+
+03:18.080 --> 03:21.400
+Then you have to put the description and they need to create the schema here.
+
+03:21.400 --> 03:23.280
+See this is the schema that I was talking about.
+
+03:23.280 --> 03:26.480
+And then you again have to add a description input schema.
+
+03:26.520 --> 03:27.160
+This is the thing.
+
+03:27.200 --> 03:32.240
+I mean, whatever that you have written in here as just as a parameter and return the value you need
+
+03:32.240 --> 03:39.480
+to write like a schema and a perfect structure, which the, uh, the server can understand or the large
+
+03:39.480 --> 03:41.840
+language model can understand perfectly.
+
+03:41.840 --> 03:44.360
+So you have to define all of these over here.
+
+03:44.680 --> 03:50.880
+Uh, and then you need to call this request handler, which is going to call the request.
+
+03:50.920 --> 03:55.480
+You need to write a switch case statement to perform every single tool call.
+
+03:55.600 --> 03:57.040
+This was really, really painful.
+
+03:57.040 --> 04:02.160
+And I did the same exact thing even with my, uh, playwright MCP server.
+
+04:02.200 --> 04:05.520
+If you can just go to the code base, just go to the source.
+
+04:05.760 --> 04:09.400
+Uh, and if you just go to the, uh, index over here.
+
+04:09.440 --> 04:12.520
+So this is the, the server that I have got.
+
+04:12.560 --> 04:16.600
+And this is where I define all this todo operation over there.
+
+04:16.800 --> 04:24.680
+And if I'm going to go to the tool handler over here, see, this is where all the tools are defined.
+
+04:24.720 --> 04:26.560
+Like how many tools that I have to create.
+
+04:26.560 --> 04:28.480
+All the tools are being defined over here.
+
+04:28.520 --> 04:33.600
+And do call a switch statement to perform all these operations.
+
+04:33.880 --> 04:37.000
+Uh, over here, for every single tool that I have got.
+
+04:37.040 --> 04:39.840
+See, the conditions just turned out to be a nightmare.
+
+04:40.200 --> 04:45.760
+Um, but if I would have wrote the same thing in the Python version, this code would have been way
+
+04:45.760 --> 04:47.360
+better and more simpler.
+
+04:47.760 --> 04:49.920
+Which is because of the fast MCP, right?
+
+04:49.960 --> 04:55.720
+I may turn this into node version pretty soon, but for now, see, this is the complexity.
+
+04:55.760 --> 04:58.560
+You have to go through the same line of code that you wrote.
+
+04:58.600 --> 05:03.560
+I don't know how many lines of code that we have wrote over here is just like 29, but if you do the
+
+05:03.560 --> 05:08.840
+exact same thing over here, you need to, you are going to end up with 143 lines.
+
+05:09.800 --> 05:17.000
+See, that's the power of the fast MCP versus the, uh, the node version that you have, right?
+
+05:17.040 --> 05:20.880
+I'm just bragging on Python more because I realized that this is pretty cool.
+
+05:21.320 --> 05:21.600
+Cool.
+
+05:21.600 --> 05:26.680
+So now that we have this server and we have the toolings, we also saw the differentiation between the
+
+05:26.680 --> 05:29.320
+node versus the Python version.
+
+05:29.360 --> 05:30.800
+Python being so simpler.
+
+05:31.000 --> 05:37.200
+In our next lecture, I will actually show you how you can now connect this simple calculator server
+
+05:37.480 --> 05:41.320
+with your client, which is the cloud desktop.

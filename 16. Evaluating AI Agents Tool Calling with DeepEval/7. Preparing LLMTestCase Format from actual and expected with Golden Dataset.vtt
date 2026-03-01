@@ -1,0 +1,283 @@
+WEBVTT
+
+00:00.020 --> 00:00.260
+All right.
+
+00:00.290 --> 00:06.530
+So now we have all the nuts and bolts required for our, uh, for our test case to be executed, which
+
+00:06.530 --> 00:14.450
+is going to be this code that we have written in our last section of this course, which is this guy,
+
+00:14.480 --> 00:17.420
+this creating a test case required for the deep, deep eval.
+
+00:17.450 --> 00:19.340
+So I'm going to go copy this entire code.
+
+00:19.340 --> 00:21.770
+And I'm going to go put this over here.
+
+00:21.770 --> 00:29.060
+I'm going to say creating a test case for deep eval.
+
+00:29.060 --> 00:32.960
+And this is the place where we are going to be pasting this entire code.
+
+00:32.960 --> 00:34.070
+And guess what?
+
+00:34.070 --> 00:39.140
+Instead of the query with the context, we have got query with AI agent, and we're going to pass the
+
+00:39.170 --> 00:45.140
+golden of input, which is still hold true because we have got the same golden, uh, data structure
+
+00:45.140 --> 00:46.550
+as you can see over here.
+
+00:46.550 --> 00:47.780
+We're going to have the questions.
+
+00:47.780 --> 00:51.620
+We're going to have the expected answers and the tool calls.
+
+00:51.620 --> 00:54.290
+So those are the things that we have to pass it over here.
+
+00:54.290 --> 00:56.960
+So just go over here.
+
+00:56.960 --> 01:01.610
+So uh sorry sorry for juggling around.
+
+01:01.610 --> 01:06.340
+So for the test case, as you can see, uh, the agent, the query with the agent is going to return
+
+01:06.340 --> 01:07.840
+us quite a lot of things, right?
+
+01:07.870 --> 01:10.690
+It is going to give us the tool.
+
+01:11.020 --> 01:13.390
+Let's see what it's going to return to return us the tool.
+
+01:13.420 --> 01:15.070
+Tool input and tool output.
+
+01:15.100 --> 01:19.240
+These are things which has been returned for us from this particular method.
+
+01:19.240 --> 01:25.540
+And now I'm going to use these information while I'm actually going to create the expected outputs and
+
+01:25.540 --> 01:25.840
+things.
+
+01:25.840 --> 01:27.370
+So I'm going to go delete these things.
+
+01:27.370 --> 01:35.260
+So based on the documentation over here you can see that we have got the tool calls.
+
+01:35.260 --> 01:39.190
+So I'm going to say tool called is equal to.
+
+01:39.220 --> 01:44.470
+Now we're going to say the tool calls which is going to be tool call.
+
+01:44.500 --> 01:46.690
+So I'm going to call the class over here.
+
+01:46.690 --> 01:51.220
+And on the name of the tool call we need to give the name of the tool that we are passing in.
+
+01:51.250 --> 01:55.270
+Remember the name of the tool is going to be the tool that we have got.
+
+01:55.300 --> 01:58.780
+And if you put a comma there, you see that this is something which is not there in the documentation.
+
+01:58.780 --> 02:00.700
+You can also pass the input parameters.
+
+02:00.700 --> 02:05.530
+And this input parameters is nothing but this tool input that we have got.
+
+02:05.530 --> 02:08.440
+So I'm going to pass that tool input over here.
+
+02:08.440 --> 02:12.220
+And if you just do control space, you see that we have got output as well.
+
+02:12.220 --> 02:15.730
+So over here I can just say tool outputs.
+
+02:15.730 --> 02:21.310
+You can actually pass reasons as well like reasoning as well, which is the log that was there as I
+
+02:21.310 --> 02:23.260
+don't want to pass that in or complicate this code.
+
+02:23.260 --> 02:25.480
+So I'm just going to leave this guy as it is.
+
+02:25.510 --> 02:26.050
+Right.
+
+02:26.050 --> 02:29.200
+So that is the information that we have to pass it over here.
+
+02:29.200 --> 02:30.820
+And let me close the parentheses.
+
+02:30.820 --> 02:34.030
+So this is going to be the tool called that we have got.
+
+02:34.450 --> 02:36.940
+And also we need the expected tool.
+
+02:36.940 --> 02:42.670
+So this expected tool is nothing but the golden dot.
+
+02:43.090 --> 02:48.670
+Uh and I think we have written something called as tool called tools called.
+
+02:48.700 --> 02:49.060
+Right.
+
+02:49.060 --> 02:52.030
+So that is what we have given in the tool in the Golden.
+
+02:52.030 --> 02:53.560
+So I'm going to pass that over here.
+
+02:53.560 --> 02:58.390
+So we have got all these informations created for the test case.
+
+02:58.420 --> 02:59.770
+The test case over here.
+
+02:59.770 --> 03:02.380
+Like I think we need a comma there.
+
+03:02.590 --> 03:03.250
+Yeah.
+
+03:03.430 --> 03:05.920
+So so it has got the input.
+
+03:05.950 --> 03:09.040
+It has got the tool calls and the expected uh tools.
+
+03:09.610 --> 03:16.440
+Uh And now we can convert this to the Goldens and we can see how that works.
+
+03:16.440 --> 03:17.700
+But guess what?
+
+03:17.700 --> 03:18.600
+We have really not.
+
+03:18.750 --> 03:19.980
+So we have only given the input.
+
+03:19.980 --> 03:23.370
+We have not passed the actual so actual output.
+
+03:23.370 --> 03:28.020
+So for the actual output we need to give the response coming from the AI agent itself.
+
+03:28.020 --> 03:30.240
+And that's the reason why I wanted to return this response.
+
+03:30.270 --> 03:32.430
+Probably I can just say response.
+
+03:32.550 --> 03:34.140
+I'm going to return that as well.
+
+03:34.140 --> 03:36.960
+And I'm going to say response.
+
+03:36.960 --> 03:40.320
+And now I can pass the response over here.
+
+03:40.350 --> 03:41.670
+Just the AI agent's response.
+
+03:41.700 --> 03:42.090
+Right.
+
+03:42.120 --> 03:43.290
+So I can pass that.
+
+03:43.290 --> 03:46.650
+So now you see that input actual output tools called and expected tools.
+
+03:46.680 --> 03:51.000
+These are the things which is required arguments for the metrics that you're going to measure.
+
+03:51.000 --> 03:55.740
+The tool correction metrics like input actual output tools called and expected are tools.
+
+03:55.740 --> 03:58.740
+So we have created all of these over here.
+
+03:58.740 --> 04:03.480
+And now we just need to run this over here.
+
+04:03.480 --> 04:04.440
+Uh there we go.
+
+04:04.440 --> 04:05.340
+We got some problem.
+
+04:05.340 --> 04:06.240
+What is this.
+
+04:06.270 --> 04:08.370
+And it says the query agent is not defined.
+
+04:08.400 --> 04:11.460
+I think we need we have not even executed this this code.
+
+04:11.460 --> 04:18.300
+And if I run this, you will notice that this time it is going to run all the different test cases that
+
+04:18.300 --> 04:23.970
+we have got like one by one, because we are running them in the for loop for us over here, and it
+
+04:23.970 --> 04:31.230
+is going to create this, um, this for us on the, on the test case, on the data for us over here.
+
+04:31.230 --> 04:36.930
+So if I just going to go to the data and if I try running it so you can see that it has got all the
+
+04:36.930 --> 04:41.700
+details for us, like the input, uh, like the name as the ad number for this particular test.
+
+04:41.700 --> 04:46.890
+And then it has got the input parameters and the output numbers coming up for us over here.
+
+04:46.890 --> 04:52.080
+And similarly it is giving all the it is also creating all the details for us, like the subtract numbers
+
+04:52.080 --> 04:55.290
+and the input parameters that we have passed in.
+
+04:55.290 --> 05:01.320
+So every single thing that we are seeing over here is all formulated based on the tools that we have
+
+05:01.350 --> 05:02.340
+called over here.
+
+05:02.340 --> 05:06.840
+And then it is storing that value, and then it is preparing the test case for us over here.
+
+05:06.840 --> 05:13.800
+The last operation that we have to do right now is to ensure that these test can be evaluated with the
+
+05:13.800 --> 05:17.610
+tool collection metrics, which we are going to be doing in our next lecture.

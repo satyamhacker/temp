@@ -1,0 +1,220 @@
+WEBVTT
+
+00:00.080 --> 00:07.220
+So now that I'm going to show you how, I made a bit of a cosmetic change on the the UI that you actually
+
+00:07.250 --> 00:11.390
+saw in the starting of this particular, uh, section.
+
+00:11.390 --> 00:17.630
+Well, the only cosmetic change that I actually made was I have added probably what I'm going to do.
+
+00:17.660 --> 00:20.300
+I'm going to copy this, uh, this whole chatbot.
+
+00:20.510 --> 00:29.990
+I'm going to paste it over here and I'm going to say chatbot with cosmetic over here.
+
+00:29.990 --> 00:32.960
+And I'm going to start making the changes over here.
+
+00:32.960 --> 00:38.360
+So I'm going to probably just do, uh, like a copy paste of code that I have already written.
+
+00:38.360 --> 00:43.760
+And I can explain to you what changes that I have, I have actually made over there.
+
+00:43.760 --> 00:50.990
+But other than that, the code just remains pretty much exactly the same as opposed to what you have
+
+00:50.990 --> 00:51.680
+seen there.
+
+00:51.680 --> 00:54.260
+So probably I'm just going to do that.
+
+00:54.260 --> 00:56.720
+I'm gonna completely delete it.
+
+00:56.750 --> 00:58.130
+I'm going to paste it over here.
+
+00:58.130 --> 01:02.710
+So the code that you are seeing over here is exactly the same chord, so it's going to have the same
+
+01:02.710 --> 01:03.400
+session history.
+
+01:03.430 --> 01:04.750
+It's going to have the same thing.
+
+01:04.750 --> 01:11.590
+But only thing is I need a logo, which I probably need to copy, um, from my existing code once again.
+
+01:11.590 --> 01:14.470
+And I also need to paste it over here.
+
+01:14.650 --> 01:18.970
+So this is the execute automation logo, uh, which I have.
+
+01:18.970 --> 01:20.140
+So I'm going to paste that.
+
+01:20.140 --> 01:23.710
+And I'm actually going to call that the SD uh, image.
+
+01:23.950 --> 01:28.180
+Only thing I'm doing is I'm using a sidebar over here, the sidebar.
+
+01:28.180 --> 01:33.550
+And inside the sidebar I'm going to add an image and I'm getting the user input.
+
+01:33.550 --> 01:40.420
+And I'm getting the details like how, uh, the answer should be like beginner, expert and PhD.
+
+01:40.480 --> 01:43.780
+And I'm going to add an index of zero, which is the starting is beginner.
+
+01:43.990 --> 01:49.000
+And I'm going to add the same button like start new chat, uh, and all those things over here.
+
+01:49.000 --> 01:55.450
+And I'm also adding a markdown here just to show you like what can I help you today, which is going
+
+01:55.480 --> 02:00.790
+to show in the middle of the window, just to give you some more, like a ChatGPT experience.
+
+02:01.000 --> 02:08.690
+Uh, and finally, you can also notice that in the template I'm actually adding that you are an and
+
+02:08.690 --> 02:13.520
+I'm passing the role in here level user to answer this query.
+
+02:13.520 --> 02:16.400
+And then I'm passing in the human prompt.
+
+02:16.400 --> 02:20.660
+So this is the only change that I have made apart from what I had before.
+
+02:20.660 --> 02:25.910
+So you see that here we just have like human prompt and we had the placeholder of the history.
+
+02:26.000 --> 02:31.160
+Uh, but in here we have the placeholder that message placeholder of history over here.
+
+02:31.310 --> 02:34.760
+Uh, and we also have a system query.
+
+02:34.790 --> 02:41.360
+And the system message is saying that you are an, uh, PSG level or basic beginner level or expert
+
+02:41.390 --> 02:45.350
+level user to answer this query and answer this question.
+
+02:45.350 --> 02:49.070
+And the remaining just, uh, stays the same.
+
+02:49.070 --> 02:51.230
+There is no change on any of that.
+
+02:51.530 --> 02:57.380
+Uh, and now, because we have already gone through this code many times, I'm just going to say chat
+
+02:57.410 --> 03:00.860
+with, uh, chatbot with cosmetic over here.
+
+03:00.860 --> 03:02.470
+And you will see that Voila!
+
+03:02.470 --> 03:04.990
+We have got this new UI, just that.
+
+03:04.990 --> 03:08.860
+There is a sidebar pane and we have got this details over here.
+
+03:08.860 --> 03:13.030
+And the remaining functionality is just, uh, looks pretty much exactly the same.
+
+03:13.060 --> 03:21.940
+How big, uh, is, uh, sun compared to moon?
+
+03:22.180 --> 03:24.550
+So we get the response immediately over here.
+
+03:24.550 --> 03:25.180
+And look at that.
+
+03:25.180 --> 03:27.280
+This time the answer is also coming down below.
+
+03:27.280 --> 03:37.870
+Instead of having that, uh, in the top and also compare with Earth and Tabular, is it.
+
+03:40.210 --> 03:41.020
+So look at that.
+
+03:41.020 --> 03:42.400
+It's a stabilizing with Earth.
+
+03:42.400 --> 03:45.640
+And it's comparing the detail for me over here which is amazing.
+
+03:45.640 --> 03:46.990
+So it is already doing that.
+
+03:46.990 --> 03:55.870
+And if I ask the same question in the expert level or maybe in the PhD level, um, how about with Mars?
+
+03:57.250 --> 04:02.080
+And now this is going to go a bit more uh, and in the PhD level.
+
+04:02.080 --> 04:06.320
+So details are going to be a bit more, uh, bit more complex.
+
+04:06.320 --> 04:11.120
+But apparently it's not because we're just asking to compare with Mars over here.
+
+04:11.390 --> 04:18.170
+Uh, how about it's, uh, gases in each planet's?
+
+04:19.340 --> 04:20.600
+Explain me.
+
+04:21.860 --> 04:23.660
+And look at that.
+
+04:23.660 --> 04:27.620
+So now it is going bit more like a sea level.
+
+04:27.620 --> 04:29.090
+It's going to go deeper.
+
+04:29.240 --> 04:31.130
+And then it is comparing everything.
+
+04:31.130 --> 04:33.950
+And it's giving me the answer for every single planet.
+
+04:33.950 --> 04:36.650
+And there is the summary coming up over here as well.
+
+04:36.650 --> 04:37.490
+So see that.
+
+04:37.520 --> 04:38.240
+Look at that.
+
+04:38.240 --> 04:44.570
+We have successfully built our own chatbot which can run within our local machine.
+
+04:44.570 --> 04:50.240
+And also it's using our own local large language model to make this happen, which is amazing.
+
+04:50.540 --> 04:55.820
+So this ends this particular section, and I'm sure you have learned quite a lot of details of how you
+
+04:55.820 --> 05:01.880
+can build a chatbot from the complete ground up, and also use the chat message history discussion that
+
+05:01.880 --> 05:03.530
+we did in our last section.

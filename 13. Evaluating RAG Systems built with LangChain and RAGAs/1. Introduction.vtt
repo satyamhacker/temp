@@ -1,0 +1,157 @@
+WEBVTT
+
+00:00.140 --> 00:02.030
+Welcome to the next section of our course.
+
+00:02.030 --> 00:09.680
+And in this section we are going to talk about bit more complex option of testing our systems using
+
+00:09.710 --> 00:10.250
+ragas.
+
+00:10.250 --> 00:16.670
+So we are going to be testing our Raag based system using a ragas over here.
+
+00:16.670 --> 00:23.930
+So if you remember in our last sections of our course, we talked about the uh Raag system, like how
+
+00:23.930 --> 00:31.400
+we built a RAC by reading the data from the PDF file and how we extracted those data and stored into
+
+00:31.430 --> 00:36.350
+a vector database, uh, in the Croma database, these things.
+
+00:36.350 --> 00:37.790
+And we also retrieved the data.
+
+00:37.820 --> 00:46.370
+Now, our idea is to test this Rag system in such a way that we can, uh, we can actually verify if
+
+00:46.370 --> 00:55.850
+our, uh, agent is going to get the correct data from this particular database, which is being extracted.
+
+00:55.850 --> 01:05.380
+And the way that we can evaluate this particular Rag system essentially, is to Uh, have a test set
+
+01:05.380 --> 01:12.370
+of data which we are going to be injecting and verifying if the response that we're looking for is absolutely
+
+01:12.370 --> 01:17.710
+correct or not, but for doing that, definitely with the human intervention, if you do it, it's going
+
+01:17.740 --> 01:23.020
+to take a lot of time because you need to create quite a lot of big data set for doing that, but instead
+
+01:23.020 --> 01:32.020
+you can actually create a sample data set and then try to evaluate using the large language model as
+
+01:32.020 --> 01:33.160
+an evaluator.
+
+01:33.160 --> 01:34.750
+So you can do that as well.
+
+01:34.750 --> 01:37.000
+That is going to make your life even more simpler.
+
+01:37.000 --> 01:43.090
+That is what the non-traditional testing we were talking about in our last section of this course.
+
+01:43.090 --> 01:49.060
+So we're going to be using the non-traditional testing approach, where the LMS being the evaluator,
+
+01:49.060 --> 01:51.580
+because it will have all the context of what to verify.
+
+01:51.580 --> 01:58.720
+And you will have the vector database is going to give you the details, which gives the detail to the
+
+01:58.720 --> 01:59.230
+LMS.
+
+01:59.230 --> 02:03.010
+And you also will have an expected outcome that you are looking for.
+
+02:03.010 --> 02:10.550
+And then you can evaluate all of these together Within your, uh, within your ragas over here.
+
+02:10.550 --> 02:12.680
+So you'll notice that in here.
+
+02:12.800 --> 02:17.810
+Um, so you have got a prompt that has been sent over here and this particular prompt data that you're
+
+02:17.810 --> 02:20.900
+going to have or nothing but your test data.
+
+02:20.900 --> 02:33.860
+So here is where all your test data, uh, with uh, expected and actual, uh, prompt, uh, request
+
+02:34.640 --> 02:37.370
+and response are going to be sitting.
+
+02:37.370 --> 02:44.300
+So let me make this as uh, medium, very large so that you can see a bit more clearly.
+
+02:44.300 --> 02:46.910
+So that is what we are going to be doing over here as a prompt.
+
+02:46.910 --> 02:52.670
+And then we're going to be sending to um, uh, sending not to the, to the model directly, but we
+
+02:52.700 --> 02:59.330
+are going to be sending it to the, uh, to the evaluator so that we can verify whether we have got
+
+02:59.330 --> 03:05.750
+the context, recall faithfulness and factual correctness of the responses that we are looking for.
+
+03:05.750 --> 03:08.630
+So that is the whole idea over here.
+
+03:08.630 --> 03:15.920
+So in order for us to perform this testing operation, we do require our earlier sections knowledge.
+
+03:15.920 --> 03:23.270
+We are going to be using the chroma database, which is going to store the data, uh, or the documents.
+
+03:23.270 --> 03:24.980
+And we're going to be using embedding.
+
+03:24.980 --> 03:29.690
+And again, the embedding is going to be from our embedding that we were doing before.
+
+03:29.690 --> 03:31.670
+So I'm going to be using that particular embedding.
+
+03:31.790 --> 03:33.590
+And we need to retrieve the data.
+
+03:33.770 --> 03:41.810
+And then finally we need to pass that particular uh chain uh to run it and see what it's going to be,
+
+03:41.810 --> 03:42.770
+the response and things.
+
+03:42.770 --> 03:45.200
+So those things we are going to be doing it over here.
+
+03:45.200 --> 03:51.290
+So in order to achieve these operation, um, make sure that you are not directly jumping into this
+
+03:51.290 --> 03:52.130
+particular section.
+
+03:52.130 --> 03:57.290
+If you are very keen on learning about testing and you are ending up into this particular section,
+
+03:57.290 --> 04:01.100
+you can't really understand unless until you have watched my earlier sections of this course.
+
+04:01.100 --> 04:05.600
+So please go and watch there before we start doing the testing operation itself over here.
+
+04:05.600 --> 04:07.610
+So that is the whole idea of this particular section.
+
+04:07.610 --> 04:13.940
+We are going to see how we can make use of our existing knowledge to test our Rag system using ragas.

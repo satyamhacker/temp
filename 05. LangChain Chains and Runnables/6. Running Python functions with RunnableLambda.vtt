@@ -1,0 +1,472 @@
+WEBVTT
+
+00:00.050 --> 00:06.230
+In this lecture we're going to talk about runnable lambdas of the chaining operation that we have been
+
+00:06.230 --> 00:07.010
+talking about.
+
+00:07.010 --> 00:10.490
+And once again, our requirement keeps on changing every single time.
+
+00:10.490 --> 00:17.330
+And we have to make sure that based on our requirement, we have to align our application and based
+
+00:17.330 --> 00:22.670
+on our requirement and based on our alignment, the complexity of the application as well changes.
+
+00:22.670 --> 00:29.270
+So for instance, as you can see in our last lecture while we were trying to do the chaining operation
+
+00:29.300 --> 00:34.190
+like parallel chaining operation, we used a llama model.
+
+00:34.190 --> 00:37.070
+And also we used a queuing model to perform operations.
+
+00:37.070 --> 00:42.080
+So we used two models to perform these operation and we executed them in parallel.
+
+00:42.080 --> 00:48.560
+But what if we don't want to use this llama model unless until a certain condition is met?
+
+00:48.560 --> 00:50.900
+So how do we actually make that happen?
+
+00:50.900 --> 00:57.500
+Well, we need to have some condition to ensure that this is how I need to run this particular chain.
+
+00:57.500 --> 01:00.110
+We need to have some decision to make that happen.
+
+01:00.140 --> 01:04.330
+And for that we need to write some Python code to make that happen.
+
+01:04.330 --> 01:10.870
+And again, that Python code needs to be executed like an if else condition to call a specific, uh,
+
+01:10.870 --> 01:12.160
+large language model.
+
+01:12.160 --> 01:17.110
+And then we need to pass that large language model as a parameter for this chain, and then perform
+
+01:17.110 --> 01:20.860
+the operation, which is going to be very, very complex unless until you do that hand coding.
+
+01:20.860 --> 01:27.610
+But instead you can actually use what is called as the runnable lambdas to make that happen.
+
+01:27.610 --> 01:32.920
+And based on its name, you can easily assume that that is what this, uh, runnable lambda is going
+
+01:32.920 --> 01:33.610
+to basically do.
+
+01:33.640 --> 01:38.530
+So, for instance, if you remember, in this particular code, we were, uh, doing this, let's just
+
+01:38.530 --> 01:41.920
+go up a bit over here chaining multiple chains.
+
+01:42.430 --> 01:46.150
+We said, what is the advantage of running the AI model in local machine?
+
+01:46.150 --> 01:51.610
+And also we told in the second chain that just analyze the response and get me the headings from this
+
+01:51.610 --> 01:52.510
+particular response.
+
+01:52.540 --> 01:52.780
+Right.
+
+01:52.810 --> 01:55.480
+This is another chain that we had got.
+
+01:55.510 --> 01:58.900
+And then we uh we got the response over here.
+
+01:58.900 --> 02:07.410
+So what if my my requirement is this where the first response of a chain that we are getting over here.
+
+02:07.410 --> 02:15.210
+If it has the length of more than 300, which means it is a bigger token value, and I need to use a
+
+02:15.210 --> 02:17.040
+specific large language model.
+
+02:17.040 --> 02:23.760
+And if it is less than 300 token or 300 character, for instance, then I have to use another large
+
+02:23.760 --> 02:29.130
+language model, maybe a smaller version of large language model, because the larger, bigger, larger
+
+02:29.130 --> 02:31.860
+language model is not even required for this kind of operation.
+
+02:31.860 --> 02:36.630
+So if I think that is my business case that I wanted to go with, then how do I actually do that?
+
+02:36.630 --> 02:40.350
+Well, you can do it using this runnable lambda.
+
+02:40.350 --> 02:46.530
+So you see that user inputs the first prompt, which is going to be what is the advantage of running
+
+02:46.530 --> 02:48.900
+the AI in the local machine.
+
+02:48.900 --> 02:52.290
+It goes to the model in the first chain of the runnable.
+
+02:52.290 --> 02:54.900
+And then it gets you the response.
+
+02:54.900 --> 03:00.990
+But that particular response that you are getting over here now needs to be deciding which particular
+
+03:00.990 --> 03:03.030
+large language model that you need to be running with.
+
+03:03.030 --> 03:09.470
+Because if it is less than 300, so probably you don't even need to run this in a bigger, larger language
+
+03:09.470 --> 03:09.890
+model.
+
+03:09.890 --> 03:13.280
+You maybe find the queue in itself so you can run it over here.
+
+03:13.280 --> 03:19.220
+But if you want to run, if the response is more than 300, then you can run in the llama model.
+
+03:19.220 --> 03:24.950
+And in order for making this kind of decisions, we are going to be using this runnable lambda to make
+
+03:24.950 --> 03:25.460
+that happen.
+
+03:25.490 --> 03:29.120
+And that is exactly what we are going to be doing over here.
+
+03:29.120 --> 03:37.160
+So let me just add this diagram for your detailed discussion that we have been doing, so that next
+
+03:37.160 --> 03:40.940
+time, while you read through this documentation, you will also know what we have.
+
+03:40.970 --> 03:46.190
+We have, uh, spoken in this particular discussion.
+
+03:46.190 --> 03:47.540
+So I'm going to add a markdown.
+
+03:47.540 --> 03:50.210
+I'm going to add this particular image over here.
+
+03:50.540 --> 03:52.460
+Uh there we go.
+
+03:52.460 --> 03:56.930
+And yeah, that's the image that we have got over here.
+
+03:56.930 --> 04:02.120
+And probably I need to add one more markdown and I'm going to say uh.
+
+04:04.580 --> 04:07.390
+Runnable Lambda.
+
+04:08.020 --> 04:08.890
+Cool.
+
+04:08.920 --> 04:12.910
+And now let's try to write the code and we will see how we can actually achieve that.
+
+04:12.910 --> 04:17.800
+So in order for doing that I'm going to once again going to copy the exact same code that we discussed
+
+04:17.800 --> 04:18.550
+earlier.
+
+04:18.610 --> 04:19.690
+Just this guy.
+
+04:20.020 --> 04:21.280
+And I'll copy this.
+
+04:21.280 --> 04:25.990
+And I'm going to come all the way down and I'm going to paste it over here.
+
+04:26.020 --> 04:26.590
+Right.
+
+04:26.590 --> 04:29.470
+So this is the chat prompt template.
+
+04:29.470 --> 04:33.310
+And we also have got the string output over here.
+
+04:33.310 --> 04:38.890
+And we also need to call the Lang chain core dot Runnables.
+
+04:38.920 --> 04:48.400
+Import a runnable lambda which is going to be all the way here.
+
+04:48.910 --> 04:53.800
+And then I'm going to run them both in parallel.
+
+04:53.800 --> 04:55.570
+So let's see how we can achieve that.
+
+04:55.570 --> 04:58.570
+So this is the first chain that we have got over here.
+
+04:58.570 --> 05:05.860
+And this is the response going to be coming up for me from this particular uh this particular chain.
+
+05:05.860 --> 05:07.210
+And then we're going to do it over here.
+
+05:07.240 --> 05:08.260
+So these things are fine.
+
+05:08.260 --> 05:14.220
+But this is the place where we need to do the decision to see what exactly is going to happen based
+
+05:14.220 --> 05:16.140
+on our response that we're doing.
+
+05:16.140 --> 05:21.900
+So I'm going to write a small function here, uh, using uh, Python.
+
+05:21.900 --> 05:24.780
+So I'm going to say choose LM for that matter.
+
+05:24.960 --> 05:27.360
+Uh, and I'm going to say response.
+
+05:27.360 --> 05:29.940
+So based on the response that you are going to be choosing.
+
+05:29.940 --> 05:39.630
+So I'm going to say response maybe response, uh, text is equal to I'm going to say string because
+
+05:39.630 --> 05:42.720
+I need to convert the response to the string type over here.
+
+05:42.720 --> 05:51.810
+And I'm going to say if the length of the, uh, if the length of this particular response text, if
+
+05:51.810 --> 06:00.090
+it is greater than 300, if you have that, then you need to, uh, run this in the olama for that matter,
+
+06:00.090 --> 06:01.320
+which is going to be LM two.
+
+06:01.350 --> 06:03.720
+You remember, the LM two is the olama.
+
+06:04.020 --> 06:09.630
+Um, sorry, the the llama 3.2 language model.
+
+06:09.720 --> 06:11.530
+So that is what I'm using over here.
+
+06:11.530 --> 06:13.510
+So I'm going to say lemma two.
+
+06:13.810 --> 06:16.900
+Uh I'm sorry over here.
+
+06:16.930 --> 06:22.510
+If not you can just return me LM, which means the model that we are currently using.
+
+06:22.510 --> 06:24.760
+So that is this method really going to do.
+
+06:24.760 --> 06:30.520
+And I'm also going to say, uh, LM selector for that matter.
+
+06:30.700 --> 06:33.790
+And I'm going to say runnable lambda.
+
+06:33.820 --> 06:38.020
+This is the place where I'm going to be calling our runnable lambda and see the beauty of this runnable
+
+06:38.020 --> 06:38.320
+lambda.
+
+06:38.350 --> 06:43.900
+Basically this is going to accept this choose LM method.
+
+06:43.900 --> 06:54.430
+So basically using this runnable lambda you can actually execute an Python function over here or Python
+
+06:54.430 --> 06:56.890
+code Python code over here.
+
+06:57.250 --> 07:03.100
+So that you could able to run them in the pipeline while you are actually executing, which is the chaining
+
+07:03.100 --> 07:04.660
+operation that you are really doing.
+
+07:04.660 --> 07:08.950
+So that is the major power of this runnable lambda itself.
+
+07:08.950 --> 07:14.010
+And now the rest of the code just remains pretty much exactly the same, because we don't really have
+
+07:14.010 --> 07:15.840
+to make any changes over there.
+
+07:15.840 --> 07:23.880
+But over here, what I'm going to do is instead of the LM that we are passing in the chain two, I'm
+
+07:23.880 --> 07:26.730
+going to be calling the LM selector.
+
+07:26.940 --> 07:27.690
+Look at that.
+
+07:27.690 --> 07:30.960
+So that is the power which I'm talking about LM selector.
+
+07:30.960 --> 07:39.120
+So while I call LM selector over here based on the response, the selector is going to call the runnable
+
+07:39.150 --> 07:39.600
+lambda.
+
+07:39.600 --> 07:45.360
+And this runnable lambda is going to pass the response which is going to be coming up for us over there.
+
+07:45.570 --> 07:49.470
+And then it is going to perform the rest of the operation for me.
+
+07:49.470 --> 07:53.700
+And then it's choosing which lambda, which large language model that we need to select.
+
+07:53.700 --> 07:56.070
+And then it is going to run that one.
+
+07:56.640 --> 07:57.180
+Look at that.
+
+07:57.180 --> 07:58.080
+So so easy right.
+
+07:58.110 --> 08:03.630
+Like this is how you do select the large language model using the runnable lambda because it has the
+
+08:03.630 --> 08:06.330
+ability to run a Python code.
+
+08:06.600 --> 08:07.320
+Cool.
+
+08:07.320 --> 08:10.950
+So now let's try to run this code and see what's going to happen.
+
+08:11.340 --> 08:16.340
+So essentially the things are just pretty much exactly the same that we have did over there.
+
+08:16.790 --> 08:21.530
+And I'm sure the response is going to be more than I mean, the response text is more than 300.
+
+08:21.530 --> 08:30.680
+So it is going to run for the first time in the, uh, LM, which is the llama 3.2 model.
+
+08:30.680 --> 08:36.980
+So now if I just go to my Safari browser, and if I go and go to the.
+
+08:38.330 --> 08:42.620
+Yeah, to the Lang Smith, you see that this time over here.
+
+08:42.650 --> 08:48.770
+See that the first time it executed, uh, it is executing on the Q1 model, which is correct.
+
+08:48.950 --> 08:51.560
+So what is the advantage of running in local machine.
+
+08:51.560 --> 08:53.300
+So it gives this particular response.
+
+08:53.300 --> 08:56.450
+And then we are giving a decision over here.
+
+08:56.480 --> 08:57.530
+Analyze the response.
+
+08:57.560 --> 09:00.080
+Get me just the heading of this particular response.
+
+09:00.080 --> 09:02.270
+What is the advantage of this particular thing.
+
+09:02.270 --> 09:05.600
+Then it is choosing the llama theta two model for us over here.
+
+09:05.600 --> 09:06.380
+Look at that.
+
+09:06.380 --> 09:07.370
+So that is correct.
+
+09:07.370 --> 09:16.150
+So it is using the llama 3.2 because because we know that the the text is more than 300in length.
+
+09:16.210 --> 09:19.000
+But what if I modify this time?
+
+09:19.030 --> 09:20.200
+Let's say less than 300?
+
+09:20.230 --> 09:21.460
+For that matter, right?
+
+09:21.460 --> 09:26.380
+We know it is more than 300, but I'm just trying to make it less than 300 so that I don't want to execute
+
+09:26.380 --> 09:27.520
+this llama two.
+
+09:27.820 --> 09:30.760
+Uh, which is the all the llama 3.2 model.
+
+09:30.760 --> 09:32.950
+But I wanted to run the model.
+
+09:32.950 --> 09:34.960
+So let's see what is really going to happen this time.
+
+09:34.960 --> 09:43.540
+So if I do execute it this time, what essentially I'm looking for is I will I will see both of these
+
+09:43.540 --> 09:47.680
+in Q1 model instead of running in the llama 3.2 model.
+
+09:48.040 --> 09:48.370
+There we go.
+
+09:48.400 --> 09:52.330
+It got executed and we have this runnable sequence execution complete.
+
+09:52.360 --> 09:52.990
+Look at that.
+
+09:52.990 --> 09:57.040
+So we have two of them both in Q1 model this time.
+
+09:57.040 --> 10:06.580
+So this is how we can say that we can choose or run a Python code while running in the chaining operation.
+
+10:06.580 --> 10:13.240
+While there is a runnable happening in this chain, you can run a Python code in between using this
+
+10:13.240 --> 10:14.350
+runnable lambda.
+
+10:14.380 --> 10:17.380
+That is the power of this runnable lambda itself.

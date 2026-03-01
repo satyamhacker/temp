@@ -1,0 +1,616 @@
+WEBVTT
+
+00:00.050 --> 00:05.240
+The next concept that I want to talk about is the long chain expression language or LCL.
+
+00:06.140 --> 00:13.850
+So if I go to the LCL over here, you will notice that the long chain expression language takes a declarative
+
+00:13.850 --> 00:19.160
+approach to build a new runnable from existing runnables.
+
+00:19.610 --> 00:26.210
+So this means that you describe your what should happen rather than how it should happen, allowing
+
+00:26.210 --> 00:29.720
+the lang chain to optimize the runtime execution of the chain.
+
+00:30.290 --> 00:32.000
+This is quite cool, right?
+
+00:32.000 --> 00:36.560
+Because as I told you, every single component over here are runnables.
+
+00:36.560 --> 00:41.210
+Like even these two can be a runnable or even this.
+
+00:41.210 --> 00:47.150
+This alone, like the template alone, can be a runnable, and this LM can alone be a runnable.
+
+00:47.180 --> 00:52.490
+Because this, this are all going to call this invoke method or stream method or batch method.
+
+00:52.670 --> 00:57.080
+So all these are runnables as well in an isolation.
+
+00:57.650 --> 01:05.060
+So if we can run them in isolation, and if we can chain them together, like how the inputs and outputs
+
+01:05.060 --> 01:05.180
+are.
+
+01:05.210 --> 01:09.800
+Going to happen, then that's what is called as chaining mechanism.
+
+01:09.800 --> 01:10.160
+That is what.
+
+01:10.190 --> 01:10.970
+Exactly.
+
+01:10.970 --> 01:14.600
+This particular, uh LCL is going to explain us.
+
+01:14.600 --> 01:17.240
+So we often refer Runnables using.
+
+01:17.270 --> 01:19.220
+LCL as a chain.
+
+01:19.220 --> 01:23.000
+It is important to remember that the chain is a runnable and it implements the.
+
+01:23.030 --> 01:24.440
+Full runnable interface.
+
+01:24.440 --> 01:28.010
+What that really means is that the chain you can create for runnable.
+
+01:28.190 --> 01:30.650
+And the chain itself is a runnable.
+
+01:30.980 --> 01:31.670
+It's confusing.
+
+01:31.670 --> 01:31.880
+Right.
+
+01:31.910 --> 01:33.740
+Like that is how it is really.
+
+01:33.740 --> 01:34.490
+So.
+
+01:34.520 --> 01:41.360
+Basically you can chain two runnables and you can assign it to a variable called as chain.
+
+01:41.390 --> 01:47.150
+And the chain now becomes a runnable because now runnables all the chain also implements the runnable
+
+01:47.150 --> 01:47.870
+interface.
+
+01:47.870 --> 01:48.860
+In turn.
+
+01:48.860 --> 01:50.540
+That is what is really happening there.
+
+01:50.690 --> 01:58.730
+And this chain can now be useful for running in parallel execution, asynchronous operation and simplify
+
+01:58.730 --> 02:04.680
+the streaming operation because it is implementing the runnable Honourable interface or honourable interfaces,
+
+02:04.680 --> 02:06.810
+like how we saw in our last lecture.
+
+02:06.810 --> 02:13.410
+And because runnable interface supports asynchronous streaming and also batch execution.
+
+02:13.410 --> 02:19.800
+Uh, over here, the same thing is going to happen for the LCL as well, because it does implement the
+
+02:19.800 --> 02:21.180
+runnable interface.
+
+02:21.180 --> 02:24.840
+So it is going to have all the features where the runnable interface has got.
+
+02:25.830 --> 02:27.720
+So why should I use LCL in first place?
+
+02:27.720 --> 02:30.660
+Well, LCL is an orchestration solution.
+
+02:30.660 --> 02:39.300
+It allows Lang chain to handle runtime execution of chain in an optimized way, which is amazing because
+
+02:39.300 --> 02:44.700
+while we have seen the user runs chain with hundreds of steps in production, we generally recommend
+
+02:44.700 --> 02:50.880
+using LCL for simpler orchestration tasks when the application requires complex state management, branching
+
+02:50.880 --> 02:52.890
+cycle, or multiple agents.
+
+02:52.890 --> 02:54.090
+We recommend that.
+
+02:54.090 --> 02:56.700
+Take advantage of the Lang graph.
+
+02:56.730 --> 02:59.100
+Well, that is when we're going to be talking about Lang graph.
+
+02:59.100 --> 03:02.570
+But you'll notice that at the moment we are not even a single chain.
+
+03:02.570 --> 03:06.920
+But in production there are going to be hundreds of chain created.
+
+03:08.930 --> 03:12.680
+And that is what is going to happen while we are going to start building things.
+
+03:12.680 --> 03:17.240
+So I'll talk about the chain and this until you see the chain, you don't really get this whole concept.
+
+03:17.240 --> 03:21.950
+So once we create the chain, you will we will get back to the same page again.
+
+03:21.950 --> 03:24.530
+And I will explain you what this LCA is all about.
+
+03:24.830 --> 03:26.960
+Let's get back to our code over here.
+
+03:26.990 --> 03:31.370
+And what I've created at this time is I've created a new notebook for section two.
+
+03:31.400 --> 03:35.900
+And, uh, and of course we have to just copy paste some of the code from here.
+
+03:35.900 --> 03:41.690
+We don't really have to install this, uh, this details again because that is, that is already there.
+
+03:41.690 --> 03:46.670
+But we do need to load the dot env file, uh, even here as well.
+
+03:46.670 --> 03:48.800
+So I'm going to create a markdown.
+
+03:49.610 --> 03:54.350
+So load env file because we are in a different directory.
+
+03:54.350 --> 03:59.630
+So definitely that is something that we need to load uh over here.
+
+03:59.630 --> 04:03.740
+And I'm going to paste the code.
+
+04:04.490 --> 04:06.170
+We need to select the kernel.
+
+04:06.260 --> 04:07.640
+Oh, there we go.
+
+04:07.700 --> 04:10.100
+And let me try to run them all.
+
+04:10.130 --> 04:10.850
+Look at that.
+
+04:10.850 --> 04:11.870
+That's loading.
+
+04:12.290 --> 04:23.030
+And now if I'm going to put a markdown over here to, um, create a LM object.
+
+04:23.060 --> 04:26.240
+So we are going to create the LM object.
+
+04:26.240 --> 04:33.860
+And that's going to be something that I'm going to be taking up from our code, which is this guy.
+
+04:33.890 --> 04:34.280
+Right.
+
+04:34.280 --> 04:41.240
+So I'm going to do this not copy this entire thing and put the code over here.
+
+04:41.240 --> 04:43.490
+So that's going to create an LM object for me.
+
+04:43.520 --> 04:44.480
+I'm gonna run that.
+
+04:44.900 --> 04:45.710
+Amazing.
+
+04:46.430 --> 04:52.010
+And now I'm going to start working with the chaining mechanism the first thing.
+
+04:52.010 --> 04:58.820
+So I'm gonna put a markdown here I'm going to say understanding uh chaining.
+
+04:58.820 --> 05:02.270
+And we of course will be talking about runnables in the same time.
+
+05:02.510 --> 05:04.100
+Uh, so I'm going to say round numbers.
+
+05:04.130 --> 05:04.760
+Okay.
+
+05:05.240 --> 05:06.920
+Um, there we go.
+
+05:06.950 --> 05:14.690
+So let me first create without chain because that is what we are doing in our last lecture as well.
+
+05:14.720 --> 05:16.310
+I mean last section as well.
+
+05:16.310 --> 05:18.770
+So I'm going to copy this.
+
+05:18.950 --> 05:23.990
+Probably not this one really, but the one with the shorthand version.
+
+05:24.020 --> 05:25.100
+Do we have that?
+
+05:25.460 --> 05:26.330
+Unfortunately not.
+
+05:26.360 --> 05:30.500
+Yeah I think we have the commented shorthand version so we can take that one.
+
+05:31.160 --> 05:32.000
+Copy that.
+
+05:32.030 --> 05:33.350
+Paste it over here.
+
+05:33.530 --> 05:35.240
+Get rid of these.
+
+05:35.270 --> 05:36.710
+We don't need them.
+
+05:37.490 --> 05:41.420
+Uh, we of course need the prompt template.
+
+05:41.420 --> 05:43.760
+So I'm going to get rid of these.
+
+05:44.330 --> 05:45.290
+Amazing.
+
+05:45.620 --> 05:46.940
+We don't need this.
+
+05:48.260 --> 05:49.250
+Awesome.
+
+05:49.430 --> 06:00.170
+So, as I told you, remember in the runnables discussion, this LM object is basically a runnable interface
+
+06:00.170 --> 06:00.530
+itself.
+
+06:00.530 --> 06:07.580
+So it's basically implements a runnable Because this chart, if you just go back over here, is going
+
+06:07.610 --> 06:12.200
+to implement the base chat over here based chat model.
+
+06:12.200 --> 06:18.650
+And this base chat model is in turn going to be implementing from the base langue model.
+
+06:18.650 --> 06:26.180
+And you see that this base langue model is a runnable serializable as well.
+
+06:26.180 --> 06:28.730
+So it is going to be calling the runnable serializable.
+
+06:28.730 --> 06:32.510
+And basically this runnable serializable is going to be a runnable type.
+
+06:33.560 --> 06:33.740
+Right.
+
+06:33.770 --> 06:38.750
+If you just go keep digging down all the way, it is going to be runnable behind the scene.
+
+06:38.780 --> 06:39.260
+Right.
+
+06:39.260 --> 06:43.550
+So the same thing is going to happen for the prompt template as well.
+
+06:43.550 --> 06:48.650
+So if I go to the chat prompt template, it is going to implement from the base chat prompt template.
+
+06:48.650 --> 06:53.330
+And if you just go all the way to the base chat prompt template, it is going to be calling the runnable
+
+06:53.360 --> 07:00.020
+serializable because it can support the, um, the serializable execution.
+
+07:00.020 --> 07:03.020
+And it is going to be calling the renewables over there.
+
+07:03.020 --> 07:07.840
+And if you're going to be calling the if you're going to be talking about the streaming that we were
+
+07:07.840 --> 07:16.060
+discussing in our last section, the last lecture of the course, which is the stream, the stream also
+
+07:16.150 --> 07:19.900
+is going to be calling the runnable if I'm not wrong.
+
+07:19.900 --> 07:25.150
+So every single operation that you are seeing over here are going to be a runnable behind the scene
+
+07:25.150 --> 07:25.720
+by nature.
+
+07:25.750 --> 07:26.140
+Right.
+
+07:26.140 --> 07:32.230
+So while this is a runnable, we can now run instead of doing this.
+
+07:32.230 --> 07:40.150
+Like instead of you calling the prompt and then you call the invoke and then pass the prompt over here
+
+07:41.020 --> 07:49.270
+instead of doing that operation that you are doing before, you can now pass or chain the output of
+
+07:49.270 --> 07:55.390
+the prompt template, we can chain it to the LM as an input, because that is what you're going to essentially
+
+07:55.390 --> 07:56.380
+do over here.
+
+07:56.380 --> 08:02.980
+So what I'm really telling over here is instead of you writing this code for the invoke operation,
+
+08:04.300 --> 08:08.610
+so you do a prompt dot invoke over here, and then you do an LM of invoke over here.
+
+08:08.610 --> 08:10.770
+So you do two invoke operation.
+
+08:10.830 --> 08:14.940
+Instead what you can do you can create a chain.
+
+08:14.970 --> 08:15.870
+It can be any name.
+
+08:15.870 --> 08:17.220
+But I'm just giving chain name.
+
+08:17.220 --> 08:18.780
+That is a standard way of doing it.
+
+08:18.960 --> 08:26.280
+And over here I'm just going to say I wanted to give the prompt look at that.
+
+08:26.280 --> 08:27.870
+I'm using a pipe symbol here.
+
+08:27.870 --> 08:30.630
+This is essentially a chaining operation that I'm doing.
+
+08:30.630 --> 08:32.010
+This is a shorthand way of doing it.
+
+08:32.010 --> 08:33.240
+In LCL.
+
+08:33.330 --> 08:40.140
+You can just do this or there is something called there was something called as LM chain.
+
+08:40.590 --> 08:44.430
+Uh, and this LM chain is kind of deprecated right now.
+
+08:44.430 --> 08:45.510
+Nobody's really using it.
+
+08:45.510 --> 08:51.630
+And even the team has told not to use it, uh, in the documentation.
+
+08:51.630 --> 08:55.440
+So if you just go to the documentation, if you just search LM chain.
+
+08:55.470 --> 08:55.890
+Look at that.
+
+08:55.890 --> 08:56.970
+This is deprecated.
+
+08:56.970 --> 08:59.820
+And there is a breaking change over here.
+
+09:00.480 --> 09:05.040
+Uh, so LM chain has been set to removal for all 3.0 version.
+
+09:05.040 --> 09:06.780
+So it's not anymore used.
+
+09:06.780 --> 09:09.510
+Instead, they ask us to use like this.
+
+09:09.540 --> 09:09.840
+Like a.
+
+09:09.930 --> 09:15.750
+Number sequence which is prompt and LM right.
+
+09:15.780 --> 09:16.740
+I will talk about the runnable.
+
+09:16.770 --> 09:19.470
+Sequence runnable parallel and router and stuff.
+
+09:19.470 --> 09:21.990
+But but yeah this is how we do it.
+
+09:21.990 --> 09:27.270
+And now over here we are going to say prompt which is this prompt.
+
+09:27.720 --> 09:35.160
+I'm going to give the input of the output of this prompt as an input to LM.
+
+09:36.900 --> 09:39.240
+So that is the chaining mechanism that I'm doing over here.
+
+09:39.240 --> 09:40.170
+So see look at that.
+
+09:40.170 --> 09:41.880
+The code is so straightforward.
+
+09:41.880 --> 09:47.640
+Instead of you doing quite a lot of different invoke here I'm not going to do this invoke at all.
+
+09:48.390 --> 09:55.500
+And even this invoke that I'm doing I'm just going to create um, a prompt.
+
+09:55.500 --> 10:01.350
+And then I'm going to be giving it to, uh, sorry, not even the prompt, really, because we don't
+
+10:01.350 --> 10:02.550
+have to call the invoke.
+
+10:02.550 --> 10:07.950
+I'm going to pass the prompt template And the LM.
+
+10:08.670 --> 10:17.400
+But now you may ask Karthik, how do I now pass the the the variable, the input variable e and v to
+
+10:17.430 --> 10:22.020
+this particular prompt because the prompt template won't receive any of the value.
+
+10:22.050 --> 10:22.740
+Well guess what?
+
+10:22.770 --> 10:25.650
+As I told you, this chain itself is a runnable.
+
+10:25.650 --> 10:29.160
+Then there is this invoke method of course.
+
+10:29.220 --> 10:33.420
+And now you can pass the exact same thing over here as well.
+
+10:33.420 --> 10:40.710
+So I can just say E and V, uh, and I can pass local machine or machine.
+
+10:40.710 --> 10:42.450
+So there we go.
+
+10:42.450 --> 10:49.050
+So this two lines of code is now not even required because we don't even need to invoke it that way.
+
+10:49.080 --> 10:57.300
+So that is a classical way of doing it, uh, without a chaining.
+
+10:58.560 --> 11:03.300
+But now with chain, you see that this is how I do the chaining mechanism over here.
+
+11:03.420 --> 11:09.060
+And I do an invoke pretty much like how I do for the rest of the numbers, I'm going to call this as
+
+11:09.180 --> 11:11.520
+numbers because you know that it's a numbers already.
+
+11:12.540 --> 11:21.630
+And if I try to run this particular code, this is just going to work like how it was working even before.
+
+11:21.780 --> 11:29.340
+So now you have taken out the complexity of doing two invokes and creating the operation before.
+
+11:29.340 --> 11:36.960
+Instead, you can now create one invoke to pass the value, and you can now chain and guess what?
+
+11:36.960 --> 11:40.590
+You can keep chaining this any number of runners.
+
+11:40.590 --> 11:44.640
+That is the power of this chaining mechanism itself.
+
+11:44.670 --> 11:46.800
+And we'll be talking about that like in a minute.
+
+11:46.830 --> 11:48.660
+Like how we can do that in our next lecture.
+
+11:48.660 --> 11:50.130
+But but guess what this is.
+
+11:50.130 --> 11:53.940
+What is the the chaining mechanism that we're talking about over here.
+
+11:53.940 --> 12:00.480
+This is how you do the chaining of your runnables in long chain.
+
+12:00.900 --> 12:03.630
+So I hope you got the idea like how these are all is done.
+
+12:03.630 --> 12:06.600
+And now if I go back to our um.
+
+12:07.980 --> 12:09.750
+a Lang Smith over here.
+
+12:10.680 --> 12:11.670
+Look at that.
+
+12:11.670 --> 12:16.440
+We have got a runnable sequence this time because we're doing a sequence of operations.
+
+12:16.440 --> 12:18.480
+So we have got a runnable sequence.
+
+12:18.480 --> 12:26.520
+And this runnable sequence is telling me that we are calling an env or the input variable as local machine.
+
+12:26.520 --> 12:30.990
+And now we are getting this particular output over here.
+
+12:30.990 --> 12:32.460
+And also look at that.
+
+12:32.460 --> 12:38.460
+We don't even have any message saying the, the human message or the system message like that, because
+
+12:38.460 --> 12:42.660
+those things are going to be taken care over here in the next prompt.
+
+12:42.660 --> 12:44.460
+Uh, next message over here.
+
+12:44.490 --> 12:45.150
+Look at that.
+
+12:45.150 --> 12:49.140
+So there is a chat prompt template, uh, which is this one.
+
+12:49.170 --> 12:51.690
+And it has got the system and the human message.
+
+12:51.690 --> 12:56.220
+And then it goes to the chat Olama, uh, which is going to be system human.
+
+12:56.430 --> 12:58.470
+And then there is a runnable sequence over here.
+
+12:58.470 --> 13:03.600
+These are the three things belonging to this particular operation that we are doing over here.
+
+13:03.600 --> 13:08.520
+So that is how we can actually work with the chaining mechanism.

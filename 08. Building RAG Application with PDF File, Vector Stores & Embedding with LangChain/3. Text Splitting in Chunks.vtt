@@ -1,0 +1,166 @@
+WEBVTT
+
+00:00.080 --> 00:00.470
+All right.
+
+00:00.470 --> 00:09.080
+So in this lecture we are going to talk about how we can now split this particular gigantic 253 pages
+
+00:09.080 --> 00:19.550
+document into, uh, into smaller chunks with a set of uh, set of indexes, probably, uh, and how
+
+00:19.550 --> 00:21.110
+we can actually achieve that.
+
+00:21.110 --> 00:26.270
+Well, in order for us to achieve this operation, we are going to use this, uh, this library from
+
+00:26.270 --> 00:29.540
+the long chain with a text splitter.
+
+00:29.540 --> 00:37.190
+So if you just go back to long chain over here and if you're going to search for, uh, text splitter,
+
+00:37.220 --> 00:43.940
+something like this, uh, you will notice that we have got, um, this text splitter over here.
+
+00:43.940 --> 00:50.480
+And these text splitters are basically going to be helping us to do, uh, a lot of text splitting that
+
+00:50.480 --> 00:54.440
+we wanted to do this split test and transform documents and things of that nature.
+
+00:54.440 --> 00:59.090
+And one of the text splitter that we are going to be using probably is going to be the recursive character
+
+00:59.120 --> 01:00.170
+text splitter.
+
+01:00.170 --> 01:03.890
+So that is what we are going to be using in this particular section.
+
+01:03.890 --> 01:07.610
+So I'm going to say uh, what is this one.
+
+01:09.050 --> 01:12.440
+A two hour text splitting.
+
+01:12.440 --> 01:18.320
+So I'm going to use the link chain text splitters.
+
+01:18.320 --> 01:25.010
+And I'm going to import a recursive character text splitter over here.
+
+01:25.010 --> 01:33.710
+So what I use this recursive text splitter I could able to split the text like how I wanted to.
+
+01:33.740 --> 01:42.050
+So I can say splitter is equal to recursive character text splitter.
+
+01:42.050 --> 01:49.190
+And over here I can now specify the chunk size, because I need to split the text into multiple chunks
+
+01:49.190 --> 01:53.360
+so I can split based on the chunk size.
+
+01:53.360 --> 01:58.100
+And I'm going to say every chunk needs to be of 1000 characters.
+
+01:58.280 --> 02:05.420
+And then I also need to have a chunk overlap over there.
+
+02:05.420 --> 02:07.640
+And the overlap is going to be 200.
+
+02:07.640 --> 02:08.750
+So what does that really mean?
+
+02:08.750 --> 02:18.150
+Basically, you are going to have a chunk of 1000 characters in one of your chunk, and you are going
+
+02:18.180 --> 02:22.380
+to have another chunk as well starting from 1001.
+
+02:22.380 --> 02:29.670
+But while these texts are going to be split into multiple chunks, there are chances that you may lose
+
+02:29.670 --> 02:33.840
+some of the text from exact position where it is starting.
+
+02:33.840 --> 02:41.130
+So it is always wise to have a overlap so that even if there is a duplicate wordings or duplicate characters
+
+02:41.130 --> 02:43.560
+in two chunks, that doesn't matter.
+
+02:43.560 --> 02:50.640
+But your large language model will have more context when it tries to combine those chunks together.
+
+02:50.640 --> 02:57.840
+So that's the reason why we need to have this chunks overlap, so that it knows that this is the continuation
+
+02:57.840 --> 03:00.570
+of the actual context that it is working with.
+
+03:00.570 --> 03:06.420
+And I'm also going to add a start index, uh, which is going to be true.
+
+03:06.420 --> 03:11.520
+And this is important that we need to do because we will know what is the index that we're starting
+
+03:11.520 --> 03:11.940
+with.
+
+03:11.970 --> 03:12.600
+All right.
+
+03:12.600 --> 03:17.730
+So these are the things that we are going to have in the recursive character test text split.
+
+03:17.820 --> 03:21.540
+And finally I'm going to do the splitting of the documentation.
+
+03:21.540 --> 03:28.900
+So I'm going to say all splits is equal to text splitter dot split the document.
+
+03:28.900 --> 03:33.430
+So you see that this particular method split document is from this particular text splitter.
+
+03:33.790 --> 03:35.980
+And I need to split which document.
+
+03:35.980 --> 03:38.230
+Which is this guy the documents that we have got.
+
+03:38.230 --> 03:43.210
+So I'm going to say documents that's going to split the entire documents for me.
+
+03:43.210 --> 03:48.910
+And now we can just say how much the length of all these particular document is all about.
+
+03:48.910 --> 03:52.390
+So I'm going to say all splits and let's try to run that.
+
+03:52.480 --> 03:55.000
+This is going to be 640.
+
+03:55.030 --> 04:06.940
+You see that now we have splitted this this document of 253 into 640 different, uh, splits and main
+
+04:06.970 --> 04:07.450
+chunks.
+
+04:07.450 --> 04:13.870
+So each chunks is going to have quite a lot of data in there.
+
+04:13.870 --> 04:16.660
+And as I told you, there are like 1000 characters in there.
+
+04:16.660 --> 04:22.900
+So it's going to be, um, it's going to be stored in every single chunks for you.
+
+04:23.050 --> 04:26.650
+And now we are pretty good to go with this particular chunk.
+
+04:26.650 --> 04:33.460
+We can then finally start doing the embedding part of all these chunked data that we have got.

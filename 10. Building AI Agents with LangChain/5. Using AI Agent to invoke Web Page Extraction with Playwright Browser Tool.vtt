@@ -1,0 +1,415 @@
+WEBVTT
+
+00:00.110 --> 00:09.470
+So now we are going to start writing the code for our agent to invoke the playwright, uh, browser
+
+00:09.470 --> 00:13.670
+tool that we have got before, um, that we discussed earlier.
+
+00:13.670 --> 00:16.160
+So we will see how we could able to achieve that.
+
+00:16.160 --> 00:22.730
+So essentially my idea is this I want to invoke the or use this playwright browser tool, uh, especially
+
+00:22.730 --> 00:30.800
+to grab the, uh, the page information which my agent, uh, which my LLM cannot do unless until I
+
+00:30.800 --> 00:38.630
+have that capability because we know that our agent, our Llms, don't have the ability to talk with
+
+00:38.630 --> 00:43.010
+the external world to get the real time informations right.
+
+00:43.010 --> 00:53.210
+But now we are going to see how our, uh, our LLM can get these information by extracting the page
+
+00:53.300 --> 00:56.210
+information and give me the details that we are looking for.
+
+00:56.240 --> 01:02.550
+We can also inquire from these information like what is the salary of Karthik for that matter?
+
+01:02.550 --> 01:06.450
+And what is the salary of Ramesh or John for that matter?
+
+01:06.450 --> 01:07.680
+So we can ask these questions.
+
+01:07.680 --> 01:11.070
+We can also check what is the email address of Karthik from this page.
+
+01:11.070 --> 01:16.950
+You can ask that so you can extract the information and then you can start querying from that particular
+
+01:16.950 --> 01:17.520
+information.
+
+01:17.520 --> 01:22.650
+So those things we can do and these abilities are only happening because we have got this playwright
+
+01:22.650 --> 01:30.900
+browser utility which can grab the external page information by opening the real browser instances.
+
+01:30.900 --> 01:32.820
+So we'll see how that we can achieve it.
+
+01:32.820 --> 01:36.030
+So for doing that once again we're going to write the code over here.
+
+01:36.030 --> 01:42.420
+And the code is going to look pretty much exactly the same way how we used our agent code here.
+
+01:42.420 --> 01:45.360
+So I'm going to copy this whole agent code.
+
+01:45.780 --> 01:49.380
+And I'm going to come all the way down here and I'm going to paste it.
+
+01:50.010 --> 01:52.320
+And this code remains exactly the same.
+
+01:52.320 --> 01:53.760
+The tools is going to be the tools.
+
+01:54.030 --> 01:59.310
+Uh, the agent type is going to be the structured chat zero shot, uh, description.
+
+01:59.310 --> 02:02.620
+But the query is not this query.
+
+02:02.620 --> 02:03.460
+Probably.
+
+02:03.670 --> 02:06.670
+I'm just going to say over here.
+
+02:08.680 --> 02:22.720
+What are the links in HTTP colon double slash e app.com/employee page.
+
+02:22.720 --> 02:26.650
+So basically I'm going to check what are the hyperlinks available in this particular page.
+
+02:26.680 --> 02:28.720
+So there are so many hyperlinks available here.
+
+02:28.720 --> 02:35.110
+So all these delete are hyperlinks edits or hyperlink benefits or hyperlink register login employee
+
+02:35.140 --> 02:39.280
+details about home are all hyperlinks maybe even this one.
+
+02:39.280 --> 02:42.550
+The web hosted hosting and Swami com is also a hyperlink.
+
+02:42.550 --> 02:48.760
+So let's see if this guy can get me all this particular response over here and over here.
+
+02:48.760 --> 02:55.810
+Instead of running like the agent dot run of the query before I execute it, we need to make sure that
+
+02:55.810 --> 02:59.350
+we are going to be running this in an asynchronous mode.
+
+02:59.350 --> 03:04.400
+Because remember this code that we have got, the tool that we have got is an asynchronous code.
+
+03:04.400 --> 03:08.390
+So we need to run this in a run like asynchronous fashion.
+
+03:08.390 --> 03:14.300
+And if you're going to be writing running in a synchronous way, then we need to use the await keyword.
+
+03:14.420 --> 03:16.190
+If not, the code is not going to work.
+
+03:16.190 --> 03:18.860
+So I'm going to say await over here.
+
+03:18.860 --> 03:21.050
+And that's going to get the results for us.
+
+03:21.080 --> 03:24.050
+And now let's try to run this code and see what's going to happen.
+
+03:24.080 --> 03:24.590
+Look at that.
+
+03:24.590 --> 03:30.650
+Now this is going to run in the asynchronous fashion and it is entering the new agent executor chain.
+
+03:30.680 --> 03:32.780
+It's going to navigate to the browser which is this one.
+
+03:32.780 --> 03:37.700
+And it is extracting all the hyperlinks because there is a tool for extract hyperlink.
+
+03:37.880 --> 03:41.180
+And it is looking at all the hyperlinks over here.
+
+03:41.210 --> 03:43.190
+Look at that employee ID.
+
+03:43.190 --> 03:48.320
+It has got 2371489 are all hyperlinks.
+
+03:48.560 --> 03:51.200
+And it is just printing that over here.
+
+03:51.230 --> 03:55.880
+And please note that some link might not work directly visible to the page and could not be part of
+
+03:55.880 --> 03:55.970
+it.
+
+03:55.970 --> 04:01.190
+So it shows me that these are the hyperlinks available over there, which is amazing.
+
+04:01.220 --> 04:06.640
+Now let's say I'm going to say extract the table details of the page.
+
+04:06.640 --> 04:09.580
+Because we saw that there was some table there.
+
+04:09.580 --> 04:16.330
+So I'm going to say extract the table, uh data from this particular page.
+
+04:16.330 --> 04:22.150
+So now this is going to keep on uh extracting all the table details.
+
+04:22.180 --> 04:26.050
+Look at that uh, over here and is thinking about it.
+
+04:26.050 --> 04:30.220
+And finally, it should have printed that detail for me.
+
+04:30.940 --> 04:32.890
+Uh, is it still doing?
+
+04:33.520 --> 04:34.420
+Yeah, I think it has.
+
+04:34.420 --> 04:34.990
+Did it.
+
+04:35.020 --> 04:35.980
+Oh, look at that.
+
+04:36.010 --> 04:40.180
+See, it has got all the details and it is printing that for me over here.
+
+04:40.180 --> 04:42.970
+Maybe I need to just ask this question even more.
+
+04:42.970 --> 04:43.750
+Better?
+
+04:43.840 --> 04:51.550
+Uh, extract the table data for me in this page, uh, and print it in JSON.
+
+04:52.780 --> 04:54.490
+So now if I do it.
+
+04:55.360 --> 04:56.620
+Yeah, it's doing it.
+
+04:56.650 --> 04:57.850
+Observation.
+
+04:58.660 --> 05:00.790
+Yeah, it's doing quite a lot of different operations this time.
+
+05:00.790 --> 05:05.850
+So if you just go back to our, uh, Lang Smith over here.
+
+05:05.850 --> 05:09.630
+You should see a lot of calls are really happening for us over there.
+
+05:09.660 --> 05:11.640
+There are some errors as well.
+
+05:11.670 --> 05:13.620
+I don't know what's that, but look at that.
+
+05:13.620 --> 05:14.490
+So.
+
+05:14.520 --> 05:16.290
+Oh, my God, look at that.
+
+05:16.320 --> 05:19.980
+How many calls are really happening with our agent this time?
+
+05:19.980 --> 05:23.340
+It just keep on doing a lot of different operation there.
+
+05:23.340 --> 05:30.240
+It's calling the, uh it's calling the chatbot Lama, and then it just keep on extracting that information,
+
+05:30.240 --> 05:32.100
+parsing it again, parsing it again.
+
+05:32.100 --> 05:38.880
+And finally, I think it is going to get that response for us over here, uh, as a human response.
+
+05:38.880 --> 05:40.170
+So look at that.
+
+05:40.740 --> 05:41.700
+Uh, okay.
+
+05:42.030 --> 05:42.540
+There we go.
+
+05:42.540 --> 05:45.510
+So we got this multiple action response over here.
+
+05:45.510 --> 05:49.860
+So if I go to the text editor, uh, you should see.
+
+05:49.860 --> 05:52.590
+But I could see here, like I got the multiple action response.
+
+05:52.590 --> 05:53.400
+The name is Karthik.
+
+05:53.400 --> 05:54.480
+Salary is 400.
+
+05:54.510 --> 05:56.310
+Sorry 4000 and duration worked.
+
+05:56.310 --> 05:56.760
+Is this.
+
+05:56.760 --> 05:57.780
+And this is the email.
+
+05:57.810 --> 06:00.240
+You see that it's all in JSON format right now.
+
+06:00.240 --> 06:03.880
+And it just keep on printing that value for me over here.
+
+06:03.880 --> 06:05.740
+And then it is getting that response.
+
+06:05.740 --> 06:14.590
+And finally, it also failed in a JSON decode error for some reason, because maybe the the data has
+
+06:14.590 --> 06:19.030
+got something which the JSON parser couldn't able to parse it for some reason.
+
+06:19.060 --> 06:20.890
+And that's the reason why this is failing.
+
+06:20.890 --> 06:27.010
+But never mind, you still saw that the the response was all just coming through from this particular
+
+06:27.010 --> 06:27.640
+page.
+
+06:27.850 --> 06:38.140
+And, and let's say now if I wanted to uh, now let's say if I wanted to do extract the table data from
+
+06:38.140 --> 06:50.950
+this particular page, uh, and check and get me the salary average for all the employees.
+
+06:53.230 --> 06:54.610
+I'm just going to ask this question.
+
+06:54.610 --> 06:58.540
+I never asked it before, but let's see if it could able to do that.
+
+06:58.870 --> 07:02.170
+Um, so let's see, what is it doing.
+
+07:02.500 --> 07:03.980
+So it's extracting it.
+
+07:03.980 --> 07:12.470
+And now hopefully it could able to get the average salary of all the employees in this particular list.
+
+07:12.470 --> 07:18.560
+And most importantly, you will notice that all these are all happening from our local large language
+
+07:18.560 --> 07:19.970
+model over here.
+
+07:19.970 --> 07:27.770
+And this could cost your machine's performance hit as well because this could be slower if you have
+
+07:27.800 --> 07:33.500
+a slower machine, and if you have a faster machine, this execution will be even more faster.
+
+07:33.530 --> 07:36.770
+It is not that slow that you are seeing in my machine.
+
+07:37.130 --> 07:37.940
+Look at that.
+
+07:37.940 --> 07:40.160
+So it gets an observation here.
+
+07:40.190 --> 07:42.170
+The index 4000 is a salary.
+
+07:42.170 --> 07:49.250
+So for all the salaries it has got over there and still it is trying to process because the final oh
+
+07:49.280 --> 07:49.580
+there we go.
+
+07:49.610 --> 07:54.680
+The final answer the average salary of the employee is 2022.
+
+07:54.920 --> 07:56.780
+Uh .22.
+
+07:56.810 --> 08:03.950
+So this is the average approximate salary of all the employees in this particular company over here,
+
+08:03.990 --> 08:08.460
+which is very bad because you see that there are some 200 salary as well.
+
+08:08.490 --> 08:11.790
+That's the reason why the average has reduced tremendously.
+
+08:11.790 --> 08:17.010
+But yeah, now we could able to get this information from the agent over here.
+
+08:17.070 --> 08:23.220
+And this is all happening because of the the access of the external browser capability that we have
+
+08:23.250 --> 08:23.460
+got.
+
+08:23.490 --> 08:25.650
+And we get these information out from here.
+
+08:25.650 --> 08:31.110
+Everything is happening within our local large language model where it does the execution.
+
+08:31.590 --> 08:36.330
+I'm just curious, what if we change the model over here and then try to run that?
+
+08:36.330 --> 08:37.770
+I will let you to do it.
+
+08:37.770 --> 08:44.040
+Just try to use a better model like llama 3.3 or 3 dot two model, which has the tooling support, and
+
+08:44.040 --> 08:49.890
+try to run this and see how the performance is and how better response that you get it from there,
+
+08:49.890 --> 08:55.860
+so that you will notice that the things will be better if you use these kinds of latest large language
+
+08:55.860 --> 08:56.430
+model.
+
+08:56.760 --> 09:03.930
+So that's about how you use the external tools along with agents, and you get the responses for your
+
+09:03.930 --> 09:05.220
+web page extraction.

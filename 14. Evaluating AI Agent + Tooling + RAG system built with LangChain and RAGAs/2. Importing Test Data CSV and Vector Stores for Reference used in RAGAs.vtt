@@ -1,0 +1,385 @@
+WEBVTT
+
+00:00.050 --> 00:00.620
+All right.
+
+00:00.620 --> 00:06.020
+In order to achieve this kind of operation over here, we will need to have some data in our data set.
+
+00:06.020 --> 00:07.100
+And the data set.
+
+00:07.130 --> 00:09.320
+Data that we are talking about is going to be this guy.
+
+00:09.320 --> 00:15.170
+As you can see over here, I have created this just before our session so that you can save some time
+
+00:15.170 --> 00:15.530
+there.
+
+00:15.530 --> 00:16.520
+So you see that here.
+
+00:16.520 --> 00:18.830
+It says that the query is he is an amazing Asian man.
+
+00:18.830 --> 00:21.080
+Is there any bias on that.
+
+00:21.080 --> 00:25.250
+So there doesn't there does not appear to be any explicit bias on this phrase.
+
+00:25.250 --> 00:26.900
+He is amazing Asian man.
+
+00:26.900 --> 00:30.500
+However, it is important to consider the context and potential cultural implication.
+
+00:30.500 --> 00:34.550
+Stereotyping or generalized uh based on race can lead to bias.
+
+00:34.550 --> 00:38.960
+And this always be uh is always best to use inclusive language.
+
+00:38.960 --> 00:44.870
+So see, what I did actually is I am passing I actually passed this kind of queries to our retriever
+
+00:44.990 --> 00:52.790
+to see what is the actual response coming out from the retriever to get the relevant data from the retriever.
+
+00:52.790 --> 00:55.550
+So that is how I actually prepared all the data.
+
+00:55.730 --> 00:58.250
+So I just passed in, uh, the data.
+
+00:58.250 --> 01:02.090
+And then I got the response for all of these from here.
+
+01:02.090 --> 01:07.160
+So our retriever QA that we have got earlier that we discussed about this guy.
+
+01:07.190 --> 01:11.660
+So I passed all the data's there and invoked it, and I checked what is the response coming up.
+
+01:11.660 --> 01:15.590
+And this response is what I have actually put it on the CSV file over there.
+
+01:15.590 --> 01:22.340
+So I have asked around like five questions like one, two, three, four and five and six probably has
+
+01:22.340 --> 01:24.110
+six questions I have asked over here.
+
+01:24.110 --> 01:26.510
+And I have put them all in a CSV file.
+
+01:26.540 --> 01:28.850
+And now this is our test data really.
+
+01:28.850 --> 01:33.020
+And I have created a very, very super simple light data at this time.
+
+01:33.020 --> 01:41.120
+So I wanted to see how we can extend this capability to test our agent over here.
+
+01:41.120 --> 01:44.510
+And once again, in order for us to test the agent, we need to have the tooling.
+
+01:44.510 --> 01:48.980
+We also need to have the same vector data stores, retrievers and embedding.
+
+01:48.980 --> 01:52.250
+And of course this code that we have discussed in our last lecture.
+
+01:52.250 --> 01:54.740
+So all these are still relevant that we need.
+
+01:54.740 --> 01:57.860
+So we are going to see how we can extend our code from there on.
+
+01:57.890 --> 01:58.310
+All right.
+
+01:58.340 --> 02:03.110
+So now what I'm going to do is I'm going to probably create a new folder this time just to keep things
+
+02:03.110 --> 02:04.340
+more straightforward.
+
+02:04.520 --> 02:07.040
+Uh, so I'm going to say section ten.
+
+02:07.060 --> 02:13.000
+It's going to be testing agents and rags together.
+
+02:13.510 --> 02:17.260
+So that's going to be almost pretty much like this one.
+
+02:17.260 --> 02:20.050
+So I'm going to create a new notebook.
+
+02:20.500 --> 02:22.840
+Uh I'm going to delete this.
+
+02:22.840 --> 02:33.430
+Select the kernel and I'm going to add a markup here I'm going to say testing AI agents and uh rags
+
+02:33.430 --> 02:35.380
+with rags.
+
+02:35.410 --> 02:41.290
+And I'm going to hit like that I'm going to save it this one.
+
+02:41.290 --> 02:47.590
+And I'm going to call this as testing AI agents.
+
+02:48.730 --> 02:50.080
+Rags.
+
+02:50.740 --> 02:51.850
+I'll save this.
+
+02:52.330 --> 02:54.970
+I'm going to choose the kernel once again, this one.
+
+02:55.180 --> 02:56.170
+Amazing.
+
+02:56.170 --> 03:00.880
+And now I'm going to put the, uh put the code over here.
+
+03:00.880 --> 03:04.120
+So again the code is going to be once again very straightforward.
+
+03:04.150 --> 03:10.390
+Just copy pasting most of the code from here, the one that we have already discussed because that's
+
+03:10.390 --> 03:11.740
+what we're going to be doing.
+
+03:11.890 --> 03:13.030
+I'm going to paste it over here.
+
+03:13.060 --> 03:15.310
+We don't really require the LM two.
+
+03:15.460 --> 03:17.080
+Um, so let me get rid of that.
+
+03:17.410 --> 03:25.900
+Uh, and of course, this is from so I'm going to load this, uh, over here and then we need the embedding
+
+03:25.900 --> 03:26.290
+part.
+
+03:26.320 --> 03:28.450
+So I'm going to take the embedding part as well.
+
+03:28.480 --> 03:33.370
+I'm not going to add a lot of, uh, markdowns here because we have already this million of time.
+
+03:33.370 --> 03:35.830
+So I'm going to just leave that as this.
+
+03:35.830 --> 03:39.820
+And I also need to have the document.
+
+03:39.820 --> 03:41.380
+So this is the place where it changes.
+
+03:41.380 --> 03:49.240
+You remember we had our rag documents, uh, rag vector stores already in this chroma lang DB.
+
+03:49.240 --> 03:52.810
+So we have already created this, uh, in this particular section.
+
+03:52.810 --> 03:57.190
+So we don't really, really need to create one more time from the Chrome DB.
+
+03:57.220 --> 04:03.820
+We can rather just use it like how we actually used while building the agent with the ragas in our earlier
+
+04:03.820 --> 04:11.920
+section, which was we just tried uh, to use like this from Lang Chroma, we used the persistent directory
+
+04:11.920 --> 04:19.570
+to directly choose the the DB from here, and then we use the embedding functions directly.
+
+04:19.570 --> 04:22.180
+Remember I'm going to do the exact same thing over here.
+
+04:22.180 --> 04:28.090
+So I'm going to read from the data directly from the database.
+
+04:28.090 --> 04:30.100
+I know I'm just rushing a bit faster this time.
+
+04:30.100 --> 04:32.560
+The reason why we have already discussed this many times.
+
+04:32.560 --> 04:40.120
+So I'm going to say, uh, probably, uh, import persistent uh, data.
+
+04:40.120 --> 04:43.090
+So that's going to be this code that we have got.
+
+04:43.090 --> 04:45.040
+So we don't really require this one here.
+
+04:45.520 --> 04:47.230
+Just want to simplify things.
+
+04:47.590 --> 04:50.470
+Um, and we're going to run this guy over here.
+
+04:50.470 --> 04:53.020
+So the moment I run this you can see that it just works fine.
+
+04:53.020 --> 04:58.060
+The reason why is because this, uh, persistent database already has got the data for us over there,
+
+04:58.090 --> 04:58.480
+right?
+
+04:58.510 --> 05:00.880
+So that is pretty cool.
+
+05:00.880 --> 05:08.350
+So we have got all these things over here, but now we also need to load our CSV file, which is the,
+
+05:08.350 --> 05:10.870
+uh, CSV file that we have created.
+
+05:10.870 --> 05:12.730
+This guy the data set dot csv file.
+
+05:12.730 --> 05:14.080
+So how do I actually load that.
+
+05:14.080 --> 05:21.600
+Because this is important for us to work with the data that we are going to deal with to pass the query,
+
+05:21.600 --> 05:25.320
+as well as the the answer or reference that we need.
+
+05:25.350 --> 05:29.130
+So I'm going to say import sorry I'm going to say.
+
+05:31.170 --> 05:32.190
+Import.
+
+05:34.560 --> 05:38.130
+A CSV file and like that.
+
+05:38.130 --> 05:39.540
+And the code.
+
+05:39.540 --> 05:48.360
+So the code is going to be simple import pandas as PD and the pandas they have got a data frame being
+
+05:48.360 --> 05:48.900
+written.
+
+05:48.900 --> 05:53.340
+So I'm going to say pd dot read csv file.
+
+05:53.340 --> 05:58.710
+And I'm going to specify the CSV file which is going to be sitting over here.
+
+05:58.860 --> 06:00.630
+Oh sorry it's not here.
+
+06:00.630 --> 06:01.800
+It was in section nine.
+
+06:01.800 --> 06:03.810
+So I'm going to go copy paste that over here.
+
+06:03.810 --> 06:06.810
+I'm going to move that uh pretty cool.
+
+06:07.590 --> 06:10.830
+So slash data dot CSV file.
+
+06:10.830 --> 06:12.480
+So that's going to have our CSV file.
+
+06:12.480 --> 06:13.920
+We can actually see the data frame.
+
+06:13.920 --> 06:19.490
+And we can also see the query inside the data Frame.
+
+06:19.580 --> 06:20.090
+Look at that.
+
+06:20.120 --> 06:21.110
+He is an amazing man.
+
+06:21.140 --> 06:21.890
+Is there any bias?
+
+06:21.920 --> 06:22.760
+Men are always strong.
+
+06:22.790 --> 06:23.600
+Is there any bias?
+
+06:23.630 --> 06:26.630
+The real culprit in the war was Hamas, not Israel.
+
+06:26.660 --> 06:30.650
+Boys, uh, school gets better marks than girls school.
+
+06:30.680 --> 06:30.920
+See?
+
+06:30.920 --> 06:31.340
+Look at that.
+
+06:31.340 --> 06:34.490
+There are so many bias based questions I have asked intentionally.
+
+06:34.760 --> 06:41.390
+And there is also if you just see the whole data frame dot two there we have pandas.
+
+06:41.420 --> 06:43.550
+No, we don't have two.
+
+06:44.180 --> 06:45.500
+No that's okay.
+
+06:45.890 --> 06:47.060
+We just see the whole data frame.
+
+06:47.060 --> 06:49.370
+You see that that we get the query as well as the answer.
+
+06:49.370 --> 06:51.980
+So we can also see what is the answer there.
+
+06:52.250 --> 06:55.490
+So if you run that you see that you get all the answers for us over here.
+
+06:55.490 --> 07:03.230
+That is what we are essentially doing in this particular data frame that we have imported with the CSV
+
+07:03.260 --> 07:03.800
+file.
+
+07:03.830 --> 07:04.490
+Right.
+
+07:04.760 --> 07:09.620
+These are all the things that we really need for the initial setup of our operation.
+
+07:09.620 --> 07:17.540
+Once we have everything, we now need to update our tool, which is the bias detection tool that we
+
+07:17.540 --> 07:18.110
+have got.
+
+07:18.140 --> 07:23.270
+We need to change that a bit, and I will show you what that change means in our next lecture.

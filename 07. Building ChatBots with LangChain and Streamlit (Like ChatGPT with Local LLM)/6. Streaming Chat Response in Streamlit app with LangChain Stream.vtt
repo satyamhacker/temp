@@ -1,0 +1,274 @@
+WEBVTT
+
+00:00.050 --> 00:03.770
+All right, so now we are almost completed our building of the chatbot.
+
+00:03.770 --> 00:08.960
+But just that every single time when you ask any question, you see that the information is not really
+
+00:08.960 --> 00:09.710
+streamed.
+
+00:09.710 --> 00:13.670
+Rather it's just going to print in one full chunk every single time.
+
+00:13.670 --> 00:19.160
+So in order for you to fix this particular problem, all you have to do it is you need to just stream
+
+00:19.160 --> 00:23.840
+the response instead of just writing the response all in one single shot.
+
+00:23.840 --> 00:30.620
+And the way you can actually stream this particular response is you need to change the way, uh, the
+
+00:30.620 --> 00:36.080
+information is being printed to us, and that we can do using the stream operation.
+
+00:36.080 --> 00:43.670
+So for the streaming operation, all you have to do it is instead of this invoke operation that we are
+
+00:43.670 --> 00:50.330
+doing over here for every single time, I can actually do the stream operation.
+
+00:50.330 --> 00:58.340
+But I also think that this particular way of invoking the the history from this runnable can be written
+
+00:58.340 --> 00:59.030
+even better.
+
+00:59.060 --> 01:04.130
+I mean, I wanted to write this as a method, to be honest, so I wanted to write something like this.
+
+01:04.130 --> 01:09.420
+So def of probably invoke Uh, history.
+
+01:09.660 --> 01:12.510
+And I'm going to pass a series of parameters in here.
+
+01:12.510 --> 01:17.130
+So session light chain session ID and prompt.
+
+01:17.130 --> 01:19.260
+So this is the parameter that I wanted to pass.
+
+01:19.290 --> 01:19.560
+Yeah.
+
+01:19.590 --> 01:26.310
+This code can remain exactly the same like how it is over here and over here I'm going to write a for
+
+01:26.310 --> 01:29.640
+loop this time for the response I'm going to be getting in.
+
+01:29.640 --> 01:31.620
+And I'm going to say history dot.
+
+01:31.620 --> 01:33.720
+See that this is the streaming implementation.
+
+01:33.720 --> 01:36.480
+So there is this um method called stream.
+
+01:36.480 --> 01:39.450
+You remember this stream is not something we are using for the first time.
+
+01:39.450 --> 01:46.830
+We have already did the streaming in our basic, um, section as well, while we were doing the stream
+
+01:46.860 --> 01:48.780
+operation over here.
+
+01:48.810 --> 01:50.160
+See that LM dot stream?
+
+01:50.160 --> 01:52.440
+The same thing that I'm doing over here as well.
+
+01:52.470 --> 01:59.280
+So I'm going to call the stream, uh, and I'm going to say, uh, the same thing that I'm going to
+
+01:59.280 --> 02:03.720
+do, like prompt as the prompt that I'm getting in.
+
+02:03.870 --> 02:09.210
+And I also need to pass the config, which is going to be this guy.
+
+02:09.210 --> 02:18.030
+So I'm going to cut this code probably I'm going to paste it over here And I'm going to say for this
+
+02:18.030 --> 02:24.360
+particular response while you stream it, just yield the response out.
+
+02:24.390 --> 02:29.670
+See that this is the yield response, which means it is going to because this is streaming every single
+
+02:29.700 --> 02:30.090
+time.
+
+02:30.090 --> 02:33.720
+We need to do an yield response over here from the for loop.
+
+02:34.950 --> 02:35.700
+Pretty cool.
+
+02:35.730 --> 02:41.370
+So I think that that is what this particular method invoke history is going to do for us over here.
+
+02:41.400 --> 02:47.640
+And now in order for me to invoke this method, invoke history, I don't really have to do it over here,
+
+02:47.670 --> 02:49.380
+like how we were doing before.
+
+02:49.560 --> 02:56.670
+I'm just going to get rid of that, and I'm going to keep all these pretty much exactly intact, because
+
+02:56.670 --> 03:00.180
+we are going to be printing the user message immediately any time anyways.
+
+03:00.180 --> 03:10.680
+But while we print the response from the assistant over here, we are going to print the streaming response.
+
+03:10.710 --> 03:13.440
+So I'm going to say we are going to be.
+
+03:13.440 --> 03:22.600
+So if the start chat message is going to be assistant then okay this guy can go down below over here.
+
+03:22.960 --> 03:31.450
+If it's going to be assistant, then you do a stream response of st dot right stream.
+
+03:31.480 --> 03:34.300
+See that we have got a right stream method.
+
+03:34.300 --> 03:43.420
+And here I'm going to call the invoke history method which is going to take our chain obviously.
+
+03:43.600 --> 03:49.870
+And then the session ID that we have got and the prompt that we're passing in.
+
+03:49.870 --> 03:51.730
+So I'm going to pass all of these in the method.
+
+03:51.760 --> 03:53.890
+That's the reason why I actually created this as a method.
+
+03:53.890 --> 04:00.460
+Because it's even more more easier to pass within this particular write stream method by by calling
+
+04:00.460 --> 04:03.490
+a method itself rather just like hand coding it.
+
+04:03.580 --> 04:08.020
+And finally the session state dot chat history dot append.
+
+04:08.050 --> 04:16.810
+The role is going to remain the same assistant over here, but for the content that we have got, we
+
+04:16.810 --> 04:23.020
+need to print that via what is called as the stream response instead of the response that we we had
+
+04:23.020 --> 04:23.740
+before.
+
+04:24.580 --> 04:25.330
+That's all.
+
+04:25.480 --> 04:28.240
+That's the only thing that we have to do over here.
+
+04:29.980 --> 04:30.400
+Look at that.
+
+04:30.400 --> 04:34.480
+That's the chord change that we have to make for making this as a streamable response.
+
+04:34.480 --> 04:38.680
+Instead of getting like one chunk of message, which is a non stream version of it.
+
+04:38.680 --> 04:40.870
+I mean, I have not made any change in here.
+
+04:40.870 --> 04:49.570
+Instead of me writing it like a markdown of the response, I'm actually doing a write stream over here.
+
+04:49.570 --> 04:56.770
+And then I'm going to add that, uh, that information, the chat history dot append.
+
+04:56.800 --> 05:02.590
+I'm adding that information over here, the stream response because I need it for the next conversation
+
+05:02.590 --> 05:03.370
+purpose.
+
+05:03.820 --> 05:08.620
+And now if I try to run this particular code and let's see what's going to basically happen, I'm going
+
+05:08.650 --> 05:10.990
+to start a whole new conversation over here.
+
+05:10.990 --> 05:22.390
+And I'm not going to ask a question over here, like, how big, uh, is sun compared to moon?
+
+05:22.390 --> 05:28.120
+So if I ask this, you will notice that this time we're going to get a streaming response as opposed
+
+05:28.120 --> 05:30.160
+to like a chunk of message.
+
+05:30.160 --> 05:34.900
+It's going to be printed every single time immediately, like after everything is ready.
+
+05:34.900 --> 05:40.250
+So which is going to be taking a long lot of time because it is not going to give us, like all the
+
+05:40.250 --> 05:41.720
+information immediately.
+
+05:41.720 --> 05:46.490
+Rather, we have to wait for the methods to be ready from the LM.
+
+05:47.240 --> 05:53.510
+Right now we are getting a streaming response over here, so we can probably ask a follow up question
+
+05:53.510 --> 05:54.590
+as well over here.
+
+05:54.650 --> 05:58.430
+Uh, how about, uh, Earth over here?
+
+05:58.430 --> 06:00.110
+So look at that.
+
+06:00.110 --> 06:05.630
+Now it's comparing sun, moon and Earth, and it's giving me all the responses over here.
+
+06:05.660 --> 06:11.750
+How can you print them in tabular format.
+
+06:13.670 --> 06:15.230
+So look at that.
+
+06:15.230 --> 06:18.710
+Now it's printing in a tabular format for sun, moon and Earth.
+
+06:18.710 --> 06:24.440
+So you will notice that this time all the historical information like chat, historical information
+
+06:24.440 --> 06:25.730
+is being maintained.
+
+06:25.730 --> 06:29.600
+And it is all printed for us over here, which is pretty cool.
+
+06:29.600 --> 06:33.740
+So this ends our chatbot that we have to build.
+
+06:33.770 --> 06:37.970
+I know there is one thing that we have to still build, which is the cosmetic change that I showed you
+
+06:37.970 --> 06:39.800
+in the starting of this particular section.
+
+06:39.920 --> 06:43.490
+We'll be doing that in our next lecture of this course.

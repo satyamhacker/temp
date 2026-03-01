@@ -1,0 +1,382 @@
+WEBVTT
+
+00:00.110 --> 00:06.650
+So now that we have the data in the vector stores, now it is time for us to start doing the next operation,
+
+00:06.650 --> 00:11.600
+which we are doing in our Rag, which is the retrieval and generation.
+
+00:11.630 --> 00:17.300
+So before we start talking about the generation part, let's start about the start thinking about the
+
+00:17.300 --> 00:22.250
+retrieval part, like how do we retrieve the information out from this vector data stores and how is
+
+00:22.250 --> 00:25.370
+the data is even stored in the vector stores in the first place?
+
+00:25.370 --> 00:29.840
+That is something that we need to understand so that it will be very, very helpful for you to see how
+
+00:29.840 --> 00:36.380
+the data stores, uh, or the data is being retrieved from which document and what is the document acting
+
+00:36.380 --> 00:41.540
+as a data source for the questionaries that we are trying to ask and everything we are going to be doing
+
+00:41.540 --> 00:43.550
+from the similarity search.
+
+00:43.550 --> 00:49.580
+And once again, all these similarity search are done by the algorithm called as cosine search, because
+
+00:49.610 --> 00:55.970
+cosine search is the one which is actually being used by the similarity search of the vector store database
+
+00:55.970 --> 00:57.140
+that we are using at the moment.
+
+00:57.140 --> 01:01.820
+So I'm going to go to our, um, Visual Studio Code over here.
+
+01:01.820 --> 01:08.750
+And I'm going to put a markdown over here and I'm going to say, uh, stage five, which is going to
+
+01:08.750 --> 01:19.310
+be the, uh, retrieving, uh, from the persistent, uh, data store, which is the vector data store.
+
+01:20.000 --> 01:27.470
+Uh, and I'm gonna put the tick over there and I'm going to add the code so the vector stores, I'm
+
+01:27.470 --> 01:35.900
+gonna, uh, this time I'm going to use the one from our, uh, local persistent database, which is
+
+01:35.900 --> 01:38.660
+going to be the chrome Chrome r lang chain DB.
+
+01:39.170 --> 01:43.520
+Uh, because I don't want to use the one which runs for like three minutes, 24 seconds every single
+
+01:43.550 --> 01:43.760
+time.
+
+01:43.760 --> 01:46.640
+It's going to take a lot of time and resources of my machine.
+
+01:46.640 --> 01:46.970
+You see that?
+
+01:46.970 --> 01:48.050
+It took me three minutes.
+
+01:48.050 --> 01:53.030
+So depending upon your machine, uh, you will have the speed difference as well.
+
+01:53.030 --> 02:01.260
+And I'm going to say the persistent directory over here is going to be uh, dot slash oops dot slash
+
+02:01.380 --> 02:03.420
+comma long chain db.
+
+02:03.450 --> 02:09.840
+Over here I'm going to use the embedding function which is going to be embedding.
+
+02:09.840 --> 02:12.210
+So this time I'm not going to use the from document.
+
+02:12.210 --> 02:16.350
+That's the reason why I can happily use this embedding function over here, which is not going to be
+
+02:16.350 --> 02:17.280
+any problem.
+
+02:17.580 --> 02:21.000
+And now I wanted to do a similarity search.
+
+02:21.000 --> 02:26.730
+So let's do a similarity search and see what we talk about that see this vector stores mainly has the
+
+02:26.730 --> 02:28.890
+power of what is called as the similarity search.
+
+02:28.890 --> 02:37.380
+So you can do similarity search and you can do similarity search by um by any one of the URI or uh,
+
+02:37.860 --> 02:42.510
+so they have got so many of these, I'm going to just go with the similarity search over here.
+
+02:42.510 --> 02:48.870
+I'm going to ask a question over here, which may be common or present in all these, uh, 2 or 3 documents.
+
+02:48.870 --> 02:57.600
+So I'm going to ask like, what is um, maybe our types of, uh, lm testing something like that, I
+
+02:57.600 --> 03:03.240
+don't know, and I want to get the top three of that particular similarities.
+
+03:03.240 --> 03:06.240
+So I'm just going to give you just the three similarities over here.
+
+03:06.240 --> 03:08.520
+And I want to print the result this time.
+
+03:08.520 --> 03:11.430
+So let's see what is going to happen the moment I do it.
+
+03:11.430 --> 03:18.210
+You see that we get the document and we also get an ID this is how it is being stored on the vector
+
+03:18.540 --> 03:19.560
+database.
+
+03:19.560 --> 03:25.170
+And you see that now we get a metadata like author creation date of the file.
+
+03:25.320 --> 03:29.880
+And the created creator is the LaTeX with hyper ref.
+
+03:29.880 --> 03:31.890
+And this is the keyword.
+
+03:31.890 --> 03:35.220
+And you see that the page number nine, page six, page 200.
+
+03:35.220 --> 03:37.050
+So there are three different places.
+
+03:37.050 --> 03:41.100
+The sources are taken for the same question that we are asking.
+
+03:41.100 --> 03:46.140
+And if I just go all the way over here, look at that.
+
+03:46.170 --> 03:50.340
+Now it is choosing this information like types of lab testing.
+
+03:50.340 --> 03:51.720
+It is choosing from three sources.
+
+03:51.720 --> 03:59.220
+One is the LM for getting PDF, other one is the attention PDF and then testing and evaluating lm PDF,
+
+03:59.250 --> 04:00.420
+which is amazing right?
+
+04:00.450 --> 04:07.560
+So this, this kind of question have the similarity search or the cosine similarity in three different
+
+04:07.560 --> 04:09.330
+places, which is amazing.
+
+04:09.330 --> 04:14.430
+And now let's ask like what is, uh, bias testing?
+
+04:14.640 --> 04:19.770
+And if I try to run that, I'm sure this is just sitting in only one document.
+
+04:19.770 --> 04:24.120
+Um, but I am not sure if the source might change.
+
+04:24.120 --> 04:26.370
+Uh, which could be the case.
+
+04:26.370 --> 04:29.970
+Uh, let's see, where is the source?
+
+04:29.970 --> 04:31.230
+In here.
+
+04:31.260 --> 04:32.160
+Yeah, look at that.
+
+04:32.190 --> 04:34.470
+Testing and evaluating llm pdf.
+
+04:34.470 --> 04:40.710
+So this I know that this particular document I saw somewhere that it has got this bias testing.
+
+04:40.710 --> 04:47.670
+So immediately the vector store could easily identify that this particular data is sitting on this testing
+
+04:47.670 --> 04:49.680
+and evaluation LLM dot pdf file.
+
+04:49.680 --> 04:50.940
+And it is reading it from there.
+
+04:50.970 --> 04:56.730
+I mean it's not going to the data to the PDF file to read this time, but based on the similarity search,
+
+04:56.730 --> 05:02.680
+it could able to find the chunk of data which is stored as a vector in the vector store database and
+
+05:02.770 --> 05:04.510
+not able to get the result over there.
+
+05:04.510 --> 05:08.170
+We can also see what is the page content of these.
+
+05:08.170 --> 05:14.830
+So let's say I'm going to do for uh doc in uh results or result.
+
+05:14.890 --> 05:20.680
+Uh, and I'm going to print the doc dot.
+
+05:21.040 --> 05:24.400
+Uh do we have something called as page underscore content.
+
+05:24.430 --> 05:26.530
+Yeah I'm going to print that over here.
+
+05:26.560 --> 05:27.250
+Let's see.
+
+05:27.520 --> 05:28.330
+Look at that.
+
+05:28.330 --> 05:30.850
+So chapter 60 logical reasoning correctness.
+
+05:30.850 --> 05:32.920
+So it is reading that from there.
+
+05:33.220 --> 05:40.060
+And you see that if I go to the text editor this is the entire information coming up over here for the
+
+05:40.060 --> 05:41.860
+question that you have asked.
+
+05:41.890 --> 05:42.610
+I'm not sure.
+
+05:42.640 --> 05:47.620
+I mean, once we format this particular data, this things will be even more better, but these are
+
+05:47.620 --> 05:53.830
+going to be acting as a context for our large language model later on while we are going to be using
+
+05:53.830 --> 05:54.790
+the drag operation.
+
+05:54.790 --> 06:01.100
+So this is the context of the information that you need for your large language model, which can use
+
+06:01.100 --> 06:06.680
+this information to analyze and give you the output for the questions that you are going to be asking.
+
+06:06.680 --> 06:13.220
+So for instance, you're going to be asking a query in the question saying, what are the types of,
+
+06:13.220 --> 06:15.410
+uh, large language model testing?
+
+06:15.410 --> 06:24.860
+Then this data is going to be going to this LLM, but it in turn going to read from the uh, read from
+
+06:24.860 --> 06:26.360
+the retrieval model.
+
+06:26.390 --> 06:29.300
+Actually, this diagram has got a one of this small change.
+
+06:29.300 --> 06:32.420
+I would say let's do that change.
+
+06:32.450 --> 06:34.100
+Why is it not getting bigger.
+
+06:34.130 --> 06:34.670
+Yeah.
+
+06:34.700 --> 06:35.570
+There we go.
+
+06:35.750 --> 06:45.470
+So we could just say the question that you ask is going to go to the, uh, large language model, but
+
+06:45.470 --> 06:49.970
+in turn you are going to be getting the answer.
+
+06:50.270 --> 06:55.700
+Retrieved from our, uh, from the data store as well, for this matter.
+
+06:55.700 --> 06:58.220
+So this is what is going to really happen.
+
+06:58.220 --> 07:04.540
+That is how your large language model is going to get the context of what your question is and where
+
+07:04.540 --> 07:06.550
+the data source it needs to read through from.
+
+07:06.550 --> 07:10.180
+And then it's going to give you the response that you're looking for, which is amazing.
+
+07:10.210 --> 07:16.960
+So we'll see this entire operation in action while we start, uh, performing this operation.
+
+07:16.960 --> 07:18.460
+We can also actually we can.
+
+07:18.490 --> 07:20.140
+I just forgot to show you one more thing.
+
+07:20.140 --> 07:26.380
+We can also see the similarity search score as well to see if the the score that you are that you are
+
+07:26.380 --> 07:27.940
+searching for is correct or not.
+
+07:27.940 --> 07:36.970
+So if we're just going to say uh vector store dot uh similarity search score, do we have that uh similar
+
+07:36.970 --> 07:42.040
+score with uh score over here.
+
+07:42.340 --> 07:49.240
+And then if I'm going to ask this exact same question that I just asked, what is the bias testing?
+
+07:49.660 --> 07:52.540
+Uh, and I'm going to put that over here.
+
+07:52.540 --> 07:56.860
+And now if I'm going to, uh, see what is the score.
+
+07:56.890 --> 08:02.990
+So I'm going to say, uh, Result of probably a zero.
+
+08:03.590 --> 08:06.320
+And if I try to run this, look at that.
+
+08:06.320 --> 08:13.190
+So we are going to get a, um, a document over here, just this one.
+
+08:13.190 --> 08:16.370
+And this is the score that we are getting over here, which is pretty correct.
+
+08:16.400 --> 08:19.370
+I mean, this is how you should see the things will be.
+
+08:19.430 --> 08:30.080
+Uh, and if I'm going to ask another question over here, what are the types LM testing?
+
+08:30.440 --> 08:35.720
+And if I hit run, you see that the similarity score, uh, similarity search score comes in over here.
+
+08:35.750 --> 08:40.670
+This things it will give you a confidence that you are, um, you have got the data that you are looking
+
+08:40.670 --> 08:40.940
+for.
+
+08:40.970 --> 08:45.710
+Now you got the exact data that is required stored in vector database.
+
+08:45.710 --> 08:52.370
+And now we're going to see how we can inject this data from this data store into our large language
+
+08:52.370 --> 08:54.890
+model while we start asking the question.
+
+08:54.890 --> 09:00.020
+So the final operation that we are going to be doing is the generation part.

@@ -1,0 +1,691 @@
+WEBVTT
+
+00:00.140 --> 00:00.980
+All right.
+
+00:00.980 --> 00:07.460
+So now that we have discussed about multiple chaining and how the chaining works until here, but now
+
+00:07.460 --> 00:13.550
+we are going to see how we can actually make an parallel chaining instead of the sequence chaining that
+
+00:13.550 --> 00:14.270
+we have been doing.
+
+00:14.270 --> 00:17.000
+So these are all runnable sequence that we are doing over here.
+
+00:17.000 --> 00:21.410
+So by default value chain like this using the pipe operator over here.
+
+00:21.410 --> 00:24.800
+These are all basically a runnable sequence operation.
+
+00:24.800 --> 00:26.930
+So it's basically running in sequence over here.
+
+00:26.930 --> 00:29.930
+But what if we wanted to run these chains in parallel.
+
+00:29.930 --> 00:32.210
+So how do we actually achieve that.
+
+00:32.210 --> 00:39.830
+Well in order for you to achieve a parallel execution or runnable parallel execution, you need to use
+
+00:39.830 --> 00:41.390
+a runnable parallel class.
+
+00:41.390 --> 00:49.430
+So I'm going to say a markdown here as a running chains um chains in parallel.
+
+00:49.430 --> 00:52.220
+And I'm going to say tick.
+
+00:52.220 --> 00:54.590
+And I'm going to add the code over here.
+
+00:54.590 --> 00:57.710
+So now I'm going to run these two in parallel for instance.
+
+00:57.710 --> 01:02.060
+So let's just go and copy this entire thing over here.
+
+01:03.090 --> 01:04.740
+And I'm going to paste it over here.
+
+01:04.740 --> 01:09.390
+So what is exactly parallel execution and why do we really need parallel execution.
+
+01:09.390 --> 01:15.780
+So for instance, if you're going to have a response coming up from one LM over here, at the moment
+
+01:15.960 --> 01:24.240
+we are just using one LM over here and there is nothing but this guy, the chat or LMA with the Q1 2.5
+
+01:24.270 --> 01:24.720
+model.
+
+01:24.720 --> 01:29.520
+And what if I wanted to do with probably an LMA 3.2 model?
+
+01:29.520 --> 01:36.450
+And then if I wanted to run this two LM in parallel, if I wanted to do or get a response from two large
+
+01:36.450 --> 01:38.160
+language models in parallel.
+
+01:38.160 --> 01:43.560
+So that way you may have an option to get responses in even more better fashion.
+
+01:43.560 --> 01:48.030
+So I mean llama and Q1, these are all like general purpose models.
+
+01:48.030 --> 01:54.150
+But if you're going to have any model trained for your organization, which are very specific for maybe
+
+01:54.180 --> 01:59.280
+for a specific domain, and you have got another large language model which is trained with some other
+
+01:59.280 --> 02:03.120
+data set, which is specifically designed for certain domain.
+
+02:03.120 --> 02:08.910
+So if you want to get a combination of the response from two domains together, then you can use parallel
+
+02:08.910 --> 02:14.520
+execution to get the response out much, much easily and fast manner as well, because they're going
+
+02:14.520 --> 02:15.720
+to be running in parallel.
+
+02:15.720 --> 02:18.690
+So that is what the parallel execution is all about.
+
+02:19.020 --> 02:22.290
+So again, just to demonstrate how that really works.
+
+02:22.290 --> 02:24.870
+So you're going to have the.
+
+02:24.990 --> 02:30.540
+So let's say if I'm going to get this particular diagram over here I'm going to copy this.
+
+02:30.540 --> 02:33.330
+And I'm going to paste it over here.
+
+02:33.630 --> 02:37.410
+So instead of getting response from one LM that we are getting.
+
+02:37.440 --> 02:41.160
+So let me just put this guy over here, the traceability stuff.
+
+02:41.520 --> 02:50.820
+Um, over here I'm going to have one more, uh, a large language model over here, uh, something like
+
+02:50.820 --> 02:51.330
+this.
+
+02:51.330 --> 02:55.890
+And let me put the arrow there, and I'm going to put an arrow here.
+
+02:56.070 --> 02:56.670
+You see that?
+
+02:56.670 --> 02:59.220
+Now we're going to have two llms altogether.
+
+02:59.220 --> 03:02.430
+And we're going to be getting the response out from these two.
+
+03:02.430 --> 03:03.120
+Uh llms.
+
+03:03.120 --> 03:07.210
+For our, for our operation that we are doing essentially.
+
+03:07.240 --> 03:11.530
+So that is the whole purpose of this particular execution that I'm talking about.
+
+03:11.530 --> 03:19.210
+So this way we can run these two, uh, two operations together for one of the requests that I'm trying
+
+03:19.210 --> 03:23.680
+to do so that I can get the response from two large language model, and I get the accurate response
+
+03:23.680 --> 03:24.490
+that I'm looking for.
+
+03:24.490 --> 03:30.520
+So that is something I can do it as well using this, uh, runnable parallels operation.
+
+03:30.520 --> 03:35.470
+And this is going to be very, very handy if you're going to be doing two different operations together.
+
+03:35.470 --> 03:43.360
+So 1st May be your large language model is good at uh, some domain may be domain A, and maybe your
+
+03:43.360 --> 03:44.950
+large language model is good.
+
+03:44.950 --> 03:48.400
+Maybe in this particular domain for this large language model domain B.
+
+03:48.400 --> 03:53.770
+So if you run both of them in parallel and get the response, you're going to be getting a lot of useful
+
+03:53.770 --> 03:56.020
+information for what that you are looking for.
+
+03:56.470 --> 04:01.720
+That is one way of doing it or the other way of doing it, or maybe other way of thinking it is if you're
+
+04:01.720 --> 04:06.340
+going to be running these two operations in parallel, for instance, one is the getting the summary
+
+04:06.340 --> 04:08.250
+and another one is getting the headings.
+
+04:08.250 --> 04:11.940
+You can run them in parallel as well and then you can get the response out.
+
+04:11.940 --> 04:19.470
+But in this case, because we are relaying on the response from one chain into another chain, maybe
+
+04:19.470 --> 04:21.330
+you don't get the response as expected.
+
+04:21.360 --> 04:25.980
+I mean, the speed is actually pretty much exactly the same as well, that it's not going to make any
+
+04:25.980 --> 04:26.520
+difference.
+
+04:26.520 --> 04:33.300
+So just for adding the cherry on the top, I'm just going to create one more loop here.
+
+04:33.300 --> 04:35.730
+And I'm going to call this as LM two for that matter.
+
+04:35.730 --> 04:38.790
+And I'm going to go to my terminal over here.
+
+04:38.790 --> 04:45.960
+And I'm going to use maybe the llama 3.2 latest model, the two GB model.
+
+04:46.260 --> 04:48.660
+And I'm going to use this model this time.
+
+04:48.660 --> 04:52.380
+And I'm going to be running this model in parallel this time.
+
+04:52.380 --> 04:58.860
+So let's see I'm going to go over here and I'm going to first create a parallel or runnable parallel
+
+04:59.010 --> 05:00.270
+this time first of all.
+
+05:00.270 --> 05:09.210
+So I'm gonna call from a lang chain underscore core Dot.
+
+05:09.240 --> 05:16.170
+There is something called as Runnables and I'm going to import this what is called as runnable parallel
+
+05:16.650 --> 05:17.340
+this one.
+
+05:17.340 --> 05:22.470
+And from this runnable parallel I can now pass two chains.
+
+05:22.470 --> 05:26.520
+Uh, and we can create a runnable chains over here.
+
+05:26.520 --> 05:27.810
+So this is the first chain.
+
+05:27.810 --> 05:29.970
+This is the second chain that we have got.
+
+05:30.120 --> 05:35.850
+And now I'm going to pass both the chains in the parallel execution.
+
+05:35.850 --> 05:39.570
+So I'm going to just say runnable parallels dot invoke C.
+
+05:39.570 --> 05:42.330
+This is what I'm doing over here I'm going to save this one.
+
+05:42.330 --> 05:46.440
+And over here for the chain one I'm using the LM over here.
+
+05:46.440 --> 05:49.410
+And for the chain two I'm using LM uh as well.
+
+05:49.410 --> 05:52.050
+So instead of LM I'm going to use LM two this time.
+
+05:52.050 --> 05:57.180
+So let me also run this code because without running this, uh, the operation will not happen over
+
+05:57.180 --> 05:57.930
+here.
+
+05:57.930 --> 06:00.060
+So I'm going to come down all the way.
+
+06:00.060 --> 06:02.250
+So this is LM two.
+
+06:02.280 --> 06:04.050
+So the first chain is going to use LM.
+
+06:04.050 --> 06:07.050
+And the second chain is going to be using LM two for that matter.
+
+06:07.050 --> 06:12.300
+And if I run this code this is going to just fail over here saying that runnable pattern invoke is not
+
+06:12.300 --> 06:16.200
+going to happen because you can't really call the invoke method over here.
+
+06:16.200 --> 06:23.580
+So all you have to do it is just call this runnable, uh, parallel, uh, over here, um, like this.
+
+06:23.580 --> 06:25.650
+And we need to call two chains, right?
+
+06:25.680 --> 06:32.070
+Like, uh, so I'm going to say, uh, chain one, uh, is equal to I'm just going to give the name
+
+06:32.070 --> 06:34.440
+here like detailed response chain.
+
+06:34.440 --> 06:41.220
+And that is going to be chain two, uh, which is going to be probably the heading uh info template,
+
+06:41.430 --> 06:43.590
+um, or chain with the heading.
+
+06:44.190 --> 06:44.580
+Yeah.
+
+06:44.610 --> 06:46.350
+Chain with the heading over here.
+
+06:46.380 --> 06:48.060
+These are the two chains that I have got.
+
+06:48.060 --> 06:56.850
+And then I actually need to do the, uh, probably this is going to be a parallel, uh, runnable.
+
+06:57.060 --> 07:01.860
+Uh, and then over here I'm going to say response is equal to parallel runnable dot.
+
+07:01.860 --> 07:04.530
+And then we're going to call this invoke method.
+
+07:04.770 --> 07:10.020
+And over here I need to pass the uh env because that is something required.
+
+07:10.050 --> 07:11.880
+Uh uh over here.
+
+07:11.880 --> 07:15.640
+So I'm going to say envy of I'm going to say local machine.
+
+07:15.970 --> 07:16.750
+Right.
+
+07:16.750 --> 07:23.020
+And now if I try to run this particular piece of code, it is going to run both the chains in parallel.
+
+07:23.020 --> 07:28.390
+But apparently, as I told you before, this chain, even though while I run them in parallel with two
+
+07:28.390 --> 07:34.030
+different large language models, they are still dependent on each other because the output of the first
+
+07:34.060 --> 07:39.430
+LM is required for the input of the second LM chain.
+
+07:39.430 --> 07:45.580
+So the chains are dependent over here, so you don't see the actual parallel execution really happening
+
+07:45.580 --> 07:46.120
+over there.
+
+07:46.120 --> 07:48.190
+So I mean you really got what I mean, right.
+
+07:48.190 --> 07:51.190
+Because see you get the chain one response over here.
+
+07:51.190 --> 07:53.980
+And then the chain two response is coming up over here.
+
+07:53.980 --> 07:56.140
+But still guess what?
+
+07:56.140 --> 07:59.200
+It is really not quite parallel at the moment.
+
+07:59.200 --> 08:02.110
+If you want to make really this one parallel, you can't.
+
+08:02.140 --> 08:06.970
+You shouldn't be putting a dependency of the chain between both of them.
+
+08:06.970 --> 08:12.580
+So that is not going to really be helping over here because you're using two large language models altogether.
+
+08:12.580 --> 08:14.120
+So if you want to run them in parallel.
+
+08:14.150 --> 08:18.980
+Do not try to, uh, like, mix them all.
+
+08:19.040 --> 08:20.240
+Mix them both together.
+
+08:20.240 --> 08:24.590
+So let me just see if I'm going to print this particular response over here.
+
+08:24.590 --> 08:26.030
+So I'm going to say chain one.
+
+08:26.030 --> 08:28.280
+That is the first response that I'm trying to print.
+
+08:28.310 --> 08:28.820
+Oops.
+
+08:29.540 --> 08:44.270
+Uh, chain one uh, and I need to print uh, probably slash n slash n and then I'll print, uh, chain
+
+08:44.270 --> 08:47.090
+two over here.
+
+08:47.090 --> 08:50.270
+And let's try to run this again and look at that.
+
+08:50.270 --> 08:52.760
+So first chain is going to give me this particular response.
+
+08:52.760 --> 08:55.190
+And the second chain there is a heading from this response.
+
+08:55.280 --> 08:59.960
+So running the A model the local machine has several advantages but it is not really printing anything
+
+08:59.960 --> 09:00.680
+over there.
+
+09:00.680 --> 09:06.980
+So that's I mean that particular model that we have got over there is not really giving us any of the,
+
+09:07.190 --> 09:09.830
+uh, details at least over here.
+
+09:09.830 --> 09:13.880
+But you will notice that this is how you can actually do that over here.
+
+09:13.880 --> 09:15.830
+So these are these are the two things which are running in parallel.
+
+09:15.860 --> 09:22.490
+But in order for you to clearly demonstrate this parallel execution, instead of doing with the dependency
+
+09:22.490 --> 09:29.360
+that we did with the with the execution over here, I actually need to put it put this code over here,
+
+09:29.720 --> 09:34.850
+and I'm going to say, what is the advantage of running the a model in local machine.
+
+09:34.850 --> 09:38.720
+And then we can ask the same kind of template over here.
+
+09:38.870 --> 09:45.080
+Um, but this time I'm going to say in what is the advantage?
+
+09:45.650 --> 09:49.910
+What is the advantage of running?
+
+09:50.060 --> 09:58.550
+Uh, lm in uh, maybe machine, uh, over here.
+
+09:58.640 --> 10:04.520
+So this is going to be a cloud machine, uh, template probably.
+
+10:04.550 --> 10:08.120
+And this is going to be a local machine template.
+
+10:10.070 --> 10:13.700
+So I'm just going to create like two, uh, templates over here.
+
+10:13.850 --> 10:17.490
+Uh, and then this is what exactly I'm trying to pass parse here.
+
+10:17.490 --> 10:19.380
+So this is going to be for the first chain.
+
+10:19.380 --> 10:23.370
+And there is this cloud machine template which is going to be here.
+
+10:23.370 --> 10:28.560
+So I'm not going to depend on any of these uh existing chains over here.
+
+10:28.560 --> 10:32.130
+So now we have got two of the chains over here.
+
+10:32.370 --> 10:35.970
+And now I'm going to run them both, uh, at this time.
+
+10:35.970 --> 10:37.020
+So let's see what's going to happen.
+
+10:37.020 --> 10:41.430
+So this is going to be this is going to be local machine chain.
+
+10:41.430 --> 10:43.560
+So we have got two chains here.
+
+10:43.560 --> 10:49.230
+So local machine chain and the cloud machine chain over here.
+
+10:49.230 --> 10:53.640
+So these are going to be running in parallel altogether with two different LMS this time.
+
+10:54.090 --> 10:59.460
+And now I can see how this can be printed or maybe invoked over here.
+
+10:59.460 --> 11:01.110
+So parallel runnable dot invoke.
+
+11:01.110 --> 11:03.840
+So we have the env for the local machine.
+
+11:03.840 --> 11:06.600
+And we also need to pass one more.
+
+11:06.750 --> 11:07.530
+Uh env.
+
+11:08.010 --> 11:11.820
+Uh sorry we need to pass one more uh machine here.
+
+11:11.850 --> 11:12.060
+Right.
+
+11:12.090 --> 11:14.070
+So that's something that we need to do it as well.
+
+11:14.070 --> 11:20.290
+So machine uh is equal to uh is going to be maybe cloud machine.
+
+11:20.290 --> 11:22.780
+So it's going to be envy of the local machine.
+
+11:22.780 --> 11:24.610
+And for the machine it's going to be cloud machine.
+
+11:24.610 --> 11:26.500
+So this is where we are passing the cloud machine.
+
+11:26.500 --> 11:30.010
+And for this guy we are passing the local machine over here.
+
+11:30.010 --> 11:33.190
+And now both of these are going to be running in parallel for us.
+
+11:33.190 --> 11:35.650
+And we will see what is going to basically happen this time.
+
+11:35.650 --> 11:41.800
+So if I try running it this time, you see that now there is no dependency on the first chain with the
+
+11:41.800 --> 11:46.120
+second chain, but they are running in parallel for us this time.
+
+11:46.120 --> 11:51.310
+And because one of them is going to take time and the other one is going to be, uh, doing it faster,
+
+11:51.340 --> 11:57.580
+you see that this time it is just 15.1 second, whereas the last time it was taking 19 seconds.
+
+11:57.580 --> 12:01.570
+So you see that there is a there is a performance gain this time for us over here.
+
+12:01.570 --> 12:04.900
+And also you get the response coming up over here.
+
+12:04.900 --> 12:07.300
+So if I go click this text editor, look at that.
+
+12:07.300 --> 12:14.170
+Running the AI in the local machine as these uh, some of the common use cases and here are the limitations
+
+12:14.200 --> 12:15.340
+and blah blah, blah.
+
+12:15.400 --> 12:22.640
+And if I go back to our, uh, actual langschmidt over here, for some reason this has been signed out.
+
+12:22.640 --> 12:26.480
+And if I go to our langschmidt over here, look at that.
+
+12:26.480 --> 12:29.510
+So this is a runnable parallels this time.
+
+12:29.510 --> 12:33.530
+And this runnable parallel has got two chain like chain one and chain two.
+
+12:33.770 --> 12:36.620
+And we are passing local machine and cloud machine.
+
+12:36.620 --> 12:39.200
+And the first chain is going to give us this particular response.
+
+12:39.560 --> 12:44.480
+And that's all coming up for us over here.
+
+12:44.780 --> 12:46.640
+Uh which is great.
+
+12:46.640 --> 12:47.390
+And look at that.
+
+12:47.390 --> 12:51.530
+This is the second chain that we have got and this is the response it is giving.
+
+12:51.530 --> 12:56.630
+But it says that the running the AI model in local machine, also known as edge computing, even in
+
+12:56.630 --> 12:57.410
+the second chain.
+
+12:57.410 --> 12:59.540
+I don't know why that is coming up over there.
+
+12:59.540 --> 13:04.940
+So let's just go back, uh, in the code and see what's really going on there.
+
+13:04.940 --> 13:06.890
+So if I just go back.
+
+13:06.890 --> 13:08.690
+So this is going to be.
+
+13:12.200 --> 13:13.100
+Oh, look at that.
+
+13:13.100 --> 13:19.790
+I'm actually passing in the chain two as local machine template instead of the cloud machine template.
+
+13:19.790 --> 13:20.690
+I'm sorry about that.
+
+13:20.690 --> 13:21.650
+That is a problem.
+
+13:21.800 --> 13:25.880
+I need to pass the cloud machine template over here instead of the local machine template.
+
+13:25.880 --> 13:27.560
+That's the reason why this is happening.
+
+13:27.710 --> 13:30.620
+So now let's try to run this and see what's really happening.
+
+13:30.650 --> 13:37.970
+I think that is the reason why it is printing both of them as the local machine instead of cloud machine
+
+13:37.970 --> 13:39.260
+in any of these.
+
+13:39.320 --> 13:40.280
+Look at that.
+
+13:40.280 --> 13:41.870
+Now that's been printed over here.
+
+13:41.870 --> 13:48.560
+And if I go to the text editor you should see the cloud machine includes these these these these things.
+
+13:48.590 --> 13:49.310
+Amazing.
+
+13:49.310 --> 13:53.810
+So if I go back to our, um, runnable chain over there.
+
+13:53.840 --> 13:54.800
+Look at that.
+
+13:54.950 --> 13:56.420
+So this is local machine in cloud.
+
+13:56.420 --> 13:56.810
+Machine.
+
+13:56.810 --> 14:01.460
+This is chain one and chain two taking advantage of, uh, running local machine, I mean, large language
+
+14:01.460 --> 14:02.990
+model in the cloud machine.
+
+14:02.990 --> 14:05.000
+And these are the things which is coming up.
+
+14:05.000 --> 14:10.490
+So this is how you can see that we can run this, these chains in parallel for two different models,
+
+14:10.490 --> 14:11.840
+as you can see over here.
+
+14:11.840 --> 14:18.230
+And that is how you get the power of running chains in parallel using the parallel execution.
+
+14:18.230 --> 14:23.900
+And that is the that is the whole purpose of this runnable parallel that we have got in the in the long
+
+14:23.900 --> 14:24.650
+chain library.

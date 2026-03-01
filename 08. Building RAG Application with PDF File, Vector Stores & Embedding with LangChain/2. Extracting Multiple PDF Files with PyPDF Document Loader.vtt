@@ -1,0 +1,547 @@
+WEBVTT
+
+00:00.050 --> 00:05.060
+So now we are going to see how we can start doing the extraction and indexing.
+
+00:05.060 --> 00:11.540
+And for the first operation of the abstracting and indexing is we need to extract the file that we are
+
+00:11.540 --> 00:16.910
+going to work with for our large language model to get more intelligence and context.
+
+00:16.910 --> 00:18.590
+So how are we going to do that?
+
+00:18.590 --> 00:22.610
+Well, in order for us to extract the file, first of all you need to have some files.
+
+00:22.610 --> 00:30.440
+So what I have did over here is I have added some files over here in our section five of Rag with document
+
+00:30.440 --> 00:30.950
+over here.
+
+00:30.950 --> 00:34.370
+So I have created this particular file.
+
+00:34.400 --> 00:36.230
+I mean I have added some papers really.
+
+00:36.230 --> 00:40.730
+So these are basically some large language model papers that I have added.
+
+00:40.730 --> 00:44.030
+So I can quickly show you what this document is going to be.
+
+00:44.030 --> 00:50.000
+So if I just reveal in finder, um, over here, you see that we have got some attention, which is
+
+00:50.000 --> 00:52.160
+nothing, but the attention is all you need.
+
+00:52.190 --> 00:52.940
+Paper.
+
+00:53.030 --> 00:54.710
+Um, this is this one.
+
+00:54.920 --> 00:59.000
+This is the actual paper which is used.
+
+00:59.030 --> 01:04.720
+I mean, for sure, you might have known that this is the paper which is used to show how the transformer
+
+01:04.900 --> 01:08.890
+model has gained the the power of attention.
+
+01:08.890 --> 01:12.850
+And based on that, the entire large language model trend has started up.
+
+01:12.850 --> 01:15.640
+So yeah, that is what this particular paper is all about.
+
+01:15.640 --> 01:22.300
+So we are going to store this particular, uh, paper into our vector database.
+
+01:22.300 --> 01:27.010
+And then we're going to retrieve from there, and we're going to make use of the large language model
+
+01:27.010 --> 01:31.630
+as well, while answering or questioning the large language model.
+
+01:31.630 --> 01:35.980
+And then we are also going to have this particular PDF file, which is this guy, as you can see.
+
+01:36.010 --> 01:41.980
+And this is going to be testing and evaluating, uh, the large language model for correctness, non-toxicity
+
+01:41.980 --> 01:43.090
+and fairness.
+
+01:43.090 --> 01:45.580
+So this is also one of the most interesting paper.
+
+01:45.580 --> 01:50.770
+And I have learned quite a lot of the details from this particular paper, because this paper will also
+
+01:50.770 --> 01:58.510
+tells you like how you can use the LM for testing of the factual correctness of LM, testing of logical
+
+01:58.510 --> 02:03.970
+reasoning and correctness of LM, and how you can evaluate for a multilingual safety of LMS.
+
+02:03.970 --> 02:09.870
+Social bias of LMS and all those details so we can ask them testing related questions from this particular
+
+02:09.870 --> 02:10.320
+document.
+
+02:10.350 --> 02:11.400
+So this is amazing.
+
+02:11.400 --> 02:17.040
+And finally, I also have got the LM forgetting, which is the catastrophic forgetting in the large
+
+02:17.040 --> 02:17.790
+language model.
+
+02:17.820 --> 02:22.110
+So this is one of the most important key concept that we are going to be doing in this particular section
+
+02:22.110 --> 02:25.290
+anyways, which is the context length that I was talking about.
+
+02:25.290 --> 02:31.350
+And the catastrophic forgetting in LM is mainly during the continual fine tuning.
+
+02:31.350 --> 02:38.340
+So we can ask some questions related to how the large language model loses the context while it keeps
+
+02:38.340 --> 02:44.430
+on learning new data and forgetting the old data while it is being trained.
+
+02:44.430 --> 02:47.430
+So that is what this particular document is all about.
+
+02:47.610 --> 02:52.920
+And we are going to extract this document and we are going to store this particular document as well.
+
+02:52.920 --> 02:57.180
+So we will see how we can able to achieve all these operation in this particular section.
+
+02:57.180 --> 03:02.430
+So for that, I am once again going to create a new notebook over here.
+
+03:02.430 --> 03:04.560
+I am going to go save this particular notebook.
+
+03:04.890 --> 03:12.430
+I'm going to call this particular notebook as the rag for PDF.
+
+03:13.060 --> 03:17.290
+I'm going to save this over here and we can start working from here.
+
+03:17.290 --> 03:28.840
+So the first part which I'm going to do is I'm going to do Rag with a PDF data extraction uh, to give
+
+03:28.870 --> 03:31.360
+context to LM.
+
+03:32.470 --> 03:33.280
+Amazing.
+
+03:33.280 --> 03:36.580
+So that's the main topic that we have got.
+
+03:36.580 --> 03:40.540
+And over here I'm going to start working with the PDF extraction.
+
+03:40.540 --> 03:47.200
+So in order for me to read the PDF and extract, uh, the information from the PDF, we need to have
+
+03:47.200 --> 03:49.390
+some sort of document loaders.
+
+03:49.390 --> 03:53.500
+So there are many different document loaders available in uh, the long chain.
+
+03:53.500 --> 03:57.910
+So if you just go over here and if you see here in the components, they have got what is called as
+
+03:57.910 --> 03:59.170
+the document loaders.
+
+03:59.170 --> 04:04.930
+So this is the most important detail that we also need to know while working with the external data
+
+04:04.930 --> 04:05.410
+sources.
+
+04:05.410 --> 04:09.970
+For instance if you have a CSV Data like a large set of X data.
+
+04:10.000 --> 04:14.020
+And if you want to load them and work with that, you can use what is called a CSV loader.
+
+04:14.050 --> 04:15.190
+You see that that's straightforward.
+
+04:15.220 --> 04:18.850
+You can just call the CSV loader and put your CSV file there.
+
+04:18.850 --> 04:22.420
+And then you can load the loader using this particular method.
+
+04:22.420 --> 04:23.230
+That's all.
+
+04:23.230 --> 04:24.250
+That's what it's going to do.
+
+04:24.280 --> 04:31.120
+And if you want to load a web page by doing web scraping and get information out from that particular
+
+04:31.120 --> 04:34.660
+web page, you can also do that using this particular web loader.
+
+04:34.660 --> 04:36.730
+And then there is this unstructured.
+
+04:36.880 --> 04:42.220
+If you have got the unstructured page and if you want to parse that and get the structured data details,
+
+04:42.220 --> 04:44.590
+then you can use this unstructured package.
+
+04:44.620 --> 04:49.810
+Similarly there is something called as a recursive URL sitemap fire crawl a third party application
+
+04:49.810 --> 04:53.110
+which does that for you, and also the doc link which is a third party.
+
+04:53.110 --> 04:55.750
+And also there is this hyper browser which is also third party.
+
+04:55.780 --> 04:59.770
+You can use it for performing all the different web scraping that you wanted to do.
+
+04:59.770 --> 05:04.720
+And also you can run this in headless mode to uh, to perform all the operations.
+
+05:04.720 --> 05:05.830
+So this is quite interesting.
+
+05:05.830 --> 05:09.340
+I was just reading through this one hyper, uh, browser platform.
+
+05:09.340 --> 05:13.790
+You'll notice that the hyper browser platform is a platform for running and scaling headless browsers
+
+05:13.790 --> 05:20.570
+in secure, isolated containers built for web automation and AI driven use cases.
+
+05:20.750 --> 05:24.710
+And most importantly, it will also do capture handling.
+
+05:24.740 --> 05:30.080
+It will automatically solve capture for streamline automated workflows, which is awesome.
+
+05:30.440 --> 05:37.520
+So we can use this kind of tool while we actually are going to be working with the data extractions
+
+05:37.520 --> 05:38.000
+and stuff.
+
+05:38.120 --> 05:41.450
+This is also quite interesting way of doing data extractions.
+
+05:41.990 --> 05:45.230
+And yeah, these are the different types of document loaders we have got.
+
+05:45.260 --> 05:51.890
+And in the PDF part we have something called as py pdf uh unstructured Amazon Textract.
+
+05:52.040 --> 05:53.810
+Mathematics PDF.
+
+05:53.810 --> 05:55.340
+Plumber PDF.
+
+05:55.370 --> 05:55.670
+PDF.
+
+05:55.700 --> 05:56.870
+PDF directory.
+
+05:57.020 --> 05:58.130
+There are so many of these.
+
+05:58.130 --> 06:04.010
+And similarly there are cloud providers social platform messaging platform productivity tools.
+
+06:04.280 --> 06:07.400
+You can see there are so many document loaders available.
+
+06:07.760 --> 06:12.600
+Well, the one document that we are going to be using in this particular section is nothing but the
+
+06:12.690 --> 06:14.880
+PDF pi PDF.
+
+06:14.880 --> 06:21.330
+So I'm going to go to my Visual Studio over here, and I need to install the Pi PDF in order for me
+
+06:21.330 --> 06:24.450
+to start extracting the data from my PDF file.
+
+06:24.450 --> 06:27.150
+So I'm going to say pip.
+
+06:29.280 --> 06:34.740
+Install pi pdf and I'm going to run it.
+
+06:34.740 --> 06:38.940
+But before that I need to select the kernel uh over here.
+
+06:38.940 --> 06:41.610
+And I'm going to run this over here.
+
+06:41.610 --> 06:46.110
+So you see that the Pi PDF is now immediately installed, which is quite amazing.
+
+06:46.260 --> 06:57.570
+And once we have the Pi PDF then we have to, uh, load our, uh, as usual stuffs from the uh, environment
+
+06:57.570 --> 07:02.430
+variable as well as set the, uh, the LM object.
+
+07:02.430 --> 07:06.360
+So I'm going to go copy this whole code that we have written already.
+
+07:06.360 --> 07:13.110
+And I'm not even going to add any like description, their like meta information because you already
+
+07:13.110 --> 07:14.340
+know about these things.
+
+07:14.340 --> 07:17.520
+We have did this enough time so far.
+
+07:17.520 --> 07:22.710
+And also we're going to import the whole armor.
+
+07:23.910 --> 07:25.530
+And I do that over here.
+
+07:25.980 --> 07:26.640
+Run it.
+
+07:26.670 --> 07:31.470
+That's going to have our LM, uh, object, which is amazing.
+
+07:31.920 --> 07:36.510
+And I think that's all from this particular piece of code.
+
+07:36.510 --> 07:37.980
+We don't require that anymore.
+
+07:38.010 --> 07:43.710
+And now we're going to do the first part of our diagram, which is going to be the extracting of the
+
+07:43.710 --> 07:44.340
+files.
+
+07:44.340 --> 07:46.500
+So that is the first part that we have to do.
+
+07:46.530 --> 07:58.140
+So in order for the extraction of the files, we are going to say maybe put a markdown here and one
+
+07:58.170 --> 08:06.450
+extracting the PDF files, all these PDF files I need to extract right now.
+
+08:06.450 --> 08:11.160
+So in order for me to do that I'm going to add the code here.
+
+08:11.160 --> 08:15.330
+I'm going to say from lang chain underscore community.
+
+08:15.360 --> 08:21.340
+So basically what I'm going to do over here is if I just go back to the document loader over here and
+
+08:21.340 --> 08:27.280
+if I'm going to go hit this PDF, the pie PDF over here, you'll notice that the pie PDF, in order
+
+08:27.280 --> 08:30.190
+for me to call it I need to install this pie PDF.
+
+08:30.220 --> 08:36.010
+And then we also need to import the document order from the pie PDF loader over here.
+
+08:36.010 --> 08:41.020
+So this is the code that we have to do in order for me to extract the data from the PDF file.
+
+08:41.020 --> 08:43.840
+So I'm going to do this exact same thing over here.
+
+08:44.110 --> 08:46.240
+Um pie PDF loader.
+
+08:46.360 --> 08:51.460
+Uh, and then we need to mention the files that I'm going to be extracting.
+
+08:51.490 --> 08:51.820
+Right.
+
+08:51.850 --> 08:53.560
+So where are these files really.
+
+08:53.560 --> 08:55.900
+So all these PDF files are sitting over here.
+
+08:55.900 --> 08:58.540
+So I can write some ugly code this time.
+
+08:58.540 --> 09:04.960
+So I'm going to say PDF one is equal to uh dot slash attention dot pdf.
+
+09:04.960 --> 09:10.600
+And the next PDF that I have got is going to be a dot slash.
+
+09:10.600 --> 09:12.130
+Uh, I'm forgetting.
+
+09:12.130 --> 09:19.750
+And I also have got another PDF which is going to be PDF three, uh, which is going to be a testing
+
+09:19.750 --> 09:21.790
+and evaluation of large language models.
+
+09:21.790 --> 09:24.340
+So these are the things that we have got over here.
+
+09:24.610 --> 09:26.680
+Uh, let me stop this thing.
+
+09:26.680 --> 09:27.790
+We don't even need that.
+
+09:27.970 --> 09:42.130
+Uh, and we now need to put all these PDF files into an array like PDF one and PDF two and PDF three,
+
+09:42.160 --> 09:43.480
+something like this.
+
+09:43.870 --> 09:51.940
+And we can now store all these PDF into an probably a documents array, so that we can then process
+
+09:51.940 --> 09:56.440
+that particular documents array splitting and making into smaller chunks.
+
+09:56.440 --> 10:03.670
+So that I'm going to do something like this for PDF in PDF files.
+
+10:03.790 --> 10:10.030
+So I'm going to iterate through all of them and let me now load all these files.
+
+10:10.030 --> 10:12.010
+So how do I how am I going to load this.
+
+10:12.010 --> 10:13.420
+So loader is equal to.
+
+10:13.450 --> 10:15.580
+This is the same code that I'm using really.
+
+10:15.910 --> 10:18.130
+Uh and PDF loader.
+
+10:18.130 --> 10:19.240
+So py pdf loader.
+
+10:19.240 --> 10:23.660
+So py pdf loader and I'm going to pass the pdf file.
+
+10:23.660 --> 10:24.980
+So look at that.
+
+10:24.980 --> 10:27.530
+This is how I load all the PDF files.
+
+10:27.530 --> 10:29.030
+And I'm going to pass through this loader.
+
+10:29.030 --> 10:34.010
+And over here I'm going to store into the documents array.
+
+10:34.010 --> 10:43.340
+So all the files uh pages is going to be stored into this particular uh documents array.
+
+10:43.430 --> 10:43.940
+Right.
+
+10:43.940 --> 10:50.120
+So once I have this particular documents array I can now print and I will show you how this particular,
+
+10:50.150 --> 10:52.040
+uh, documents is going to look like.
+
+10:52.040 --> 11:01.850
+So I'm just going to say probably, uh, length of the documents over here if I try to run this, um,
+
+11:03.410 --> 11:04.070
+oops, sorry.
+
+11:04.100 --> 11:05.480
+Load dot load.
+
+11:05.480 --> 11:10.190
+I forgot to call this particular method and let me try to run this.
+
+11:10.520 --> 11:16.580
+So it is right now loading all the files like totally one, two, three files.
+
+11:16.580 --> 11:21.740
+And it has ordered around 253 pages in this particular array.
+
+11:21.770 --> 11:26.300
+So this particular document now has got 253 pages for us.
+
+11:26.300 --> 11:29.990
+So if I want to print any one of the page I can also do that.
+
+11:29.990 --> 11:38.690
+So I'm going to say uh, print uh documents uh, of maybe I'm going to print just the first page for
+
+11:38.720 --> 11:39.410
+that matter.
+
+11:39.410 --> 11:46.220
+And if I try to run that look at that, I am going to get the entire information over here.
+
+11:46.460 --> 11:53.330
+And I think this is all coming from the attention dot PDF file.
+
+11:53.330 --> 11:58.850
+So you see that we have got the detail here like subject, uh, title uh, and then traps.
+
+11:58.850 --> 12:04.220
+And the source is going to be attention dot PDF file and the page number total pages 15 pages.
+
+12:04.220 --> 12:09.320
+So it has now extracted around 15 pages in this particular one document over here.
+
+12:09.560 --> 12:12.740
+Uh, and you see that it has got the page content.
+
+12:12.740 --> 12:15.530
+So you can actually get the page content and you can do it.
+
+12:15.530 --> 12:16.010
+But yeah.
+
+12:16.010 --> 12:23.030
+So this is how you can notice that the document is, uh, currently being extracted into PDF files and
+
+12:23.030 --> 12:24.290
+stored it over here.

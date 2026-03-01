@@ -1,0 +1,181 @@
+WEBVTT
+
+00:00.110 --> 00:04.580
+In this lecture we'll be talking about LMS evaluation libraries.
+
+00:04.580 --> 00:09.950
+So what are the different LMS evaluation libraries available to perform these operations that we were
+
+00:09.950 --> 00:13.310
+talking about like traditional and non-traditional way of testing them.
+
+00:13.310 --> 00:17.300
+There are many libraries available to evaluate the large language models.
+
+00:17.300 --> 00:22.070
+Some of the most popular among the community are the OpenAI's evals library.
+
+00:22.070 --> 00:25.730
+And there is another one is called as the Ragas Library.
+
+00:25.730 --> 00:27.380
+So OpenAI's evolves.
+
+00:27.380 --> 00:33.620
+As it mentioned, the evals provide a framework for evaluating large language models or systems built
+
+00:33.620 --> 00:34.550
+using LMS.
+
+00:34.580 --> 00:43.460
+It offers an existing registry of evals to test different dimensions of OpenAI models, and the ability
+
+00:43.460 --> 00:51.050
+to write your own custom evolves for use case you care about, and this is mainly focused on how you
+
+00:51.050 --> 00:58.340
+can do testing of your models with OpenAI specific models, which is that's where this eval is very
+
+00:58.340 --> 00:58.730
+good at.
+
+00:58.730 --> 01:00.560
+And it does this for you.
+
+01:00.560 --> 01:05.890
+And there is another library, as I told you, is going to be the Ragas Library and the ragas is the
+
+01:05.890 --> 01:12.340
+open source evaluation library built to supercharge evaluation of large language model applications.
+
+01:12.370 --> 01:21.310
+It uses a Sota LMS assisted method to quantify the performance of LMS application using automated metrics,
+
+01:21.310 --> 01:28.000
+so you can also evaluate the performance of the pipeline that you have built using frameworks like Lama
+
+01:28.000 --> 01:32.920
+index, using it without needing an annotated evaluation data set.
+
+01:32.920 --> 01:35.320
+So you can do all these things in ragas.
+
+01:35.350 --> 01:40.840
+And just to keep things very, very straightforward, I'm going to quickly show you these two libraries
+
+01:40.840 --> 01:44.470
+pages and you will understand how these libraries are really built.
+
+01:44.470 --> 01:52.420
+So if I just go to go and search for the open AI evals like that, so you see that this is the page
+
+01:52.420 --> 01:53.860
+it's going to take me up through.
+
+01:53.860 --> 01:57.430
+And this is the same text that I just copy pasted from here on the slide.
+
+01:57.430 --> 02:03.370
+So it says that if you are building with LMS, creating high quality eval is one of the most impactful
+
+02:03.370 --> 02:05.200
+things that you can do without evals.
+
+02:05.200 --> 02:10.610
+It can be very difficult time intensive to understand how different models version might affect your
+
+02:10.610 --> 02:11.330
+use case.
+
+02:11.330 --> 02:15.890
+And that is what this the president of the OpenAI really says in here.
+
+02:15.920 --> 02:17.930
+The setup operation is quite straightforward.
+
+02:17.930 --> 02:20.180
+All you need to have is the OpenAI key.
+
+02:20.420 --> 02:27.860
+And then you can you can verify that using the using this installation of this particular library over
+
+02:27.860 --> 02:28.220
+here.
+
+02:28.220 --> 02:30.590
+And you can see how they are doing the testing.
+
+02:30.590 --> 02:35.330
+So you can see that there is a walkthrough of the testing process of building an evolve over here,
+
+02:35.360 --> 02:43.670
+like how you can build things and how you can measure, uh, different, uh, operation using the eval.
+
+02:43.700 --> 02:49.310
+The focus of this particular course is not about talking about the OpenAI's evolve, but we are going
+
+02:49.340 --> 02:56.090
+to be talking about the ragas, which is the library again, which performs the same kind of evaluation.
+
+02:56.090 --> 03:03.530
+But again, ragas is a library which will helps you to perform a wide range of testing in wide range
+
+03:03.530 --> 03:05.840
+of models, as you can see over here.
+
+03:05.840 --> 03:10.760
+And they also support Lang chain, which can also be a plus for us because we are using land chain for
+
+03:10.760 --> 03:15.200
+our, uh, for our development as well as they support Olama.
+
+03:15.200 --> 03:19.010
+So we can use these capabilities while we do the testing.
+
+03:19.010 --> 03:20.480
+So that is the major power.
+
+03:20.510 --> 03:24.080
+And that's the reason why I want to go with the ragas in this particular course.
+
+03:24.350 --> 03:27.260
+And you can see that they have got some details over here.
+
+03:27.260 --> 03:33.140
+And they also have got a GitHub repo which tells you like how you can use with the ragas itself.
+
+03:33.140 --> 03:35.660
+So the installation process is very straightforward.
+
+03:35.660 --> 03:41.120
+All you have to do is just install this particular ragas using this pip install ragas uh over here and
+
+03:41.120 --> 03:42.830
+then you can start doing the evaluation.
+
+03:42.830 --> 03:46.610
+Just five lines of code will do that evaluation for you.
+
+03:46.640 --> 03:49.640
+We are going to run these kind of things in our uh, discussion.
+
+03:49.670 --> 03:52.070
+I will quickly show you like how you can achieve that.
+
+03:52.190 --> 03:55.130
+Again, they are using what is called as the chat OpenAI.
+
+03:55.160 --> 04:01.400
+But because we have the, uh, LMS, the Lang chain support, we can use different models as well if
+
+04:01.400 --> 04:02.240
+you wanted to.
+
+04:02.480 --> 04:05.900
+Um, yeah, that's about the the ragas library.
+
+04:05.900 --> 04:08.570
+But I have not gone very deep into this particular library yet.
+
+04:08.570 --> 04:14.210
+But you can see that this is the library that we are going to be using for our discussion.

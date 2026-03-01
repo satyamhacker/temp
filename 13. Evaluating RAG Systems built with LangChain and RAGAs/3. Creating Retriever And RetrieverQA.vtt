@@ -1,0 +1,247 @@
+WEBVTT
+
+00:00.050 --> 00:07.820
+So now we're going to see how we can bring up this retrieval QA into our discussion over here to retrieve
+
+00:07.820 --> 00:10.940
+the data, uh, from our vector store.
+
+00:10.940 --> 00:11.930
+So I'm going to do that.
+
+00:11.930 --> 00:15.050
+So I'm going to probably just leave this guy over here.
+
+00:15.050 --> 00:18.920
+And I'm going to add a, uh, markdown over here.
+
+00:18.950 --> 00:23.570
+And I'm going to say uh, retrieval QA.
+
+00:23.570 --> 00:28.730
+And we also need the retriever retriever, uh, this time.
+
+00:28.730 --> 00:32.270
+And I'm going to add the code down below.
+
+00:32.270 --> 00:35.090
+So we need this, um, retriever QA.
+
+00:35.120 --> 00:44.840
+And over here I'm going to say retriever uh is equal to we're going to call our vector stores as retriever.
+
+00:44.840 --> 00:50.570
+And I'm going to pass the search uh quarks, quarks.
+
+00:50.570 --> 00:57.260
+So I'm going to say search quarks is equal to um maybe k is equal to three.
+
+00:57.260 --> 01:00.200
+So totally three records that we're going to retrieve every single time.
+
+01:00.230 --> 01:02.840
+We're just going to retrieve the information out from that.
+
+01:02.900 --> 01:04.580
+Remember, that's the same thing that we were doing before.
+
+01:04.610 --> 01:12.170
+So if I just ask the retriever, um, over here, and if I try to run that, it is going to, uh, probably
+
+01:12.170 --> 01:13.580
+I did not even run this code.
+
+01:14.150 --> 01:15.200
+Let me run this.
+
+01:15.800 --> 01:16.580
+Uh oh.
+
+01:16.580 --> 01:16.820
+Yeah.
+
+01:16.850 --> 01:18.260
+Source the vector stores.
+
+01:18.260 --> 01:22.760
+And now, if I run this, you'll notice that it's going to bring that particular data over here for
+
+01:22.760 --> 01:23.030
+us.
+
+01:23.060 --> 01:23.600
+Right.
+
+01:23.600 --> 01:26.720
+This is what is being stored in the retriever for us, which is great.
+
+01:26.720 --> 01:31.310
+And now we need to bring in our, uh, retrieval QA for that matter.
+
+01:31.310 --> 01:38.930
+So in order for me to bring that up, I'm going to say QA chain is equal to, uh, retrieval QA.
+
+01:39.110 --> 01:41.960
+And I'm going to call our from chain type.
+
+01:42.170 --> 01:47.240
+And over here I'm going to pass the LM and the retriever.
+
+01:47.270 --> 01:50.960
+These are the two things we really require, uh, to be passed for the QA chain.
+
+01:50.960 --> 01:58.250
+And once we have the QA chain, now, we can use this for our, uh, questions to answer if that particular
+
+01:58.250 --> 01:59.870
+answer really matches or not.
+
+01:59.870 --> 02:03.600
+So that is the thing that is going to happen using this particular key chain.
+
+02:03.600 --> 02:08.670
+So you can ask the question from here, and you can get the retrieved document out from this particular
+
+02:08.700 --> 02:09.210
+key chain.
+
+02:09.210 --> 02:16.770
+So so what I really mean is that if I'm going to ask like, um, what playwright does the question which
+
+02:16.800 --> 02:21.030
+is not in the query question section, but I'm just asking one question over here, just a random question.
+
+02:21.030 --> 02:24.330
+And I wanted the vector store to give me that particular answer.
+
+02:24.330 --> 02:28.770
+So I'm going to say, Shane, uh, we have this invoke or maybe run method.
+
+02:28.770 --> 02:33.570
+Whichever method that we're going to call, let's say run, uh, and I'm going to pass the query over
+
+02:33.570 --> 02:34.080
+here.
+
+02:34.080 --> 02:38.400
+And I wanted to, uh, get this particular response.
+
+02:38.400 --> 02:41.820
+And then I need to retrieve the relevant documents out from it.
+
+02:41.820 --> 02:46.650
+So I'm going to say, uh, retrieved uh, docs.
+
+02:46.680 --> 02:49.380
+And no, not this one.
+
+02:49.380 --> 02:57.840
+So I'm going to say retriever dot get, uh, relevant documents.
+
+02:58.770 --> 03:02.490
+And over here I can just pass the query as well.
+
+03:02.490 --> 03:07.570
+And then let's print both the response as well as the retrieved document.
+
+03:07.570 --> 03:11.350
+So I'm going to say response and the retrieved documents.
+
+03:11.350 --> 03:13.810
+And let's try to run this code.
+
+03:15.730 --> 03:17.560
+This is going to throw us an error I know why.
+
+03:17.590 --> 03:19.810
+Because we need to probably add like a parameter here.
+
+03:19.840 --> 03:21.700
+Like LM is equal to LM.
+
+03:21.700 --> 03:30.400
+And um retriever is equal to retriever because the parameter is not matching the position.
+
+03:30.400 --> 03:33.490
+So we probably need to just give uh explicitly.
+
+03:34.180 --> 03:34.870
+There we go.
+
+03:35.050 --> 03:38.260
+Now you can notice that we could able to run this code.
+
+03:38.260 --> 03:42.970
+And you will see that the retrieved document is going to be, uh, coming up for us over here, which
+
+03:42.970 --> 03:44.800
+is these are the documents.
+
+03:44.800 --> 03:46.960
+So this is the response just coming up for us over here.
+
+03:46.990 --> 03:51.910
+Like playwright allows network interception, uh, headless execution and, uh, tracing, debugging,
+
+03:51.910 --> 03:52.990
+complex web application.
+
+03:52.990 --> 03:55.180
+It is a modern automation testing order.
+
+03:55.300 --> 03:58.840
+Modern automation library for end to end testing that supports multiple browser, including Chrome,
+
+03:58.840 --> 03:59.890
+Firefox, and WebKit.
+
+03:59.890 --> 04:06.550
+So you can see that our, uh, our QA chain because it has the access to the large language model,
+
+04:07.420 --> 04:12.430
+it could able to summarize everything based on the question that we have asked, like what playwright
+
+04:12.460 --> 04:13.300
+does?
+
+04:13.480 --> 04:15.700
+It has given us that information over here.
+
+04:15.700 --> 04:21.280
+And you will see that there is this relevant document for this query been retrieved from the vector
+
+04:21.280 --> 04:23.380
+stores is also coming up for us over here.
+
+04:23.410 --> 04:27.490
+See that how it has retrieved the information like player velocity network interception.
+
+04:27.580 --> 04:29.710
+It has also got some selenium stuffs over there.
+
+04:29.710 --> 04:34.780
+And then it is bringing up the playwright is modern automation library for automation testing.
+
+04:34.780 --> 04:38.560
+Because remember the K is three there just this one.
+
+04:38.560 --> 04:40.960
+That's the reason why it could retrieve three.
+
+04:40.960 --> 04:46.900
+Uh talk like first three of the document from the document stores.
+
+04:47.290 --> 04:49.450
+So that is what is really happening over here.
+
+04:49.450 --> 04:57.070
+So now we have all these set up operations there for performing the evaluation using ragas.
+
+04:57.100 --> 05:00.010
+The next step is now we need to prepare the data set.
+
+05:00.010 --> 05:05.110
+And then we need to pass this data set to ragas to do the evaluation, which we'll be doing in our next
+
+05:05.110 --> 05:05.620
+lecture.

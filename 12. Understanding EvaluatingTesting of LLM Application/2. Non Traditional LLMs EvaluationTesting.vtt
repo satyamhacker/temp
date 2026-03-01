@@ -1,0 +1,151 @@
+WEBVTT
+
+00:00.080 --> 00:04.640
+In this lecture we talk about non-traditional evaluation of large language models.
+
+00:04.640 --> 00:10.640
+So beyond traditional metrics like blue or rogue, more advanced evaluation techniques focuses on semantic
+
+00:10.670 --> 00:13.430
+understanding and fluency of the text.
+
+00:13.460 --> 00:18.410
+Three such techniques are embedding similarities perplexity and LM based scoring.
+
+00:18.440 --> 00:20.600
+Like how we saw in our last lecture.
+
+00:20.600 --> 00:23.240
+So what is this embedding similarity is all about?
+
+00:23.240 --> 00:29.180
+Well, embedding similarity measures how semantically close two pieces of text are, rather than just
+
+00:29.180 --> 00:31.100
+comparing exact word.
+
+00:31.130 --> 00:33.800
+This is done by using similarity between two vectors.
+
+00:33.800 --> 00:39.950
+Generated text and reference text is calculated using the cosine similarities Euclidean distance or
+
+00:39.980 --> 00:40.970
+dot product.
+
+00:40.970 --> 00:45.920
+So these are the things that we use to do the vector comparison over there.
+
+00:45.920 --> 00:52.490
+And if you remember, we were also doing this vector similarity using the vector store of similarity
+
+00:52.490 --> 00:56.870
+underscore search with score we try to provide like explain.
+
+00:56.870 --> 00:58.280
+The attention is all you need.
+
+00:58.310 --> 01:03.470
+And we also had one more result which is saying explain attention in transformer.
+
+01:03.470 --> 01:08.550
+So we were having two uh same similar kind of the text over there.
+
+01:08.580 --> 01:10.260
+They talk about the same thing.
+
+01:10.260 --> 01:12.060
+You can see that attention is all you need.
+
+01:12.090 --> 01:13.740
+And attention in transformer.
+
+01:13.860 --> 01:19.350
+While this vector database had got the similar storage of the text in there after embedding.
+
+01:19.350 --> 01:22.350
+So we saw the score were pretty close for both of them.
+
+01:22.350 --> 01:24.060
+So they are not like different at all.
+
+01:24.060 --> 01:25.350
+They're pretty close to that.
+
+01:25.440 --> 01:27.660
+And that was just printed for us over here.
+
+01:27.660 --> 01:33.900
+So this is how we verified like how semantically close two pieces of text are rather than just comparing
+
+01:33.900 --> 01:35.160
+the exact word.
+
+01:35.190 --> 01:38.280
+So this we already saw in our earlier sections of this course before.
+
+01:39.510 --> 01:41.370
+And the next one is the perplexity.
+
+01:41.370 --> 01:46.770
+So perplexity is the measure of how well a language model predicts a given text.
+
+01:46.800 --> 01:50.640
+Lower perplexity means better fluency and coherence.
+
+01:50.640 --> 01:57.690
+So that is another way that you can measure or predict how a given text is going to be performed during
+
+01:57.690 --> 01:59.010
+the given point of time.
+
+01:59.010 --> 02:01.560
+And finally, the LM based scoring.
+
+02:01.560 --> 02:06.600
+This is quite interesting because we are going to be doing this LM based scoring in this particular
+
+02:06.600 --> 02:11.040
+course most of the time, because that is amazing, because you will see that instead of relying on
+
+02:11.040 --> 02:15.960
+traditional metrics, LMS themselves can be used to evaluate generated text.
+
+02:15.990 --> 02:22.470
+This can be done using prompt based evaluation, where another LM is prompted to rate the generated
+
+02:22.470 --> 02:27.960
+response based on criteria like relevance, coherence, factuality, or and grammatically.
+
+02:27.960 --> 02:30.960
+And then it also does the ranking based evaluation.
+
+02:30.990 --> 02:33.810
+The LM compares multiple outputs and rank them.
+
+02:33.810 --> 02:36.240
+And finally self-consistency.
+
+02:36.270 --> 02:40.740
+The LM generates multiple responses and evaluates them for consistency.
+
+02:40.740 --> 02:48.840
+So you will notice that in here, for the very first time, we are going to be using another LMS, which
+
+02:48.840 --> 02:55.680
+is going to act as a teacher LMS, which is going to act as a teacher, LMS, which is going to really,
+
+02:55.680 --> 02:58.140
+really stand aside.
+
+02:58.140 --> 03:06.420
+And then it is going to be it is going to be helping you to test how you can actually verify the prompt
+
+03:06.420 --> 03:10.050
+based evaluation or ranking based evaluation and self-consistency.
+
+03:10.050 --> 03:13.980
+So there are going to be two LMS to perform an action in here.
+
+03:13.980 --> 03:21.330
+And this is the one way of you to verify the LM based scoring to see if they are as expected.

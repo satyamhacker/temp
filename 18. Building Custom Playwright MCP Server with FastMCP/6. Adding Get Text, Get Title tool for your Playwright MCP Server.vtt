@@ -1,0 +1,127 @@
+WEBVTT
+
+00:00.200 --> 00:01.360
+All right.
+
+00:01.360 --> 00:05.000
+So we have got around four tools already.
+
+00:05.440 --> 00:12.320
+Uh, and the next few tools that I'm going to be adding is basically going to be, uh, let's say get
+
+00:12.320 --> 00:14.280
+the text out from a page.
+
+00:14.520 --> 00:17.800
+Uh, and then we also need to add some more features.
+
+00:17.840 --> 00:23.800
+I'm not actually not write the code this time because we have already seen how we can do that.
+
+00:23.840 --> 00:26.760
+I'm just going to copy paste the code and I will show you how it's going to be done.
+
+00:26.800 --> 00:30.520
+See this is basically going to get the visible text content from the current page.
+
+00:30.520 --> 00:34.160
+So it's going to be, uh, getting the body's inner text.
+
+00:34.160 --> 00:39.840
+And if the length of the text is more than 2000, then you just keep truncating it, because the more
+
+00:39.840 --> 00:45.400
+and more text you have, uh, if you give the context to the cloud desktop, it's going to throw you
+
+00:45.520 --> 00:48.960
+saying that the window or the context size is exceeded.
+
+00:48.960 --> 00:56.800
+So make sure that the the text that you return from this particular body is not beyond 2000.
+
+00:56.920 --> 01:00.520
+Uh, that's what it's doing in my actual implementation of the MCP server.
+
+01:00.520 --> 01:04.480
+I used to do some more formatting of the body before I even do this.
+
+01:04.480 --> 01:10.120
+Uh, but in here, because this is a simple, uh, coding, I just don't want it to, uh, write all
+
+01:10.120 --> 01:11.080
+those implementations.
+
+01:11.080 --> 01:12.560
+I have done that over here.
+
+01:12.600 --> 01:13.840
+Very, very straightforward.
+
+01:13.880 --> 01:14.360
+Right.
+
+01:14.640 --> 01:16.200
+That's one thing over here.
+
+01:16.560 --> 01:17.160
+Uh, cool.
+
+01:17.160 --> 01:19.960
+And then we can add some more fancy tools.
+
+01:20.000 --> 01:23.760
+Uh, over here, uh, something like get the page title.
+
+01:23.760 --> 01:27.000
+Or you can also get the current URL, something like that.
+
+01:27.040 --> 01:31.600
+I mean, these things are just, uh, to get you some more tools going, but you can keep on adding
+
+01:31.600 --> 01:33.920
+even more and more tools for that matter.
+
+01:34.080 --> 01:40.280
+Uh, because if you know the, the, the methods that the playwright has got, it has got a lot of methods.
+
+01:40.320 --> 01:46.080
+If you just do page dot and you see that how many, uh, tools that you can actually write like, uh,
+
+01:46.080 --> 01:53.800
+check for the checkbox, select for the dropdown, uh, and uh fill for the text box that we just did.
+
+01:53.840 --> 01:59.720
+And then if you want to get the text in a text or whatever that you want to do, you can keep on adding
+
+01:59.720 --> 02:00.920
+these as a tool.
+
+02:00.960 --> 02:05.720
+But don't write too much of a tool, because sometimes playwright does most of them, uh, the power
+
+02:05.720 --> 02:08.080
+of the JavaScript that it can execute as well.
+
+02:08.080 --> 02:12.200
+So I think that should limit so you don't keep on adding more and more tools.
+
+02:12.520 --> 02:15.440
+So now we have enough tools to perform the operation.
+
+02:15.600 --> 02:18.000
+Uh, I'm not going to use this base64.
+
+02:18.040 --> 02:21.600
+This is especially used for uh, the screenshots and stuff.
+
+02:21.600 --> 02:24.080
+But I don't want to add that particular code over here.
+
+02:24.200 --> 02:30.480
+But in our next lecture I'll actually show you how much difference the same code is going to make with
+
+02:30.480 --> 02:31.800
+a JavaScript code.
+
+02:31.960 --> 02:36.800
+You will just get mind blown and like how much boilerplate code that you have to write there.
