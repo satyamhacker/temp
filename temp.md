@@ -1369,7 +1369,12 @@ Theory class khatam! Ab hum lab mein jayenge. Abhi tak humne architecture aur di
 
 ========================================================================================
 
-### Section 2: Running Local Large Language Model (LLM) in local Machine with Ollama
+### Section 2: Not of use 
+
+========================================================================================
+
+
+### Section 3: Running Local Large Language Model (LLM) in local Machine with Ollama
 
 ### 🎯 1. Purpose of Ollama
 
