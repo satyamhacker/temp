@@ -4228,14 +4228,7 @@ Industry me is pattern ko "Decoupled Architecture" (Microservices) kehte hain. O
 
 ### Section 4: Understanding and working LangChain Basics
 
-**Strict Double Recheck Performed:**
 
-1. **Skeleton Mapping:** Checked subtopics `[Virtual Environment Setup]` and `[Jupyter Notebook Configuration]`. Every detail (VS Code shortcuts, folder names `section_1`, `langchain_basics`, kernel selection) is perfectly mapped.
-2. **Explanation Check:** Terms like `venv`, `source`, `Kernel`, and `Jupyter` are deeply explained.
-3. **Real-World Check:** Dependency management and kernel-selection issues are the most common beginner blockers, addressed thoroughly.
-4. **Output Control:** Processing only the first **two** subtopics to guarantee maximum depth and zero truncation.
-
-Here are your highly detailed Notes Guru master-notes for the first part:
 
 ---
 
@@ -4736,15 +4729,7 @@ api_key = os.getenv("OPENAI_API_KEY")
 
 ---
 
-**Strict Double Recheck Performed:**
 
-1. **Skeleton Mapping:** Checked `[Importing and Initializing ChatOllama]` and `[Invoking the LLM]`. Every detail (markdown header, `from langchain_ollama import ChatOllama`, parameters: `base_url`, `model` as `llama3.2:latest`, `temperature` `0.5`, `max_tokens` `250`, `ollama list` command, `invoke` method, prompt string) is perfectly integrated.
-2. **Explanation Check:** Terms like `temperature`, `max_tokens`, `base_url`, and `invoke` are deeply explained.
-3. **Pacing:** Processing exactly the first **two** subtopics to maintain absolute depth and clarity.
-
-Here are your Notes Guru master-notes for the first half of Video 2:
-
----
 
 ### 🎯 1. [Importing and Initializing ChatOllama]
 
@@ -5201,13 +5186,7 @@ Ye variation (shift in metrics) aata kyun hai?
 
 ---
 
-**Strict Double Recheck Performed:**
 
-1. **Skeleton Mapping:** Checked `[Creating a LangSmith Project]` and `[Setting up the .env File]`. Every detail ("setup tracing" click, works with/without LangChain, no extra dependencies, generating API key, project name `execute automation langchain training`, pasting config into `.env`, leaving `OPENAI_API_KEY` blank) is strictly integrated.
-2. **Explanation Check:** Terms like "telemetric information", "tracing", and environment variables specific to LangSmith are deeply explained in Hinglish.
-3. **Pacing:** Processing exactly the first **two** subtopics to maintain absolute depth and clarity.
-
-Here is the Notes Guru master-class for configuring Observability:
 
 ---
 
@@ -5614,16 +5593,6 @@ Code re-run karne par yeh event sequence hota hai:
 
 ---
 
-**Boom! 🚀 Video 3 ka skeleton bhi flawlessly decode aur document ho chuka hai. The environment is setup, the LLM is connected, and Observability is live!** **Ready for the next set of skeletons whenever you are!**
-
-**Strict Double Recheck Performed:**
-
-1. **Skeleton Mapping:** Checked `[Introduction to Prompt Templates]` and `[Creating a Basic Prompt Template]`. Every detail (recap of user -> LangChain -> ChatOllama -> LLM -> LangSmith flow, importing `PromptTemplate`, making inputs structured/streamlined, `PromptTemplate.from_template()`, the exact string `"What is the advantage of running the LLM in a {env} machine?"`, `{env}` as a variable, automatic recognition of expected inputs, and reusing for "cloud" or "local") is perfectly integrated.
-2. **Explanation Check:** Terms like `PromptTemplate` and "input variable" are deeply explained in Hinglish.
-3. **Pacing:** Processing exactly the first **two** subtopics to maintain absolute depth and clarity.
-
-Here are your Notes Guru master-notes for the first part of Video 4:
-
 ---
 
 ### 🎯 1. [Introduction to Prompt Templates]
@@ -6021,13 +5990,6 @@ print(answer_text)
 
 > **--- 🛑 PART 2 FINISHED. Type 'CONTINUE' for the final subtopics of Video 4: `[Setting System Roles with ChatPromptTemplate]` and `[Shorthand ChatPromptTemplate Syntax]`, along with the global checklist. ---**
 
-**Strict Double Recheck Performed:**
-
-1. **Skeleton Mapping:** Checked `[Setting System Roles with ChatPromptTemplate]` and `[Shorthand ChatPromptTemplate Syntax]`. Every detail is mapped: the ChatGPT analogy ("financial expert in NZ economy"), `ChatPromptTemplate`, the verbose method (`SystemMessagePromptTemplate` and `HumanMessagePromptTemplate` with exact strings), and the pivot to the shorthand array of tuples `[("system", "You are an LLM expert"), ("user", "What is the advantage of running AI models in {env}")]`. Also included the LangSmith GUI visualization showing the explicit separation of "System" and "Human" categories.
-2. **Explanation Check:** The transition from standard string templates to Chat-based message arrays is broken down step-by-step.
-3. **Completion:** This covers the final subtopics of Video 4. The Global Topic Checklist is appended at the end.
-
-Here is the final deep dive for this module!
 
 ---
 
@@ -6265,15 +6227,6 @@ print(response.content)
 
 ---
 
-**Mission Accomplished! 🚀 Humne Prompt Templates, LCEL architecture, aur Chat Roles ko perfectly document kar liya hai. Agar agla section (Chains ya Agents) aapke paas hai, toh paste karein, main taiyaar hoon!**
-
-**Strict Double Recheck Performed:**
-
-1. **Skeleton Mapping:** Checked `[Using Message Placeholders]` and `[Importing and Passing HumanMessage]`. The shift from swapping a single string variable (like `{env}`) to dynamically passing an entire message from outside the template using `MessagesPlaceholder` is perfectly mapped. The exact shorthand `("placeholder", "{message}")`, importing `HumanMessage`, and passing the dictionary `{"message": [HumanMessage(content="...")]}` to prevent reliance on hardcoded values are strictly integrated.
-2. **Explanation Check:** The fundamental difference between a string placeholder and an object/list placeholder (`MessagesPlaceholder`) is deeply explained.
-3. **Pacing:** Processing exactly the first **two** subtopics to maintain our standard of absolute depth.
-
-Here are your Notes Guru master-notes for the first part of Video 5!
 
 ---
 
@@ -6470,13 +6423,6 @@ print(response.content)
 
 > **--- 🛑 PART 1 FINISHED. Type 'CONTINUE' for the final subtopics of Video 5: `[Streaming Output Chunk by Chunk]` and `[Implementing the Stream Loop]`, along with the global checklist. ---**
 
-**Strict Double Recheck Performed:**
-
-1. **Skeleton Mapping:** Checked `[Streaming Output Chunk by Chunk]` and `[Implementing the Stream Loop]`. Every detail is perfectly mapped: the observation that `invoke` forces a long wait for the entire response, replacing `invoke` with `stream` to get output directly as it generates, noting that `stream` returns iterable chunks, writing the exact loop `for chunk in stream: print(chunk.content)`, and observing the sequential real-time printing that mimics the ChatGPT typing effect.
-2. **Explanation Check:** Concepts like "blocking vs non-blocking", "iterable chunks", and the "typing effect" are broken down simply in Hinglish and technical English.
-3. **Completion:** This covers the final subtopics for Video 5. The Global Topic Checklist is appended at the end.
-
-Here is the final deep dive for this module!
 
 ---
 
@@ -6698,7 +6644,7 @@ Jo ki typing effect ko kharab kar dega.
 
 ---
 
-**Boom! 🚀 Tumhara skeleton v2.3 ke hisaab se completely aur flawlessly notes mein convert ho chuka hai. The environment is set, LangSmith is logging, templates are structured, and the ChatGPT-like stream is actively typing! Let me know if you need more magic. Notes Guru, signing off!**
+
 
 ========================================================================================
 
