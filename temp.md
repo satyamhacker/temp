@@ -617,9 +617,6 @@ Apple uses Unified Memory, meaning the GPU can access all the system RAM (e.g., 
 * [x] Local LLMs and Olama
 * [x] Course Prerequisites
 
-> ✅ **Verified by Notes Guru. 100% Coverage of this topic achieved.** **All topics from the skeleton have been successfully and exhaustively documented.** Agar aapke paas agla module ya naya skeleton hai, toh paste karein, hum uski bhi surgery karenge! 🚀
-
-Here are the detailed, production-ready notes for **Video 2: Why LangChain?**. I have strictly applied the 14-step "Notes Guru" template, ensuring every single detail from your skeleton is captured, expanded, and made easy to understand with Hinglish analogies and code breakdowns.
 
 ---
 
@@ -1001,13 +998,6 @@ for chunk in llm.stream("Tell me a 5 word joke."):
 * [x] Advanced Programming Support
 * [x] Interface Execution Methods
 
-> ✅ **Verified by Notes Guru. STRICT DOUBLE RECHECK PERFORMED. 100% Coverage of this video's skeleton achieved.** Saare models (Phi, DeepSeek, Qwen), interfaces, aur methods cover ho gaye hain. 🚀 Send the next skeleton when you are ready!
-
-Here are the detailed, production-ready notes for the first three subtopics of **Video 3: LangChain's Ecosystem**.
-
-As your **Notes Guru**, I have strictly applied the 14-step template, ensuring zero hallucination and 100% coverage of your skeleton. I am doing a **STRICT DOUBLE RECHECK** in the background to ensure every phrase from your provided text is woven into the architecture.
-
-Since we prioritize **Depth > Brevity**, I will cover the first 3 subtopics here and pause gracefully.
 
 ---
 
@@ -1365,7 +1355,6 @@ Theory class khatam! Ab hum lab mein jayenge. Abhi tak humne architecture aur di
 * [x] Tracing Details inside LangSmith
 * [x] Next Steps
 
-> ✅ **Verified by Notes Guru. STRICT DOUBLE RECHECK PERFORMED. 100% Coverage of this video's skeleton achieved.** The exact phrases from your skeleton (like "execute automation learning", "runnable with message history", etc.) have been seamlessly integrated. Let me know when you are ready with the next skeleton! 🚀
 
 ========================================================================================
 
