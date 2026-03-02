@@ -9,17 +9,23 @@
 * **[Required Imports]:** The speaker imports several specific modules: `BaseChatMessageHistory` from `langchain_core.chat_history`, `RunnableWithMessageHistory` from `langchain_core.runnables.history`, and `ChatMessageHistory` from `langchain_community.chat_message_histories`.
 * **[Installing LangChain Community]:** The speaker notes that `langchain_community` might not be present initially. To fix this, the user must run `pip install langchain_community` for the very first time, emphasizing that "without that it is not going to work."
 
-### Video---2 --- Topic--- Implementando Runnable com História de Mensagem
 
-* **[Runnable com História de Mensagem]:** A primeira coisa usada na seção é o `RunnableWithMessageHistory`. Ele é descrito como um runnable que "gerencia a história de mensagem de conversa para outros Runnables", sendo responsável por ler e atualizar essa sequência de mensagens que representa a conversa.
-* **[Invocando a História e Configuração]:** Para invocar as mensagens, é necessário usar o objeto `História.Invoke`. Além disso, é obrigatório passar um `config` que é "igual ao configurável do ID da sessão do particular usuário".
-* **[Três Sabores de História de Conversa]:** O palestrante explica que a operação pode ser feita de três formas (sabores) diferentes: história de mensagem de conversa da edição de comunidade (memória base), história de mensagem de SQL, e história de mensagem de stream que é guardada na memória.
-* **[Criando o Template e o Método from_messages]:** O código começa criando um template chamado `template de conversa`. O palestrante usa "pela primeira vez, o método de mensagem de From" (`from_messages`), passando um array com uma `mensagem humana` (`human`) que recebe `From` como variável de entrada.
-* **[O Placeholder de Mensagem]:** Dentro do array do template, é passado um `placeholder`. Ele é definido como um "shorthand" (atalho) que pode ser usado para a operação do placeholder de mensagem.
-* **[Criando a Linha (Chain)]:** O palestrante cria uma linha ("chain") simples onde o template criado é passado para o "modelo de língua maior" e depois para o "parser de saída de linha", especificado como `stringOutputParser`.
-* **[O Método Customizado getSessionHistory]:** Para gerenciar a operação histórica, um método super simples é criado. Ele recebe um `id de sessão` (tipo string) e retorna um `BaseChatMessageHistory`. Se o ID de sessão não está na loja (store), ele "cria o id de sessão com uma nova história de mensagem de chat". Se já existe uma mensagem, ele retorna "a loja do id de sessão".
-* **[Variáveis de Input e História]:** Ao configurar o runnable da história, o palestrante passa duas variáveis: a `chave de mensagens de input` (que é o prompt) e o método de localizador que recebe a `chave de mensagens de história`.
-* **[Executando a Invocação]:** A etapa final desta parte é invocar a história usando `história.invoc`, passando o `config` com a ID de sessão, garantindo que "o LLM terá o contexto de quem está falando com o LLM em qualquer ponto de tempo."
+
+## ### Video---2 --- Topic--- Implementing Runnable with Message History
+
+* **[Runnable with Message History]:** The first thing used in this section is `RunnableWithMessageHistory`. It is described as a runnable that "manages the conversation message history for other Runnables," being responsible for reading and updating the sequence of messages that represents the conversation.
+* **[Invoking History and Configuration]:** To invoke the messages, it is necessary to use the `History.Invoke` object. Additionally, it is mandatory to pass a `config` that is "equal to the configurable session ID of the particular user."
+* **[Three Flavors of Conversation History]:** The speaker explains that the operation can be done in three different ways (flavors): community edition conversation message history (base memory), SQL message history, and stream message history that is stored in memory.
+* **[Creating the Template and the from_messages Method]:** The code begins by creating a template called `conversation template`. The speaker uses "for the first time, the message method From" (`from_messages`), passing an array with a `human message` (`human`) that receives `From` as an input variable.
+* **[The Message Placeholder]:** Inside the template array, a `placeholder` is passed. It is defined as a "shorthand" that can be used for the message placeholder operation.
+* **[Creating the Chain]:** The speaker creates a simple "chain" where the created template is passed to the "large language model" and then to the "chain output parser," specified as `stringOutputParser`.
+* **[The Custom getSessionHistory Method]:** To manage the history operation, a very simple method is created. It receives a `session id` (string type) and returns a `BaseChatMessageHistory`. If the session ID is not in the store, it "creates the session id with a new chat message history." If a message already exists, it returns "the store of the session id."
+* **[Input and History Variables]:** When configuring the history runnable, the speaker passes two variables: the `input messages key` (which is the prompt) and the locator method that receives the `history messages key`.
+* **[Executing the Invocation]:** The final step of this part is to invoke the history using `history.invoke`, passing the `config` with the session ID, ensuring that "the LLM will have the context of who is talking to the LLM at any point in time."
+
+---
+
+
 
 ### Video---3 --- Topic--- Invoking History and Managing Session IDs
 
