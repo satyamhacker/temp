@@ -28620,3 +28620,8 @@ Industry mein "Local + Fast" achieve karne ke liye models ko quantize kiya jata 
 * [x] Extracting Table Data as JSON
 * [x] Calculating Average Salary
 * [x] Local LLM Performance Caveat
+
+
+========================================================================================
+
+### Section 11: Building AI Agent with RAG and Tooling support (Project)
