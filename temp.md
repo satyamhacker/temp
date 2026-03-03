@@ -40120,3 +40120,7 @@ Architecture ye decide karti hai ki data point A se B tak bina toote pahunche (S
 ---
 
 ========================================================================================
+
+
+### Section 15: Evaluating RAG Application with DeepEval
+
