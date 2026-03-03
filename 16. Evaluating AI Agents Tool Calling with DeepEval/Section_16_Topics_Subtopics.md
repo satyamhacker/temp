@@ -1,12 +1,3 @@
-### Video---1 --- Topic--- Introduction to Testing Tool Callings
-
-* **[What is Tool Calling Testing?]:** The speaker introduces testing AI agent tool callings, explaining that the large language model acts as the decision engine to invoke specific tools (like a Wikipedia tool, custom math tools, or a Playwright tool). Testing is required to ensure that the AI agent invokes the exact, correct tool based on a given input parameter, especially in organizations with thousands of tools.
-* **[DeepEval's Tool Correctness Metric]:** To measure this, the course uses DeepEval's tool correctness evaluation metric. This generic LLM metric assesses an agent's function and tool-calling ability by comparing whether every tool expected to be used was actually intended and called.
-* **[Required Arguments for the Metric]:** The tool correctness metric requires specific arguments: input, actual output, tool called, and expected tool.
-* **[Differences from Confident AI Portal]:** The speaker notes a major difference with this metric: it currently cannot be used with the Confident AI portal. Unlike contextual relevance metrics, it does not support an evaluate method (e.g., deep_eval.evaluate) to evaluate in bulk and generate graphs on the cloud dashboard. It is a straightforward, local verification.
-* **[How Tool Correctness is Calculated]:** The metric calculates the average score by taking the number of correctly used tools (derived from input and output parameters) and dividing it by the total number of tools being called.
-* **[The ToolCall Class]:** For the "tool called" parameter, the user must invoke a specific class named ToolCall. This requires passing the name of the tool, and can optionally include the input parameter and output parameter to make the test highly realistic.
-
 ### Video---2 --- Topic--- Setting Up the Code and Custom Tools
 
 * **[Reusing Previous Code Structure]:** The speaker moves to Visual Studio Code, noting this section extends the previous lesson on RAG testing with DeepEval. The deep evaluation code structure remains largely the same, but the Confident AI API key is not required since the portal evaluation method is not supported for this metric.

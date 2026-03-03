@@ -42944,3 +42944,585 @@ Speaker explicitly stated: DeepEval ka visual overview aur trend tracking dashbo
 
 ### Section 16: Evaluating AI Agents Tool Calling with DeepEval
 
+### 🎯 1. [What is Tool Calling Testing?]
+
+#### 🐣 2. Simple Analogy (Hinglish)
+
+Socho ek badi company mein ek Manager (LLM) hai aur uske neeche hazaron specialists (Tools) kaam karte hain—jaise ek accountant (Math tool), ek researcher (Wikipedia tool), aur ek tester (Playwright tool). Ab agar tum Manager ko bolo "Company ka tax calculate karo", toh use exactly accountant ko hi bulana chahiye, researcher ko nahi. **Tool Calling Testing** yahi check karta hai ki Manager sahi situation mein sahi specialist ko bula raha hai ya nahi.
+
+#### 📖 3. Technical Definition
+
+* **Precise English:** Tool Calling Testing is the process of verifying that an AI agent (acting as a decision engine) invokes the exact, correct tool or function based on a specific input parameter, especially crucial when routing across a massive registry of available tools.
+* **Hinglish Simplification:** AI agent apne input ke hisaab se exactly wahi tool call kare jo required hai, is cheez ki verification ko Tool Calling Testing kehte hain.
+
+#### 🧠 4. Why This Matters
+
+* **Problem:** Agar agent galat tool call kar le (e.g., database delete karne wala tool instead of read karne wala), toh system crash ya data loss ho sakta hai. Organizations mein hazaron tools hote hain, routing fail hona aam baat hai.
+* **Solution:** Strict testing ensure karti hai ki LLM ka decision engine accurate aur reliable hai.
+* **What breaks if we don't use it?** Production mein AI agent unpredictable behave karega. User kuch poochega aur agent background mein galat API hit karke baith jayega.
+
+#### ⚙️ 5. Under the Hood (Deep Dive)
+
+1. **(1) User Input:** User ek prompt deta hai (e.g., "Find the latest news on Playwright").
+2. **(2) LLM Decision Engine:** Agent prompt aur available tools (Wikipedia, Search, Math) ke descriptions ko analyze karta hai.
+3. **(3) Tool Selection & Invocation:** Agent sahi tool select karta hai aur usme zaroori parameters pass karke use invoke karta hai. Testing framework is poore state change ko capture karke validate karta hai.
+
+#### 💻 6. Hands-On — Runnable Example
+
+*Note: Since this is a conceptual framework discussion, here is a mock structural representation of how a test might look in Python.*
+
+```python
+def test_agent_tool_selection():
+    user_input = "Calculate 25 * 4"
+    agent = Agent(tools=["wikipedia", "calculator", "playwright"])
+    
+    response = agent.run(user_input)
+    
+    assert response.tool_invoked == "calculator"
+    print("Test Passed: Sahi tool call hua!")
+
+```
+
+##### 🔬 Code Explanation Rule (LINE-BY-LINE)
+
+* **Line 1:** `def test_agent_tool_selection():` — Test function define kiya.
+* **Line 2:** `user_input = "Calculate 25 * 4"` — User ka prompt set kiya. **Why:** Agent ko trigger karne ke liye input chahiye. (Hata diya toh agent kiske basis pe decision lega?)
+* **Line 3:** `agent = Agent(tools=["wikipedia", "calculator", "playwright"])` — Agent initialize kiya with available tools. **Why:** Agent ko pata hona chahiye uske paas options kya hain.
+* **Line 5:** `response = agent.run(user_input)` — Agent ko execute kiya.
+* **Line 7:** `assert response.tool_invoked == "calculator"` — Verify kiya ki math problem ke liye `calculator` hi call hua hai. **Why:** Yehi core testing step hai. Agar ye na ho, toh evaluation incomplete hai.
+* **Line 8:** `print("...")` — Success message print kiya.
+
+#### 🖥️ COMMAND CLARITY RULE
+
+*(No CLI commands in this specific concept, so skipping Hands-On Command section gracefully. Framework execution commands might come later.)*
+
+#### 🔒 7. Security-First Check
+
+* **How can this be hacked?** Prompt Injection ke through attacker agent ko force kar sakta hai ki wo unauthorized tool (jaise `delete_user_data` ya `execute_shell`) call kare.
+* **How to secure it?** Tools par strictly Least Privilege Principle apply karo. Agent ko sirf wahi tools do jo us session/user ke liye authorized hain.
+
+#### 🏗️ 8. Scalability & Industry Context
+
+* Jab system scale hota hai aur organizations mein "thousands of tools" hote hain, toh agent ko saare tools prompt mein pass karna impossible ho jata hai (token limit). Wahan vector databases use hote hain (Semantic Router) tools ko filter karne ke liye. Testing ko ye massive routing scale bhi sambhalna padta hai.
+
+#### ⚠️ 9. Industry Anti-Patterns (Real Incidents)
+
+* **❌ Mistake:** Testing ke time tools ke descriptions clear na rakhna.
+* **🤦 Why:** Log sochte hain LLM naam se samajh jayega. Jaise `tool1` aur `tool2` naam rakh dena.
+* **✅ The 'Pro' Way:** Tools ke descriptions highly detailed rakhein, e.g., "Use this tool ONLY when mathematical calculations are required." aur usi behavior ko test karein.
+
+#### 🛠️ 10. Troubleshooting Flowchart (Mental Model)
+
+1. `Agent calls wrong tool` -> `Check tool descriptions (Prompt Engineering)`
+2. `Agent calls no tool (hallucinates text)` -> `Check if temperature is too high or tool schema is too complex`
+
+#### ⚖️ 11. Comparison (Ye vs Woh)
+
+* **Tool Calling Testing vs Standard Output Testing:** Standard testing sirf final text output check karti hai ki user ko answer mila ya nahi. Tool calling testing background process verify karti hai ki answer laane ke liye rasta (tool) sahi chuna ya nahi.
+
+#### ❓ 12. Interview Q&A (Rapid Fire)
+
+1. **Q:** What is the primary role of the LLM in Tool Calling?
+**A:** It acts as the "decision engine" that parses the input parameter and determines which specific tool to invoke from the registry.
+2. **Q:** Why is testing tool calls critical in large enterprises?
+**A:** Organizations have thousands of tools. Incorrect tool invocation can lead to severe security flaws, operational failures, or wasted API costs.
+3. **Q:** Can an agent call multiple tools for a single input?
+**A:** Yes, modern agents support parallel tool calling or chained tool calling to resolve complex queries. Testing must validate the entire sequence.
+4. **Q:** How does prompt design affect tool calling?
+**A:** The agent relies heavily on the tool's description schema in the system prompt. Vague descriptions lead to poor routing decisions.
+5. **Q:** What happens if an agent hallucinates a tool name that doesn't exist?
+**A:** The execution framework will throw an error (e.g., `ToolNotFoundException`). Testing helps identify and mitigate these hallucinations by validating output schemas.
+
+#### 📝 13. One-Line Memory Hook
+
+"Sahi kaam ke liye sahi hathiyar (tool) chunna hi Tool Calling Testing hai."
+
+---
+
+### 🎯 2. [DeepEval's Tool Correctness Metric]
+
+#### 🐣 2. Simple Analogy (Hinglish)
+
+Maan lo tumne ek mistri (mechanic) ko gaadi theek karne bulaya. Kaam khatam hone ke baad tumhara ek "Quality Inspector" aata hai ye check karne ki mistri ne gaadi kholne ke liye paana (wrench) use kiya ya hathoda (hammer). **DeepEval ka Tool Correctness Metric** wahi inspector hai, jo check karta hai ki expected tools use hue ya nahi.
+
+#### 📖 3. Technical Definition
+
+* **Precise English:** DeepEval's Tool Correctness Metric is a generic LLM evaluation metric designed to assess an agent's function-calling ability by comparing the exact tools the agent actually invoked against the expected tools it was intended to use.
+* **Hinglish Simplification:** Ye ek aisa scale/metric hai jo compare karta hai ki agent ne jo tools use kiye, kya usse exactly wahi tools use karne the ya usne koi galti ki.
+
+#### 🧠 4. Why This Matters
+
+* **Problem:** Manual testing se agent ki efficiency check karna slow aur error-prone hai. Humhe ek automated grading system chahiye.
+* **Solution:** DeepEval ek standardized, automated metric deta hai jisse measure karna aasaan ho jata hai.
+* **What breaks if we don't use it?** Hum kabhi quantifiably (numbers mein) nahi bata payenge ki humara agent 90% accurate hai ya 50%. CI/CD pipelines mein AI agents ka deployment ruk jayega.
+
+#### ⚙️ 5. Under the Hood (Deep Dive)
+
+1. **(1) Execution:** Agent apna run complete karta hai aur `actual_tools_called` ki ek list generate karta hai.
+2. **(2) Comparison Engine:** Metric ye list uthata hai aur user ke dwara defined `expected_tools` list ke saath map karta hai.
+3. **(3) Scoring:** Metric dekhta hai ki intended tool call hua ya nahi aur final correctness score (0 to 1) return karta hai.
+
+#### 💻 6. Hands-On — Runnable Example
+
+*Note: Conceptual snippet based on DeepEval's API logic as mentioned in the skeleton.*
+
+```python
+from deepeval.metrics import ToolCorrectnessMetric
+from deepeval.test_case import LLMTestCase
+
+# Initialize the metric
+metric = ToolCorrectnessMetric()
+
+# ... Test case execution happens here ...
+# Metric evaluates the test case
+# metric.measure(test_case)
+
+```
+
+##### 🔬 Code Explanation Rule (LINE-BY-LINE)
+
+* **Line 1:** `from deepeval.metrics import ToolCorrectnessMetric` — DeepEval library se specific metric import kiya. **Why:** Iske bina framework ko pata nahi chalega ki konsa mathematical formula/logic lagana hai evaluate karne ke liye.
+* **Line 2:** `from deepeval.test_case import LLMTestCase` — Test case object import kiya.
+* **Line 5:** `metric = ToolCorrectnessMetric()` — Metric ka instance banaya. **What if removed:** Tum test case ko evaluate karne ke liye score calculate nahi kar paoge.
+
+#### 🖥️ COMMAND CLARITY RULE
+
+*(No CLI commands here, skipping gracefully).*
+
+#### 🔒 7. Security-First Check
+
+Evaluation frameoworks third-party LLMs (jaise OpenAI/GPT-4 as an evaluator) use karte hain metric calculate karne ke liye. Ensure karo ki `expected_tools` ya inputs mein koi highly sensitive PII data na ho jo cloud evaluator ke paas chala jaye.
+
+#### 🏗️ 8. Scalability & Industry Context
+
+Ye metric "generic" hai, yani ye kisi bhi LLM provider (OpenAI, Anthropic, Gemini) ke agents par lagaya ja sakta hai. Large scale test suites (1000+ tests) mein ye parallel run hokar poore system ka health dashboard bana sakta hai.
+
+#### ⚠️ 9. Industry Anti-Patterns (Real Incidents)
+
+* **❌ Mistake:** Sirf "Contextual Relevance" (output kaisa hai) par focus karna aur "Tool Correctness" ko ignore kar dena.
+* **🤦 Why:** Log sochte hain agar answer sahi aa gaya toh background process matter nahi karti.
+* **✅ The 'Pro' Way:** Answer aur Tool dono verify karo. Ho sakta hai agent ne answer hallucinate kiya ho bina tool hit kiye!
+
+#### 🛠️ 10. Troubleshooting Flowchart (Mental Model)
+
+1. `Score 0.0 aa raha hai` -> `Check ki Expected Tool ka exact string name Actual Tool ke name se match kar raha hai ya nahi (Case sensitivity).`
+2. `Metric crash ho raha hai` -> `Check if DeepEval library is up to date.`
+
+#### ⚖️ 11. Comparison (Ye vs Woh)
+
+* **Tool Correctness vs Contextual Relevance:** Context relevance dekhta hai ki final answer context se match karta hai ya nahi. Tool correctness STRICTLY backend APIs/functions ke invocation ko judge karta hai.
+
+#### ❓ 12. Interview Q&A (Rapid Fire)
+
+1. **Q:** What exactly does the Tool Correctness metric evaluate?
+**A:** It evaluates the agent's function-calling capability by strictly comparing the tools intended (expected) to be called against the ones actually called during execution.
+2. **Q:** Is DeepEval's Tool Correctness specific to OpenAI?
+**A:** No, it is a generic LLM metric. It can evaluate any decision engine that supports tool calling, regardless of the underlying LLM.
+3. **Q:** How can you improve a poor Tool Correctness score?
+**A:** By refining the tool descriptions in the system prompt, enforcing stricter JSON schemas, and lowering the LLM's temperature for deterministic routing.
+4. **Q:** Can an agent get the right answer but fail the Tool Correctness test?
+**A:** Yes. If the agent answers from its pre-trained memory instead of explicitly invoking the expected tool (e.g., Wikipedia), it fails the correctness metric.
+5. **Q:** Why use a framework like DeepEval instead of custom Python asserts?
+**A:** Frameworks handle edge cases, complex parameter matching, asynchronous evaluation, and provide standardized scoring algorithms that are trusted across the industry.
+
+#### 📝 13. One-Line Memory Hook
+
+"DeepEval ka Tool Correctness metric = AI Agent ka Report Card jo batata hai ki usne sahi tool uthaya ya nahi."
+
+---
+
+### 🎯 3. [Required Arguments for the Metric]
+
+#### 🐣 2. Simple Analogy (Hinglish)
+
+Ek Judge ko faisla sunane ke liye chaar cheezein chahiye:
+
+1. Mudda kya tha? (**Input**)
+2. Result kya nikla? (**Actual Output**)
+3. Mujrim ne kya hathiyar use kiya? (**Tool Called**)
+4. Asal mein kya use karna chahiye tha? (**Expected Tool**)
+Bina in chaar arguments ke, metric (Judge) apna kaam nahi kar sakta.
+
+#### 📖 3. Technical Definition
+
+* **Precise English:** To properly instantiate and calculate the tool correctness metric, the framework strictly requires specific parameters: the user's input, the actual output generated, the exact tool(s) called during execution, and the ground-truth expected tool(s).
+* **Hinglish Simplification:** Metric ko calculate karne ke liye 4 zaroori inputs chahiye: user ne kya pucha, agent ne kya jawab diya, actual mein konsa tool chala, aur originally konsa chalna chahiye tha.
+
+#### 🧠 4. Why This Matters
+
+* **Problem:** Agar hum metric ko aadhi adhuri information denge, toh wo evaluate kaise karega ki agent ne galat tool kyu chuna?
+* **Solution:** Ye chaar arguments (input, output, actual tool, expected tool) complete context provide karte hain, jisse scoring highly accurate hoti hai.
+* **What breaks if we don't use it?** Test script fail ho jayegi `Missing Argument Error` dekar.
+
+#### ⚙️ 5. Under the Hood (Deep Dive)
+
+1. **(1) Context Gathering:** Metric evaluator sabse pehle `input` aur `actual output` ko dekhta hai situation samajhne ke liye.
+2. **(2) Ground Truth Mapping:** Fir wo `expected tool` ko dekhta hai (jo developer ne set kiya hai).
+3. **(3) Validation:** Finally, wo `tool called` (jo runtime pe capture hua) ko map karta hai ki kya usne expected behavior follow kiya.
+
+#### 💻 6. Hands-On — Runnable Example
+
+*Note: Conceptual creation of a TestCase in DeepEval based on required arguments.*
+
+```python
+from deepeval.test_case import LLMTestCase
+
+# Required arguments for Tool Correctness passed into a TestCase
+test_case = LLMTestCase(
+    input="What is the stock price of Apple?",
+    actual_output="The current price is $150.",
+    tools_called=["finance_api"],       # What actually happened
+    expected_tools=["finance_api"]      # What we wanted to happen
+)
+
+```
+
+##### 🔬 Code Explanation Rule (LINE-BY-LINE)
+
+* **Line 3-4:** `test_case = LLMTestCase(...)` — Ek test case object banaya.
+* **Line 5:** `input="..."` — User ka exact prompt. **Why:** Evaluator ko pata hona chahiye ki pucha kya tha.
+* **Line 6:** `actual_output="..."` — Agent ka final response.
+* **Line 7:** `tools_called=["finance_api"]` — Agent ne actually kya call kiya. **What if removed:** Metric check kya karega agar use actual behavior hi nahi pata?
+* **Line 8:** `expected_tools=["finance_api"]` — The "Ground Truth". **Why:** Ye standard set karta hai comparison ke liye.
+
+#### 🖥️ COMMAND CLARITY RULE
+
+*(No CLI commands here, skipping gracefully).*
+
+#### 🔒 7. Security-First Check
+
+Data Privacy! Jo `input` aur `actual_output` tum evaluation framework ko pass kar rahe ho, agar usme user ka PII (Personal Identifiable Information) hai, toh usko mask karna zaroori hai testing phase mein aane se pehle.
+
+#### 🏗️ 8. Scalability & Industry Context
+
+Large test suites mein ye arguments dynamically data pipelines (CSV ya JSON datasets) se fetch hote hain. Hum individually test cases nahi likhte, balki hazaron expected tools ko dataset se iterate karte hain.
+
+#### ⚠️ 9. Industry Anti-Patterns (Real Incidents)
+
+* **❌ Mistake:** `expected_tools` mein galat tool ka naam likh dena (typo karna jaise `finance-api` instead of `finance_api`).
+* **🤦 Why:** Developers hardcode karte waqt exact schema names bhool jate hain.
+* **✅ The 'Pro' Way:** Expected tools ko ek global constants file se import karo taaki typos ka risk na rahe.
+
+#### 🛠️ 10. Troubleshooting Flowchart (Mental Model)
+
+1. `ValueError: Missing required arguments` -> `Check if all 4 (input, actual_output, tools_called, expected_tools) are passed in the TestCase.`
+2. `False negative (Agent was right, but failed)` -> `Check if 'expected_tools' is an exact string match with 'tools_called'.`
+
+#### ⚖️ 11. Comparison (Ye vs Woh)
+
+* **Required vs Optional Arguments:** Yahan input, output, called, expected *required* hain. Jabki kuch metrics mein `context` ya `retrieval_context` optional hota hai RAG systems ke liye. Par tool calling ke liye bas yehi chaar pillars hain.
+
+#### ❓ 12. Interview Q&A (Rapid Fire)
+
+1. **Q:** What are the four mandatory arguments required to evaluate tool correctness?
+**A:** Input, actual output, tool called, and expected tool.
+2. **Q:** Why does the metric need the "actual output" if it's only checking the tool name?
+**A:** Sometimes the context of the actual output helps the LLM-as-a-judge (the evaluator) determine if the tool called was justified given the nuances of the input and response.
+3. **Q:** How do you define multiple expected tools if a task requires them?
+**A:** The argument accepts a list of strings/objects. You pass multiple tools as an array, e.g., `["search_tool", "calculator_tool"]`.
+4. **Q:** Can we pass raw JSON execution logs directly as the "tool called" argument?
+**A:** Typically, testing frameworks require you to parse the JSON and map it to specific class objects (like a `ToolCall` class) before passing it to the metric.
+5. **Q:** What is the risk of having poorly defined 'expected tools' in your testing dataset?
+**A:** Poorly defined expected tools (e.g., using outdated function names) will lead to high failure rates in CI/CD, creating false alarms and blocking deployments.
+
+#### 📝 13. One-Line Memory Hook
+
+"Input, Output, Kya use kiya, Kya karna tha — in chaar piyo par metric khada hai."
+
+---
+
+--- 🛑 PART 1 FINISHED. Type 'CONTINUE' for the remaining 3 subtopics (Differences from Confident AI Portal, How Tool Correctness is Calculated, The ToolCall Class). ---
+
+### 🎯 4. [Differences from Confident AI Portal]
+
+#### 🐣 2. Simple Analogy (Hinglish)
+
+Isko aise samjho jaise school ka **"Mock Test"** vs **"Board Exam"**. Contextual Relevance jaise metrics Board Exam hain—jinka result online portal (Confident AI) par graphs aur charts ke saath dikhta hai. Lekin **Tool Correctness** metric ek local Mock Test hai. Tum isko apne laptop par run karte ho, aur wahi turant pass/fail dekh lete ho. Iska data cloud dashboard par nahi jata.
+
+#### 📖 3. Technical Definition
+
+* **Precise English:** Unlike standard contextual metrics in DeepEval, the Tool Correctness metric operates strictly as a local verification tool and currently does not support the `evaluate` method for bulk processing and cloud dashboard generation on the Confident AI portal.
+* **Hinglish Simplification:** Ye metric cloud dashboard (Confident AI) pe graphs generate nahi kar sakta; ye strictly tumhari local machine par seedha aur simple pass/fail verification karta hai.
+
+#### 🧠 4. Why This Matters
+
+* **Problem:** Developers aksar confuse hote hain ki test run karne ke baad unhe Confident AI ke web dashboard par results kyu nahi dikh rahe.
+* **Solution:** Pehle se pata hona chahiye ki ye `deep_eval.evaluate` pipeline ka part ban kar cloud par sync nahi hota, balki script ke andar hi results print karta hai.
+* **What breaks if we don't use it?** (Or misunderstand it): CI/CD pipelines fail ho sakti hain agar unhe cloud-based dashboard webhook ka wait karne ke liye configure kiya gaya ho.
+
+#### ⚙️ 5. Under the Hood (Deep Dive)
+
+1. **(1) Method Invocation:** Baki metrics ke liye hum `deepeval.evaluate([test_cases])` use karte hain jo API hit karta hai.
+2. **(2) Local Execution:** Tool Correctness ke liye hum directly `metric.measure(test_case)` call karte hain.
+3. **(3) Data Confinement:** Execution aur scoring hone ke baad, result terminal ya local logs mein reh jata hai, Confident AI server par upload nahi hota.
+
+#### 💻 6. Hands-On — Runnable Example
+
+```python
+# The WRONG way (Cloud evaluation - Not supported for this metric yet)
+# deepeval.evaluate([test_case], metrics=[tool_metric]) 
+
+# The CORRECT way (Local verification)
+tool_metric.measure(test_case)
+print(f"Local Score: {tool_metric.score}")
+
+```
+
+##### 🔬 Code Explanation Rule (LINE-BY-LINE)
+
+* **Line 2:** `# deepeval.evaluate(...)` — Ye line commented hai kyunki ye tool correctness ke sath kaam nahi karegi. **Why:** Framework ne is metric ke liye cloud syncing API banayi hi nahi hai abhi tak.
+* **Line 5:** `tool_metric.measure(test_case)` — Metric local object ko process karta hai. **What if removed:** Tumhe check karne ka result hi nahi milega, test adhoora reh jayega.
+* **Line 6:** `print(...)` — Result terminal par print kiya. **Why:** Kyunki cloud dashboard nahi hai, toh developer ko screen par hi score dekhna padega.
+
+#### 🖥️ COMMAND CLARITY RULE
+
+*(No CLI commands here, skipping gracefully).*
+
+#### 🔒 7. Security-First Check
+
+* **Security Win:** Kyunki ye cloud portal par data nahi bhejta, tumhare "local verification" ke dauran highly sensitive internal tools aur API architectures ka data (jo tum test kar rahe ho) tumhari machine se bahar leak nahi hota. Air-gapped environments ke liye ye best hai.
+
+#### 🏗️ 8. Scalability & Industry Context
+
+Local verification quick debug loops ke liye acchi hai, par enterprise scale par jahan QA teams ko 10,000 runs ki history aur graphs track karne hote hain, wahan manual logging ya custom ELK/Datadog pipelines banani padengi kyunki native Confident AI portal support nahi hai.
+
+#### ⚠️ 9. Industry Anti-Patterns (Real Incidents)
+
+* **❌ Mistake:** `deepeval.evaluate()` method mein Tool Correctness metric ko pass karke cloud dashboard link ka wait karna.
+* **🤦 Why:** Log documentation poori nahi padhte aur sochte hain saare metrics same API follow karte hain.
+* **✅ The 'Pro' Way:** Isko CI/CD ke local test step (`pytest`) mein assert statement ke saath use karo aur result wahi fail/pass karo.
+
+#### 🛠️ 10. Troubleshooting Flowchart (Mental Model)
+
+1. `Error: Method not supported / Evaluate fails` -> `Check if you are passing ToolCorrectness to the global evaluate() function. Move it to local .measure() instead.`
+2. `No graphs on Confident AI` -> `Remember, it's a local-only metric.`
+
+#### ⚖️ 11. Comparison (Ye vs Woh)
+
+* **`metric.measure()` vs `deepeval.evaluate()`:** `.measure()` ek single test case ko locally test karke score nikalta hai. `.evaluate()` multiple test cases ko batch mein run karke cloud portal par telemetry bhejta hai (jo yahan supported nahi hai).
+
+#### ❓ 12. Interview Q&A (Rapid Fire)
+
+1. **Q:** Why won't my Tool Correctness results show up on the Confident AI portal?
+**A:** Because it is designed as a straightforward, local verification metric and currently does not integrate with the `evaluate` method that syncs with the cloud dashboard.
+2. **Q:** Does this mean I cannot automate Tool Correctness testing?
+**A:** You can automate it locally in your CI/CD pipeline using assertions on the metric's score, you just won't get the native cloud visualization.
+3. **Q:** Is there a security advantage to this limitation?
+**A:** Yes, local verification ensures that your internal tool registries, schemas, and proprietary agent behaviors are not transmitted to a third-party dashboard.
+4. **Q:** What method should I call instead of `evaluate`?
+**A:** You should call the `.measure()` method directly on the metric instance, passing in your test case.
+5. **Q:** How is this different from metrics like Contextual Relevance?
+**A:** Contextual Relevance is fully integrated with the Confident AI ecosystem for bulk evaluation and graphing, whereas Tool Correctness is strictly local.
+
+#### 📝 13. One-Line Memory Hook
+
+"Portal pe mat dhoondho, Tool Correctness local machine par hi faisla kar deta hai."
+
+---
+
+### 🎯 5. [How Tool Correctness is Calculated]
+
+#### 🐣 2. Simple Analogy (Hinglish)
+
+School mein maths ke test jaisa hai. Agar teacher ne 5 sawal puche, aur tumne 3 sahi kiye, toh tumhara score $3/5 = 0.6$ aayega. Yahan "sahi sawal" ka matlab hai **correctly used tools**, aur "total sawal" ka matlab hai **total tools called**. Unko divide kar do, toh average score nikal aata hai.
+
+#### 📖 3. Technical Definition
+
+* **Precise English:** The metric calculates an average correctness score by dividing the number of correctly invoked tools (verified via input/output matching against expected behavior) by the total number of tools that were actually called by the agent.
+* **Hinglish Simplification:** Score nikalne ka formula simple hai: Kitne tools agent ne **sahi** use kiye, divided by usne **total** kitne tools use kiye.
+
+#### 🧠 4. Why This Matters
+
+* **Problem:** Agar agent ne 5 tools call kiye jisme se 4 sahi the aur 1 galat, toh kya hum use poora fail kar dein? Binary (Pass/Fail) scoring complex multi-step agents ke liye harsh hoti hai.
+* **Solution:** Ratio-based calculation ek granular score (e.g., 0.8) deti hai, jisse hum improvement track kar sakte hain.
+* **What breaks if we don't use it?** Developer ko exactly pata nahi chalega ki agent kitne margin se fail hua. Optimization impossible ho jayegi.
+
+#### ⚙️ 5. Under the Hood (Deep Dive)
+
+1. **(1) Count Total:** Evaluator dekhta hai ki actual list mein kitne tools hain (e.g., 4 tools called).
+2. **(2) Match Expected:** Wo har ek called tool ko uthata hai aur expected tools ki list mein match karta hai (e.g., sirf 3 match hue).
+3. **(3) Division:** Formula apply hota hai: $\text{Score} = \frac{\text{Correctly Used Tools}}{\text{Total Tools Called}} = \frac{3}{4} = 0.75$.
+
+#### 💻 6. Hands-On — Runnable Example
+
+*Note: This is a mathematical pseudo-representation to show the logic clearly.*
+
+```python
+correctly_used_tools = 3
+total_tools_called = 4
+
+# Calculation logic representing the metric's internal math
+try:
+    tool_score = correctly_used_tools / total_tools_called
+except ZeroDivisionError:
+    tool_score = 0.0
+
+print(f"Tool Correctness Score: {tool_score}") # Output: 0.75
+
+```
+
+##### 🔬 Code Explanation Rule (LINE-BY-LINE)
+
+* **Line 1-2:** Variables set kiye data represent karne ke liye.
+* **Line 5:** `try:` block shuru kiya. **Why:** Defensive programming.
+* **Line 6:** `tool_score = correctly_used_tools / total_tools_called` — Main calculation. **What if removed:** Score calculate hi nahi hoga, system judge nahi kar payega.
+* **Line 7-8:** `except ZeroDivisionError:` — Agar agent ne ek bhi tool call nahi kiya (`total_tools = 0`), toh error aane se bachane ke liye score `0.0` set kar diya.
+
+#### 🖥️ COMMAND CLARITY RULE
+
+*(No CLI commands here, skipping gracefully).*
+
+#### 🔒 7. Security-First Check
+
+* **Logic flaws in calculation:** Agar agent ne *galat* tool call kiya jo destructive hai (e.g., `drop_database`), par 9 baaki tools sahi call kiye, toh score `0.9` aayega. High score ka matlab ye nahi ki system safe hai! Security-critical tools ke liye ek alag absolute strict check (100% or fail) hona chahiye.
+
+#### 🏗️ 8. Scalability & Industry Context
+
+Score ko 0 se 1 ke beech normalize karna industry standard hai. Ye CI/CD pipelines mein threshold check lagane mein madad karta hai (e.g., "Deploy only if Tool Correctness > 0.85").
+
+#### ⚠️ 9. Industry Anti-Patterns (Real Incidents)
+
+* **❌ Mistake:** Average score par blindly trust kar lena aur individual failed tools check na karna.
+* **🤦 Why:** Developers bas dekhte hain "Score 0.8 hai, theek hai" bina ye jane ki jo 0.2 fail hua, wo ek critical payment API thi.
+* **✅ The 'Pro' Way:** Score check karo, par logs mein fail hone wale specific tools par alert lagao.
+
+#### 🛠️ 10. Troubleshooting Flowchart (Mental Model)
+
+1. `Score is consistently 0` -> `Check if your Total Tools Called list is populating correctly. If it's empty, math returns 0.`
+2. `Score is lower than expected` -> `Check case sensitivity. 'WebSearch' != 'web_search'. Exact match is required for 'Correctly used'.`
+
+#### ⚖️ 11. Comparison (Ye vs Woh)
+
+* **Ratio Score vs Strict Boolean:** Ratio score partial credit deta hai. Boolean (True/False) fail kar deta agar ek bhi tool galat hota. Tool Correctness ratio approach use karta hai.
+
+#### ❓ 12. Interview Q&A (Rapid Fire)
+
+1. **Q:** What is the formula used to calculate the tool correctness score?
+**A:** It is the number of correctly used tools divided by the total number of tools being called.
+2. **Q:** Will the score be 0 or 1, or can it be a fraction?
+**A:** It will be a fraction (or decimal) representing the average correctness, bounded between 0.0 and 1.0.
+3. **Q:** What happens mathematically if the agent hallucinated and called 10 tools when only 1 was expected?
+**A:** If it called the expected tool correctly (1) but 9 others wrong, the score drops drastically ($1/10 = 0.1$).
+4. **Q:** How is a "correctly used tool" identified?
+**A:** By deriving and matching its name, and optionally its input/output parameters, against the expected tools.
+5. **Q:** Why is a ratio calculation preferred over a strict True/False for multi-tool agents?
+**A:** Because modern agents often execute complex chains (e.g., search -> read -> summarize). A ratio provides granular visibility into partial successes, aiding prompt debugging.
+
+#### 📝 13. One-Line Memory Hook
+
+"Sahi kitne aur Total kitne — bas in dono ka division hi tera tool score hai."
+
+---
+
+### 🎯 6. [The ToolCall Class]
+
+#### 🐣 2. Simple Analogy (Hinglish)
+
+Maan lo tumne Swiggy se pizza mangwaya. Delivery boy sirf ye nahi bolta "Main aa gaya". Wo ek **Receipt** dikhata hai jisme likha hota hai: Restaurant ka naam, Order kya tha (Input), aur final bill kitna hai (Output). **ToolCall class** AI testing mein wahi structured receipt hai. Ye metric ko cleanly batata hai ki kya hua.
+
+#### 📖 3. Technical Definition
+
+* **Precise English:** The `ToolCall` class is a specialized data structure used within the framework to represent an invoked tool. It requires the name of the tool and optionally accepts the input parameters passed to it and the output generated, ensuring highly realistic and strict evaluations.
+* **Hinglish Simplification:** Ye ek special format (Class) hai jisme tool ki details (naam, kya data diya, kya result aaya) pack karke metric ko pass ki jati hai taaki testing bilkul real-world jaisi ho.
+
+#### 🧠 4. Why This Matters
+
+* **Problem:** Agar har developer alag format mein data bhejega (koi string bhej raha hai, koi JSON, koi dictionary), toh DeepEval ka metric use samajh nahi payega aur crash ho jayega.
+* **Solution:** `ToolCall` class ek strict, uniform blueprint (schema) set kar deti hai jisse evaluator error-free parssing kar sake.
+* **What breaks if we don't use it?** Framework input ko reject kar dega. Tum tools check hi nahi kar paoge.
+
+#### ⚙️ 5. Under the Hood (Deep Dive)
+
+1. **(1) Raw Log:** Agent execution ke baad ek raw JSON deta hai.
+2. **(2) Object Instantiation:** Developer us JSON data ko nikalta hai aur `ToolCall` constructor mein bhejta hai.
+3. **(3) Evaluation:** Evaluator is instance ke attributes (`.name`, `.input`) padhta hai aur expected behavior se exact match karta hai.
+
+#### 💻 6. Hands-On — Runnable Example
+
+```python
+from deepeval.test_case import ToolCall, LLMTestCase
+
+# Creating highly realistic tool call instances
+actual_tool_used = ToolCall(
+    name="calculator_tool",
+    input={"equation": "25 * 4"},  # Optional but makes testing robust
+    output="100"                   # Optional but realistic
+)
+
+test_case = LLMTestCase(
+    input="Multiply 25 by 4",
+    actual_output="It is 100",
+    tools_called=[actual_tool_used],  # Passed as ToolCall object!
+    expected_tools=[actual_tool_used]
+)
+
+```
+
+##### 🔬 Code Explanation Rule (LINE-BY-LINE)
+
+* **Line 1:** `ToolCall` class ko import kiya. **Why:** Iske bina Python object nahi bana payega.
+* **Line 4:** `actual_tool_used = ToolCall(` — Naya object create kar rahe hain.
+* **Line 5:** `name="calculator_tool",` — **Mandatory parameter.** Metric isi se match karega. Agar ye missing hai toh class error throw karegi.
+* **Line 6-7:** `input=...` aur `output=...` — Optional attributes hain. **Why use them?** Isse deep testing hoti hai ki agent ne tool toh sahi uthaya, par kya usme parameters bhi sahi bheje the?
+* **Line 13:** `tools_called=[actual_tool_used]` — Test case mein as a list of `ToolCall` objects pass kiya.
+
+#### 🖥️ COMMAND CLARITY RULE
+
+*(No CLI commands here, skipping gracefully).*
+
+#### 🔒 7. Security-First Check
+
+Agar `ToolCall` ke `input` parameter mein SQL Queries ya system commands execute hone ja rahi hain, toh verify karo ki testing pipeline unhe actually execute na kar de. Is parameter ka purpose sirf **validation** hai, execution nahi.
+
+#### 🏗️ 8. Scalability & Industry Context
+
+Industry mein agents (jaise LangChain ya LlamaIndex) native tools use karte hain. Ek aacha testing framework un native objects ko automatically parse karke is `ToolCall` class mein convert karne ka helper method deta hai, taaki hazaron test cases manual na likhne padein.
+
+#### ⚠️ 9. Industry Anti-Patterns (Real Incidents)
+
+* **❌ Mistake:** `tools_called=["calculator_tool"]` (Sirf string pass kar dena list mein).
+* **🤦 Why:** Log documentation nahi dekhte aur assume karte hain string array chal jayega.
+* **✅ The 'Pro' Way:** Hamesha data ko strict `ToolCall(name="calculator_tool")` mein wrap karo. Ye strongly typed evaluation ensure karta hai.
+
+#### 🛠️ 10. Troubleshooting Flowchart (Mental Model)
+
+1. `TypeError: Expected ToolCall object, got string` -> `You passed the tool name as a raw string. Wrap it in ToolCall().`
+2. `Metric incorrectly fails despite correct tool name` -> `Check if you passed an 'input' dictionary. If the actual input doesn't match the expected input, the metric will fail it even if the name matches.`
+
+#### ⚖️ 11. Comparison (Ye vs Woh)
+
+* **String Name vs `ToolCall` Object:** String sirf batati hai "kya" use hua. `ToolCall` object batata hai "kya, kaise, aur uska result kya" (Name + Input + Output). Object bohot zyada powerful aur reliable hai.
+
+#### ❓ 12. Interview Q&A (Rapid Fire)
+
+1. **Q:** What is the mandatory parameter to initialize the `ToolCall` class?
+**A:** The `name` of the tool.
+2. **Q:** Why would you include the `input` and `output` parameters if they are optional?
+**A:** To make the test highly realistic. It verifies not just that the right tool was chosen, but that the LLM formatted the arguments correctly and the tool returned expected data.
+3. **Q:** Can I pass a raw dictionary instead of a `ToolCall` instance to the `tools_called` argument?
+**A:** No, DeepEval's framework strictly requires instances of the `ToolCall` class to ensure schema consistency during evaluation.
+4. **Q:** How does providing the exact input parameter help in catching hallucinations?
+**A:** Sometimes an LLM selects the right tool but hallucinates the input arguments (e.g., calling a weather API with a fake city name). Checking the `input` inside `ToolCall` catches this.
+5. **Q:** In a multi-step agent, how do you handle `tools_called`?
+**A:** You pass a list containing multiple instantiated `ToolCall` objects, preserving the order and details of every tool the agent invoked.
+
+#### 📝 13. One-Line Memory Hook
+
+"ToolCall sirf naam nahi, Agent ki poori kachha-chitthi (receipt) hai."
+
+---
+
+### ✅ Topic Completion Checklist: [Introduction to Testing Tool Callings]
+
+* [x] What is Tool Calling Testing?
+* [x] DeepEval's Tool Correctness Metric
+* [x] Required Arguments for the Metric
+* [x] Differences from Confident AI Portal
+* [x] How Tool Correctness is Calculated
+* [x] The ToolCall Class
+
+> ✅ **Verified by Notes Guru. 100% Coverage of this topic achieved.**
+
+---
+
+========================================================================================
