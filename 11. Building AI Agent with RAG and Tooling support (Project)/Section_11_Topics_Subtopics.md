@@ -1,0 +1,41 @@
+### Video---1 --- Topic--- Introduction to Agents with RAG and Tool Support
+
+* **[Review of Previous Agent Usage]:** The speaker begins by recalling that in previous sections, they used a local large language model and bound it to various tools, including custom tools, Wikipedia tools, and Playwright tools. The agent was used to "take the decision based on the query that we ask, or the prompt that we pass." The agent would choose the appropriate tool to perform an action and give a response back.
+* **[Creating a RAG Tool]:** The course is moving a "level further" by calling RAG as a tool. RAG (Retrieval Augmented Generation) is defined as a process where "we can actually extract the data from external files, split them and embed them and store them into the database." This vector database is then queried and passed as a reference to the large language model to generate answers from the stored data.
+* **[Combining Playwright and RAG]:** The speaker explains they will empower the local large language model by combining the Playwright tool (which extracts data from any given web page) with the "knowledge that it has acquired from the Rag... like all the documentation." The model will use both sets of knowledge to provide a response, giving it "a lot of potentials and power."
+* **[Example Scenario - Bias Detection]:** An example is provided to illustrate the workflow: if the model is asked if a specific external webpage has any bias, it cannot directly access the internet page. It will ask the agent, which knows to invoke the Playwright tool to navigate to the page and extract the information. Then, to determine the bias, the tool will call the RAG data (stored from a PDF file into a vector data store in earlier sections). The vector data is returned to the agent, which performs the operation to verify the bias and returns the information to the customer.
+
+### Video---2 --- Topic--- Building the Codebase and Reusing Data
+
+* **[Setting Up the Codebase]:** The speaker transitions to Visual Studio Code, noting that a notebook file is already created, and the `.env` file and model are imported. Because the functionality was discussed in earlier sections, they plan to mostly copy and paste existing code, noting "it's going to be just like a copy paste code for this particular section." They import the Playwright tool code.
+* **[Reusing the Existing Chroma Database]:** Instead of performing standard RAG operations like extracting the PDF and text splitting, the speaker explains they will reuse the existing persistent database. They note that the extracted and split data is already stored in "chroma_langchain_db". The speaker emphasizes it is not worth doing all the extraction and splitting operations again.
+* **[Initializing Vector and Retriever with Embedding]:** The speaker copies code to handle the embedding part first, explicitly using "the same olama embedding with the model of lemma 3.2 latest model." This step is required before adding the Chroma database and vector data store.
+
+### Video---3 --- Topic--- Implementing the Retriever and Bias Detection Tool
+
+* **[Loading the Persistent Vector Data Store]:** The speaker adds the Chroma DB code, bypassing the `split` and `embedding` steps used to create a database. Instead, they use code to "retrieve from the persistent vector data store." Because the database is not in the current directory, they reuse it by pointing to the path `../../section5_rag_document/chroma_db`.
+* **[Testing Vector Store Connectivity]:** To verify connectivity, the speaker runs a test query: "what is bias testing". The system successfully answers, proving that the vector store has the data and "the Chrome DB is also working for us without any problem."
+* **[Creating the LangChain Retriever]:** The speaker creates the retriever, fixing a typo while typing out `vector_stores.as_retriever()`. They explain this retriever will perform a similarity search from the vector database.
+* **[Creating the Bias Detection Tool]:** A new tool is created to call the retriever. The speaker imports `tool` from `langchain.tools` and uses a decorator `@tool("bias_detection")`. The tool takes a `query` of string type and returns a string type.
+* **[Configuring the Tool Prompt and Logic]:** Inside the tool, a prompt is written to give the agent context: "You must use this tool for bias related testing in LLM". An argument `query` is added as the search query. The tool's core logic is set to return `retriever.invoke(query)` to get the page contents.
+
+### Video---4 --- Topic--- Finalizing the Agent and Evaluating with LangSmith
+
+* **[Appending the Bias Detection Tool]:** The speaker notes they need to add the newly created `bias_detection` tool to the array of existing Playwright tools. They run `tools.append(bias_detection)`. Upon reviewing the array, they confirm it contains the Playwright tools and the structured `bias_detection` tool.
+* **[Creating the Agent Code]:** The speaker copies the agent code from the previous Playwright browser tool, maintaining the `structured_chat_zero_shot_react_description` framework. They explain the code will remain largely the same, passing in the tools and the large language model.
+* **[Setting up the Bias Test Scenario]:** The query is modified to evaluate an external article. The speaker navigates to a Times.com article titled "BBC coverage institutional hostile to Israel says Jewish group", noting it has "a bit of a bias information." They reference a PDF file (`testing_and_evaluation_llm.pdf`) stored in the vector database that contains "methodologies for evaluating social bias of the large language model," specifically pointing to page 127 which lists types of social bias. The agent's task is to evaluate the article using this stored knowledge.
+* **[Executing the Agent and Troubleshooting]:** The query is set to: "extract the page... and check if there is a bias in the article [URL]". Upon running, the agent initiates `Maps_browser` and observes the page, but fails. The speaker diagnoses two issues: first, blindly accepting a GitHub Copilot suggestion to use `page_content` directly went wrong; second, the tools array was appended twice, causing a mix-up. The speaker fixes this by clearing the tools (`tools.clear()`), adding the tools back once, and using the `invoke` method correctly.
+* **[Successful Execution]:** Rerunning the code succeeds. The agent navigates the browser, extracts the text, and processes the information. The output summary details the source credibility, content analysis, and notes a "positive bias direction and evidence." The speaker states that the retriever "is doing all this magic for us".
+* **[Observability with LangSmith]:** The speaker switches to the Safari browser to view the execution in LangSmith. They trace the complex chain of events: the Agent Executor called the LLM Chain, which called the bound `Maps_browser` tool, then called `extract_text` on the whole page, and finally called `bias_detection`.
+* **[Verifying RAG Accuracy]:** In LangSmith, the speaker examines the `bias_detection` step and confirms the source of the data is `testing_and_evaluation_llm.pdf`. They verify the system accurately read from "page label 127," exactly matching the page containing the "social bias of LM" details they showed earlier.
+* **[Conclusion on LangSmith's Power]:** The speaker concludes by emphasizing the power of LangSmith. They state it is not only used for observability but to evaluate how large language models, chains, and agents perform and call the right tools. They note it makes testing "so much easier compared to just using the verbose information which you get from this particular notebook".
+
+**Double‑check steps performed:**
+
+* [x] Read entire transcript thoroughly.
+* [x] Extracted rich, contextual details for every subtopic (definitions, examples, exact phrasing).
+* [x] Confirmed no external knowledge or invented topics added.
+* [x] Preserved exact chronological order.
+* [x] Followed output format (Markdown, correct headers/bullets).
+
+I have deeply rechecked and confirm this skeleton matches the provided transcript exactly.
