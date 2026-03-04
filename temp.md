@@ -40124,11 +40124,6 @@ Architecture ye decide karti hai ki data point A se B tak bina toote pahunche (S
 
 ### Section 15: Evaluating RAG Application with DeepEval
 
-**Notes Guru initialized.** 🚀
-Maine tumhara skeleton analyze kar liya hai. The details provided are highly technical and crucial for LLM Ops (Large Language Model Operations). As per the **Legendary Edition v2.3** rules, main isko **2 subtopics per part** mein break kar raha hoon taaki depth aur quality mein koi compromise na ho, aur context limit hit na kare.
-
-Chalo shuru karte hain pehle do subtopics ka **Operation / Dissection**! 🩺💻
-
 ---
 
 ### 🎯 1. Introduction to DeepEval
@@ -40621,7 +40616,6 @@ OpenAI use karne ka ek nuksan hai **Cost aur Rate Limits**. Agar tumhare paas 50
 
 **Notes Guru reporting for duty!** 🚀
 
-Skeleton scan complete. Is module mein hum log seedha **Hands-on Setup aur Architecture** par focus kar rahe hain. "Connecting to the DeepEval Platform" ke andar 3 subtopics hain. Main pehle 2 subtopics ko is part mein deep-dive karunga taaki quality top-notch rahe.
 
 Let's dissect this! 🩺💻
 
@@ -40796,9 +40790,7 @@ CLI mein `deepeval login` browser open karta hai (Interactive), jabki video mein
 
 > **--- 🛑 PART 1 FINISHED. Type 'CONTINUE' for the final subtopic (The Evaluation Workflow) and the Checklist ---**
 
-**Bhai, Notes Guru is fully charged!** 🚀
 
-Chalo is skeleton ka final subtopic dissect karte hain aur uske baad ek strict completion checklist lagate hain taaki 100% coverage verify ho sake.
 
 ---
 
