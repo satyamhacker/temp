@@ -64,8 +64,8 @@ API wale LLMs amnesia (bhoolne ki bimari) ke shikar hote hain. Har naya prompt e
 * Follow-up actions perform karna impossible hai, user ko baar-baar saari details type karni padengi.
 
 **3. Practical Tasks (The Mission)**
-* **Task 1:** Ek stateless LLM object initialize kar aur usko ek basic zero-shot query bhej (e.g., "Mera naam Guru-ji hai").
-  * *The Logic:* Model ek normal generic response dega. API session immediately close ho jayega.
+* **Task 1:** Ek stateless LLM object initialize kar — `ChatOllama(model="mistral:7b")` — aur usko ek basic zero-shot query bhej (e.g., "Mera naam Guru-ji hai").
+  * *The Logic:* Mistral 7B local model ek normal generic response dega. API session immediately close ho jayega.
 * **Task 2:** Same script mein, uske theek baad ek follow-up question puch bina pichla context pass kiye (e.g., "Mera naam kya hai?").
   * *The Logic:* Model hallucinate karega ya bolega "I don't know".
 * 🔥 **THE COMBO TASK (Final Boss):** Ek script run kar jisme tu prove kare ki bare LLM API completely memoryless hai. Pehla sawal aur doosra sawal sequentially bhej bina kisi wrapper ke.
@@ -144,10 +144,10 @@ LCEL wrapper jo tere stateless LLM pipeline ko "memory ka chashma" pehna deta ha
 * Conversational bot develop karte waqt tera 90% time memory state debug karne mein nikal jayega.
 
 **3. Practical Tasks (The Mission)**
-* **Task 1:** Pipe operator `|` use karke apni stateless chain bana (Template -> LLM -> String Parser).
-  * *The Logic:* Ye tera dumb processing engine hai.
+* **Task 1:** Pipe operator `|` use karke apni stateless chain bana (Template -> `ChatOllama(model="mistral:7b")` -> String Parser).
+  * *The Logic:* Mistral 7B local model tera core processing engine hai.
 * **Task 2:** `RunnableWithMessageHistory` class ko import kar.
-  * *The Logic:* Is wrapper ke andar apni banayi hui chain aur Module 1 ka custom `getSessionHistory` function pass kar.
+  * *The Logic:* Is wrapper ke andar apni banayi hui Mistral 7B chain aur Module 1 ka custom `getSessionHistory` function pass kar.
 * **Task 3:** Variable mapping lock kar.
   * *The Logic:* Wrapper ko explicitly bata ki `input_messages_key` teri template ke "input" se match hoti hai, aur `history_messages_key` tere placeholder ke "chat_history" se.
 * 🔥 **THE COMBO TASK (Final Boss):** Is naye memory-wrapped object par `.invoke()` call kar. Dhyan rakh, tujhe input prompt ke saath ek `config` dictionary pass karni hai jisme `configurable` aur `session_id` keys deeply nested hon. Ek sawal puch ("Local machine pe LLM chalane ke fayde?"), aur phir uske theek baad ek vague follow-up puch ("Aur cloud ke liye?").
@@ -248,7 +248,7 @@ LangSmith ka use karke apne LLM calls ka X-Ray nikalna taaki backend execution g
 * LangSmith UI mein tere current session ka ek tree-structure graph generate hona chahiye, jisme parent span tera wrapper ho aur child spans mein prompt formatting aur LLM API hit dikhe.
 
 **5. Practical Takeaway (Asli Siksha - The Deep Dive)**
-Tune **Observability** unlock kar li hai! Ab tu andhe ke tarah code nahi likh raha. Tune dekha ki `RunnableWithMessageHistory` kitna fast execute hota hai aur actual time sirf `ChatOllama` LLM generation mein lagta hai. Ye trace verify karta hai ki context DB se nikal kar LLM ke prompt mein perfectly inject ho raha hai behind the scenes.
+Tune **Observability** unlock kar li hai! Ab tu andhe ke tarah code nahi likh raha. Tune dekha ki `RunnableWithMessageHistory` kitna fast execute hota hai aur actual time sirf `ChatOllama(model="mistral:7b")` generation mein lagta hai. Ye trace verify karta hai ki context DB se nikal kar LLM ke prompt mein perfectly inject ho raha hai behind the scenes.
 
 ---
 
@@ -295,14 +295,14 @@ Apne pichle SQL history aur local LLM logic ko naye UI file mein copy-paste kark
 **3. Practical Tasks (The Mission)**
 * **Task 1:** `.env` file ko securely load karne ka function script ke ekdum top par laga.
   * *The Logic:* Secrets kabhi UI functions ke baad load nahi hote.
-* **Task 2:** Apna Local LLM object (`ChatOllama`) initialize kar aur Chat Prompt Template ko define kar, jisme system message, history placeholder aur human input ka exact sequence ho.
+* **Task 2:** Apna Local LLM object initialize kar — `ChatOllama(model="mistral:7b")` — aur Chat Prompt Template ko define kar, jisme system message, history placeholder aur human input ka exact sequence ho.
 * 🔥 **THE COMBO TASK (Final Boss):** Apna wahi purana `getSessionHistory` function SQL connection string ke saath paste kar. Phir apna ultimate `RunnableWithMessageHistory` object (tera bot brain) create kar jisme tu Chain, Factory Function, aur input/history keys ko accurately map karega.
 
 **4. Definition of Done (Verification)**
 * Script save karne par Streamlit UI crash nahi hona chahiye. Tere terminal mein koi `ModuleNotFoundError` ya `OperationalError` (DB connection issue) nahi aana chahiye.
 
 **5. Practical Takeaway (Asli Siksha - The Deep Dive)**
-Tune **Separation of Concerns** ka pehla step liya hai. Tune dekha ki LangChain ki components (Memory, LLM, Template) perfectly independent hain. Wo CLI par bhi utne hi aaram se chalti hain jitna ab is Streamlit web server ke backend mein run hongi. Tera engine ab nayi gaadi (UI) mein fit ho chuka hai.
+Tune **Separation of Concerns** ka pehla step liya hai. Tune dekha ki LangChain ki components (Memory, `ChatOllama(model="mistral:7b")`, Template) perfectly independent hain. Wo CLI par bhi utne hi aaram se chalti hain jitna ab is Streamlit web server ke backend mein run hongi. Tera Mistral 7B engine ab nayi gaadi (UI) mein fit ho chuka hai.
 
 ---
 
@@ -462,7 +462,7 @@ Synchronous execution block hoti hai. `.invoke()` tab tak data nahi deta jab tak
 * Users ko lagega app crash ho gayi hai kyunki 10-15 seconds tak screen par kuch nahi aayega.
 
 **3. Practical Tasks (The Mission)**
-* **Task 1:** Apne bot se ek lamba sawal puch (e.g., "Write a 500-word essay on local LLMs").
+* **Task 1:** Apne Mistral 7B bot se ek lamba sawal puch (e.g., "Write a 500-word essay on local LLMs").
 * **Task 2:** Timer on kar aur wait kar. 
 * 🔥 **THE COMBO TASK (Final Boss):** Observe kar ki kaise tera UI freeze ho jata hai, aur phir achanak se ek "full chunk" mein saara text screen par blast hota hai. Note the delay.
 
@@ -484,10 +484,10 @@ Waiter (jo poora khana ek sath lata hai) ko hata kar Conveyor Belt lagana, jahan
 * Streaming functionality ke liye Python generator function mandatory hai.
 
 **3. Practical Tasks (The Mission)**
-* **Task 1:** Ek naya helper function define kar `invoke_history` jo `chain`, `session_id`, aur `prompt` accept kare.
+* **Task 1:** Ek naya helper function define kar `invoke_history` jo `chain` (Mistral 7B wala), `session_id`, aur `prompt` accept kare.
   * *The Logic:* Hum complex dictionary configs ko yahan chhupayenge.
-* **Task 2:** Config dictionary setup kar, aur apne chain object par `.stream()` method call kar ek `for` loop ke andar.
-  * *The Logic:* `.stream` list of chunks return karta hai as they are generated.
+* **Task 2:** Config dictionary setup kar, aur apne Mistral 7B chain object par `.stream()` method call kar ek `for` loop ke andar.
+  * *The Logic:* Mistral 7B `.stream` list of chunks return karta hai as they are generated.
 * 🔥 **THE COMBO TASK (Final Boss):** Us loop ke andar `return` use mat karna! Tujhe `yield` keyword use karke us chunk ko loop ke bahar phekna hai.
 
 **4. Definition of Done (Verification)**
@@ -603,7 +603,7 @@ Sidebar se user ki choice utha kar usko seedha LLM ke "System Prompt" mein injec
 * UI reload kar. Sidebar mein dropdown dikhna chahiye. Dropdown change karne par error nahi aana chahiye (kyunki Streamlit automatically top-to-bottom re-run karega aur naya prompt LLM ko bhej dega).
 
 **5. Practical Takeaway (Asli Siksha - The Deep Dive)**
-Masterstroke bhai! Tune **Dynamic Prompt Engineering** crack kar li! Tune explicitly UI widget (`st.selectbox`) ke state ko backend LLM instruction set ke saath bind kar diya. Aur `MessagesPlaceholder` lagakar tune ensure kiya ki LangChain memory exact array format mein inject ho. Ab tera bot tere isharo par nachega.
+Masterstroke bhai! Tune **Dynamic Prompt Engineering** crack kar li! Tune explicitly UI widget (`st.selectbox`) ke state ko Mistral 7B (`ChatOllama(model="mistral:7b")`) ke instruction set ke saath bind kar diya. Aur `MessagesPlaceholder` lagakar tune ensure kiya ki LangChain memory exact array format mein inject ho. Ab tera bot tere isharo par nachega.
 
 ---
 
@@ -625,7 +625,7 @@ Poore system ka stress-test jisme Memory, Streaming, aur naya PhD Persona ek saa
 * Tera bot purani baaton (Sun/Moon/Earth) ka context yaad rakhna chahiye. "PhD" mode lagate hi uski vocabulary ekdum "C-Level" (highly technical aur professional) ho jani chahiye. Kaise pata chalega success hua? Jab table perfectly render ho aur response deeply technical ho, without any chunking delays!
 
 **5. Practical Takeaway (Asli Siksha - The Deep Dive)**
-TUNE KAR DIKHAYA! 🚀 Tune E2E Testing validate kar li. Tune dekha ki tera `st.write_stream` safely markdown tables ko parse kar raha hai aur tera SQL Database smoothly historical arrays supply kar raha hai. Tera Local LLM ab ek amnesiac script nahi, balki ek fully functional, stateful, aur beautiful web application ban chuka hai.
+TUNE KAR DIKHAYA! 🚀 Tune E2E Testing validate kar li. Tune dekha ki tera `st.write_stream` safely markdown tables ko parse kar raha hai aur tera SQL Database smoothly historical arrays supply kar raha hai. Tera **Mistral 7B** (`ChatOllama(model="mistral:7b")`) ab ek amnesiac script nahi, balki ek fully functional, stateful, aur beautiful web application ban chuka hai.
 
 ---
 
