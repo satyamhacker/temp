@@ -146,7 +146,7 @@ Bheja fry mat kar, seedha terminal pe chal! Ye rahi teri next batch of CTF missi
 
 ---
 
-### 🧩 Module 4: Vector Embeddings (The Matrix Translation) -> Level: Llama 3.2 Embedding Setup & Verification
+### 🧩 Module 4: Vector Embeddings (The Matrix Translation) -> Level: Mistral 7B Embedding Setup & Verification
 
 **1. The Concept (Ultra-Short)**
 Tere English chunks ko directly maths ke numbers (high-dimensional vectors) ki array me badalna taaki computer unka "meaning" calculate kar sake.
@@ -156,12 +156,12 @@ Tere English chunks ko directly maths ke numbers (high-dimensional vectors) ki a
 * Similarity search specifically numbers ke beech ka angle napti hai, isliye string data ko vector space me project karna absolute necessity hai.
 
 **3. Practical Tasks (The Mission)**
-* **Task 1: Model Initialization:** Langchain community ke embeddings module se Ollama ka specific embedder tool import kar. Uska object bana aur explicitly model ka naam `llama3.2` define kar.
+* **Task 1: Model Initialization:** Langchain community ke embeddings module se Ollama ka specific embedder tool import kar. Uska object bana aur explicitly model ka naam `mistral:7b` define kar (`OllamaEmbeddings(model="mistral:7b")`).
 * **Task 2: The Vector Extraction:** Apne purane 640 chunks wale array ke pehle 2 items (index 0 aur 1) utha. Un chunks ki sirf **text content property** ko pass kar apne embedder ke query function (`embed_query`) me. Dono outputs ko `vector_1` aur `vector_2` me save kar.
 * **🔥 THE COMBO TASK (Final Boss):** Ek strict pipeline validation likh. Python ka `assert` statement use karke check kar ki kya `vector_1` ki total lambai (length) EXACTLY `vector_2` ki lambai ke barabar hai ya nahi. Phir us fixed length dimension ko console pe print kar.
 
 **4. Definition of Done (Verification)**
-* **Kaise pata chalega success hua?** Teri script bina kisi `AssertionError` ke run honi chahiye. Console par ek mathematical integer print hoga (jaise 3072 ya 384, depending on exact llama model config), jo prove karega ki dono chunks same dimension size me standardize ho chuke hain.
+* **Kaise pata chalega success hua?** Teri script bina kisi `AssertionError` ke run honi chahiye. Console par ek mathematical integer print hoga (jaise 4096, depending on Mistral 7B config), jo prove karega ki dono chunks same dimension size me standardize ho chuke hain.
 
 **5. Practical Takeaway (Asli Siksha - The Deep Dive)**
 Aaj tune Matrix ko decode kar liya bhai! 
@@ -182,7 +182,7 @@ In millions of generated vectors ko RAM se nikal kar ek AI-native database (Chro
 **3. Practical Tasks (The Mission)**
 * **Task 1: The Vault Setup:** Terminal me jaa aur Python package installer se specific `langchain-chroma` partner package install kar. Dhyan rakhna, purana deprecated wrapper nahi chahiye.
 * **Task 2: The Ingestion Factory:** Langchain-chroma class ko import kar. Database banane ke liye is class ka direct factory method call kar jo directly "documents" as an array accept karta hai.
-* **🔥 THE COMBO TASK (Final Boss):** Is factory method ke parameters set kar! 1. Apna 640 chunks wala array bhej. 2. Apna Llama embedder bhej (Dhyan rakh, keyword EXACTLY `embedding` hona chahiye, galti ki toh "unexpected keyword" error aayega). 3. Database me table ka `collection_name` set kar. 4. Disk pe save karne ke liye `persist_directory` flag me apne local folder ka path (e.g., `./chroma_db`) de. Execute kar!
+* **🔥 THE COMBO TASK (Final Boss):** Is factory method ke parameters set kar! 1. Apna 640 chunks wala array bhej. 2. Apna Mistral 7B embedder bhej (`OllamaEmbeddings(model="mistral:7b")`) (Dhyan rakh, keyword EXACTLY `embedding` hona chahiye, galti ki toh "unexpected keyword" error aayega). 3. Database me table ka `collection_name` set kar. 4. Disk pe save karne ke liye `persist_directory` flag me apne local folder ka path (e.g., `./chroma_db`) de. Execute kar!
 
 **4. Definition of Done (Verification)**
 * **Kaise pata chalega success hua?** Script bina crash hue finish hogi (is step me actually time lagega). Execution ke baad apne code editor ka file explorer dekh, wahan ek naya folder (`chroma_db`) auto-create ho jana chahiye jisme `.sqlite3` files hongi.
@@ -204,7 +204,7 @@ Save kiye hue Vector DB ko "Read-only" mode me load karna, aur natural language 
 * Agar database ko theek se load nahi kiya, toh production me API request milliseconds ki jagah minutes legi.
 
 **3. Practical Tasks (The Mission)**
-* **Task 1: The Instant Load:** Apni script me ab `from_documents` method hata de. Chroma base class ko direct call kar. Ise sirf do parameters de: 1. Apna wahi save kiya hua directory path, 2. Tera LLM embedding object. *(Siksha hint: Yahan pe load karte waqt parameter ka naam change hokar `embedding_function` ban jata hai).*
+* **Task 1: The Instant Load:** Apni script me ab `from_documents` method hata de. Chroma base class ko direct call kar. Ise sirf do parameters de: 1. Apna wahi save kiya hua directory path, 2. Tera Mistral 7B embedding object (`OllamaEmbeddings(model="mistral:7b")`). *(Siksha hint: Yahan pe load karte waqt parameter ka naam change hokar `embedding_function` ban jata hai).*
 * **Task 2: The Broad Search:** Ek broad question ka variable bana ("what are types of llm testing"). Is loaded database object par standard similarity search method call kar aur filter parameter (`k`) ko 3 pe set kar. Returened array pe loop lagakar unka sirf "source" (metadata se) print kar.
 * **🔥 THE COMBO TASK (Final Boss):** Ab ek sniper query chala ("what is bias testing?"). Is baar normal search ki jagah wo specific Langchain method chala jo search ke sath-sath uska "Score" bhi wapas lauta hai. `k` ko 1 rakh. Jo result tuple aayega, use unpack kar aur teen cheezein eksath print kar: Match ka score, Match ka source PDF, aur Match ke andar ka actual thoda sa text content!
 
@@ -227,7 +227,7 @@ Bhai, tune RAG ka dil (Heart) samajh liya aaj!
 
 Agar sab properly done hai aur pipeline makkhan chal rahi hai, toh type '**CONTINUE**' for the next set of missions jahan hum in raw mechanics ko ek proper, production-ready "Retriever Interface" aur "Prompt Template" me format karke LLM Engine ke samne parosenge!
 
-Bohot badhiya! Tera 'CONTINUE' signal mil gaya. Tu ab tak RAG ka database indexing aur searching seekh chuka hai. Lekin abhi tak hum raw database se direct baat kar rahe the. Production mein aise kaam nahi hota. Ab hum architectural level pe khelenge aur tere data ko "Piping" karenge seedha LLM (Llama 3.2) ke dimaag mein.
+Bohot badhiya! Tera 'CONTINUE' signal mil gaya. Tu ab tak RAG ka database indexing aur searching seekh chuka hai. Lekin abhi tak hum raw database se direct baat kar rahe the. Production mein aise kaam nahi hota. Ab hum architectural level pe khelenge aur tere data ko "Piping" karenge seedha **Mistral 7B** (`ChatOllama(model="mistral:7b")`) ke dimaag mein.
 
 Focus maintain rakh! Ye rahi teri next batch of CTF missions:
 
@@ -329,18 +329,18 @@ Tune RAG ka sabse bada security guardrail install kar diya hai.
 ### 🧩 Module 8: Manual Pipeline Construction -> Level: Constructing the LCEL Chain
 
 **1. The Concept (Ultra-Short)**
-Prompt, tera local Llama 3.2 engine, aur Text Cleaner (Parser) ko ek saath Unix Pipe operator (`|`) se jod kar ek final executable pipeline banana.
+Prompt, tera local Mistral 7B engine (`ChatOllama(model="mistral:7b")`), aur Text Cleaner (Parser) ko ek saath Unix Pipe operator (`|`) se jod kar ek final executable pipeline banana.
 
 **2. Why? (Production Impact)**
 * Baar-baar manually ek function ka output dusre mein daalna messy hota hai. LCEL syntax code ko clean karta hai aur asynchronous streaming (typing effect) automatically enable kar deta hai.
 
 **3. Practical Tasks (The Mission)**
-* **Task 1: Output Parser Setup:** Langchain core output parsers se `StrOutputParser` import kar aur uska ek khali object bana. (Ye Llama ke complex JSON response se sirf actual answer string nikhalega).
-* **Task 2: The Pipe Execution:** Pipe operator (`|`) ka use kar aur left-to-right sequence set kar: Pehle tera prompt object, phir tera local Ollama LLM object, aur aakhir mein tera output parser object. Is sequence ko `chain` variable mein save kar.
+* **Task 1: Output Parser Setup:** Langchain core output parsers se `StrOutputParser` import kar aur uska ek khali object bana. (Ye Mistral 7B ke complex JSON response se sirf actual answer string nikhalega).
+* **Task 2: The Pipe Execution:** Pipe operator (`|`) ka use kar aur left-to-right sequence set kar: Pehle tera prompt object, phir tera `ChatOllama(model="mistral:7b")` object, aur aakhir mein tera output parser object. Is sequence ko `chain` variable mein save kar.
 * **🔥 THE COMBO TASK (Final Boss):** Is `chain` par `.invoke()` method call kar! Dhyan rakh, tujhe explicitly ek **dictionary** pass karni hai jisme do keys hongi: `"context"` jisme tera formated stapled string text jayega, aur `"question"` jisme teri original query jayegi. Jo result aayega, use bade shauk se print karwa!
 
 **4. Definition of Done (Verification)**
-* **Kaise pata chalega success hua?** Tera terminal Llama 3.2 ke generated answer ko cleanly print karega. Tujhe "Attention is all you need" paper ke feed-forward network ka solid technical answer milega bina kisi error ke.
+* **Kaise pata chalega success hua?** Tera terminal Mistral 7B (`mistral:7b`) ke generated answer ko cleanly print karega. Tujhe "Attention is all you need" paper ke feed-forward network ka solid technical answer milega bina kisi error ke.
 
 **5. Practical Takeaway (Asli Siksha - The Deep Dive)**
 Welcome to advanced Langchain orchestrations! 
@@ -363,11 +363,11 @@ Apne manually banaye hue RAG pipeline se deliberately galat/out-of-syllabus sawa
 * **🔥 THE COMBO TASK (Final Boss):** Ab chain ko ek valid In-Syllabus question ke sath invoke kar (e.g., "how to test translation in LLM"). Sahi context inject kar aur result print kar. Dono ke responses ko visually compare kar.
 
 **4. Definition of Done (Verification)**
-* **Kaise pata chalega success hua?** Pehle test par Llama 3.2 seedha jawab dega: "I don't know" (kyunki context mein info nahi thi). Doosre test pe Llama proper bullet points mein structured answer generate karke dega.
+* **Kaise pata chalega success hua?** Pehle test par Mistral 7B seedha jawab dega: "I don't know" (kyunki context mein info nahi thi). Doosre test pe Mistral 7B proper bullet points mein structured answer generate karke dega.
 
 **5. Practical Takeaway (Asli Siksha - The Deep Dive)**
 Mission Accomplished! Generative AI aur RAG ke beech ka farq tujhe manually dikh gaya. 
-* Agar tu direct Llama se bina RAG ke puchta "social datasets bias", toh wo pakka lamba chauda essay likh deta. Lekin tere injected system prompt ne uski weights ko override kiya aur usko safely chup rehna sikhaya. Yehi ek true enterprise application ki identity hai!
+* Agar tu direct Mistral 7B se bina RAG ke puchta "social datasets bias", toh wo pakka lamba chauda essay likh deta. Lekin tere injected system prompt ne uski weights ko override kiya aur usko safely chup rehna sikhaya. Yehi ek true enterprise application ki identity hai!
 
 ---
 
@@ -404,7 +404,7 @@ Khud lamba prompt likhne ki jagah, Zomato/Swiggy ki tarah Langchain Hub se commu
 
 **5. Practical Takeaway (Asli Siksha - The Deep Dive)**
 Tune "Wisdom of the Crowd" ka fayda uthaya. 
-* Tune dekha ki tera lamba chauda 20-line ka manual prompt string sirf ek line ke API call se replace ho gaya. Ye pulled prompt specifically OpenAI aur Llama models ke liye heavily optimized hota hai.
+* Tune dekha ki tera lamba chauda 20-line ka manual prompt string sirf ek line ke API call se replace ho gaya. Ye pulled prompt specifically OpenAI aur Mistral 7B models ke liye heavily optimized hota hai.
 
 ---
 
@@ -441,7 +441,7 @@ Manual pipeline (Prompt + Retriever + LLM) ko hata kar Langchain ka pre-built `R
 **3. Practical Tasks (The Mission)**
 * **Task 1: The Import:** Langchain ke `chains` module se specifically `RetrievalQA` class import kar.
 * **Task 2: The Factory Constructor:** Is class ka `.from_chain_type()` method call kar aur ise ek naye variable `qa_chain` mein save kar.
-* **🔥 THE COMBO TASK (Final Boss):** Is method ke andar parameters pass kar: Tera `llm` object, tera `retriever` object (jo tune pichle module me `k=1` ke sath banaya tha), aur sabse important—ek specific boolean flag jo system ko force kare ki wo final text ke sath original source chunks bhi wapas kare (`True` par set kar).
+* **🔥 THE COMBO TASK (Final Boss):** Is method ke andar parameters pass kar: Tera `llm` object (`ChatOllama(model="mistral:7b")`), tera `retriever` object (jo tune pichle module me `k=1` ke sath banaya tha), aur sabse important—ek specific boolean flag jo system ko force kare ki wo final text ke sath original source chunks bhi wapas kare (`True` par set kar).
 *(GURU-JI'S TRAP WARNING: Is parameter ke naam mein aakhir mein 's' lagta hai. Singular mat likhna warna "unexpected keyword argument" aayega aur script wahi crash ho jayegi!)*
 
 **4. Definition of Done (Verification)**
