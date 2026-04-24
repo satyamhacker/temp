@@ -1,6 +1,3 @@
-Main ne aapke saare notes aur learning material ko analyze kiya hai. Ek senior software engineer ki tarah, main ise aisi strict dependency mein divide kar raha hoon taaki aapka production-ready implementation fail na ho.
-
-Yeh questions aapko documentation aur source code research karne ke liye majboor karenge, jisse aapki understanding "copy-paste" ke bajaye "architectural" ban jayegi.
 
 ---
 
