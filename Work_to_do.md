@@ -1,14 +1,3 @@
----
-
-### STEP 1: DEPENDENCY MAP (BATCH 1)
-
-**Topic 1 — Core Architecture & Remote Transport (FastMCP)** → no dependencies (start here)
-**Topic 2 — FastMCP Initialization & Execution (`FastMCP()`, `mcp.run`)** → needs Topic 1
-**Topic 3 — Declarative Tool Registration (`@mcp.tool`)** → needs Topic 2
-**Topic 4 — Host Configuration (`claude_desktop_config.json`)** → needs Topic 2
-
----
-
 ### STEP 2: CONCEPT & PARAMETER QUESTIONS (BATCH 1)
 
 #### 📌 Prerequisites: None (start here)
